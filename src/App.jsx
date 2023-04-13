@@ -1,7 +1,12 @@
+import { BrowserRouter } from "react-router-dom";
+import { Router } from "./Router";
+
 function App() {
 
   return (
-    <h1 className='text-5xl font-bold text-violet-500'>CTP Acolhe 2</h1>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
   )
 }
 
