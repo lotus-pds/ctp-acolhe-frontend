@@ -16,24 +16,19 @@ export function Subscribe() {
             <div 
                 className="w-full h-full bg-none grid grid-cols-2 items-center justify-center"
             >
-                <div
-                    className="flex items-center justify-center"
-                >
-                    <img src="src/assets/img/sigin-form.png" alt="" 
-                        className="w-[530px] ml-[100px]"
-                    />
-                </div>
+
                 <div
                     className="h-[500px] flex items-center justify-center"
                 >
                     <Card color="transparent" shadow={true}
                         className="w-[351px] h-full bg-gray-100
-                            flex - items-center justify-evenly p-6 shadow-lg mr-[100px]
+                            flex - items-center justify-evenly p-6 shadow-lg
+                            ml-[100px]
                         "
                     >
                     
                     <h4 className="
-                        bg-clip-text text-transparent bg-gradient-to-r from-purple-100  to-purple-300
+                        bg-clip-text text-transparent bg-gradient-to-r from-green-100  to-green-300
                         font-mouse text-3xl
                     "> 
                         Cadastrar
@@ -59,13 +54,13 @@ export function Subscribe() {
                                 />
                             </div>
                             
-                            <Button className="mt-6 bg-gradient-to-r from-purple-100  to-purple-300" color="purple" variant="gradient">
+                            <Button className="mt-6 bg-gradient-to-r from-green-100  to-green-300" color="purple" variant="gradient">
                                 Continuar
                             </Button>
                             <Typography color="gray" className="mt-4 text-center font-normal">
                                 Já possui conta?{" "}
                             
-                            <Link to="/signin" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-100  to-purple-300">
+                            <Link to="/signin" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-200  to-green-300">
                             
                                 Acessar
                             
@@ -74,6 +69,14 @@ export function Subscribe() {
                             </Typography>
                         </form>
                     </Card>
+                </div>
+
+                <div
+                    className="flex items-center justify-center"
+                >
+                    <img src="src/assets/img/subscribe-img.png" alt="" 
+                        className="w-[530px] mr-[100px]"
+                    />
                 </div>
             </div>
         </div>
