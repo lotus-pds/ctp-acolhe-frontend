@@ -5,6 +5,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+
+      fontFamily: {
+        'roboto': ['Roboto', 'sans-serif'],
+        'mouse': ['Mouse Memoirs']
+      },
+
       colors : {
         gray: {
           100: '#FFFFFF',
@@ -30,9 +36,9 @@ module.exports = {
           400: '#C7232F'
         },
         purple :{
-          100: '#FF66F0',
-          200: '#C03CFF',
-          300: '#8F00FF'
+          100: 'rgba(255, 102, 240, .6)',
+          200: 'rgba(192, 60, 255, .6)',
+          300: 'rgba(143, 0, 255, .6)'
         }
       },
     },
