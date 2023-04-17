@@ -49,7 +49,7 @@ export function Signin() {
                 <div
                     className="flex items-center justify-center"
                 >
-                    <img src="src/assets/img/sigin-form.png" alt="" 
+                    <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572129110773780/sigin-form.png?width=480&height=480" alt="" 
                         className="w-[530px] ml-[100px]"
                     />
                 </div>

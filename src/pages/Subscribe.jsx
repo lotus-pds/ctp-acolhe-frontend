@@ -178,7 +178,7 @@ export function Subscribe() {
                 <div
                     className="flex items-center justify-center"
                 >
-                    <img src="src/assets/img/subscribe-img.png" alt="" 
+                    <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572563443531856/subscribe-img.png?width=480&height=480" alt="" 
                         className="w-[530px] mr-[100px]"
                     />
                 </div>
