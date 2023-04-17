@@ -5,9 +5,21 @@ import {
     Typography, 
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
-import { Header } from "../components/Header"
+import { Header } from "../components/Header";
+import { useState } from 'react';
+import { postSignin } from "../services/subscribe-signin";
 
 export function Signin() {
+    const [signinData, setSigninData] = useState({
+        email: '',
+        senha: ''
+    });
+
+    const signIn = async () => {
+        await postSignin({...signinData});
+        window.location.href = '/';
+    }
+
     return(
         <div>
 
@@ -42,15 +54,15 @@ export function Signin() {
                     </Typography>
                         <form className="mt-8 mb-2 w-full  flex items-center flex-col">
                             <div className="mb-4 flex flex-col gap-6 w-full">
-                                <Input size="lg" label="Email Institucional" color="gray"
-                                    
+                                <Input size="lg" label="Email Institucional" color="gray" value={signinData.email}
+                                    onChange={(e) => setSigninData({...signinData, email: e.target.value})}
                                 />
-                                <Input type="password" size="lg" label="Senha" color="gray"
-                                    
+                                <Input type="password" size="lg" label="Senha" color="gray" value={signinData.senha}
+                                    onChange={(e) => setSigninData({...signinData, senha: e.target.value})}
                                 />
                             </div>
                             
-                            <Button className="mt-6" color="purple" variant="gradient">
+                            <Button className="mt-6" color="purple" variant="gradient" onClick={signIn}>
                                 Acessar
                             </Button>
                             <Typography color="gray" className="mt-4 text-center font-normal">
