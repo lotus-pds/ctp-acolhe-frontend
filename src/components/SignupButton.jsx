@@ -12,7 +12,7 @@ export function SignupButton()
                     p-2
                     border-solid
                     border-2
-                    border-gray-700
+                    border-gray-900
                 ">
                 Cadastrar
             </div>
