@@ -51,6 +51,12 @@ export function Subscribe() {
         setIsFieldValids({...isFieldsValid, email: result});
     }
 
+    const validateProntuario = (prontuario) => {
+        const regex = /^(sp|SP)+(?:[A-Za-z0-9]){6,7}$/;
+        const result = regex.exec(prontuario) !== null ? true : false;
+        setIsFieldValids({...isFieldsValid, prontuario: result});
+    }
+
     return(
         <div>
 
@@ -64,7 +70,7 @@ export function Subscribe() {
                     className="h-[500px] flex items-center justify-center"
                 >
                     <Card color="transparent" shadow={true}
-                        className="w-[351px] h-full bg-gray-100
+                        className="w-[351px] max-h-[600px] bg-gray-100
                             flex - items-center justify-evenly p-6 shadow-lg
                             ml-[100px]
                         "
@@ -79,10 +85,11 @@ export function Subscribe() {
                     <Typography color="gray" className="mt-1 font-bold">
                         Cadastre seus dados para acessar o sistema
                     </Typography>
-                        <form className="mt-8 mb-2 w-full  flex items-center flex-col">
+                        <form className="mt-5 mb-2 w-full  flex items-center flex-col">
                             <div className="mb-4 flex flex-col gap-6 w-full">
 
-                                <Input size="xl" label="Nome" color="gray" success={isFieldsValid.name}
+                                <Input size="xl" label="Nome" color="gray" required
+                                    success={isFieldsValid.name}
                                     value={subscription.nome} error={isFieldsValid.name === false ? true : false}
                                     onChange={(e) => {
                                         setSubscription({...subscription, nome: e.target.value});
@@ -90,27 +97,59 @@ export function Subscribe() {
                                 }}                                    
                                 />
 
-                                <Input size="xl" label="Email Institucional" color="gray" success={isFieldsValid.email}
+                                <Typography
+                                    className="
+                                    text-red-500 text-xs italic -mt-4 
+                                ">
+                                    {isFieldsValid.name === false ? "Nome Inválido" : false}
+                                </Typography>
+
+                                <Input size="xl" label="Email Institucional" color="gray" required
+                                    success={isFieldsValid.email}
                                     type="email" value={subscription.email} error={isFieldsValid.email === false ? true : false}
                                     onChange={(e) => {
                                         setSubscription({...subscription, email: e.target.value});
                                         validateEmail(e.target.value);
                                     }}      
                                 />
-                                <Input size="xl" label="Prontuário" color="gray"
-                                    value={subscription.prontuario}
-                                    onChange={(e) => setSubscription({...subscription, prontuario: e.target.value})}      
+                                <Typography
+                                    className="
+                                    text-red-500 text-xs italic -mt-4 
+                                ">
+                                    {isFieldsValid.email === false ? "Email Inválido" : false}
+                                </Typography>
+                                <Input size="xl" label="Prontuário" color="gray" required
+                                    success={isFieldsValid.prontuario}
+                                    value={subscription.prontuario} error={isFieldsValid.prontuario === false ? true : false}
+                                    onChange={(e) => {
+                                        setSubscription({...subscription, prontuario: e.target.value});
+                                        validateProntuario(e.target.value)
+                                    }}      
                                 />
-                                <Input type="password" size="xl" label="Senha" color="gray" success={isFieldsValid.password}
+                                <Typography
+                                    className="
+                                    text-red-500 text-xs italic -mt-4 
+                                ">
+                                    {isFieldsValid.prontuario === false ? "Prontuário Inválido" : false}
+                                </Typography>
+                                
+                                <Input type="password" size="xl" label="Senha" color="gray" required
+                                    success={isFieldsValid.password}
                                     value={subscription.senha} error={isFieldsValid.password === false ? true : false}
                                     onChange={(e) => {
                                         setSubscription({...subscription, senha: e.target.value});
                                         validatePassword(e.target.value);
                                     }}      
                                 />
+                                <Typography
+                                    className=
+                                    "text-red-500 text-xs italic -mt-4 float-left"
+                                >
+                                    {isFieldsValid.password === false ? "Senha Inválida" : false}
+                                </Typography>
                             </div>
                             
-                            <Button className="mt-6 bg-gradient-to-r from-green-100  to-green-300" color="purple" variant="gradient"
+                            <Button className="mt-0 bg-gradient-to-r from-green-100  to-green-300" color="purple" variant="gradient"
                                 onClick={subscribe}
                             >
                                 Continuar

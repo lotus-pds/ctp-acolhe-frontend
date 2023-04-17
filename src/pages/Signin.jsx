@@ -8,8 +8,10 @@ import { Link } from "react-router-dom";
 import { Header } from "../components/Header";
 import { useState } from 'react';
 import { postSignin } from "../services/subscribe-signin";
+import { Sucessfull } from "./Sucessfull";
 
 export function Signin() {
+
     const [signinData, setSigninData] = useState({
         email: '',
         senha: ''
@@ -17,8 +19,18 @@ export function Signin() {
 
     const signIn = async () => {
         await postSignin({...signinData});
-        window.location.href = '/';
+        window.location.href = '/sucessfull';
     }
+
+    const sendSignIn = (e) => {
+        e.preventDefault();
+        let data = {
+            email : signinData.email,
+            senha : signinData.senha
+        }
+        console.log("data", data)
+    }
+
 
     return(
         <div>
@@ -52,7 +64,9 @@ export function Signin() {
                     <Typography color="gray" className="mt-1 font-bold">
                         Entre com suas credencias para seguir adiante!
                     </Typography>
-                        <form className="mt-8 mb-2 w-full  flex items-center flex-col">
+                        <form className="mt-8 mb-2 w-full  flex items-center flex-col"
+                            onSubmit={sendSignIn}
+                        >
                             <div className="mb-4 flex flex-col gap-6 w-full">
                                 <Input size="lg" label="Email Institucional" color="gray" value={signinData.email}
                                     onChange={(e) => setSigninData({...signinData, email: e.target.value})}
@@ -63,7 +77,7 @@ export function Signin() {
                             </div>
                             
                             <Button className="mt-6" color="purple" variant="gradient" onClick={signIn}>
-                                Acessar
+                               Acessar
                             </Button>
                             <Typography color="gray" className="mt-4 text-center font-normal">
                                 Não possui conta ainda?{" "}
