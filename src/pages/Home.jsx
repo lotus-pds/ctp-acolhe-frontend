@@ -22,7 +22,7 @@ export function Home() {
             className="h-full"
         >   
             <Header/>
-            <img src="src/assets/img/vetor.png" alt="" 
+            <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572563690991696/vetor.png" alt="" 
                 className="absolute  top-0 right-0 z-10"
             />
             <main className="
