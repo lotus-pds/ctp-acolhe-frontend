@@ -65,7 +65,7 @@ export function Home() {
                             </div>
 
                             <div>
-                                <img src="src/assets/img/psico.png" alt="" 
+                                <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572130675232799/psico.png?width=480&height=480" alt="" 
                                 className="w-[530px]"
                             />
                             </div>
@@ -97,7 +97,7 @@ export function Home() {
                             </div>
 
                             <div>
-                                <img src="src/assets/img/studies.png" alt="" 
+                                <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572130138378250/studies.png?width=648&height=480" alt="" 
                                 className="w-[630px]"
                             />
                             </div>
@@ -113,7 +113,7 @@ export function Home() {
                                 <p>
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
                                 </p>
-                                <Link to="/sucessfull">
+                                <Link to="/subscribe">
                                     <div 
                                         className="
                                             w-[120px]
@@ -129,7 +129,7 @@ export function Home() {
                             </div>
 
                             <div>
-                                <img src="src/assets/img/organization.png" alt="" 
+                                <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572129647632436/organization.png?width=624&height=480" alt="" 
                                 className="w-[630px]"
                             />
                             </div>

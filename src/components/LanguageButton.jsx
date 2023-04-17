@@ -13,7 +13,7 @@ export function LanguageButton() {
         <a
           href='#'
         >
-          <img src="src/assets/img/brazil-color.png"
+          <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572128636801034/brazil-colorfull.png"
             className='h-[45px]'
           />
         </a>
@@ -34,7 +34,7 @@ export function LanguageButton() {
                 <a href='#'
                   className='p-1'
                 >
-                  <img src="src/assets/img/england-color.png"
+                  <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572128435490928/england-colorfull.png"
                     className='h-[45px]'
                   />
               

@@ -11,7 +11,7 @@ export function Footer(){
                 p-2
             "
         >
-            <img src="src/assets/img/ctp-footer.png"
+            <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572129437913189/ctp-footer.png"
             className="w-[120px]" alt="" />
             <span>CTP Acolhe - Todos os Direitos Reservados</span>
             <span>Criado por <strong>Lotus</strong> | Todos os Direitos Reservados</span>

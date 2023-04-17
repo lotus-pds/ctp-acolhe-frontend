@@ -6,7 +6,7 @@ export function ThemeButton() {
   return (
     <Popover className="relative">
       <Popover.Button className="inline-flex items-center gap-x-1 outline-none">
-        <img src="src/assets/img/light-theme-icon.png"
+        <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572131325366343/light-theme-icon.png?width=480&height=480"
           className='h-[45px]'
         />
       </Popover.Button>
@@ -26,7 +26,7 @@ export function ThemeButton() {
                 <a href="#"
                 className='p-1'
                 >
-                  <img src="src/assets/img/dark-theme-icon.png"
+                  <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572131107250197/dark-theme-icon.png?width=480&height=480"
                     className='h-[40px]'
                   />
               

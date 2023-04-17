@@ -7,7 +7,7 @@ export function Logo()
             to={'/'}
         >
             <img 
-                src="src/assets/img/ctp-acolhe-logo.png"
+                src="https://media.discordapp.net/attachments/1077345452694970438/1097572128850714835/ctp-acolhe-logo.png"
                 className="w-[120px]"
             />
         </Link>
