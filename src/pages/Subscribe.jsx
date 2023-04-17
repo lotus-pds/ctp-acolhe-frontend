@@ -4,7 +4,7 @@ import {
     Button,
     Typography, 
 } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../components/Header";
 import { useState } from 'react';
 import { postSubscribe } from "../services/subscribe-signin";
@@ -19,18 +19,25 @@ export function Subscribe() {
 
     const [isFieldsValid, setIsFieldValids] = useState({});
 
+    const navigate = useNavigate();
+
     const subscribe = async () => {
         let isValid = true;
+
         for(const key in isFieldsValid) {
             isValid = isValid && isFieldsValid[key];
         }
 
+        if(isValid === true)
+        {
+            navigate('/signin');
+        }
         console.log(isValid);
-
+        /*
         if(isValid){
             await postSubscribe({...subscription});
             window.location.href = '/signin';
-        }
+        }*/
     }
 
     const validatePassword = (password) => {
@@ -52,7 +59,7 @@ export function Subscribe() {
     }
 
     const validateProntuario = (prontuario) => {
-        const regex = /^(sp|SP)+(?:[A-Za-z0-9]){6,7}$/;
+        const regex = /^(sp|SP|Sp|sP)+(?:[A-Z a-z 0-9]){6,7}$/;
         const result = regex.exec(prontuario) !== null ? true : false;
         setIsFieldValids({...isFieldsValid, prontuario: result});
     }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export function ROOT_URL(){
-    return 'https://ctpacolhe-production.up.railway.app/api/v1/conta/';
+    return 'https://ctpacolhe-production.up.railway.app/api/v1';
     //return 'http://localhost:8080/api/v1';
 }
 

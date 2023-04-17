@@ -1,6 +1,15 @@
 import { Logo } from "../components/Logo";
+import { useState } from 'react';
 
 export function Sucessfull(){
+
+
+    const [subscription, setSubscription] = useState({
+        nome: '',
+        email: '',
+        prontuario: '',
+        senha: ''
+    });
 
     return(
         <div

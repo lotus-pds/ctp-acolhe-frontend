@@ -4,7 +4,7 @@ import {
     Button,
     Typography, 
 } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../components/Header";
 import { useState } from 'react';
 import { postSignin } from "../services/subscribe-signin";
@@ -16,11 +16,17 @@ export function Signin() {
         email: '',
         senha: ''
     });
+    
+    
+    //const signIn = useNavigate();
 
+    //signIn('/sucessfull')
+
+    /*
     const signIn = async () => {
         await postSignin({...signinData});
         window.location.href = '/sucessfull';
-    }
+    }*/
 
     const sendSignIn = (e) => {
         e.preventDefault();
@@ -68,16 +74,20 @@ export function Signin() {
                             onSubmit={sendSignIn}
                         >
                             <div className="mb-4 flex flex-col gap-6 w-full">
-                                <Input size="lg" label="Email Institucional" color="gray" value={signinData.email}
+                                <Input size="lg" label="Email Institucional" color="gray" value={signinData.email} required
                                     onChange={(e) => setSigninData({...signinData, email: e.target.value})}
                                 />
-                                <Input type="password" size="lg" label="Senha" color="gray" value={signinData.senha}
+                                <Input type="password" size="lg" label="Senha" color="gray" value={signinData.senha} required
                                     onChange={(e) => setSigninData({...signinData, senha: e.target.value})}
                                 />
                             </div>
                             
-                            <Button className="mt-6" color="purple" variant="gradient" onClick={signIn}>
-                               Acessar
+                            
+                            
+                            <Button className="mt-6" color="purple" variant="gradient" >
+                            <Link to="/sucessfull">
+                                Acessar
+                            </Link>
                             </Button>
                             <Typography color="gray" className="mt-4 text-center font-normal">
                                 Não possui conta ainda?{" "}
