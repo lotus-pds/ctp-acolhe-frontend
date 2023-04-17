@@ -41,13 +41,13 @@ export function Subscribe() {
     }
 
     const validatePassword = (password) => {
-        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%;*(){}_+^&])(?:([0-9a-zA-Z!@#$%;*(){}_+^&])(?!\1)){8,32}$/;
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%;*(){}_+^&])(?:([0-9a-zA-Z!@#$%;*(){}_+^&])){8,32}$/;
         const result = regex.exec(password) !== null ? true : false;
         setIsFieldValids({...isFieldsValid, password: result});
     }
     
     const validateName = (name) => {
-        const regex = /^(?:([a-z A-Z])(?!\1)){5,100}$/;
+        const regex = /^(?:([a-z A-Z])){5,100}$/;
         const result = regex.exec(name) !== null ? true : false;
         setIsFieldValids({...isFieldsValid, name: result});
     }
