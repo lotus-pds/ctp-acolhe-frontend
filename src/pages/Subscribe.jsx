@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../components/Header";
 import { useState } from 'react';
 import { postSubscribe } from "../services/subscribe-signin";
+import { validateEmail, validateName, validatePassword, validateRegistration } from "../utils";
 
 export function Subscribe() {
     const [subscription, setSubscription] = useState({
@@ -27,41 +28,22 @@ export function Subscribe() {
         for(const key in isFieldsValid) {
             isValid = isValid && isFieldsValid[key];
         }
+        
+        if(isValid){
+            let newSubscription = Object.assign({
+                nome: "",
+                email: "",
+                telefone: "",
+                curso: "",
+                periodo: null,
+                turma: "",
+                prontuario: "",
+                senha: ""
+            }, subscription);
 
-        if(isValid === true)
-        {
+            await postSubscribe(newSubscription);
             navigate('/signin');
         }
-        console.log(isValid);
-        /*
-        if(isValid){
-            await postSubscribe({...subscription});
-            window.location.href = '/signin';
-        }*/
-    }
-
-    const validatePassword = (password) => {
-        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%;*(){}_+^&])(?:([0-9a-zA-Z!@#$%;*(){}_+^&])){8,32}$/;
-        const result = regex.exec(password) !== null ? true : false;
-        setIsFieldValids({...isFieldsValid, password: result});
-    }
-    
-    const validateName = (name) => {
-        const regex = /^(?:([a-z A-Z])){5,100}$/;
-        const result = regex.exec(name) !== null ? true : false;
-        setIsFieldValids({...isFieldsValid, name: result});
-    }
-
-    const validateEmail = (email) => {
-        const regex = /^[A-Za-z0-9._%+-]+@(ifsp\.edu\.br|aluno\.ifsp\.edu\.br)$/;
-        const result = regex.exec(email) !== null ? true : false;
-        setIsFieldValids({...isFieldsValid, email: result});
-    }
-
-    const validateProntuario = (prontuario) => {
-        const regex = /^(sp|SP|Sp|sP)+(?:[A-Z a-z 0-9]){6,7}$/;
-        const result = regex.exec(prontuario) !== null ? true : false;
-        setIsFieldValids({...isFieldsValid, prontuario: result});
     }
 
     return(
@@ -94,13 +76,12 @@ export function Subscribe() {
                     </Typography>
                         <form className="mt-5 mb-2 w-full  flex items-center flex-col">
                             <div className="mb-4 flex flex-col gap-6 w-full">
-
                                 <Input size="xl" label="Nome" color="gray" required
                                     success={isFieldsValid.name}
                                     value={subscription.nome} error={isFieldsValid.name === false ? true : false}
                                     onChange={(e) => {
                                         setSubscription({...subscription, nome: e.target.value});
-                                        validateName(e.target.value);
+                                        setIsFieldValids({...isFieldsValid, name: validateName(e.target.value)});
                                 }}                                    
                                 />
 
@@ -116,23 +97,26 @@ export function Subscribe() {
                                     type="email" value={subscription.email} error={isFieldsValid.email === false ? true : false}
                                     onChange={(e) => {
                                         setSubscription({...subscription, email: e.target.value});
-                                        validateEmail(e.target.value);
+                                        setIsFieldValids({...isFieldsValid, email: validateEmail(e.target.value)});
                                     }}      
                                 />
+
                                 <Typography
                                     className="
                                     text-red-500 text-xs italic -mt-4 
                                 ">
                                     {isFieldsValid.email === false ? "Email Inválido" : false}
                                 </Typography>
+
                                 <Input size="xl" label="Prontuário" color="gray" required
-                                    success={isFieldsValid.prontuario}
-                                    value={subscription.prontuario} error={isFieldsValid.prontuario === false ? true : false}
+                                    success={isFieldsValid.registration}
+                                    value={subscription.prontuario} error={isFieldsValid.registration === false ? true : false}
                                     onChange={(e) => {
                                         setSubscription({...subscription, prontuario: e.target.value});
-                                        validateProntuario(e.target.value)
+                                        setIsFieldValids({...isFieldsValid, registration: validateRegistration(e.target.value)});
                                     }}      
                                 />
+
                                 <Typography
                                     className="
                                     text-red-500 text-xs italic -mt-4 
@@ -145,9 +129,10 @@ export function Subscribe() {
                                     value={subscription.senha} error={isFieldsValid.password === false ? true : false}
                                     onChange={(e) => {
                                         setSubscription({...subscription, senha: e.target.value});
-                                        validatePassword(e.target.value);
+                                        setIsFieldValids({...isFieldsValid, password: validatePassword(e.target.value)});
                                     }}      
                                 />
+
                                 <Typography
                                     className=
                                     "text-red-500 text-xs italic -mt-4 float-left"
