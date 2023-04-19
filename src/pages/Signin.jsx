@@ -8,7 +8,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../components/Header";
 import { useState } from 'react';
 import { postSignin } from "../services/subscribe-signin";
-import { Sucessfull } from "./Sucessfull";
+import { Sucessfull } from "./Successful";
+import { validateEmail, validatePassword } from "../utils";
 
 export function Signin() {
 
@@ -16,27 +17,24 @@ export function Signin() {
         email: '',
         senha: ''
     });
-    
-    
-    //const signIn = useNavigate();
 
-    //signIn('/sucessfull')
-
-    /*
+    const [isFieldsValid, setIsFieldValids] = useState({});
+    
+    const navigate = useNavigate();
+    
     const signIn = async () => {
-        await postSignin({...signinData});
-        window.location.href = '/sucessfull';
-    }*/
 
-    const sendSignIn = (e) => {
-        e.preventDefault();
-        let data = {
-            email : signinData.email,
-            senha : signinData.senha
+        let isValid = true;
+
+        for(const key in isFieldsValid) {
+            isValid = isValid && isFieldsValid[key];
         }
-        console.log("data", data)
+        
+        if(isValid){
+            await postSignin({...signinData});
+            navigate('/successful');
+        }
     }
-
 
     return(
         <div>
@@ -71,23 +69,44 @@ export function Signin() {
                         Entre com suas credencias para seguir adiante!
                     </Typography>
                         <form className="mt-8 mb-2 w-full  flex items-center flex-col"
-                            onSubmit={sendSignIn}
+                            onSubmit={signIn}
                         >
                             <div className="mb-4 flex flex-col gap-6 w-full">
                                 <Input size="lg" label="Email Institucional" color="gray" value={signinData.email} required
-                                    onChange={(e) => setSigninData({...signinData, email: e.target.value})}
+                                    success={isFieldsValid.email} error={isFieldsValid.email === false ? true : false}
+                                    onChange={(e) => {
+                                        setSigninData({...signinData, email: e.target.value});
+                                        setIsFieldValids({...isFieldsValid, email: validateEmail(e.target.value)});
+                                    }}
                                 />
+
+                                <Typography
+                                    className="
+                                    text-red-500 text-xs italic -mt-4 
+                                ">
+                                    {isFieldsValid.email === false ? "Email Inválido" : false}
+                                </Typography>
+
                                 <Input type="password" size="lg" label="Senha" color="gray" value={signinData.senha} required
-                                    onChange={(e) => setSigninData({...signinData, senha: e.target.value})}
+                                    success={isFieldsValid.password} error={isFieldsValid.password === false ? true : false}
+                                    onChange={(e) => {
+                                        setSigninData({...signinData, senha: e.target.value});
+                                        setIsFieldValids({...isFieldsValid, password: validatePassword(e.target.value)});
+                                    }}
                                 />
+
+                                <Typography
+                                    className=
+                                    "text-red-500 text-xs italic -mt-4 float-left"
+                                >
+                                    {isFieldsValid.password === false ? "Senha Inválida" : false}
+                                </Typography>
                             </div>
                             
                             
                             
-                            <Button className="mt-6" color="purple" variant="gradient" >
-                            <Link to="/sucessfull">
+                            <Button className="mt-6" color="purple" variant="gradient" onClick={signIn}>
                                 Acessar
-                            </Link>
                             </Button>
                             <Typography color="gray" className="mt-4 text-center font-normal">
                                 Não possui conta ainda?{" "}
