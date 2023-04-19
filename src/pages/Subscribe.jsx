@@ -30,18 +30,7 @@ export function Subscribe() {
         }
         
         if(isValid){
-            let newSubscription = Object.assign({
-                nome: "",
-                email: "",
-                telefone: "",
-                curso: "",
-                periodo: null,
-                turma: "",
-                prontuario: "",
-                senha: ""
-            }, subscription);
-
-            await postSubscribe(newSubscription);
+            await postSubscribe({...subscription});
             navigate('/signin');
         }
     }
