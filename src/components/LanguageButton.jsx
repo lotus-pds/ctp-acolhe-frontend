@@ -5,18 +5,19 @@ import { useTranslation } from 'react-i18next';
 
 export function LanguageButton() {
 
-  
+  const {i18n} = useTranslation()
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng)
+    console.log(lng);
+  }
 
   return (
     <Popover className="relative">
-      <Popover.Button className="inline-flex items-center gap-x-1 leading-6 outline-none">
-        <a
-          href='#'
-        >
-          <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572128636801034/brazil-colorfull.png"
+      <Popover.Button className="inline-flex items-center gap-x-1 leading-6 outline-none">    
+          <img src="https://media.discordapp.net/attachments/1077345452694970438/1099061954154344478/change-language_1.png?width=456&height=480"
             className='h-[45px]'
           />
-        </a>
       </Popover.Button>
 
       <Transition
@@ -30,15 +31,28 @@ export function LanguageButton() {
       >
         <Popover.Panel className="absolute left-1/2 z-10 mt-2 flex w-screen max-w-max -translate-x-1/2 px-4">
           <div className="w-[60px] max-w-md  flex flex-center justify-center overflow-hidden rounded bg-white text-sm leading-6 shadow-lg">
-            <div className="">
-                <a href='#'
-                  className='p-1'
-                >
-                  <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572128435490928/england-colorfull.png"
-                    className='h-[45px]'
-                  />
-              
-                </a>
+            <div className="
+              flex flex-col
+            ">
+              <button
+                onClick={() => changeLanguage("pt")}
+                className='p-1'
+              >
+
+              <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572128636801034/brazil-colorfull.png"
+                className='h-[45px]'
+              />
+              </button>
+
+              <button 
+                onClick={() => changeLanguage("en")}
+                className='p-1'
+              >
+                <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572128435490928/england-colorfull.png"
+                  className='h-[45px]'
+                />
+            
+              </button> 
             </div>
           </div>
         </Popover.Panel>

@@ -1,9 +1,11 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 export function SigninButton()
 {
 
-   
+    const {t} = useTranslation()
+    
     return(
         <Link to="/signin">
             <div 
@@ -12,7 +14,7 @@ export function SigninButton()
                     rounded-lg
                     p-2
                 ">
-                Entrar
+                {t("signIn")}
             </div>
         </Link>
     );

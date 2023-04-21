@@ -12,10 +12,11 @@ export const ErrorPopup = (props) => {
         <Dialog
             open={state.visible}
             size="sm"
+            className="flex flex-col items-center"
         >
             <DialogHeader>
                 <h4 className="
-                    bg-clip-text text-transparent bg-gradient-to-r from-red-100  to-red-300
+                    bg-clip-text text-transparent bg-gradient-to-r from-red-200  to-red-300
                     font-mouse text-3xl
                 "> 
                     Erro
@@ -26,7 +27,8 @@ export const ErrorPopup = (props) => {
             </DialogBody>
             <DialogFooter>
             <Button
-                className="bg-gradient-to-r from-red-500  to-red-700"
+                className="bg-gradient-to-r from-red-200  to-red-300"
+                color="red"
                 onClick={() => {setState({visible: false, message: ''})}}
             >
                 <span>OK</span>

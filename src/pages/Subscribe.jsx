@@ -9,8 +9,13 @@ import { Header } from "../components/Header";
 import { useState } from 'react';
 import { postSubscribe } from "../services/subscribe-signin";
 import { validateEmail, validateName, validatePassword, validateRegistration } from "../utils";
+import { useTranslation } from "react-i18next";
+
 
 export function Subscribe(props) {
+
+    const {t} = useTranslation();
+
     const {setState} = props;
 
     const [subscription, setSubscription] = useState({
@@ -84,14 +89,14 @@ export function Subscribe(props) {
                         bg-clip-text text-transparent bg-gradient-to-r from-green-100  to-green-300
                         font-mouse text-3xl
                     "> 
-                        Cadastrar
+                        {t("signUp")}
                     </h4>
                     <Typography color="gray" className="mt-1 font-bold">
-                        Cadastre seus dados para acessar o sistema
+                        {t("signUpDesc")}
                     </Typography>
                         <form className="mt-5 mb-2 w-full  flex items-center flex-col">
                             <div className="mb-4 flex flex-col gap-6 w-full">
-                                <Input size="xl" label="Nome" color="gray" required
+                                <Input size="xl" label={t("name")} color="gray" required
                                     success={isFieldValid.name}
                                     value={subscription.nome} error={isFieldValid.name === false ? true : false}
                                     onChange={(e) => {
@@ -104,10 +109,10 @@ export function Subscribe(props) {
                                     className="
                                     text-red-500 text-xs italic -mt-4 
                                 ">
-                                    {isFieldValid.name === false ? "Nome Inválido" : false}
+                                    {isFieldValid.name === false ? t("invalidName") : false}
                                 </Typography>
 
-                                <Input size="xl" label="Email Institucional" color="gray" required
+                                <Input size="xl" label={t("email")} color="gray" required
                                     success={isFieldValid.email}
                                     type="email" value={subscription.email} error={isFieldValid.email === false ? true : false}
                                     onChange={(e) => {
@@ -120,10 +125,10 @@ export function Subscribe(props) {
                                     className="
                                     text-red-500 text-xs italic -mt-4 
                                 ">
-                                    {isFieldValid.email === false ? "Email Inválido" : false}
+                                    {isFieldValid.email === false ? t("invalidEmail") : false}
                                 </Typography>
 
-                                <Input size="xl" label="Prontuário" color="gray" required
+                                <Input size="xl" label={t("registration")} color="gray" required
                                     success={isFieldValid.registration}
                                     value={subscription.prontuario} error={isFieldValid.registration === false ? true : false}
                                     onChange={(e) => {
@@ -136,10 +141,10 @@ export function Subscribe(props) {
                                     className="
                                     text-red-500 text-xs italic -mt-4 
                                 ">
-                                    {isFieldValid.registration === false ? "Prontuário Inválido" : false}
+                                    {isFieldValid.registration === false ? t("invalidRegistration") : false}
                                 </Typography>
                                 
-                                <Input type="password" size="xl" label="Senha" color="gray" required
+                                <Input type="password" size="xl" label={t("password")} color="gray" required
                                     success={isFieldValid.password}
                                     value={subscription.senha} error={isFieldValid.password === false ? true : false}
                                     onChange={(e) => {
@@ -152,21 +157,21 @@ export function Subscribe(props) {
                                     className=
                                     "text-red-500 text-xs italic -mt-4 float-left"
                                 >
-                                    {isFieldValid.password === false ? "Senha Inválida" : false}
+                                    {isFieldValid.password === false ? t("invalidPassword") : false}
                                 </Typography>
                             </div>
                             
-                            <Button className="mt-0 bg-gradient-to-r from-green-100  to-green-300" color="purple" variant="gradient"
+                            <Button className="mt-0 bg-gradient-to-r from-green-100  to-green-300" color="green" variant="gradient"
                                 onClick={subscribe}
                             >
-                                Continuar
+                                {t("continue")}
                             </Button>
                             <Typography color="gray" className="mt-4 text-center font-normal">
-                                Já possui conta?{" "}
+                                {t("haveRegistration")}{" "}
                             
                             <Link to="/signin" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-200  to-green-300">
                             
-                                Acessar
+                                {t("signIn")}
                             
                             </Link>
                             
