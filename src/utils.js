@@ -5,7 +5,7 @@ export const validatePassword = (password) => {
 }
 
 export const validateName = (name) => {
-    const regex = /^(?:([a-zA-Z\u00C0-\u00FF ])){5,100}$/;
+    const regex = /^(?=.*[ ])(?:([a-zA-Z\u00C0-\u00FF ])){5,100}$/;
     const result = regex.exec(name) !== null ? true : false;
     return result;
 }

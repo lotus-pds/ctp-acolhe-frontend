@@ -10,7 +10,9 @@ import { useState } from 'react';
 import { postSubscribe } from "../services/subscribe-signin";
 import { validateEmail, validateName, validatePassword, validateRegistration } from "../utils";
 
-export function Subscribe() {
+export function Subscribe(props) {
+    const {setState} = props;
+
     const [subscription, setSubscription] = useState({
         nome: '',
         email: '',
@@ -18,20 +20,44 @@ export function Subscribe() {
         senha: ''
     });
 
-    const [isFieldsValid, setIsFieldValids] = useState({});
+    const [isFieldValid, setIsFieldValid] = useState({});
 
     const navigate = useNavigate();
 
     const subscribe = async () => {
         let isValid = true;
 
-        for(const key in isFieldsValid) {
-            isValid = isValid && isFieldsValid[key];
+        for(const key in isFieldValid) {
+            isValid = isValid && isFieldValid[key];
         }
         
-        if(isValid){
-            await postSubscribe({...subscription});
-            navigate('/signin');
+        try{
+            if(
+                isValid 
+                && subscription.nome != '' 
+                && subscription.email != '' 
+                && subscription.prontuario != ''
+                && subscription.senha != ''
+            ){
+                let newSubscription = {...subscription};
+
+                for(const key in newSubscription) {
+                    newSubscription[key] = newSubscription[key].trim();
+                    console.log(newSubscription[key]);
+                }
+
+                await postSubscribe(newSubscription);
+                navigate('/signin');
+            } else {
+                setIsFieldValid({
+                    name: (subscription.nome == '' ? false : true) && isFieldValid.name,
+                    email: (subscription.email == '' ? false : true) && isFieldValid.email,
+                    registration: (subscription.email == '' ? false : true) && isFieldValid.registration,
+                    password: (subscription.senha == '' ? false : true) && isFieldValid.password
+                });
+            }
+        } catch(e) {
+            setState({visible: true, message: e.response.data.errors[0]})
         }
     }
 
@@ -66,11 +92,11 @@ export function Subscribe() {
                         <form className="mt-5 mb-2 w-full  flex items-center flex-col">
                             <div className="mb-4 flex flex-col gap-6 w-full">
                                 <Input size="xl" label="Nome" color="gray" required
-                                    success={isFieldsValid.name}
-                                    value={subscription.nome} error={isFieldsValid.name === false ? true : false}
+                                    success={isFieldValid.name}
+                                    value={subscription.nome} error={isFieldValid.name === false ? true : false}
                                     onChange={(e) => {
                                         setSubscription({...subscription, nome: e.target.value});
-                                        setIsFieldValids({...isFieldsValid, name: validateName(e.target.value)});
+                                        setIsFieldValid({...isFieldValid, name: validateName(e.target.value)});
                                 }}                                    
                                 />
 
@@ -78,15 +104,15 @@ export function Subscribe() {
                                     className="
                                     text-red-500 text-xs italic -mt-4 
                                 ">
-                                    {isFieldsValid.name === false ? "Nome Inválido" : false}
+                                    {isFieldValid.name === false ? "Nome Inválido" : false}
                                 </Typography>
 
                                 <Input size="xl" label="Email Institucional" color="gray" required
-                                    success={isFieldsValid.email}
-                                    type="email" value={subscription.email} error={isFieldsValid.email === false ? true : false}
+                                    success={isFieldValid.email}
+                                    type="email" value={subscription.email} error={isFieldValid.email === false ? true : false}
                                     onChange={(e) => {
                                         setSubscription({...subscription, email: e.target.value});
-                                        setIsFieldValids({...isFieldsValid, email: validateEmail(e.target.value)});
+                                        setIsFieldValid({...isFieldValid, email: validateEmail(e.target.value)});
                                     }}      
                                 />
 
@@ -94,15 +120,15 @@ export function Subscribe() {
                                     className="
                                     text-red-500 text-xs italic -mt-4 
                                 ">
-                                    {isFieldsValid.email === false ? "Email Inválido" : false}
+                                    {isFieldValid.email === false ? "Email Inválido" : false}
                                 </Typography>
 
                                 <Input size="xl" label="Prontuário" color="gray" required
-                                    success={isFieldsValid.registration}
-                                    value={subscription.prontuario} error={isFieldsValid.registration === false ? true : false}
+                                    success={isFieldValid.registration}
+                                    value={subscription.prontuario} error={isFieldValid.registration === false ? true : false}
                                     onChange={(e) => {
                                         setSubscription({...subscription, prontuario: e.target.value});
-                                        setIsFieldValids({...isFieldsValid, registration: validateRegistration(e.target.value)});
+                                        setIsFieldValid({...isFieldValid, registration: validateRegistration(e.target.value)});
                                     }}      
                                 />
 
@@ -110,15 +136,15 @@ export function Subscribe() {
                                     className="
                                     text-red-500 text-xs italic -mt-4 
                                 ">
-                                    {isFieldsValid.prontuario === false ? "Prontuário Inválido" : false}
+                                    {isFieldValid.registration === false ? "Prontuário Inválido" : false}
                                 </Typography>
                                 
                                 <Input type="password" size="xl" label="Senha" color="gray" required
-                                    success={isFieldsValid.password}
-                                    value={subscription.senha} error={isFieldsValid.password === false ? true : false}
+                                    success={isFieldValid.password}
+                                    value={subscription.senha} error={isFieldValid.password === false ? true : false}
                                     onChange={(e) => {
                                         setSubscription({...subscription, senha: e.target.value});
-                                        setIsFieldValids({...isFieldsValid, password: validatePassword(e.target.value)});
+                                        setIsFieldValid({...isFieldValid, password: validatePassword(e.target.value)});
                                     }}      
                                 />
 
@@ -126,7 +152,7 @@ export function Subscribe() {
                                     className=
                                     "text-red-500 text-xs italic -mt-4 float-left"
                                 >
-                                    {isFieldsValid.password === false ? "Senha Inválida" : false}
+                                    {isFieldValid.password === false ? "Senha Inválida" : false}
                                 </Typography>
                             </div>
                             
