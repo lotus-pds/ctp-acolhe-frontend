@@ -7,12 +7,13 @@ import { Pagination } from "swiper";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import { useTranslation } from "react-i18next";
 
 
 export function Home() {
 
 
-
+    const {t} = useTranslation();
 
     //const navigate = useNavigate();
 
@@ -45,9 +46,10 @@ export function Home() {
                                 <h2
                                     className="font-mouse text-5xl"
                                 >
-                                    Atendimento para ajuda <spam className="bg-clip-text text-transparent bg-gradient-to-r from-purple-100  to-purple-300">psicológica</spam></h2>
+                                    {t("titleOne")} 
+                                   </h2>
                                 <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
+                                {t("descOne")}
                                 </p>
                                 <Link to="/subscribe">
                                     <div 
@@ -59,7 +61,7 @@ export function Home() {
                                             bg-gradient-to-r from-purple-100  to-purple-300
                                             text-center
                                         ">
-                                        Cadastrar
+                                        {t("signUp")}
                                     </div>
                                 </Link>
                             </div>
@@ -77,9 +79,10 @@ export function Home() {
                                 <h2
                                     className="font-mouse text-5xl"
                                 >
-                                    Serviço de ajuda <spam className="bg-clip-text text-transparent bg-gradient-to-r from-red-100 via-red-300 to-red-400">educacional</spam></h2>
+                                    {t("titleTwo")}
+                                </h2>
                                 <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
+                                    {t("descOne")}
                                 </p>
                                 <Link to="/subscribe">
                                     <div 
@@ -91,7 +94,7 @@ export function Home() {
                                             bg-gradient-to-r from-red-100 via-red-300 to-red-400
                                             text-center
                                         ">
-                                        Cadastrar
+                                        {t("signUp")}
                                     </div>
                                 </Link>
                             </div>
@@ -109,9 +112,10 @@ export function Home() {
                                 <h2
                                     className="font-mouse text-5xl"
                                 >
-                                    Atendimento para <spam className="bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-blue-300">organização estudantil</spam></h2>
+                                    {t("titleThree")}
+                                </h2>
                                 <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
+                                    {t("descThree")}
                                 </p>
                                 <Link to="/subscribe">
                                     <div 
@@ -123,7 +127,7 @@ export function Home() {
                                             bg-gradient-to-r from-blue-100  to-blue-300
                                             text-center
                                         ">
-                                        Cadastrar
+                                        {t("signUp")}
                                     </div>
                                 </Link>
                             </div>

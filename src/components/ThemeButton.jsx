@@ -6,8 +6,8 @@ export function ThemeButton() {
   return (
     <Popover className="relative">
       <Popover.Button className="inline-flex items-center gap-x-1 outline-none">
-        <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572131325366343/light-theme-icon.png?width=480&height=480"
-          className='h-[45px]'
+        <img src="https://cdn.discordapp.com/attachments/1077345452694970438/1099063300949561384/change-theme.png"
+          className='h-[40px]'
         />
       </Popover.Button>
 
@@ -22,15 +22,24 @@ export function ThemeButton() {
       >
         <Popover.Panel className="absolute left-1/2 z-10 mt-2 flex w-screen max-w-max -translate-x-1/2 px-4 outline-0">
           <div className="w-[60px] max-w-md  flex flex-center justify-center overflow-hidden rounded bg-white text-sm leading-6 shadow-lg">
-            <div className="">
-                <a href="#"
-                className='p-1'
+            <div className="flex flex-col items-center">
+                <button 
+                  className='p-1'
+                  
                 >
                   <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572131107250197/dark-theme-icon.png?width=480&height=480"
-                    className='h-[40px]'
+                    className='h-[35px]'
                   />
-              
-                </a>
+                  
+                </button>
+
+                <button 
+                  className='p-1'
+                  
+                >
+                <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572131325366343/light-theme-icon.png?width=480&height=480"
+                  className='h-[45px]'/>
+                </button>
             </div>
           </div>
         </Popover.Panel>

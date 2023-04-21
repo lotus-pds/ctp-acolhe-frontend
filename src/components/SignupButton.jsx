@@ -1,7 +1,11 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 export function SignupButton()
 {   
+
+    const {t} = useTranslation()
+
     return(
         <Link to="/subscribe">
             <div 
@@ -14,7 +18,7 @@ export function SignupButton()
                     border-2
                     border-gray-900
                 ">
-                Cadastrar
+                {t("signUp")}
             </div>
         </Link>
     );

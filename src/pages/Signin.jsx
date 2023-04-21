@@ -14,8 +14,12 @@ import { useState } from 'react';
 import { postSignin } from "../services/subscribe-signin";
 import { Sucessfull } from "./Successful";
 import { validateEmail, validatePassword } from "../utils";
+import { useTranslation } from "react-i18next";
 
 export function Signin(props) {
+
+    const {t} = useTranslation()
+
     const {setState} = props;
     
     const [signinData, setSigninData] = useState({
@@ -81,16 +85,16 @@ export function Signin(props) {
                         bg-clip-text text-transparent bg-gradient-to-r from-purple-100  to-purple-300
                         font-mouse text-3xl
                     "> 
-                        Acessar
+                        {t("signIn")}
                     </h4>
                     <Typography color="gray" className="mt-1 font-bold">
-                        Entre com suas credencias para seguir adiante!
+                        {t("signInDesc")}
                     </Typography>
                         <form className="mt-8 mb-2 w-full  flex items-center flex-col"
                             onSubmit={signIn}
                         >
                             <div className="mb-4 flex flex-col gap-6 w-full">
-                                <Input size="lg" label="Email Institucional" color="gray" value={signinData.email} required
+                                <Input size="lg" label={t("email")} color="gray" value={signinData.email} required
                                     success={isFieldValid.email} error={isFieldValid.email === false ? true : false}
                                     onChange={(e) => {
                                         setSigninData({...signinData, email: e.target.value});
@@ -102,10 +106,10 @@ export function Signin(props) {
                                     className="
                                     text-red-500 text-xs italic -mt-4 
                                 ">
-                                    {isFieldValid.email === false ? "Email Inválido" : false}
+                                    {isFieldValid.email === false ? t("invalidEmail") : false}
                                 </Typography>
 
-                                <Input type="password" size="lg" label="Senha" color="gray" value={signinData.senha} required
+                                <Input type="password" size="lg" label={t("password")} color="gray" value={signinData.senha} required
                                     success={isFieldValid.password} error={isFieldValid.password === false ? true : false}
                                     onChange={(e) => {
                                         setSigninData({...signinData, senha: e.target.value});
@@ -117,21 +121,21 @@ export function Signin(props) {
                                     className=
                                     "text-red-500 text-xs italic -mt-4 float-left"
                                 >
-                                    {isFieldValid.password === false ? "Senha Inválida" : false}
+                                    {isFieldValid.password === false ? t("invalidPassword") : false}
                                 </Typography>
                             </div>
                             
                             
                             
-                            <Button className="mt-6" color="purple" variant="gradient" onClick={signIn}>
-                                Acessar
+                            <Button className="mt-6 bg-gradient-to-r from-purple-100  to-purple-300" color="purple" variant="gradient" onClick={signIn}>
+                                {t("signIn")}
                             </Button>
                             <Typography color="gray" className="mt-4 text-center font-normal">
-                                Não possui conta ainda?{" "}
+                                {t("noRegistry")}
                             
                             <Link to="/subscribe" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-100  to-purple-300">
                             
-                                Cadastrar
+                             {t("signUp")}
                             
                             </Link>
                             
