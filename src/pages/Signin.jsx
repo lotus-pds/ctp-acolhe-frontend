@@ -3,6 +3,10 @@ import {
     Input,
     Button,
     Typography, 
+    Dialog,
+    DialogHeader,
+    DialogBody,
+    DialogFooter
 } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../components/Header";
@@ -11,36 +15,50 @@ import { postSignin } from "../services/subscribe-signin";
 import { Sucessfull } from "./Successful";
 import { validateEmail, validatePassword } from "../utils";
 
-export function Signin() {
-
+export function Signin(props) {
+    const {setState} = props;
+    
     const [signinData, setSigninData] = useState({
         email: '',
         senha: ''
     });
 
-    const [isFieldsValid, setIsFieldValids] = useState({});
-    
+    const [isFieldValid, setIsFieldValid] = useState({});
+
     const navigate = useNavigate();
     
     const signIn = async () => {
-
         let isValid = true;
 
-        for(const key in isFieldsValid) {
-            isValid = isValid && isFieldsValid[key];
+        for(const key in isFieldValid) {
+            isValid = isValid && isFieldValid[key];
         }
-        
-        if(isValid){
-            await postSignin({...signinData});
-            navigate('/successful');
+
+        try{            
+            if(isValid && signinData.email != '' && signinData.senha != ''){
+                let newSigninData = {...signinData};
+
+                for(const key in newSigninData) {
+                    newSigninData[key] = newSigninData[key].trim();
+                    console.log(newSigninData[key]);
+                }
+
+                await postSignin(newSigninData);
+                navigate('/successful');
+            } else {
+                setIsFieldValid({
+                    email: (signinData.email == '' ? false : true) && isFieldValid.email,
+                    password: (signinData.senha == '' ? false : true) && isFieldValid.password
+                });
+            }
+        } catch(e) {
+            setState({visible: true, message: e.response.data.errors[0]});
         }
     }
 
     return(
         <div>
-
             <Header/>
-
             <div 
                 className="w-full h-full bg-none grid grid-cols-2 items-center justify-center"
             >
@@ -73,10 +91,10 @@ export function Signin() {
                         >
                             <div className="mb-4 flex flex-col gap-6 w-full">
                                 <Input size="lg" label="Email Institucional" color="gray" value={signinData.email} required
-                                    success={isFieldsValid.email} error={isFieldsValid.email === false ? true : false}
+                                    success={isFieldValid.email} error={isFieldValid.email === false ? true : false}
                                     onChange={(e) => {
                                         setSigninData({...signinData, email: e.target.value});
-                                        setIsFieldValids({...isFieldsValid, email: validateEmail(e.target.value)});
+                                        setIsFieldValid({...isFieldValid, email: validateEmail(e.target.value)});
                                     }}
                                 />
 
@@ -84,14 +102,14 @@ export function Signin() {
                                     className="
                                     text-red-500 text-xs italic -mt-4 
                                 ">
-                                    {isFieldsValid.email === false ? "Email Inválido" : false}
+                                    {isFieldValid.email === false ? "Email Inválido" : false}
                                 </Typography>
 
                                 <Input type="password" size="lg" label="Senha" color="gray" value={signinData.senha} required
-                                    success={isFieldsValid.password} error={isFieldsValid.password === false ? true : false}
+                                    success={isFieldValid.password} error={isFieldValid.password === false ? true : false}
                                     onChange={(e) => {
                                         setSigninData({...signinData, senha: e.target.value});
-                                        setIsFieldValids({...isFieldsValid, password: validatePassword(e.target.value)});
+                                        setIsFieldValid({...isFieldValid, password: validatePassword(e.target.value)});
                                     }}
                                 />
 
@@ -99,7 +117,7 @@ export function Signin() {
                                     className=
                                     "text-red-500 text-xs italic -mt-4 float-left"
                                 >
-                                    {isFieldsValid.password === false ? "Senha Inválida" : false}
+                                    {isFieldValid.password === false ? "Senha Inválida" : false}
                                 </Typography>
                             </div>
                             
