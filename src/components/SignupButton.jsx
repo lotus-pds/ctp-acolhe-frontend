@@ -17,6 +17,7 @@ export function SignupButton()
                     border-solid
                     border-2
                     border-gray-900
+                    dark:border-gray-200
                 ">
                 {t("signUp")}
             </div>

@@ -80,23 +80,27 @@ export function Subscribe(props) {
                 >
                     <Card color="transparent" shadow={true}
                         className="w-[351px] max-h-[600px] bg-gray-100
+                            dark:bg-gray-800
                             flex - items-center justify-evenly p-6 shadow-lg
+                            dark:shadow-xl
                             ml-[100px]
                         "
                     >
                     
-                    <h4 className="
-                        bg-clip-text text-transparent bg-gradient-to-r from-green-100  to-green-300
-                        font-mouse text-3xl
+                    <Typography variant="h4" className="
+                        bg-clip-text text-transparent bg-gradient-to-r from-green-200  to-green-300
+                        dark:from-green-300 dark:to-green-400
+                        font-mouse text-3xl font-normal
                     "> 
                         {t("signUp")}
-                    </h4>
-                    <Typography color="gray" className="mt-1 font-bold">
+                    </Typography>
+                    <Typography className="mt-1 font-bold text-gray-900 dark:text-gray-200">
                         {t("signUpDesc")}
                     </Typography>
                         <form className="mt-5 mb-2 w-full  flex items-center flex-col">
                             <div className="mb-4 flex flex-col gap-6 w-full">
                                 <Input size="xl" label={t("name")} color="gray" required
+                                    className="text-gray-900 dark:text-gray-200"
                                     success={isFieldValid.name}
                                     value={subscription.nome} error={isFieldValid.name === false ? true : false}
                                     onChange={(e) => {
@@ -113,6 +117,7 @@ export function Subscribe(props) {
                                 </Typography>
 
                                 <Input size="xl" label={t("email")} color="gray" required
+                                    className="text-gray-900 dark:text-gray-200"
                                     success={isFieldValid.email}
                                     type="email" value={subscription.email} error={isFieldValid.email === false ? true : false}
                                     onChange={(e) => {
@@ -129,6 +134,7 @@ export function Subscribe(props) {
                                 </Typography>
 
                                 <Input size="xl" label={t("registration")} color="gray" required
+                                    className="text-gray-900 dark:text-gray-200"
                                     success={isFieldValid.registration}
                                     value={subscription.prontuario} error={isFieldValid.registration === false ? true : false}
                                     onChange={(e) => {
@@ -145,6 +151,7 @@ export function Subscribe(props) {
                                 </Typography>
                                 
                                 <Input type="password" size="xl" label={t("password")} color="gray" required
+                                    className="text-gray-900 dark:text-gray-200"
                                     success={isFieldValid.password}
                                     value={subscription.senha} error={isFieldValid.password === false ? true : false}
                                     onChange={(e) => {
@@ -161,15 +168,20 @@ export function Subscribe(props) {
                                 </Typography>
                             </div>
                             
-                            <Button className="mt-0 bg-gradient-to-r from-green-100  to-green-300" color="green" variant="gradient"
+                            <Button className="mt-0 bg-gradient-to-r from-green-200  to-green-300
+                                dark:from-green-300 dark:to-green-400
+                            "     
+                                color="green" variant="gradient"
                                 onClick={subscribe}
                             >
                                 {t("continue")}
                             </Button>
-                            <Typography color="gray" className="mt-4 text-center font-normal">
+                            <Typography  className="mt-4 text-center font-normal text-gray-900 dark:text-gray-200">
                                 {t("haveRegistration")}{" "}
                             
-                            <Link to="/signin" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-200  to-green-300">
+                            <Link to="/signin" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-200  to-green-400
+                                dark:from-green-300 dark:to-green-400
+                            ">
                             
                                 {t("signIn")}
                             
