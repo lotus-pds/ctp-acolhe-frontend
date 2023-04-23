@@ -48,7 +48,6 @@ export function Subscribe(props) {
 
                 for(const key in newSubscription) {
                     newSubscription[key] = newSubscription[key].trim();
-                    console.log(newSubscription[key]);
                 }
 
                 await postSubscribe(newSubscription);

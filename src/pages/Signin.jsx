@@ -44,7 +44,6 @@ export function Signin(props) {
 
                 for(const key in newSigninData) {
                     newSigninData[key] = newSigninData[key].trim();
-                    console.log(newSigninData[key]);
                 }
 
                 await postSignin(newSigninData);
