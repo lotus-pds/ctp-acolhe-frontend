@@ -25,7 +25,9 @@ export function ThemeButton() {
         leaveTo="opacity-0 translate-y-1"
       >
         <Popover.Panel className="absolute left-1/2 z-10 mt-2 flex w-screen max-w-max -translate-x-1/2 px-4 outline-0">
-          <div className="w-[60px] max-w-md  flex flex-center justify-center overflow-hidden rounded bg-white dark:bg-gray-800 text-sm leading-6 shadow-lg">
+          <div className="w-[60px] max-w-md  flex flex-center justify-center overflow-hidden rounded bg-white dark:bg-gray-800 text-sm leading-6 shadow-lg
+            dark:shadow-xl
+          ">
             <div className="flex flex-col items-center">
                 <button 
                   className='p-1'

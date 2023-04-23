@@ -82,6 +82,7 @@ export function Subscribe(props) {
                         className="w-[351px] max-h-[600px] bg-gray-100
                             dark:bg-gray-800
                             flex - items-center justify-evenly p-6 shadow-lg
+                            dark:shadow-xl
                             ml-[100px]
                         "
                     >

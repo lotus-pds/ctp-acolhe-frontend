@@ -79,6 +79,7 @@ export function Signin(props) {
                     <Card color="transparent" shadow={false}
                         className="w-[351px] h-full bg-gray-100 dark:bg-gray-800
                             flex - items-center justify-evenly p-6 shadow-lg mr-[100px]
+                            dark:shadow-xl
                         "
                     >
                     <Typography variant="h4" className="
