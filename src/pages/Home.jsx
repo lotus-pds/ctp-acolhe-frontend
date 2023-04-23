@@ -41,7 +41,7 @@ export function Home() {
                     mySwiper flex flex-colum  
                 ">
                     <SwiperSlide>
-                        <div className="w-full grid grid-cols-2 items-center px-6">
+                        <div className="w-full grid grid-cols-2 items-center justify-center px-6">
                             <div className="p-5 gap-7 flex flex-col items-start justify-center ml-[100px]">
                                 <h2
                                     className="font-mouse text-5xl"
@@ -66,9 +66,9 @@ export function Home() {
                                 </Link>
                             </div>
 
-                            <div>
-                                <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572130675232799/psico.png?width=480&height=480" alt="" 
-                                className="w-[530px]"
+                            <div className="flex items-center justify-center"> 
+                                <img src="https://media.discordapp.net/attachments/1077345452694970438/1099732054565990410/Component_17_1.png?width=480&height=480" alt="" 
+                                className="w-[480px]"
                             />
                             </div>
                         </div>
@@ -99,9 +99,9 @@ export function Home() {
                                 </Link>
                             </div>
 
-                            <div>
+                            <div  className="flex items-center justify-center">
                                 <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572130138378250/studies.png?width=648&height=480" alt="" 
-                                className="w-[630px]"
+                                className="w-[600px]"
                             />
                             </div>
                         </div>
@@ -132,9 +132,9 @@ export function Home() {
                                 </Link>
                             </div>
 
-                            <div>
+                            <div   className="flex items-center justify-center">
                                 <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572129647632436/organization.png?width=624&height=480" alt="" 
-                                className="w-[630px]"
+                                className="w-[600px]"
                             />
                             </div>
                         </div>

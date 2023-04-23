@@ -69,25 +69,25 @@ export function Signin(props) {
                 <div
                     className="flex items-center justify-center"
                 >
-                    <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572129110773780/sigin-form.png?width=480&height=480" alt="" 
-                        className="w-[530px] ml-[100px]"
+                    <img src="https://media.discordapp.net/attachments/1077345452694970438/1099732041794326698/Component_26.png?width=480&height=480" alt="" 
+                        className="w-[480px] ml-[100px]"
                     />
                 </div>
                 <div
                     className="h-[500px] flex items-center justify-center"
                 >
                     <Card color="transparent" shadow={false}
-                        className="w-[351px] h-full bg-gray-100
+                        className="w-[351px] h-full bg-gray-100 dark:bg-gray-800
                             flex - items-center justify-evenly p-6 shadow-lg mr-[100px]
                         "
                     >
-                    <h4 className="
+                    <Typography variant="h4" className="
                         bg-clip-text text-transparent bg-gradient-to-r from-purple-100  to-purple-300
-                        font-mouse text-3xl
+                        font-mouse text-3xl font-normal dark:from-purple-400 dark:to-purple-500
                     "> 
                         {t("signIn")}
-                    </h4>
-                    <Typography color="gray" className="mt-1 font-bold">
+                    </Typography>
+                    <Typography className="mt-1 font-bold text-gray-900 dark:text-gray-200">
                         {t("signInDesc")}
                     </Typography>
                         <form className="mt-8 mb-2 w-full  flex items-center flex-col"
@@ -95,6 +95,7 @@ export function Signin(props) {
                         >
                             <div className="mb-4 flex flex-col gap-6 w-full">
                                 <Input size="lg" label={t("email")} color="gray" value={signinData.email} required
+                                    className="text-gray-900 dark:text-gray-200"
                                     success={isFieldValid.email} error={isFieldValid.email === false ? true : false}
                                     onChange={(e) => {
                                         setSigninData({...signinData, email: e.target.value});
@@ -110,6 +111,7 @@ export function Signin(props) {
                                 </Typography>
 
                                 <Input type="password" size="lg" label={t("password")} color="gray" value={signinData.senha} required
+                                    className="text-gray-900 dark:text-gray-200"
                                     success={isFieldValid.password} error={isFieldValid.password === false ? true : false}
                                     onChange={(e) => {
                                         setSigninData({...signinData, senha: e.target.value});
@@ -127,13 +129,17 @@ export function Signin(props) {
                             
                             
                             
-                            <Button className="mt-6 bg-gradient-to-r from-purple-100  to-purple-300" color="purple" variant="gradient" onClick={signIn}>
+                            <Button className="mt-6 bg-gradient-to-r from-purple-100  to-purple-300
+                                dark:from-purple-400 dark:to-purple-500
+                            " color="purple" variant="gradient" onClick={signIn}>
                                 {t("signIn")}
                             </Button>
-                            <Typography color="gray" className="mt-4 text-center font-normal">
+                            <Typography className="mt-4 text-center font-normal text-gray-900 dark:text-gray-200">
                                 {t("noRegistry")}
                             
-                            <Link to="/subscribe" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-100  to-purple-300">
+                            <Link to="/subscribe" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-100  to-purple-300
+                                dark:from-purple-400 dark:to-purple-500
+                            ">
                             
                              {t("signUp")}
                             

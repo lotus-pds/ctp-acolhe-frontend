@@ -4,7 +4,8 @@ const withMT = require("@material-tailwind/react/utils/withMT");
 /** @type {import('tailwindcss').Config} */
 module.exports = withMT({
   content: [
-    "./src/**/*.{js,jsx}"
+    "./src/**/*.{js,jsx}",
+    "./index.html"
   ],
   theme: {
     extend: {
@@ -18,6 +19,7 @@ module.exports = withMT({
         gray: {
           100: '#FFFFFF',
           200: '#ECECEC',
+          800: '#424242',
           900: '#282828'
         },
 
@@ -41,7 +43,9 @@ module.exports = withMT({
         purple :{
           100: 'rgba(255, 102, 240, .6)',
           200: 'rgba(192, 60, 255, .6)',
-          300: 'rgba(143, 0, 255, .6)'
+          300: 'rgba(143, 0, 255, .6)',
+          400: 'rgba(255, 102, 240, 1)',
+          500: 'rgba(192, 60, 255, 1)'
         }
       },
     },
