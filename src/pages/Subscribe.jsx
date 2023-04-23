@@ -98,7 +98,7 @@ export function Subscribe(props) {
                     </Typography>
                         <form className="mt-5 mb-2 w-full  flex items-center flex-col">
                             <div className="mb-4 flex flex-col gap-6 w-full">
-                                <Input size="xl" label={t("name")} color="gray" required
+                                <Input size="md" label={t("name")} color="gray" required
                                     className="text-gray-900 dark:text-gray-200"
                                     success={isFieldValid.name}
                                     value={subscription.nome} error={isFieldValid.name === false ? true : false}
@@ -115,7 +115,7 @@ export function Subscribe(props) {
                                     {isFieldValid.name === false ? t("invalidName") : false}
                                 </Typography>
 
-                                <Input size="xl" label={t("email")} color="gray" required
+                                <Input size="md" label={t("email")} color="gray" required
                                     className="text-gray-900 dark:text-gray-200"
                                     success={isFieldValid.email}
                                     type="email" value={subscription.email} error={isFieldValid.email === false ? true : false}
@@ -132,7 +132,7 @@ export function Subscribe(props) {
                                     {isFieldValid.email === false ? t("invalidEmail") : false}
                                 </Typography>
 
-                                <Input size="xl" label={t("registration")} color="gray" required
+                                <Input size="md" label={t("registration")} color="gray" required
                                     className="text-gray-900 dark:text-gray-200"
                                     success={isFieldValid.registration}
                                     value={subscription.prontuario} error={isFieldValid.registration === false ? true : false}
@@ -149,7 +149,7 @@ export function Subscribe(props) {
                                     {isFieldValid.registration === false ? t("invalidRegistration") : false}
                                 </Typography>
                                 
-                                <Input type="password" size="xl" label={t("password")} color="gray" required
+                                <Input type="password" size="md" label={t("password")} color="gray" required
                                     className="text-gray-900 dark:text-gray-200"
                                     success={isFieldValid.password}
                                     value={subscription.senha} error={isFieldValid.password === false ? true : false}
