@@ -14,7 +14,7 @@ export function Router(props){
             <Route path="/signin" element={<Signin setState={setState}/>}/>
             <Route path="/subscribe" element={<Subscribe setState={setState}/>}/>
             <Route path="/emotions" element={<Emotions/>}/>
-            <Route path="/sucessfull" element={<Sucessfull/>}/>
+            <Route path="/successful" element={<Successful/>}/>
         </Routes>
     );
 }
