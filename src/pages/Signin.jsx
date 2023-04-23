@@ -47,7 +47,7 @@ export function Signin(props) {
                 }
 
                 await postSignin(newSigninData);
-                navigate('/successful');
+                navigate('/emotions');
             } else {
                 setIsFieldValid({
                     email: (signinData.email == '' ? false : true) && isFieldValid.email,
