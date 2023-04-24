@@ -15,7 +15,7 @@ export function Signin(props) {
 
     const {t} = useTranslation()
 
-    const {setState} = props;
+    const {setError, setConfig} = props;
     
     const [signinData, setSigninData] = useState({
         email: '',
@@ -41,7 +41,11 @@ export function Signin(props) {
                     newSigninData[key] = newSigninData[key].trim();
                 }
 
-                await postSignin(newSigninData);
+                let response = await postSignin(newSigninData);
+                setConfig({ headers: {
+                    Authorization: 'Bearer ' + response.data.tokenAcesso,
+                    roles: response.data.roles
+                }});
                 navigate('/emotions');
             } else {
                 setIsFieldValid({
@@ -50,7 +54,7 @@ export function Signin(props) {
                 });
             }
         } catch(e) {
-            setState({visible: true, message: e.response.data.errors[0]});
+            setError({visible: true, message: e.response.data.errors[0]});
         }
     }
 

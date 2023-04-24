@@ -1,7 +1,7 @@
 import { Logo } from "../components/Logo";
 import { useState } from 'react';
 
-export function Sucessfull(){
+export function Successful(){
 
     const [subscription, setSubscription] = useState({
         nome: '',

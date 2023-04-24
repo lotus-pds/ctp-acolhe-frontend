@@ -7,12 +7,12 @@ import {
 } from "@material-tailwind/react";
 
 export const ErrorPopup = (props) => {
-    const {state, setState} = props;
+    const {error, setError} = props;
     return (
         <Dialog
-            open={state.visible}
+            open={error.visible}
             size="sm"
-            className="flex flex-col items-center"
+            className="flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-800 dar:text-gray-200"
         >
             <DialogHeader>
                 <h4 className="
@@ -23,13 +23,13 @@ export const ErrorPopup = (props) => {
                 </h4>
             </DialogHeader>
             <DialogBody>
-                {state.message}
+                {error.message}
             </DialogBody>
             <DialogFooter>
             <Button
                 className="bg-gradient-to-r from-red-200  to-red-300"
                 color="red"
-                onClick={() => {setState({visible: false, message: ''})}}
+                onClick={() => {setError({visible: false, message: ''})}}
             >
                 <span>OK</span>
             </Button>
