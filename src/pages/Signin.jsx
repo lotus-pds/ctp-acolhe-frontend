@@ -2,17 +2,12 @@ import {
     Card,
     Input,
     Button,
-    Typography, 
-    Dialog,
-    DialogHeader,
-    DialogBody,
-    DialogFooter
+    Typography
 } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../components/Header";
 import { useState } from 'react';
 import { postSignin } from "../services/subscribe-signin";
-import { Sucessfull } from "./Successful";
 import { validateEmail, validatePassword } from "../utils";
 import { useTranslation } from "react-i18next";
 
@@ -47,7 +42,7 @@ export function Signin(props) {
                 }
 
                 await postSignin(newSigninData);
-                navigate('/successful');
+                navigate('/emotions');
             } else {
                 setIsFieldValid({
                     email: (signinData.email == '' ? false : true) && isFieldValid.email,

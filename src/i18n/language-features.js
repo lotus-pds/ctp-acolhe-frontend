@@ -26,8 +26,14 @@ export const resources = {
             "invalidRegistration": "Invalid Registration Number",
             "noRegistry" : "Don't have an account yet?",
             "haveRegistration": "Already have account?",
-            "continue": "Continue"
-        },
+            "continue": "Continue",
+            "emotion":"How are you feeling today?",
+            "stressed" : "Estressado",
+            "happy": "Happy",
+            "confused": "Confused",
+            "sad": "Sad",
+            "tranquil": "Tranquil"
+       },
       },
       pt : {
         translation: {
@@ -56,7 +62,13 @@ export const resources = {
             "invalidRegistration": "Prontuário Inválido",
             "noRegistry" : "Não possui conta ainda?",
             "haveRegistration": "Já possui conta?",
-            "continue": "Continuar"
+            "continue": "Continuar",
+            "emotion":"Como você está se sentindo hoje?",
+            "stressed" : "Estressado",
+            "happy": "Feliz",
+            "confused": "Confuso",
+            "sad": "Aflito",
+            "tranquil": "Tranquilo"
         }
       },
 }
