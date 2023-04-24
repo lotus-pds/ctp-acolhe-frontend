@@ -9,11 +9,15 @@ function App() {
     message: ''
   });
 
+  const [config, setConfig] = useState({});
+
+  console.log(config);
+
   return (
     <div>
-      <ErrorPopup state={error} setState={setError}/>
+      <ErrorPopup error={error} setError={setError}/>
       <BrowserRouter>
-        <Router setState={setError}/>
+        <Router setError={setError} config={config} setConfig={setConfig}/>
       </BrowserRouter>
     </div>
   )

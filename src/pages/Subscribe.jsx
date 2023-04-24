@@ -16,7 +16,7 @@ export function Subscribe(props) {
 
     const {t} = useTranslation();
 
-    const {setState} = props;
+    const {setError} = props;
 
     const [subscription, setSubscription] = useState({
         nome: '',
@@ -61,7 +61,7 @@ export function Subscribe(props) {
                 });
             }
         } catch(e) {
-            setState({visible: true, message: e.response.data.errors[0]})
+            setError({visible: true, message: e.response.data.errors[0]})
         }
     }
 
