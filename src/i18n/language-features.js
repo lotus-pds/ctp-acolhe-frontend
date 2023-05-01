@@ -28,7 +28,7 @@ export const resources = {
             "haveRegistration": "Already have account?",
             "continue": "Continue",
             "emotion":"How are you feeling today?",
-            "stressed" : "Estressado",
+            "stressed" : "Stressed",
             "happy": "Happy",
             "confused": "Confused",
             "sad": "Sad",
