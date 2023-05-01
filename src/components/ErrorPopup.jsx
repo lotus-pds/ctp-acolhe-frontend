@@ -12,7 +12,7 @@ export const ErrorPopup = (props) => {
         <Dialog
             open={error.visible}
             size="sm"
-            className="flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-800 dar:text-gray-200"
+            className="flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-200"
         >
             <DialogHeader>
                 <h4 className="
