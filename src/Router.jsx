@@ -7,13 +7,13 @@ import { Emotions } from "./pages/Emotions";
 
 
 export function Router(props){
-    const {setError, setConfig, config} = props;
+    const {setError} = props;
     return (
         <Routes>
             <Route exact path="/" element={<Home/>}/>
-            <Route path="/signin" element={<Signin setError={setError} setConfig={setConfig}/>}/>
+            <Route path="/signin" element={<Signin setError={setError}/>}/>
             <Route path="/subscribe" element={<Subscribe setError={setError}/>}/>
-            <Route path="/emotions" element={<Emotions config={config} setError={setError}/>}/>
+            <Route path="/emotions" element={<Emotions setError={setError}/>}/>
             <Route path="/successful" element={<Successful/>}/>
         </Routes>
     );
