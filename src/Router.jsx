@@ -4,6 +4,7 @@ import { Signin } from "./pages/Signin";
 import { Subscribe } from "./pages/Subscribe";
 import { Successful } from "./pages/Successful";
 import { Emotions } from "./pages/Emotions";
+import { PrivateRoute } from "./pages/PrivateRoute";
 
 
 export function Router(props){
@@ -13,8 +14,8 @@ export function Router(props){
             <Route exact path="/" element={<Home/>}/>
             <Route path="/signin" element={<Signin setError={setError}/>}/>
             <Route path="/subscribe" element={<Subscribe setError={setError}/>}/>
-            <Route path="/emotions" element={<Emotions setError={setError}/>}/>
-            <Route path="/successful" element={<Successful/>}/>
+            <Route path="/emotions" element={<PrivateRoute><Emotions setError={setError}/></PrivateRoute>}/>
+            <Route path="/successful" element={<PrivateRoute><Successful/></PrivateRoute>}/>
         </Routes>
     );
 }
