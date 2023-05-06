@@ -44,7 +44,8 @@ export function Signin(props) {
 
                 let response = await postSignin(newSigninData);
                 setStorage('token', response.data.tokenAcesso);
-                setStorage('roles', response.data.roles);
+                setStorage('roles', ['Aluno', 'Admin']);
+                setStorage('auth', 'true');
                 navigate('/emotions');
             } else {
                 setIsFieldValid({
