@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export function Emotions(params){
 
-    const {config, setError} = params;
+    const {setError} = params;
 
     const {t} = useTranslation();
 
@@ -14,7 +14,7 @@ export function Emotions(params){
 
     const sendEmotion = async (emotion) => {
         try{            
-            await postEmotion({ idSentimento: emotion}, config);
+            await postEmotion({ idSentimento: emotion});
             navigate('/successful');
         } catch(e) {
             setError({visible: true, message: e.response.data.errors[0]});

@@ -10,12 +10,13 @@ import { useState } from 'react';
 import { postSignin } from "../services/subscribe-signin";
 import { validateEmail, validatePassword } from "../utils";
 import { useTranslation } from "react-i18next";
+import { setStorage } from "../services/config";
 
 export function Signin(props) {
 
     const {t} = useTranslation()
 
-    const {setError, setConfig} = props;
+    const {setError} = props;
     
     const [signinData, setSigninData] = useState({
         email: '',
@@ -42,10 +43,8 @@ export function Signin(props) {
                 }
 
                 let response = await postSignin(newSigninData);
-                setConfig({ headers: {
-                    Authorization: 'Bearer ' + response.data.tokenAcesso,
-                    roles: response.data.roles
-                }});
+                setStorage('token', response.data.tokenAcesso);
+                setStorage('roles', response.data.roles);
                 navigate('/emotions');
             } else {
                 setIsFieldValid({
