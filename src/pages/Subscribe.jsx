@@ -3,6 +3,10 @@ import {
     Input,
     Button,
     Typography, 
+    Dialog,
+    DialogHeader,
+    DialogBody,
+    DialogFooter
 } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../components/Header";
@@ -26,6 +30,8 @@ export function Subscribe(props) {
     });
 
     const [isFieldValid, setIsFieldValid] = useState({});
+
+    const [success, setSuccess] = useState(false);
 
     const navigate = useNavigate();
 
@@ -51,7 +57,7 @@ export function Subscribe(props) {
                 }
 
                 await postSubscribe(newSubscription);
-                navigate('/signin');
+                setSuccess(true);
             } else {
                 setIsFieldValid({
                     name: (subscription.nome == '' ? false : true) && isFieldValid.name,
@@ -199,6 +205,33 @@ export function Subscribe(props) {
                     />
                 </div>
             </div>
+
+            <Dialog
+            open={success}
+            size="sm"
+            className="flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-200"
+        >
+            <DialogHeader>
+                <h4 className="
+                    bg-clip-text text-transparent bg-gradient-to-r from-green-200  to-green-300
+                    font-mouse text-3xl
+                "> 
+                    Sucesso
+                </h4>
+            </DialogHeader>
+            <DialogBody>
+                Ufa, falta pouco! Um link de confirmação foi enviado para o seu email. Após acessá-lo, seu cadastro será concluído.
+            </DialogBody>
+            <DialogFooter>
+            <Button
+                className="bg-gradient-to-r from-green-200  to-green-300"
+                color="green"
+                onClick={() => navigate('/signin')}
+            >
+                <span>OK</span>
+            </Button>
+            </DialogFooter>
+            </Dialog>
         </div>
     )
 }

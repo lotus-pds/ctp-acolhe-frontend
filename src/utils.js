@@ -1,5 +1,5 @@
 export const validatePassword = (password) => {
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%;*(){}_+^&])(?:([0-9a-zA-Z!@#$%;*(){}_+^&])){8,32}$/;
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%?\.,;*(){}_+^&])(?:([0-9a-zA-Z!@#$%?\.,;*(){}_+^&])){8,32}$/;
     const result = regex.exec(password) !== null ? true : false;
     return result;
 }
