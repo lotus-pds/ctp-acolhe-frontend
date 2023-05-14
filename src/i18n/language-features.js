@@ -49,7 +49,7 @@ export const resources = {
             "policies" : "Políticas de Privacidade",
             "created" : "Criado por",
             "signUpDesc": "Cadastre seus dados para acessar o sistema!",
-            "signInDesc" : "Entre com suas credencias para seguir adiante!",
+            "signInDesc" : "Entre com suas credenciais para seguir adiante!",
             "name": "Nome",
             "email": "Email Institucional",
             "password": "Senha",

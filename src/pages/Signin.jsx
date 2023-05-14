@@ -134,7 +134,7 @@ export function Signin(props) {
                                 {t("signIn")}
                             </Button>
                             <Typography className="mt-4 text-center font-normal text-gray-900 dark:text-gray-200">
-                                {t("noRegistry")}
+                                {t("noRegistry")}{" "}
                             
                             <Link to="/subscribe" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-100  to-purple-300
                                 dark:from-purple-400 dark:to-purple-500
