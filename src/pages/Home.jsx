@@ -8,12 +8,13 @@ import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import { useTranslation } from "react-i18next";
-
+import { useSelector } from "react-redux";
 
 export function Home() {
+    const state = useSelector(state => state);
+    console.log(state);
 
-
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
     //const navigate = useNavigate();
 
@@ -36,8 +37,8 @@ export function Home() {
                 justify-center
             
             ">
-                <Swiper pagination={false} modules={[Pagination]} 
-                className="
+                <Swiper pagination={false} modules={[Pagination]}
+                    className="
                     mySwiper flex flex-colum  
                 ">
                     <SwiperSlide>
@@ -52,7 +53,7 @@ export function Home() {
                                     {t("descOne")}
                                 </p>
                                 <Link to="/subscribe">
-                                    <div 
+                                    <div
                                         className="
                                             w-[120px]
                                             font-bold
@@ -65,7 +66,6 @@ export function Home() {
                                     </div>
                                 </Link>
                             </div>
-
                             <div  className="flex items-center justify-center">
                                 <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572130138378250/studies.png?width=648&height=480" alt="" 
                                 className="w-[600px]"
@@ -85,7 +85,7 @@ export function Home() {
                                     {t("descThree")}
                                 </p>
                                 <Link to="/subscribe">
-                                    <div 
+                                    <div
                                         className="
                                             w-[120px]
                                             font-bold
@@ -98,7 +98,6 @@ export function Home() {
                                     </div>
                                 </Link>
                             </div>
-
                             <div   className="flex items-center justify-center">
                                 <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572129647632436/organization.png?width=624&height=480" alt="" 
                                 className="w-[600px]"
@@ -119,7 +118,7 @@ export function Home() {
                                 {t("descOne")}
                                 </p>
                                 <Link to="/subscribe">
-                                    <div 
+                                    <div
                                         className="
                                             w-[120px]
                                             font-bold
@@ -132,7 +131,6 @@ export function Home() {
                                     </div>
                                 </Link>
                             </div>
-
                             <div className="flex items-center justify-center"> 
                                 <img src="https://media.discordapp.net/attachments/1077345452694970438/1099732054565990410/Component_17_1.png?width=480&height=480" alt="" 
                                 className="w-[480px]"
@@ -142,10 +140,10 @@ export function Home() {
                     </SwiperSlide>
                 </Swiper>
             </main>
-            
-            <Footer/>
+
+            <Footer />
         </div>
-        
-       
+
+
     );
 }   

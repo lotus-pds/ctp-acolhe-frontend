@@ -12,13 +12,12 @@ import { AccessConfirmation } from "./pages/AccessConfirmation";
 
 
 export function Router(props){
-    const {setError} = props;
     return (
         <Routes>
             <Route exact path="/" element={<Home/>}/>
-            <Route path="/signin" element={<Signin setError={setError}/>}/>
-            <Route path="/subscribe" element={<Subscribe setError={setError}/>}/>
-            <Route path="/emotions" element={<PrivateRoute><Emotions setError={setError}/></PrivateRoute>}/>
+            <Route path="/signin" element={<Signin/>}/>
+            <Route path="/subscribe" element={<Subscribe/>}/>
+            <Route path="/emotions" element={<PrivateRoute><Emotions/></PrivateRoute>}/>
             <Route path="/remember-password" element={<RememberPassword/>}/>
             <Route path="/reset-password" element={<ResetPassword/>}/>
             <Route path="/reset-successfull" element={<ResetSuccessfull/>}/>

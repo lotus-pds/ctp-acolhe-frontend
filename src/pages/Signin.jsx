@@ -1,4 +1,4 @@
-import { 
+import {
     Card,
     Input,
     Button,
@@ -11,13 +11,15 @@ import { postSignin } from "../services/subscribe-signin";
 import { validateEmail, validatePassword } from "../utils";
 import { useTranslation } from "react-i18next";
 import { setStorage } from "../services/config";
+import { useDispatch } from "react-redux";
+import { activateErrorPopup } from "../redux/features/errorPopupSlice";
 
 export function Signin(props) {
 
-    const {t} = useTranslation()
+    const { t } = useTranslation();
 
-    const {setError} = props;
-    
+    const dispatch = useDispatch();
+
     const [signinData, setSigninData] = useState({
         email: '',
         senha: ''
@@ -26,39 +28,34 @@ export function Signin(props) {
     const [isFieldValid, setIsFieldValid] = useState({});
 
     const navigate = useNavigate();
-    
+
     const signIn = async () => {
         let isValid = true;
 
-        for(const key in isFieldValid) {
+        for (const key in isFieldValid) {
             isValid = isValid && isFieldValid[key];
         }
+        if (isValid && signinData.email != '' && signinData.senha != '') {
+            let newSigninData = { ...signinData };
 
-        try{            
-            if(isValid && signinData.email != '' && signinData.senha != ''){
-                let newSigninData = {...signinData};
-
-                for(const key in newSigninData) {
-                    newSigninData[key] = newSigninData[key].trim();
-                }
-
-                let response = await postSignin(newSigninData);
-                setStorage('token', response.data.tokenAcesso);
-                setStorage('roles', ['Aluno', 'Admin']);
-                setStorage('auth', 'true');
-                navigate('/emotions');
-            } else {
-                setIsFieldValid({
-                    email: (signinData.email == '' ? false : true) && isFieldValid.email,
-                    password: (signinData.senha == '' ? false : true) && isFieldValid.password
-                });
+            for (const key in newSigninData) {
+                newSigninData[key] = newSigninData[key].trim();
             }
-        } catch(e) {
-            setError({visible: true, message: e.response.data.errors[0]});
+
+            let response = await postSignin(newSigninData);
+            setStorage('token', response.data.tokenAcesso);
+            setStorage('roles', ['Aluno', 'Admin']);
+            setStorage('auth', 'true');
+            navigate('/emotions');
+        } else {
+            setIsFieldValid({
+                email: (signinData.email == '' ? false : true) && isFieldValid.email,
+                password: (signinData.senha == '' ? false : true) && isFieldValid.password
+            });
         }
     }
 
-    return(
+    return (
         <div>
             <SecondHeader/>
             <div 
@@ -67,7 +64,7 @@ export function Signin(props) {
                 <div
                     className="flex items-center justify-center"
                 >
-                    <img src="https://media.discordapp.net/attachments/1077345452694970438/1099732041794326698/Component_26.png?width=480&height=480" alt="" 
+                    <img src="https://media.discordapp.net/attachments/1077345452694970438/1099732041794326698/Component_26.png?width=480&height=480" alt=""
                         className="w-[480px] ml-[100px]"
                     />
                 </div>
@@ -80,15 +77,15 @@ export function Signin(props) {
                             dark:shadow-xl
                         "
                     >
-                    <Typography variant="h4" className="
+                        <Typography variant="h4" className="
                         bg-clip-text text-transparent bg-gradient-to-r from-purple-100  to-purple-300
                         font-mouse text-3xl font-normal dark:from-purple-400 dark:to-purple-500
-                    "> 
-                        {t("signIn")}
-                    </Typography>
-                    <Typography className="mt-1 font-bold text-gray-900 dark:text-gray-200">
-                        {t("signInDesc")}
-                    </Typography>
+                    ">
+                            {t("signIn")}
+                        </Typography>
+                        <Typography className="mt-1 font-bold text-gray-900 dark:text-gray-200">
+                            {t("signInDesc")}
+                        </Typography>
                         <form className="mt-8 mb-2 w-full  flex items-center flex-col"
                             onSubmit={signIn}
                         >
@@ -97,8 +94,8 @@ export function Signin(props) {
                                     className="text-gray-900 dark:text-gray-200"
                                     success={isFieldValid.email} error={isFieldValid.email === false ? true : false}
                                     onChange={(e) => {
-                                        setSigninData({...signinData, email: e.target.value});
-                                        setIsFieldValid({...isFieldValid, email: validateEmail(e.target.value)});
+                                        setSigninData({ ...signinData, email: e.target.value });
+                                        setIsFieldValid({ ...isFieldValid, email: validateEmail(e.target.value) });
                                     }}
                                 />
 
@@ -113,8 +110,8 @@ export function Signin(props) {
                                     className="text-gray-900 dark:text-gray-200"
                                     success={isFieldValid.password} error={isFieldValid.password === false ? true : false}
                                     onChange={(e) => {
-                                        setSigninData({...signinData, senha: e.target.value});
-                                        setIsFieldValid({...isFieldValid, password: validatePassword(e.target.value)});
+                                        setSigninData({ ...signinData, senha: e.target.value });
+                                        setIsFieldValid({ ...isFieldValid, password: validatePassword(e.target.value) });
                                     }}
                                 />
 
@@ -135,8 +132,6 @@ export function Signin(props) {
                                 
                             </div>
                             
-                            
-                            
                             <Button className="mt-4 bg-gradient-to-r from-purple-100  to-purple-300
                                 dark:from-purple-400 dark:to-purple-500
                             " color="purple" variant="gradient" onClick={signIn}>
@@ -148,11 +143,11 @@ export function Signin(props) {
                             <Link to="/subscribe" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-100  to-purple-300
                                 dark:from-purple-400 dark:to-purple-500
                             ">
-                            
-                             {t("signUp")}
-                            
-                            </Link>
-                            
+
+                                    {t("signUp")}
+
+                                </Link>
+
                             </Typography>
                         </form>
                     </Card>

@@ -1,19 +1,17 @@
 import { BrowserRouter } from "react-router-dom";
 import { Router } from "./Router";
 import { ErrorPopup } from "./components/ErrorPopup";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Loading } from "./components/Loading";
 
 function App() {
-  const [error, setError] = useState({
-    visible: false,
-    message: ''
-  });
 
   return (
     <div>
-      <ErrorPopup error={error} setError={setError}/>
+      <ErrorPopup/>
+      <Loading/>
       <BrowserRouter>
-        <Router setError={setError}/>
+        <Router/>
       </BrowserRouter>
     </div>
   )
