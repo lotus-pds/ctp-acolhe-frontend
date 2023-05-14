@@ -5,7 +5,7 @@ import {
     Typography, 
 } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
-import { Header } from "../components/Header";
+import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
 import { postSubscribe } from "../services/subscribe-signin";
 import { validateEmail, validateName, validatePassword, validateRegistration } from "../utils";
@@ -68,7 +68,7 @@ export function Subscribe(props) {
     return(
         <div>
 
-            <Header/>
+            <SecondHeader/>
 
             <div 
                 className="w-full h-full bg-none grid grid-cols-2 items-center justify-center"
@@ -150,6 +150,23 @@ export function Subscribe(props) {
                                 </Typography>
                                 
                                 <Input type="password" size="md" label={t("password")} color="gray" required
+                                    className="text-gray-900 dark:text-gray-200"
+                                    success={isFieldValid.password}
+                                    value={subscription.senha} error={isFieldValid.password === false ? true : false}
+                                    onChange={(e) => {
+                                        setSubscription({...subscription, senha: e.target.value});
+                                        setIsFieldValid({...isFieldValid, password: validatePassword(e.target.value)});
+                                    }}      
+                                />
+
+                                <Typography
+                                    className=
+                                    "text-red-500 text-xs italic -mt-4 float-left"
+                                >
+                                    {isFieldValid.password === false ? t("invalidPassword") : false}
+                                </Typography>
+
+                                <Input type="password" size="md" label={t("confirmPassword")} color="gray" required
                                     className="text-gray-900 dark:text-gray-200"
                                     success={isFieldValid.password}
                                     value={subscription.senha} error={isFieldValid.password === false ? true : false}

@@ -14,7 +14,7 @@ export function LanguageButton() {
   return (
     <Popover className="relative">
       <Popover.Button className="inline-flex items-center gap-x-1 leading-6 outline-none">    
-          <img src="https://media.discordapp.net/attachments/1077345452694970438/1099061954154344478/change-language_1.png?width=456&height=480"
+          <img src="https://media.discordapp.net/attachments/1077345452694970438/1107078467738157147/Component_28.png?width=480&height=480"
             className='h-[45px]'
           />
       </Popover.Button>
@@ -49,7 +49,7 @@ export function LanguageButton() {
                 onClick={() => changeLanguage("en")}
                 className='p-1'
               >
-                <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572128435490928/england-colorfull.png"
+                <img src="https://media.discordapp.net/attachments/1077345452694970438/1107078468014977034/estados-unidos.png?width=480&height=480"
                   className='h-[45px]'
                 />
             
