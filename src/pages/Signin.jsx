@@ -5,7 +5,7 @@ import {
     Typography
 } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
-import { Header } from "../components/Header";
+import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
 import { postSignin } from "../services/subscribe-signin";
 import { validateEmail, validatePassword } from "../utils";
@@ -57,8 +57,8 @@ export function Signin(props) {
 
     return (
         <div>
-            <Header />
-            <div
+            <SecondHeader/>
+            <div 
                 className="w-full h-full bg-none grid grid-cols-2 items-center justify-center"
             >
                 <div
@@ -121,19 +121,26 @@ export function Signin(props) {
                                 >
                                     {isFieldValid.password === false ? t("invalidPassword") : false}
                                 </Typography>
+
+                                <div className="w-full flex justify-end">
+                                    <Link to="/remember-password" className="
+                                        text-xs  text-gray-500 dark:text-gray-500 italic
+                                    ">
+                                        {t("rememberPassword")}
+                                    </Link>
+                                </div>
+                                
                             </div>
-
-
-
-                            <Button className="mt-6 bg-gradient-to-r from-purple-100  to-purple-300
+                            
+                            <Button className="mt-4 bg-gradient-to-r from-purple-100  to-purple-300
                                 dark:from-purple-400 dark:to-purple-500
                             " color="purple" variant="gradient" onClick={signIn}>
                                 {t("signIn")}
                             </Button>
-                            <Typography className="mt-4 text-center font-normal text-gray-900 dark:text-gray-200">
-                                {t("noRegistry")}
-
-                                <Link to="/subscribe" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-100  to-purple-300
+                            <Typography className="mt-6 text-center font-normal text-gray-900 dark:text-gray-200">
+                                {t("noRegistry")}{" "}
+                            
+                            <Link to="/subscribe" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-100  to-purple-300
                                 dark:from-purple-400 dark:to-purple-500
                             ">
 
