@@ -5,12 +5,18 @@ import {
     DialogBody,
     DialogFooter
 } from "@material-tailwind/react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { inactivateErrorPopup } from "../redux/features/errorPopupSlice";
 
 export const ErrorPopup = (props) => {
-    const {error, setError} = props;
+    const { open, message } = useSelector( state => state.errorPopup );
+
+    const dispatch = useDispatch();
+    
     return (
         <Dialog
-            open={error.visible}
+            open={open}
             size="sm"
             className="flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-200"
         >
@@ -23,13 +29,13 @@ export const ErrorPopup = (props) => {
                 </h4>
             </DialogHeader>
             <DialogBody>
-                {error.message}
+                {message}
             </DialogBody>
             <DialogFooter>
             <Button
                 className="bg-gradient-to-r from-red-200  to-red-300"
                 color="red"
-                onClick={() => {setError({visible: false, message: ''})}}
+                onClick={() => dispatch(inactivateErrorPopup())}
             >
                 <span>OK</span>
             </Button>

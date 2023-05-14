@@ -1,8 +1,8 @@
-import { 
+import {
     Card,
     Input,
     Button,
-    Typography, 
+    Typography,
     Dialog,
     DialogHeader,
     DialogBody,
@@ -14,13 +14,13 @@ import { useState } from 'react';
 import { postSubscribe } from "../services/subscribe-signin";
 import { validateEmail, validateName, validatePassword, validateRegistration } from "../utils";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { activateErrorPopup } from "../redux/features/errorPopupSlice";
 
 
 export function Subscribe(props) {
 
-    const {t} = useTranslation();
-
-    const {setError} = props;
+    const { t } = useTranslation();
 
     const [subscription, setSubscription] = useState({
         nome: '',
@@ -35,48 +35,45 @@ export function Subscribe(props) {
 
     const navigate = useNavigate();
 
+    const dispatch = useDispatch();
+
     const subscribe = async () => {
         let isValid = true;
 
-        for(const key in isFieldValid) {
+        for (const key in isFieldValid) {
             isValid = isValid && isFieldValid[key];
         }
-        
-        try{
-            if(
-                isValid 
-                && subscription.nome != '' 
-                && subscription.email != '' 
-                && subscription.prontuario != ''
-                && subscription.senha != ''
-            ){
-                let newSubscription = {...subscription};
+        if (
+            isValid
+            && subscription.nome != ''
+            && subscription.email != ''
+            && subscription.prontuario != ''
+            && subscription.senha != ''
+        ) {
+            let newSubscription = { ...subscription };
 
-                for(const key in newSubscription) {
-                    newSubscription[key] = newSubscription[key].trim();
-                }
-
-                await postSubscribe(newSubscription);
-                setSuccess(true);
-            } else {
-                setIsFieldValid({
-                    name: (subscription.nome == '' ? false : true) && isFieldValid.name,
-                    email: (subscription.email == '' ? false : true) && isFieldValid.email,
-                    registration: (subscription.email == '' ? false : true) && isFieldValid.registration,
-                    password: (subscription.senha == '' ? false : true) && isFieldValid.password
-                });
+            for (const key in newSubscription) {
+                newSubscription[key] = newSubscription[key].trim();
             }
-        } catch(e) {
-            setError({visible: true, message: e.response.data.errors[0]})
+
+            await postSubscribe(newSubscription);
+            setSuccess(true);
+        } else {
+            setIsFieldValid({
+                name: (subscription.nome == '' ? false : true) && isFieldValid.name,
+                email: (subscription.email == '' ? false : true) && isFieldValid.email,
+                registration: (subscription.email == '' ? false : true) && isFieldValid.registration,
+                password: (subscription.senha == '' ? false : true) && isFieldValid.password
+            });
         }
     }
 
-    return(
+    return (
         <div>
 
-            <Header/>
+            <Header />
 
-            <div 
+            <div
                 className="w-full h-full bg-none grid grid-cols-2 items-center justify-center"
             >
 
@@ -91,17 +88,17 @@ export function Subscribe(props) {
                             ml-[100px]
                         "
                     >
-                    
-                    <Typography variant="h4" className="
+
+                        <Typography variant="h4" className="
                         bg-clip-text text-transparent bg-gradient-to-r from-green-200  to-green-300
                         dark:from-green-300 dark:to-green-400
                         font-mouse text-3xl font-normal
-                    "> 
-                        {t("signUp")}
-                    </Typography>
-                    <Typography className="mt-1 font-bold text-gray-900 dark:text-gray-200">
-                        {t("signUpDesc")}
-                    </Typography>
+                    ">
+                            {t("signUp")}
+                        </Typography>
+                        <Typography className="mt-1 font-bold text-gray-900 dark:text-gray-200">
+                            {t("signUpDesc")}
+                        </Typography>
                         <form className="mt-5 mb-2 w-full  flex items-center flex-col">
                             <div className="mb-4 flex flex-col gap-6 w-full">
                                 <Input size="md" label={t("name")} color="gray" required
@@ -109,9 +106,9 @@ export function Subscribe(props) {
                                     success={isFieldValid.name}
                                     value={subscription.nome} error={isFieldValid.name === false ? true : false}
                                     onChange={(e) => {
-                                        setSubscription({...subscription, nome: e.target.value});
-                                        setIsFieldValid({...isFieldValid, name: validateName(e.target.value)});
-                                }}                                    
+                                        setSubscription({ ...subscription, nome: e.target.value });
+                                        setIsFieldValid({ ...isFieldValid, name: validateName(e.target.value) });
+                                    }}
                                 />
 
                                 <Typography
@@ -126,9 +123,9 @@ export function Subscribe(props) {
                                     success={isFieldValid.email}
                                     type="email" value={subscription.email} error={isFieldValid.email === false ? true : false}
                                     onChange={(e) => {
-                                        setSubscription({...subscription, email: e.target.value});
-                                        setIsFieldValid({...isFieldValid, email: validateEmail(e.target.value)});
-                                    }}      
+                                        setSubscription({ ...subscription, email: e.target.value });
+                                        setIsFieldValid({ ...isFieldValid, email: validateEmail(e.target.value) });
+                                    }}
                                 />
 
                                 <Typography
@@ -143,9 +140,9 @@ export function Subscribe(props) {
                                     success={isFieldValid.registration}
                                     value={subscription.prontuario} error={isFieldValid.registration === false ? true : false}
                                     onChange={(e) => {
-                                        setSubscription({...subscription, prontuario: e.target.value});
-                                        setIsFieldValid({...isFieldValid, registration: validateRegistration(e.target.value)});
-                                    }}      
+                                        setSubscription({ ...subscription, prontuario: e.target.value });
+                                        setIsFieldValid({ ...isFieldValid, registration: validateRegistration(e.target.value) });
+                                    }}
                                 />
 
                                 <Typography
@@ -154,15 +151,15 @@ export function Subscribe(props) {
                                 ">
                                     {isFieldValid.registration === false ? t("invalidRegistration") : false}
                                 </Typography>
-                                
+
                                 <Input type="password" size="md" label={t("password")} color="gray" required
                                     className="text-gray-900 dark:text-gray-200"
                                     success={isFieldValid.password}
                                     value={subscription.senha} error={isFieldValid.password === false ? true : false}
                                     onChange={(e) => {
-                                        setSubscription({...subscription, senha: e.target.value});
-                                        setIsFieldValid({...isFieldValid, password: validatePassword(e.target.value)});
-                                    }}      
+                                        setSubscription({ ...subscription, senha: e.target.value });
+                                        setIsFieldValid({ ...isFieldValid, password: validatePassword(e.target.value) });
+                                    }}
                                 />
 
                                 <Typography
@@ -172,26 +169,26 @@ export function Subscribe(props) {
                                     {isFieldValid.password === false ? t("invalidPassword") : false}
                                 </Typography>
                             </div>
-                            
+
                             <Button className="mt-0 bg-gradient-to-r from-green-200  to-green-300
                                 dark:from-green-300 dark:to-green-400
-                            "     
+                            "
                                 color="green" variant="gradient"
                                 onClick={subscribe}
                             >
                                 {t("continue")}
                             </Button>
-                            <Typography  className="mt-4 text-center font-normal text-gray-900 dark:text-gray-200">
+                            <Typography className="mt-4 text-center font-normal text-gray-900 dark:text-gray-200">
                                 {t("haveRegistration")}{" "}
-                            
-                            <Link to="/signin" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-200  to-green-400
+
+                                <Link to="/signin" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-200  to-green-400
                                 dark:from-green-300 dark:to-green-400
                             ">
-                            
-                                {t("signIn")}
-                            
-                            </Link>
-                            
+
+                                    {t("signIn")}
+
+                                </Link>
+
                             </Typography>
                         </form>
                     </Card>
@@ -200,37 +197,37 @@ export function Subscribe(props) {
                 <div
                     className="flex items-center justify-center"
                 >
-                    <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572563443531856/subscribe-img.png?width=480&height=480" alt="" 
+                    <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572563443531856/subscribe-img.png?width=480&height=480" alt=""
                         className="w-[530px] mr-[100px]"
                     />
                 </div>
             </div>
 
             <Dialog
-            open={success}
-            size="sm"
-            className="flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-200"
-        >
-            <DialogHeader>
-                <h4 className="
+                open={success}
+                size="sm"
+                className="flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-200"
+            >
+                <DialogHeader>
+                    <h4 className="
                     bg-clip-text text-transparent bg-gradient-to-r from-green-200  to-green-300
                     font-mouse text-3xl
-                "> 
-                    Sucesso
-                </h4>
-            </DialogHeader>
-            <DialogBody>
-                Ufa, falta pouco! Um link de confirmação foi enviado para o seu email. Após acessá-lo, seu cadastro será concluído.
-            </DialogBody>
-            <DialogFooter>
-            <Button
-                className="bg-gradient-to-r from-green-200  to-green-300"
-                color="green"
-                onClick={() => navigate('/signin')}
-            >
-                <span>OK</span>
-            </Button>
-            </DialogFooter>
+                ">
+                        Sucesso
+                    </h4>
+                </DialogHeader>
+                <DialogBody>
+                    Ufa, falta pouco! Um link de confirmação foi enviado para o seu email. Após acessá-lo, seu cadastro será concluído.
+                </DialogBody>
+                <DialogFooter>
+                    <Button
+                        className="bg-gradient-to-r from-green-200  to-green-300"
+                        color="green"
+                        onClick={() => navigate('/signin')}
+                    >
+                        <span>OK</span>
+                    </Button>
+                </DialogFooter>
             </Dialog>
         </div>
     )

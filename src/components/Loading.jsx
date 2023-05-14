@@ -1,12 +1,31 @@
 import {
     Button,
     Dialog,
-    DialogHeader,
-    DialogBody
+    DialogHeader
 } from "@material-tailwind/react";
+import { store } from "../redux/store";
+import { activateLoading, inactivateLoading } from "../redux/features/loadingSlice";
+import { useSelector } from "react-redux";
+
+let count = 0;
+
+export const addCountLoading = () => {
+    count++;
+    if(count == 1) {
+        store.dispatch(activateLoading());
+    }
+};
+
+export const removeCountLoading = () => {
+    count--;
+    if(count == 0) {
+        store.dispatch(inactivateLoading());
+    }
+};
 
 export const Loading = (props) => {
-    const { open } = props;
+    const { open } = useSelector(state => state.loading);
+
     return (
         <Dialog
             open={open}
@@ -21,9 +40,6 @@ export const Loading = (props) => {
                     Carregando...
                 </h4>
             </DialogHeader>
-            <DialogBody>
-                Eita como carrega
-            </DialogBody>
         </Dialog>
     );
 }

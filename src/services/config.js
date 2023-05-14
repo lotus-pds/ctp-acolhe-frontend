@@ -1,13 +1,14 @@
 import axios from 'axios';
-import { addCountLoading, removeCountLoading } from '../App';
+import { activateErrorPopup } from '../redux/features/errorPopupSlice';
+import { store } from '../redux/store';
+import { addCountLoading, removeCountLoading } from '../components/Loading';
 
 axios.interceptors.request.use( req => {
+    addCountLoading();
     req.headers = {
         Authorization: getStorage('token') == null ? null : 'Bearer ' + getStorage('token'),
         roles: getStorage('roles')
     }
-
-    addCountLoading();
     return req;
 });
 
@@ -16,6 +17,7 @@ axios.interceptors.response.use( res => {
     return res;
 }, res => {
     removeCountLoading();
+    store.dispatch(activateErrorPopup(res.response.data.errors[0]));
     throw res;
 })
 
