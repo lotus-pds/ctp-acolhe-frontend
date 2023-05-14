@@ -23,7 +23,7 @@ export function Home() {
             className="h-full"
         >   
             <Header/>
-            <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572563690991696/vetor.png" alt="" 
+            <img src="https://cdn.discordapp.com/attachments/1077345452694970438/1107315225662849134/Vector_337.png" alt="" 
                 className="absolute  top-0 right-0 z-10"
             />
             <main className="
@@ -41,40 +41,7 @@ export function Home() {
                     mySwiper flex flex-colum  
                 ">
                     <SwiperSlide>
-                        <div className="w-full grid grid-cols-2 items-center justify-center px-6">
-                            <div className="p-5 gap-7 flex flex-col items-start justify-center ml-[100px]">
-                                <h2
-                                    className="font-mouse text-5xl"
-                                >
-                                    {t("titleOne")} 
-                                   </h2>
-                                <p>
-                                {t("descOne")}
-                                </p>
-                                <Link to="/subscribe">
-                                    <div 
-                                        className="
-                                            w-[120px]
-                                            font-bold
-                                            rounded-lg
-                                            p-2
-                                            bg-gradient-to-r from-purple-100  to-purple-300
-                                            text-center
-                                        ">
-                                        {t("signUp")}
-                                    </div>
-                                </Link>
-                            </div>
-
-                            <div className="flex items-center justify-center"> 
-                                <img src="https://media.discordapp.net/attachments/1077345452694970438/1099732054565990410/Component_17_1.png?width=480&height=480" alt="" 
-                                className="w-[480px]"
-                            />
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <div className="w-full grid grid-cols-2 items-center px-6">
+                        <div className="w-full grid grid-cols-2 items-center px-6">
                             <div className="p-5 gap-7 flex flex-col items-start justify-center ml-[100px]">
                                 <h2
                                     className="font-mouse text-5xl"
@@ -107,7 +74,7 @@ export function Home() {
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                    <div className="w-full grid grid-cols-2 items-center px-6">
+                        <div className="w-full grid grid-cols-2 items-center px-6">
                             <div className="p-5 gap-7 flex flex-col items-start justify-center ml-[100px]">
                                 <h2
                                     className="font-mouse text-5xl"
@@ -124,7 +91,7 @@ export function Home() {
                                             font-bold
                                             rounded-lg
                                             p-2
-                                            bg-gradient-to-r from-blue-100  to-blue-300
+                                            bg-gradient-to-r from-blue-400  to-blue-200
                                             text-center
                                         ">
                                         {t("signUp")}
@@ -135,6 +102,40 @@ export function Home() {
                             <div   className="flex items-center justify-center">
                                 <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572129647632436/organization.png?width=624&height=480" alt="" 
                                 className="w-[600px]"
+                            />
+                            </div>
+                        </div>
+                    </SwiperSlide>
+
+                    <SwiperSlide>
+                        <div className="w-full grid grid-cols-2 items-center justify-center px-6">
+                            <div className="p-5 gap-7 flex flex-col items-start justify-center ml-[100px]">
+                                <h2
+                                    className="font-mouse text-5xl"
+                                >
+                                    {t("titleOne")} 
+                                   </h2>
+                                <p>
+                                {t("descOne")}
+                                </p>
+                                <Link to="/subscribe">
+                                    <div 
+                                        className="
+                                            w-[120px]
+                                            font-bold
+                                            rounded-lg
+                                            p-2
+                                            bg-gradient-to-r from-purple-100  to-purple-300
+                                            text-center
+                                        ">
+                                        {t("signUp")}
+                                    </div>
+                                </Link>
+                            </div>
+
+                            <div className="flex items-center justify-center"> 
+                                <img src="https://media.discordapp.net/attachments/1077345452694970438/1099732054565990410/Component_17_1.png?width=480&height=480" alt="" 
+                                className="w-[480px]"
                             />
                             </div>
                         </div>

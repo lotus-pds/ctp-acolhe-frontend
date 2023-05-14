@@ -17,6 +17,7 @@ export const resources = {
             "name": "Name",
             "email": "Institutional Email",
             "password": "Password",
+            "confirmPassword": "Confirm Password",
             "phone": "Phone",
             "registration": "Registration Number",
             "invalidName": "Invalid name",
@@ -32,7 +33,20 @@ export const resources = {
             "happy": "Happy",
             "confused": "Confused",
             "sad": "Sad",
-            "tranquil": "Tranquil"
+            "tranquil": "Tranquil",
+            "rememberPassword": "Forgot password?",
+            "forgotPasswordDescription" : "Enter your registered email so we can send you the recovery code.",
+            "send" : "Send",
+            "newPassword": "New Password",
+            "resetPassword" : "Reset password",
+            "resetPassowordDesciption" : "Set a secure password to access the platform",
+            "confirmNewPassword" : "Confirm new Passoword",
+            "confirmReset" : "Reset",
+            "resetSuccessfull" : "Your password has been changed",
+            "resetSuccessfullDescription" : "Now you can login with the new registered password and continue using the platform normally.",
+            "confirmedEmail" : "Confirmed Email!",
+            "confirmedEmailDescription" : "Congratulations! Your email confirmation has been completed successfully. Thanks for confirming your email address and we can't wait to see you at CTP Acolhe!"
+
        },
       },
       pt : {
@@ -53,6 +67,7 @@ export const resources = {
             "name": "Nome",
             "email": "Email Institucional",
             "password": "Senha",
+            "confirmPassword": "Confirmar a senha",
             "phone": "Telefone",
             "registration": "Prontuário",
             "invalidName": "Nome Inválido",
@@ -68,7 +83,19 @@ export const resources = {
             "happy": "Feliz",
             "confused": "Confuso",
             "sad": "Aflito",
-            "tranquil": "Tranquilo"
+            "tranquil": "Tranquilo",
+            "rememberPassword": "Esqueceu a senha?",
+            "forgotPasswordDescription" : "Coloque seu email cadastrado para enviarmos o código de recuperação.",
+            "send" : "Enviar",
+            "newPassword": "Nova Senha",
+            "resetPassword" : "Redefinir a senha",
+            "resetPassowordDesciption" : "Defina uma senha segura para ter acesso a plataforma",
+            "confirmNewPassword" : "Confirmar a nova senha",
+            "confirmReset" : "Confirmar",
+            "resetSuccessfull" : "Sua senha foi alterada",
+            "resetSuccessfullDescription" : "Agora você pode acessar com a nova senha cadastrada e continuar utilizando a plataforma normalmente. ",
+            "confirmedEmail" : "Email Confirmado!",
+            "confirmedEmailDescription" : "Parabéns! Sua confirmação de email foi concluída com sucesso. Agradecemos por confirmar seu endereço de email e mal podemos esperar por você no CTP Acolhe!"
         }
       },
 }

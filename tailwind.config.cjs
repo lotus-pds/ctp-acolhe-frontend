@@ -10,6 +10,14 @@ module.exports = withMT({
   theme: {
     extend: {
 
+      gridTemplateRows: {
+        // Simple 2 row grid
+        '2': 'repeat(8, minmax(1fr, 2fr))',
+
+        // Complex site-specific row configuration
+        'layout': '200px minmax(900px, 1fr) 100px',
+      },
+
       fontFamily: {
         'roboto': ['Roboto', 'sans-serif'],
         'mouse': ['Mouse Memoirs']
@@ -19,6 +27,7 @@ module.exports = withMT({
         gray: {
           100: '#FFFFFF',
           200: '#ECECEC',
+          500: '#A4A4A4',
           800: '#424242',
           900: '#282828'
         },

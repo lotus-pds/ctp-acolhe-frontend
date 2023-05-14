@@ -17,7 +17,7 @@ export function Footer(){
                     absolute
                     bottom-0 left-o
                     flex items-center justify-around
-                    bg-gradient-to-r from-purple-100  to-purple-300
+                    bg-gradient-to-r from-red-100  to-red-300
                     font-medium
                     p-2
                 "
@@ -36,7 +36,7 @@ export function Footer(){
                 absolute
                 bottom-0 left-o
                 flex items-center justify-around
-                bg-gradient-to-r from-purple-100  to-purple-300
+                bg-gradient-to-r from-red-200  to-red-400
                 font-medium
                 p-2
             "
