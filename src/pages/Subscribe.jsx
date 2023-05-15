@@ -33,6 +33,8 @@ export function Subscribe(props) {
 
     const [success, setSuccess] = useState(false);
 
+    const [passwordConfirmation, setPasswordConfirmation] = useState('');
+
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
@@ -49,6 +51,7 @@ export function Subscribe(props) {
             && subscription.email != ''
             && subscription.prontuario != ''
             && subscription.senha != ''
+            && passwordConfirmation != ''
         ) {
             let newSubscription = { ...subscription };
 
@@ -63,7 +66,8 @@ export function Subscribe(props) {
                 name: (subscription.nome == '' ? false : true) && isFieldValid.name,
                 email: (subscription.email == '' ? false : true) && isFieldValid.email,
                 registration: (subscription.email == '' ? false : true) && isFieldValid.registration,
-                password: (subscription.senha == '' ? false : true) && isFieldValid.password
+                password: (subscription.senha == '' ? false : true) && isFieldValid.password,
+                passwordConfirmation: (passwordConfirmation == '' ? false : true) && isFieldValid.passwordConfirmation
             });
         }
     }
@@ -157,7 +161,7 @@ export function Subscribe(props) {
                                     value={subscription.senha} error={isFieldValid.password === false ? true : false}
                                     onChange={(e) => {
                                         setSubscription({ ...subscription, senha: e.target.value });
-                                        setIsFieldValid({ ...isFieldValid, password: validatePassword(e.target.value) });
+                                        setIsFieldValid({ ...isFieldValid, password: validatePassword(e.target.value), passwordConfirmation: (passwordConfirmation == e.target.value) && validatePassword(e.target.value)});
                                     }}
                                 />
 
@@ -170,11 +174,11 @@ export function Subscribe(props) {
 
                                 <Input type="password" size="md" label={t("confirmPassword")} color="gray" required
                                     className="text-gray-900 dark:text-gray-200"
-                                    success={isFieldValid.password}
-                                    value={subscription.senha} error={isFieldValid.password === false ? true : false}
+                                    success={isFieldValid.passwordConfirmation} 
+                                    value={passwordConfirmation} error={isFieldValid.passwordConfirmation === false ? true : false}
                                     onChange={(e) => {
-                                        setSubscription({...subscription, senha: e.target.value});
-                                        setIsFieldValid({...isFieldValid, password: validatePassword(e.target.value)});
+                                        setIsFieldValid({...isFieldValid, passwordConfirmation: (e.target.value == subscription.senha) && isFieldValid.password});
+                                        setPasswordConfirmation(e.target.value);
                                     }}      
                                 />
 
@@ -182,7 +186,7 @@ export function Subscribe(props) {
                                     className=
                                     "text-red-500 text-xs italic -mt-4 float-left"
                                 >
-                                    {isFieldValid.password === false ? t("invalidPassword") : false}
+                                    {isFieldValid.passwordConfirmation === false ? t("invalidPasswordConfirmation") : false}
                                 </Typography>
                             </div>
 
