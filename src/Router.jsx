@@ -9,6 +9,7 @@ import { RememberPassword } from "./pages/RememberPassword";
 import { ResetPassword } from "./pages/ResetPassword";
 import { ResetSuccessfull } from "./pages/ResetSuccessfull";
 import { AccessConfirmation } from "./pages/AccessConfirmation";
+import { EmailConfirmation } from "./pages/EmailConfirmation";
 
 
 export function Router(props){
@@ -23,6 +24,7 @@ export function Router(props){
             <Route path="/reset-successfull" element={<ResetSuccessfull/>}/>
             <Route path="/access-confirmation" element={<AccessConfirmation/>}/>
             <Route path="/successful" element={<PrivateRoute user={['Aluno', 'Admin']}><Successful/></PrivateRoute>}/>
+            <Route path="/cadastro/verificacao/:token" element={<EmailConfirmation/>}/>
         </Routes>
     );
 }

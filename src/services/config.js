@@ -39,6 +39,12 @@ export function putResource(resource, body, config, newInstance) {
     });
 }
 
+export function patchResource(resource, body, config, newInstance) {
+    return getAxiosInstance(newInstance).patch(ROOT_URL() + resource, body, config).then(resposta => {
+        return resposta;
+    });
+}
+
 export function getResource(resource, config, newInstance) {
     return getAxiosInstance(newInstance).get(ROOT_URL() + resource, config).then(resposta => {
         return resposta;
