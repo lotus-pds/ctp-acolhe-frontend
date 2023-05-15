@@ -17,12 +17,12 @@ export function Router(props){
             <Route exact path="/" element={<Home/>}/>
             <Route path="/signin" element={<Signin/>}/>
             <Route path="/subscribe" element={<Subscribe/>}/>
-            <Route path="/emotions" element={<PrivateRoute><Emotions/></PrivateRoute>}/>
+            <Route path="/emotions" element={<PrivateRoute user={['Aluno']} alternative='/successful'><Emotions/></PrivateRoute>}/>
             <Route path="/remember-password" element={<RememberPassword/>}/>
             <Route path="/reset-password" element={<ResetPassword/>}/>
             <Route path="/reset-successfull" element={<ResetSuccessfull/>}/>
             <Route path="/access-confirmation" element={<AccessConfirmation/>}/>
-            <Route path="/successful" element={<PrivateRoute><Successful/></PrivateRoute>}/>
+            <Route path="/successful" element={<PrivateRoute user={['Aluno', 'Admin']}><Successful/></PrivateRoute>}/>
         </Routes>
     );
 }
