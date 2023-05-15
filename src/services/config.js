@@ -6,8 +6,8 @@ import { addCountLoading, removeCountLoading } from '../components/Loading';
 axios.interceptors.request.use( req => {
     addCountLoading();
     req.headers = {
-        Authorization: getStorage('token') == null ? null : 'Bearer ' + getStorage('token'),
-        roles: getStorage('roles')
+        Authorization: getStorage('tokenCtpAcolhe') == null ? null : 'Bearer ' + getStorage('tokenCtpAcolhe'),
+        roles: getStorage('rolesCtpAcolhe')
     }
     return req;
 });

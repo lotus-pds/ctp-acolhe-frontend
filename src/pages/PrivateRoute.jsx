@@ -2,10 +2,18 @@ import { Navigate } from "react-router-dom";
 import { getStorage } from "../services/config";
 
 export function PrivateRoute(props) {
-    const{children} = props;
+    const{ user, alternative, children } = props;
 
-    if(getStorage('auth') !== 'true') {
-        return <Navigate to={'/'} replace/>;
+    let userFlag = false;
+
+    for(const key in user) {
+        if(getStorage('rolesCtpAcolhe').includes(user[key])) {
+            userFlag = true;
+        }
+    }
+
+    if(getStorage('authCtpAcolhe') !== 'true' || !userFlag) {
+        return <Navigate to={alternative || '/'} replace/>;
     }
 
     return children;
