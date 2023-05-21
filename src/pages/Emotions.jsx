@@ -1,14 +1,17 @@
 import { Typography } from "@material-tailwind/react";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { postEmotion } from "../services/emotion";
+import { getEmotion } from "../services/emotion";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { activateErrorPopup } from "../redux/features/errorPopupSlice";
 
-export function Emotions(params) {
+export function Emotions(props) {
 
-    const { setError } = params;
+    const { setError } = props;
+
+    const [emotion, setEmotion] = useState([]);
 
     const { t } = useTranslation();
 
@@ -18,6 +21,29 @@ export function Emotions(params) {
         await postEmotion({ idSentimento: emotion });
         navigate('/successful');
     }
+
+    const hasEmotion = async () => {
+        let date = new Date();
+        let day = String(date.getDate()).padStart(2, '0');
+        let month = String(date.getMonth() + 1).padStart(2, '0');
+        let year = String(date.getFullYear());
+
+        let newDate = year + '-' + month + '-' + day;
+
+        const emotions = await getEmotion(newDate);
+
+        setEmotion(emotions.data);
+    }
+
+    useEffect(() => {
+        hasEmotion();
+    }, []);
+
+    useEffect(() => {
+        if (emotion.length > 0) {
+            navigate('/successful');
+        }
+    }, [emotion]);
 
     return (
         <div className="w-full h-screen flex items-center justify-center flex-col p-10 gap-10">
