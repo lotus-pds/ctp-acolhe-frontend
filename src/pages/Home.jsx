@@ -12,7 +12,6 @@ import { useSelector } from "react-redux";
 
 export function Home() {
     const state = useSelector(state => state);
-    console.log(state);
 
     const { t } = useTranslation();
 
