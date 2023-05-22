@@ -24,7 +24,7 @@ export function Router(props){
             <Route path="/reset-successfull" element={<ResetSuccessfull/>}/>
             <Route path="/access-confirmation" element={<AccessConfirmation/>}/>
             <Route path="/successful" element={<PrivateRoute user={['Aluno', 'Admin']}><Successful/></PrivateRoute>}/>
-            <Route path="/cadastro/verificacao/:token" element={<EmailConfirmation/>}/>
+            <Route path="/subscribe/verification/:token" element={<EmailConfirmation/>}/>
         </Routes>
     );
 }
