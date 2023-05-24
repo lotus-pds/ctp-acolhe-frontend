@@ -87,7 +87,6 @@ export function Signin(props) {
                             {t("signInDesc")}
                         </Typography>
                         <form className="mt-8 mb-2 w-full  flex items-center flex-col"
-                            onSubmit={signIn}
                         >
                             <div className="mb-4 flex flex-col gap-6 w-full">
                                 <Input size="lg" label={t("email")} color="gray" value={signinData.email} required
@@ -123,7 +122,7 @@ export function Signin(props) {
                                 </Typography>
 
                                 <div className="w-full flex justify-end">
-                                    <Link to="/remember-password" className="
+                                    <Link to="/forgot-password" className="
                                         text-xs  text-gray-500 dark:text-gray-500 italic
                                     ">
                                         {t("rememberPassword")}
