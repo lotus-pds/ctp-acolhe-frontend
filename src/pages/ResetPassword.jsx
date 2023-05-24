@@ -4,14 +4,16 @@ import {
     Button,
     Typography
 } from "@material-tailwind/react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
-import { validateEmail, validatePassword } from "../utils";
+import { validatePassword } from "../utils";
 import { useTranslation } from "react-i18next";
-import { setStorage } from "../services/config";
+import { patchResetPassword } from "../services/subscribe-signin";
 
 export function ResetPassword(props) {
+
+    const { token } = useParams();
 
     const { t } = useTranslation();
 
@@ -31,7 +33,9 @@ export function ResetPassword(props) {
         }
 
         if (isValid && password != '' && passwordConfirmation != '') {
-            let newPassword = { senha: password.trim() };
+            let newPassword = { token, senha: password.trim() };
+            await patchResetPassword(newPassword);
+            navigate('/reset-successfull');
         } else {
             setIsFieldValid({
                 password: (password == '' ? false : true) && isFieldValid.password,
@@ -107,24 +111,12 @@ export function ResetPassword(props) {
                                         {isFieldValid.passwordConfirmation === false ? t("invalidPasswordConfirmation") : false}
                                     </Typography>
                                 </div>
-
-
-                                {/* USAR ESSE COMPONENTE QUANDO ESTIVER FEITO O ROTEAMENTO
+                                
                                 <Button className="mt-4 bg-gradient-to-r from-purple-100  to-purple-300
                                     dark:from-purple-400 dark:to-purple-500
-                                    " color="purple" variant="gradient" onClick="">
+                                    " color="purple" variant="gradient" onClick={resetPassword}>
                                     {t("confirmReset")}
                                 </Button>
-                                */}
-
-                                {/**
-                                 * ESSE AQUI É SOMENTE PARA VISUALIZAÇAÕ DE NAVEGAÇÃO
-                                 */}
-                                <Link className="mt-4 bg-gradient-to-r from-blue-100  to-blue-200
-                                    dark:from-blue-400 dark:to-blue-500 p-2 rounded  text-gray-100
-                                "  to="/reset-successfull">
-                                    {t("confirmReset")}
-                                </Link>
                             </form>
                         </div>
 
