@@ -11,9 +11,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
 import { postForgotPassword } from "../services/subscribe-signin";
-import { validateEmail, validatePassword } from "../utils";
+import { validateEmail } from "../utils";
 import { useTranslation } from "react-i18next";
-import { setStorage } from "../services/config";
 
 export function ForgotPassword(props) {
 

@@ -4,9 +4,8 @@ import { patchSubscriptionVerification } from "../services/subscribe-signin";
 import { useEffect } from "react";
 
 export function EmailConfirmation() {
-    const params = useParams();
-
-    const { token } = params;
+    
+    const { token } = useParams();
 
     const {t} = useTranslation();
     const navigate = useNavigate();
