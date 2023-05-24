@@ -5,7 +5,7 @@ import { Subscribe } from "./pages/Subscribe";
 import { Successful } from "./pages/Successful";
 import { Emotions } from "./pages/Emotions";
 import { PrivateRoute } from "./pages/PrivateRoute";
-import { RememberPassword } from "./pages/RememberPassword";
+import { ForgotPassword } from "./pages/ForgotPassword";
 import { ResetPassword } from "./pages/ResetPassword";
 import { ResetSuccessfull } from "./pages/ResetSuccessfull";
 import { AccessConfirmation } from "./pages/AccessConfirmation";
@@ -19,7 +19,7 @@ export function Router(props){
             <Route path="/signin" element={<Signin/>}/>
             <Route path="/subscribe" element={<Subscribe/>}/>
             <Route path="/emotions" element={<PrivateRoute user={['Aluno']} alternative='/successful'><Emotions/></PrivateRoute>}/>
-            <Route path="/remember-password" element={<RememberPassword/>}/>
+            <Route path="/forgot-password" element={<ForgotPassword/>}/>
             <Route path="/reset-password" element={<ResetPassword/>}/>
             <Route path="/reset-successfull" element={<ResetSuccessfull/>}/>
             <Route path="/access-confirmation" element={<AccessConfirmation/>}/>

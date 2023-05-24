@@ -72,7 +72,6 @@ export function ResetPassword(props) {
                                 {t("resetPassowordDesciption")}
                             </Typography>
                             <form className="mt-8 mb-2 w-full  flex items-center flex-col"
-                                onSubmit={resetPassword}
                             >
                                 <div className="mb-4 flex flex-col gap-6 w-full">
                                     <Input type="password" size="lg" label={t("newPassword")} color="gray" value={password} required
