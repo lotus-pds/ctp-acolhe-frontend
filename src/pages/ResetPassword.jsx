@@ -150,18 +150,18 @@ export function ResetPassword(props) {
                                             setPasswordConfirmation(e.target.value);
                                         }}
                                         icon={
-                                            <Button size="sm" variant="text" className="ml-[-12px] absolute rounded hover:bg-gray-200 active:bg-gray-200"
+                                            <Button size="sm" variant="text" className="ml-[-12px] absolute rounded hover:bg-gray-200 dark:hover:bg-gray-900 active:bg-gray-200"
                                                     onClick={handleClickShowConfirmPassword}
                                                     
                                                 >   
                                                     {values.showConfirmPassword ? 
                                                     <EyeIcon 
                                                         strokeWidth={2} 
-                                                        className="text-blue-gray-500 w-5 h-5" 
+                                                        className="text-gray-800 dark:text-gray-200 w-5 h-5" 
                                                     />  : 
                                                     <EyeSlashIcon
                                                         strokeWidth={2} 
-                                                        className="text-blue-gray-500 w-5 h-5" 
+                                                        className="text-gray-800 dark:text-gray-200 w-5 h-5" 
                                                     /> 
                                                     }
                                                 </Button>
@@ -170,9 +170,9 @@ export function ResetPassword(props) {
 
                                 </div>
                                 
-                                <Button className="mt-4 bg-gradient-to-r from-purple-100  to-purple-300
-                                    dark:from-purple-400 dark:to-purple-500
-                                    " color="purple" variant="gradient" onClick={resetPassword}>
+                                <Button className="mt-4 bg-gradient-to-r from-blue-100  to-blue-200
+                                    dark:from-blue-400 dark:to-blue-700
+                                    " color="blue" variant="gradient" onClick={resetPassword}>
                                     {t("confirmReset")}
                                 </Button>
                             </form>
