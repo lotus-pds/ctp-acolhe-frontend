@@ -20,12 +20,6 @@ export const resources = {
             "confirmPassword": "Confirm Password",
             "phone": "Phone",
             "registration": "Registration Number",
-            "invalidName": "Invalid name",
-            "invalidEmail": "Invalid Institucional Email",
-            "invalidPassword": "Invalid Password",
-            "invalidPasswordConfirmation": "Invalid Password Confirmation",
-            "invalidPhone": "Invalid Number Phone",
-            "invalidRegistration": "Invalid Registration Number",
             "noRegistry" : "Don't have an account yet?",
             "haveRegistration": "Already have account?",
             "continue": "Continue",
@@ -46,8 +40,32 @@ export const resources = {
             "resetSuccessfull" : "Your password has been changed",
             "resetSuccessfullDescription" : "Now you can login with the new registered password and continue using the platform normally.",
             "confirmedEmail" : "Confirmed Email!",
-            "confirmedEmailDescription" : "Congratulations! Your email confirmation has been completed successfully. Thanks for confirming your email address and we can't wait to see you at CTP Acolhe!"
-
+            "confirmedEmailDescription" : "Congratulations! Your email confirmation has been completed successfully. Thanks for confirming your email address and we can't wait to see you at CTP Acolhe!",
+            "tooltipName":{
+                "attribute":"Name must contain:",
+                "description":"* name and lastname"
+            },
+            "tooltipEmail":{
+                "attribute":"Email with IFSP domain:",
+                "description":"* naluno@aluno.ifsp.edu.br"
+            },
+            "tooltipRegistrationNumber":{
+                "attribute":"Registration Number with IFSP domain:",
+                "description":"* sp3000000",
+                "descriptionTwo":"* between 8 and 9 characters"
+            },
+            "tooltipPassword":{
+                "attribute":"Password must contain:",
+                "description":"* upper case",
+                "descriptionTwo":"* lower case",
+                "descriptionThree":"* number",
+                "descriptionFour":"* special character",
+                "descriptionFive":"* eight digit minimum",
+            },
+            "checkBox":{
+                "desc":"I accept the",
+                "descTwo": " terms of use"
+            },
        },
       },
       pt : {
@@ -71,12 +89,6 @@ export const resources = {
             "confirmPassword": "Confirmar a senha",
             "phone": "Telefone",
             "registration": "Prontuário",
-            "invalidName": "Nome Inválido",
-            "invalidEmail": "Email Institucional Inválido",
-            "invalidPassword": "Senha Inválida",
-            "invalidPasswordConfirmation": "Confirmação de Senha Inválida",
-            "invalidPhone": "Telefone Inválida",
-            "invalidRegistration": "Prontuário Inválido",
             "noRegistry" : "Não possui conta ainda?",
             "haveRegistration": "Já possui conta?",
             "continue": "Continuar",
@@ -97,7 +109,32 @@ export const resources = {
             "resetSuccessfull" : "Sua senha foi alterada",
             "resetSuccessfullDescription" : "Agora você pode acessar com a nova senha cadastrada e continuar utilizando a plataforma normalmente. ",
             "confirmedEmail" : "Email Confirmado!",
-            "confirmedEmailDescription" : "Parabéns! Sua confirmação de email foi concluída com sucesso. Agradecemos por confirmar seu endereço de email e mal podemos esperar por você no CTP Acolhe!"
+            "confirmedEmailDescription" : "Parabéns! Sua confirmação de email foi concluída com sucesso. Agradecemos por confirmar seu endereço de email e mal podemos esperar por você no CTP Acolhe!",
+            "tooltipName":{
+                "attribute":"Nome deve conter",
+                "description":"* nome e sobrenome"
+            },
+            "tooltipEmail":{
+                "attribute":"Email com domínio do IFSP:",
+                "description":"* aluno@aluno.ifsp.edu.br"
+            },
+            "tooltipRegistrationNumber":{
+                "attribute":"Prontuário com domínio IFSP:",
+                "description":"* sp3000000",
+                "descriptionTwo":"* entre 8 e 9 caracteres"
+            },
+            "tooltipPassword":{
+                "attribute":"Senha deve conter:",
+                "description":"* letra maiúscula",
+                "descriptionTwo":"* letra minuscula",
+                "descriptionThree":"* número",
+                "descriptionFour":"* caracter especial",
+                "descriptionFive":"* mínimo de oito caracteres",
+            },
+            "checkBox":{
+                "desc":"Eu aceito os",
+                "descTwo": " termos de uso"
+            },
         }
       },
 }

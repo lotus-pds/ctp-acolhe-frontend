@@ -134,19 +134,19 @@ export function Subscribe(props) {
                                     icon={
                                         <Tooltip content={
                                             <div className="w-70">
-                                              <Typography color="white" className="font-medium">Nome deve conter:</Typography>
+                                              <Typography color="white" className="font-medium">{t("tooltipName.attribute")}</Typography>
                                               <Typography
                                                 variant="small"
                                                 color="white" 
                                                 className="font-normal opacity-80"
                                               >
-                                                * nome e sobrenome <br/>
+                                                {t("tooltipName.description")} <br/>
                                               </Typography>
                                             </div>
                                           }>
                                             <InformationCircleIcon 
                                               strokeWidth={2} 
-                                              className="text-blue-gray-500 w-5 h-5 cursor-pointer ml-[-8px]" 
+                                              className="text-gray-800 dark:text-gray-200 w-5 h-5 cursor-pointer ml-[-8px]" 
                                             />
                                           </Tooltip>
                                     } 
@@ -167,19 +167,19 @@ export function Subscribe(props) {
                                     icon={
                                         <Tooltip content={
                                             <div className="w-70">
-                                              <Typography color="white" className="font-medium">Email com domínio do IFSP:</Typography>
+                                              <Typography color="white" className="font-medium">{t("tooltipEmail.attribute")}</Typography>
                                               <Typography
                                                 variant="small"
                                                 color="white" 
                                                 className="font-normal opacity-80"
                                               >
-                                                * aluno@aluno.ifsp.edu.br <br/>
+                                                {t("tooltipEmail.description")}<br/>
                                               </Typography>
                                             </div>
                                           }>
                                             <InformationCircleIcon 
                                               strokeWidth={2} 
-                                              className="text-blue-gray-500 w-5 h-5 cursor-pointer ml-[-8px]" 
+                                              className="text-gray-800 dark:text-gray-200 w-5 h-5 cursor-pointer ml-[-8px]" 
                                             />
                                           </Tooltip>
                                     } 
@@ -199,19 +199,20 @@ export function Subscribe(props) {
                                     icon={
                                         <Tooltip content={
                                             <div className="w-70">
-                                              <Typography color="white" className="font-medium">Prontuario com domínio do IFSP:</Typography>
+                                              <Typography color="white" className="font-medium">{t("tooltipRegistrationNumber.attribute")}</Typography>
                                               <Typography
                                                 variant="small"
                                                 color="white" 
                                                 className="font-normal opacity-80"
                                               >
-                                                * sp3000000 <br/>
+                                                {t("tooltipRegistrationNumber.description")} <br/>
+                                                {t("tooltipRegistrationNumber.descriptionTwo")}
                                               </Typography>
                                             </div>
                                           }>
                                             <InformationCircleIcon 
                                               strokeWidth={2} 
-                                              className="text-blue-gray-500 w-5 h-5 cursor-pointer ml-[-8px]" 
+                                              className="text-gray-800 dark:text-gray-200 w-5 h-5 cursor-pointer ml-[-8px]" 
                                             />
                                           </Tooltip>
                                     } 
@@ -233,32 +234,32 @@ export function Subscribe(props) {
                                     icon={
                                         <Tooltip content={
                                             <div className="w-70">
-                                              <Typography color="white" className="font-medium">Senha deve conter:</Typography>
+                                              <Typography color="white" className="font-medium">{t("tooltipPassword.attribute")}</Typography>
                                               <Typography
                                                 variant="small"
                                                 color="white" 
                                                 className="font-normal opacity-80"
                                               >
-                                                * Letra maiuscula <br/>
-                                                * Letra minuscula <br/>
-                                                * Número <br/>
-                                                * Caracter especial <br/>
-                                                * Mínimo de oito dígitos
+                                                {t("tooltipPassword.description")} <br/>
+                                                {t("tooltipPassword.descriptionTwo")} <br/>
+                                                {t("tooltipPassword.descriptionThree")} <br/>
+                                                {t("tooltipPassword.descriptionFour")} <br/>
+                                                {t("tooltipPassword.descriptionFive")}
                                               </Typography>
                                             </div>
                                           }>
-                                            <Button size="sm" variant="text" className="ml-[-12px] absolute rounded hover:bg-gray-200 active:bg-gray-200"
+                                            <Button size="sm" variant="text" className="ml-[-12px] absolute rounded hover:bg-gray-200 active:bg-gray-200 dark:hover:bg-gray-900"
                                                 onClick={handleClickShowPassword}
                                                 
                                             >   
                                                 {values.showPassword ? 
                                                 <EyeIcon 
                                                     strokeWidth={2} 
-                                                    className="text-blue-gray-500 w-5 h-5" 
+                                                    className="text-gray-800 dark:text-gray-200 w-5 h-5" 
                                                 />  : 
                                                 <EyeSlashIcon
                                                     strokeWidth={2} 
-                                                    className="text-blue-gray-500 w-5 h-5" 
+                                                    className="text-gray-800 dark:text-gray-200 w-5 h-5" 
                                                 /> 
                                                 }
                                             </Button>
@@ -279,18 +280,18 @@ export function Subscribe(props) {
                                         setPasswordConfirmation(e.target.value);
                                     }}
                                     icon={
-                                        <Button size="sm" variant="text" className="ml-[-12px] absolute rounded hover:bg-gray-200 active:bg-gray-200"
+                                        <Button size="sm" variant="text" className="ml-[-12px] absolute rounded hover:bg-gray-200 dark:hover:bg-gray-900 active:bg-gray-200"
                                                 onClick={handleClickShowConfirmPassword}
                                                 
                                             >   
                                                 {values.showConfirmPassword ? 
                                                 <EyeIcon 
                                                     strokeWidth={2} 
-                                                    className="text-blue-gray-500 w-5 h-5" 
+                                                    className="text-gray-800 dark:text-gray-200 w-5 h-5" 
                                                 />  : 
                                                 <EyeSlashIcon
                                                     strokeWidth={2} 
-                                                    className="text-blue-gray-500 w-5 h-5" 
+                                                    className="text-gray-800 dark:text-gray-200 w-5 h-5" 
                                                 /> 
                                                 }
                                             </Button>
@@ -303,9 +304,9 @@ export function Subscribe(props) {
                                     className="flex align-start w-4 h-4 rounded p-1"
                                     required
                                     label={
-                                        <Typography color="blue-gray" className="text-sm flex">Eu aceito os
-                                            <Typography as="a" href="#" color="green" className="text-sm hover:text-green-700 transition-colors">
-                                            &nbsp;termos de uso
+                                        <Typography className="text-sm text-gray-900 dark:text-gray-200 flex">{t("checkBox.desc")}
+                                            <Typography as="a" href="#" color="green" className="text-sm hover:text-green-700 transition-colors italic">
+                                            &nbsp;{t("checkBox.descTwo")}
                                             </Typography>.
                                         </Typography>
                                 } />

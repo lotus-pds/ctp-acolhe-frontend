@@ -87,8 +87,8 @@ export function ForgotPassword(props) {
                                     </Typography>
                                 </div>
                                 
-                                <Button className="mt-4 bg-gradient-to-r from-purple-100  to-purple-300
-                                        dark:from-purple-400 dark:to-purple-500" color="purple" variant="gradient" onClick={sendEmail}>
+                                <Button className="mt-4 bg-gradient-to-r from-blue-100  to-blue-200
+                                        dark:from-blue-400 dark:to-blue-700" color="blue" variant="gradient" onClick={sendEmail}>
                                     {t("send")}
                                 </Button>
                             </form>
