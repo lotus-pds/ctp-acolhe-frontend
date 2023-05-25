@@ -93,7 +93,9 @@ export function ResetPassword(props) {
                             <form className="mt-8 mb-2 w-full  flex items-center flex-col"
                             >
                                 <div className="mb-4 flex flex-col gap-6 w-full">
-                                    <Input type="password" size="lg" label={t("newPassword")} color="gray" value={password} required
+                                    <Input 
+                                        type={values.showPassword ? "text" : "password"} 
+                                        size="lg" label={t("newPassword")} color="gray" value={password} required
                                         className="text-gray-900 dark:text-gray-200"
                                         success={isFieldValid.password} error={isFieldValid.password === false ? true : false}
                                         onChange={(e) => {
@@ -137,7 +139,9 @@ export function ResetPassword(props) {
                                     />
 
 
-                                    <Input type="password" size="md" label={t("confirmPassword")} color="gray" required
+                                    <Input 
+                                        type={values.showConfirmPassword ? "text" : "password"}  
+                                        size="md" label={t("confirmPassword")} color="gray" required
                                         className="text-gray-900 dark:text-gray-200"
                                         success={isFieldValid.passwordConfirmation}
                                         value={passwordConfirmation} error={isFieldValid.passwordConfirmation === false ? true : false}
