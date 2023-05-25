@@ -12,6 +12,7 @@ import { validateEmail, validatePassword } from "../utils";
 import { useTranslation } from "react-i18next";
 import { setStorage } from "../services/config";
 import { useDispatch } from "react-redux";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { activateErrorPopup } from "../redux/features/errorPopupSlice";
 
 export function Signin(props) {
@@ -19,6 +20,15 @@ export function Signin(props) {
     const { t } = useTranslation();
 
     const dispatch = useDispatch();
+
+    const [values, setValues] = useState({
+        password: "",
+        showPassword: false,
+    });
+
+    const handleClickShowPassword = () => {
+        setValues({ ...values, showPassword: !values.showPassword });
+    };
 
     const [signinData, setSigninData] = useState({
         email: '',
@@ -98,28 +108,33 @@ export function Signin(props) {
                                     }}
                                 />
 
-                                <Typography
-                                    className="
-                                    text-red-500 text-xs italic -mt-4 
-                                ">
-                                    {isFieldValid.email === false ? t("invalidEmail") : false}
-                                </Typography>
-
-                                <Input type="password" size="lg" label={t("password")} color="gray" value={signinData.senha} required
+                                <Input type={values.showPassword ? "text" : "password"} 
+                                
+                                    size="lg" label={t("password")} color="gray" value={signinData.senha} required
                                     className="text-gray-900 dark:text-gray-200"
                                     success={isFieldValid.password} error={isFieldValid.password === false ? true : false}
                                     onChange={(e) => {
                                         setSigninData({ ...signinData, senha: e.target.value });
                                         setIsFieldValid({ ...isFieldValid, password: validatePassword(e.target.value) });
                                     }}
+                                    icon={
+                                        <Button size="sm" variant="text" className="ml-[-12px] absolute rounded hover:bg-gray-200 active:bg-gray-200"
+                                                onClick={handleClickShowPassword}
+                                                
+                                            >   
+                                                {values.showPassword ? 
+                                                <EyeIcon 
+                                                    strokeWidth={2} 
+                                                    className="text-blue-gray-500 w-5 h-5" 
+                                                />  : 
+                                                <EyeSlashIcon
+                                                    strokeWidth={2} 
+                                                    className="text-blue-gray-500 w-5 h-5" 
+                                                /> 
+                                                }
+                                            </Button>
+                                    }
                                 />
-
-                                <Typography
-                                    className=
-                                    "text-red-500 text-xs italic -mt-4 float-left"
-                                >
-                                    {isFieldValid.password === false ? t("invalidPassword") : false}
-                                </Typography>
 
                                 <div className="w-full flex justify-end">
                                     <Link to="/forgot-password" className="

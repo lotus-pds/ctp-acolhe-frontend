@@ -2,18 +2,33 @@ import {
     Card,
     Input,
     Button,
-    Typography
+    Typography,
+    Tooltip
 } from "@material-tailwind/react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
 import { validatePassword } from "../utils";
 import { useTranslation } from "react-i18next";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { patchResetPassword } from "../services/subscribe-signin";
 
 export function ResetPassword(props) {
 
     const { token } = useParams();
+
+    const [values, setValues] = useState({
+        password: "",
+        showPassword: false,
+    });
+
+    const handleClickShowPassword = () => {
+        setValues({ ...values, showPassword: !values.showPassword });
+    };
+
+    const handleClickShowConfirmPassword = () => {
+        setValues({ ...values, showConfirmPassword: !values.showConfirmPassword });
+    };
 
     const { t } = useTranslation();
 
@@ -85,14 +100,42 @@ export function ResetPassword(props) {
                                             setPassword(e.target.value);
                                             setIsFieldValid({ ...isFieldValid, password: validatePassword(e.target.value), passwordConfirmation: (passwordConfirmation == e.target.value) && validatePassword(e.target.value) });
                                         }}
+                                        icon={
+                                            <Tooltip content={
+                                                <div className="w-70">
+                                                  <Typography color="white" className="font-medium">Senha deve conter:</Typography>
+                                                  <Typography
+                                                    variant="small"
+                                                    color="white" 
+                                                    className="font-normal opacity-80"
+                                                  >
+                                                    * Letra maiuscula <br/>
+                                                    * Letra minuscula <br/>
+                                                    * Número <br/>
+                                                    * Caracter especial <br/>
+                                                    * Mínimo de oito dígitos
+                                                  </Typography>
+                                                </div>
+                                              }>
+                                                <Button size="sm" variant="text" className="ml-[-12px] absolute rounded hover:bg-gray-200 active:bg-gray-200"
+                                                    onClick={handleClickShowPassword}
+                                                    
+                                                >   
+                                                    {values.showPassword ? 
+                                                    <EyeIcon 
+                                                        strokeWidth={2} 
+                                                        className="text-blue-gray-500 w-5 h-5" 
+                                                    />  : 
+                                                    <EyeSlashIcon
+                                                        strokeWidth={2} 
+                                                        className="text-blue-gray-500 w-5 h-5" 
+                                                    /> 
+                                                    }
+                                                </Button>
+                                              </Tooltip>
+                                        } 
                                     />
 
-                                    <Typography
-                                        className=
-                                        "text-red-500 text-xs italic -mt-4 float-left"
-                                    >
-                                        {isFieldValid.password === false ? t("invalidPassword") : false}
-                                    </Typography>
 
                                     <Input type="password" size="md" label={t("confirmPassword")} color="gray" required
                                         className="text-gray-900 dark:text-gray-200"
@@ -102,14 +145,25 @@ export function ResetPassword(props) {
                                             setIsFieldValid({ ...isFieldValid, passwordConfirmation: (e.target.value == password) && isFieldValid.password });
                                             setPasswordConfirmation(e.target.value);
                                         }}
+                                        icon={
+                                            <Button size="sm" variant="text" className="ml-[-12px] absolute rounded hover:bg-gray-200 active:bg-gray-200"
+                                                    onClick={handleClickShowConfirmPassword}
+                                                    
+                                                >   
+                                                    {values.showConfirmPassword ? 
+                                                    <EyeIcon 
+                                                        strokeWidth={2} 
+                                                        className="text-blue-gray-500 w-5 h-5" 
+                                                    />  : 
+                                                    <EyeSlashIcon
+                                                        strokeWidth={2} 
+                                                        className="text-blue-gray-500 w-5 h-5" 
+                                                    /> 
+                                                    }
+                                                </Button>
+                                        }     
                                     />
 
-                                    <Typography
-                                        className=
-                                        "text-red-500 text-xs italic -mt-4 float-left"
-                                    >
-                                        {isFieldValid.passwordConfirmation === false ? t("invalidPasswordConfirmation") : false}
-                                    </Typography>
                                 </div>
                                 
                                 <Button className="mt-4 bg-gradient-to-r from-purple-100  to-purple-300
