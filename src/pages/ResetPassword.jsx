@@ -119,18 +119,18 @@ export function ResetPassword(props) {
                                                   </Typography>
                                                 </div>
                                               }>
-                                                <Button size="sm" variant="text" className="ml-[-12px] absolute rounded hover:bg-gray-200 active:bg-gray-200"
+                                                <Button size="sm" variant="text" className="ml-[-12px] absolute rounded hover:bg-gray-200 dark:hover:bg-gray-900 active:bg-gray-200"
                                                     onClick={handleClickShowPassword}
                                                     
                                                 >   
                                                     {values.showPassword ? 
                                                     <EyeIcon 
                                                         strokeWidth={2} 
-                                                        className="text-blue-gray-500 w-5 h-5" 
+                                                        className="text-gray-800 dark:text-gray-200 w-5 h-5" 
                                                     />  : 
                                                     <EyeSlashIcon
                                                         strokeWidth={2} 
-                                                        className="text-blue-gray-500 w-5 h-5" 
+                                                        className="text-gray-800 dark:text-gray-200 w-5 h-5" 
                                                     /> 
                                                     }
                                                 </Button>
