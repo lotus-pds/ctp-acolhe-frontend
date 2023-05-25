@@ -78,13 +78,6 @@ export function ForgotPassword(props) {
                                             setIsEmailValid(validateEmail(e.target.value));
                                         }}
                                     />
-
-                                    <Typography
-                                        className="
-                                        text-red-500 text-xs italic -mt-4 
-                                    ">
-                                        {isEmailValid === false ? t("invalidEmail") : false}
-                                    </Typography>
                                 </div>
                                 
                                 <Button className="mt-4 bg-gradient-to-r from-blue-100  to-blue-200
