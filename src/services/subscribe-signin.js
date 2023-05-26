@@ -18,6 +18,10 @@ export const postForgotPassword = body => postResource('/conta/senha/esqueci', b
     }
 });
 
-export const postResendForgotPassword = body => postResource('/conta/senha/esqueci/reenviar-email', body);
+export const postResendForgotPassword = body => postResource('/conta/senha/esqueci/reenviar-email', body, {
+    headers: {
+        'Content-Type': 'application/plain'
+    }
+});
 
 export const patchResetPassword = body => patchResource('/conta/senha/redefinir', body);
