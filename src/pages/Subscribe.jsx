@@ -375,6 +375,7 @@ export function Subscribe(props) {
                     <Button
                         className="bg-gradient-to-r from-green-200  to-green-300"
                         color="green"
+                        disabled={!isResendEmailEnabled}
                         onClick={async () => {
                             await postResendVerification(subscription.email);
                             setIsResendEmailEnabled(false);
