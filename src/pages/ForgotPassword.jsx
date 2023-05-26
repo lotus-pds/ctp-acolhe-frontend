@@ -89,7 +89,7 @@ export function ForgotPassword(props) {
                                         }}
                                     />
                                 </div>
-                                
+
                                 <Button className="mt-4 bg-gradient-to-r from-blue-100  to-blue-200
                                         dark:from-blue-400 dark:to-blue-700" color="blue" variant="gradient" onClick={sendEmail}>
                                     {t("send")}
@@ -115,7 +115,7 @@ export function ForgotPassword(props) {
                 </DialogHeader>
                 <DialogBody>
                     Um link foi enviado para o seu email. Por ele, você poderá redefinir
-                    a sua senha e voltar a acessar nossa plataforma! Caso não consiga 
+                    a sua senha e voltar a acessar nossa plataforma! Caso não consiga
                     encontrá-lo, você poderá reenviá-lo dentro de um minuto.
                 </DialogBody>
                 <DialogFooter>
@@ -123,7 +123,7 @@ export function ForgotPassword(props) {
                         className="bg-gradient-to-r from-green-200  to-green-300"
                         color="green"
                         onClick={async () => {
-                            await postResendForgotPassword(subscription.email);
+                            await postResendForgotPassword(email);
                             setIsResendEmailEnabled(false);
                             enableResendEmail();
                         }}
