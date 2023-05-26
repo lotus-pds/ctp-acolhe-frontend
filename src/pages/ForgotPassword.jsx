@@ -5,12 +5,13 @@ import {
     Typography,
     Dialog,
     DialogHeader,
-    DialogBody
+    DialogBody,
+    DialogFooter
 } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
-import { postForgotPassword } from "../services/subscribe-signin";
+import { postForgotPassword, postResendForgotPassword } from "../services/subscribe-signin";
 import { validateEmail } from "../utils";
 import { useTranslation } from "react-i18next";
 
@@ -24,13 +25,22 @@ export function ForgotPassword(props) {
 
     const [success, setSuccess] = useState(false);
 
+    const [isResendEmailEnabled, setIsResendEmailEnabled] = useState(false);
+
     const navigate = useNavigate();
+
+    const enableResendEmail = () => {
+        setTimeout(() => {
+            setIsResendEmailEnabled(true);
+        }, 60000);
+    }
 
     const sendEmail = async () => {
 
         if (isEmailValid && email != '') {
             await postForgotPassword(email.trim());
             setSuccess(true);
+            enableResendEmail();
         } else {
             setIsEmailValid((email == '' ? false : true) && email);
         }
@@ -104,8 +114,24 @@ export function ForgotPassword(props) {
                     </h4>
                 </DialogHeader>
                 <DialogBody>
-                    Um link foi enviado para o seu email. Por ele, você poderá redefinir a sua senha e voltar a acessar nossa plataforma!
+                    Um link foi enviado para o seu email. Por ele, você poderá redefinir
+                    a sua senha e voltar a acessar nossa plataforma! Caso não consiga 
+                    encontrá-lo, você poderá reenviá-lo dentro de um minuto.
                 </DialogBody>
+                <DialogFooter>
+                    <Button
+                        className="bg-gradient-to-r from-green-200  to-green-300"
+                        color="green"
+                        onClick={async () => {
+                            await postResendForgotPassword(subscription.email);
+                            setIsResendEmailEnabled(false);
+                            enableResendEmail();
+                        }}
+                        disabled={!isResendEmailEnabled}
+                    >
+                        <span>Reenviar email</span>
+                    </Button>
+                </DialogFooter>
             </Dialog>
         </div>
     )
