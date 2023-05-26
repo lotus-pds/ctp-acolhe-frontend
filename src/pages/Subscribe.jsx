@@ -13,12 +13,11 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
-import { postSubscribe } from "../services/subscribe-signin";
+import { postSubscribe, postResendVerification } from "../services/subscribe-signin";
 import { validateEmail, validateName, validatePassword, validateRegistration } from "../utils";
 import { useTranslation } from "react-i18next";
 import { InformationCircleIcon, EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { useDispatch } from "react-redux";
-import { activateErrorPopup } from "../redux/features/errorPopupSlice";
 
 
 export function Subscribe(props) {
@@ -51,9 +50,17 @@ export function Subscribe(props) {
 
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
+    const [isResendEmailEnabled, setIsResendEmailEnabled] = useState(false);
+
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
+
+    const enableResendEmail = () => {
+        setTimeout(() => {
+            setIsResendEmailEnabled(true);
+        }, 60000);
+    }
 
     const subscribe = async () => {
         let isValid = true;
@@ -77,6 +84,7 @@ export function Subscribe(props) {
 
             await postSubscribe(newSubscription);
             setSuccess(true);
+            enableResendEmail();
         } else {
             setIsFieldValid({
                 name: (subscription.nome == '' ? false : true) && isFieldValid.name,
@@ -359,15 +367,21 @@ export function Subscribe(props) {
                     </h4>
                 </DialogHeader>
                 <DialogBody>
-                    Ufa, falta pouco! Um link de confirmação foi enviado para o seu email. Após acessá-lo, seu cadastro será concluído.
+                    Ufa, falta pouco! Um link de confirmação foi enviado para o seu email.
+                    Após acessá-lo, seu cadastro será concluído. Caso não consiga encontrá-lo,
+                    você poderá reenviá-lo dentro de um minuto.
                 </DialogBody>
                 <DialogFooter>
                     <Button
                         className="bg-gradient-to-r from-green-200  to-green-300"
                         color="green"
-                        onClick={() => navigate('/signin')}
+                        onClick={async () => {
+                            await postResendVerification(subscription.email);
+                            setIsResendEmailEnabled(false);
+                            enableResendEmail();
+                        }}
                     >
-                        <span>OK</span>
+                        <span>Reenviar email</span>
                     </Button>
                 </DialogFooter>
             </Dialog>
