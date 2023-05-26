@@ -8,11 +8,11 @@ function App() {
 
   return (
     <div>
-      <ErrorPopup/>
-      <Loading/>
       <BrowserRouter>
         <Router/>
       </BrowserRouter>
+      <ErrorPopup/>
+      <Loading/>
     </div>
   )
 }

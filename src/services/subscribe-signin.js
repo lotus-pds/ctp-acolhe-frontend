@@ -4,11 +4,19 @@ export const postSubscribe = body => postResource('/conta/cadastro', body);
 
 export const patchSubscriptionVerification = param => patchResource('/conta/cadastro/verificacao/' + param);
 
-export const postSignin =  body => postResource('/conta/acesso', body);
+export const postResendVerification = body => postResource('/conta/cadastro/reenviar-email', body, {
+    headers: {
+        'Content-Type': 'application/plain'
+    }
+});
 
-export const postForgotPassword = body => postResource('/conta/senha/esqueci', body, {headers: {
-    'Content-Type': 'application/plain'
-}});
+export const postSignin = body => postResource('/conta/acesso', body);
+
+export const postForgotPassword = body => postResource('/conta/senha/esqueci', body, {
+    headers: {
+        'Content-Type': 'application/plain'
+    }
+});
 
 export const postResendForgotPassword = body => postResource('/conta/senha/esqueci/reenviar-email', body);
 
