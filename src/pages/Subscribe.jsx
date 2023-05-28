@@ -87,6 +87,7 @@ export function Subscribe(props) {
             enableResendEmail();
         } else {
             setIsFieldValid({
+                ...isFieldValid,
                 name: (subscription.nome == '' ? false : true) && isFieldValid.name,
                 email: (subscription.email == '' ? false : true) && isFieldValid.email,
                 registration: (subscription.email == '' ? false : true) && isFieldValid.registration,
@@ -307,8 +308,10 @@ export function Subscribe(props) {
                                 />
 
                                 <Checkbox
-                                    value={isFieldValid.terms}
-                                    onChange={(e) => setIsFieldValid({...isFieldValid, terms: e.target.value})}
+                                    checked={isFieldValid.terms}
+                                    onChange={(e) => {
+                                        setIsFieldValid({...isFieldValid, terms: e.target.checked});
+                                    }}
                                     ripple={false}
                                     color="green"
                                     className="flex align-start w-4 h-4 rounded p-1"
@@ -327,6 +330,7 @@ export function Subscribe(props) {
                             "
                                 color="green" variant="gradient"
                                 onClick={subscribe}
+                                disabled={!isFieldValid.terms}
                             >
                                 {t("continue")}
                             </Button>
