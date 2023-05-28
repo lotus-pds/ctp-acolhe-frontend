@@ -8,37 +8,40 @@ import {
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { inactivateErrorPopup } from "../redux/features/errorPopupSlice";
+import { useTranslation } from "react-i18next";
 
 export const ErrorPopup = (props) => {
-    const { open, message } = useSelector( state => state.errorPopup );
+    const { open, message } = useSelector(state => state.errorPopup);
 
     const dispatch = useDispatch();
-    
+
+    const { t } = useTranslation();
+
     return (
         <Dialog
             open={open}
             size="sm"
-            className="flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-200"
+            className="flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-900 dark:text-white"
         >
             <DialogHeader>
                 <h4 className="
                     bg-clip-text text-transparent bg-gradient-to-r from-red-200  to-red-300
                     font-mouse text-3xl
-                "> 
-                    Erro
+                ">
+                    {t("error")}
                 </h4>
             </DialogHeader>
-            <DialogBody>
+            <DialogBody className='text-center'>
                 {message}
             </DialogBody>
             <DialogFooter>
-            <Button
-                className="bg-gradient-to-r from-red-200  to-red-300"
-                color="red"
-                onClick={() => dispatch(inactivateErrorPopup())}
-            >
-                <span>OK</span>
-            </Button>
+                <Button
+                    className="bg-gradient-to-r from-red-200  to-red-300"
+                    color="red"
+                    onClick={() => dispatch(inactivateErrorPopup())}
+                >
+                    <span>OK</span>
+                </Button>
             </DialogFooter>
         </Dialog>
     );

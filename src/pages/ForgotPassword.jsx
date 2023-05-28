@@ -103,20 +103,18 @@ export function ForgotPassword(props) {
             <Dialog
                 open={success}
                 size="sm"
-                className="flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-200"
+                className="flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-100"
             >
                 <DialogHeader>
                     <h4 className="
                     bg-clip-text text-transparent bg-gradient-to-r from-green-200  to-green-300
                     font-mouse text-3xl
                 ">
-                        Sucesso
+                        {t('success')}
                     </h4>
                 </DialogHeader>
-                <DialogBody>
-                    Um link foi enviado para o seu email. Por ele, você poderá redefinir
-                    a sua senha e voltar a acessar nossa plataforma! Caso não consiga
-                    encontrá-lo, você poderá reenviá-lo dentro de um minuto.
+                <DialogBody  className='text-center'>
+                    {t('emailForgotPassword')}
                 </DialogBody>
                 <DialogFooter>
                     <Button
@@ -129,7 +127,7 @@ export function ForgotPassword(props) {
                         }}
                         disabled={!isResendEmailEnabled}
                     >
-                        <span>Reenviar email</span>
+                        <span>{t('resendEmail')}</span>
                     </Button>
                 </DialogFooter>
             </Dialog>

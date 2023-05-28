@@ -44,7 +44,7 @@ export function Subscribe(props) {
         senha: ''
     });
 
-    const [isFieldValid, setIsFieldValid] = useState({});
+    const [isFieldValid, setIsFieldValid] = useState({terms: false});
 
     const [success, setSuccess] = useState(false);
 
@@ -307,6 +307,8 @@ export function Subscribe(props) {
                                 />
 
                                 <Checkbox
+                                    value={isFieldValid.terms}
+                                    onChange={(e) => setIsFieldValid({...isFieldValid, terms: e.target.value})}
                                     ripple={false}
                                     color="green"
                                     className="flex align-start w-4 h-4 rounded p-1"
@@ -356,20 +358,18 @@ export function Subscribe(props) {
             <Dialog
                 open={success}
                 size="sm"
-                className="flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-200"
+                className="flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-100"
             >
                 <DialogHeader>
                     <h4 className="
                     bg-clip-text text-transparent bg-gradient-to-r from-green-200  to-green-300
                     font-mouse text-3xl
                 ">
-                        Sucesso
+                        {t('success')}
                     </h4>
                 </DialogHeader>
-                <DialogBody>
-                    Ufa, falta pouco! Um link de confirmação foi enviado para o seu email.
-                    Após acessá-lo, seu cadastro será concluído. Caso não consiga encontrá-lo,
-                    você poderá reenviá-lo dentro de um minuto.
+                <DialogBody className='text-center'>
+                    {t('subscriptionSuccess')}
                 </DialogBody>
                 <DialogFooter>
                     <Button
@@ -382,7 +382,7 @@ export function Subscribe(props) {
                             enableResendEmail();
                         }}
                     >
-                        <span>Reenviar email</span>
+                        <span>{t('resendEmail')}</span>
                     </Button>
                 </DialogFooter>
             </Dialog>

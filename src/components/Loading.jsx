@@ -30,7 +30,7 @@ export const Loading = (props) => {
         <Dialog
             open={open}
             size="xs"
-            className="flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-200"
+            className="flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-100"
         >
             <DialogHeader>
                 <h4 className="
