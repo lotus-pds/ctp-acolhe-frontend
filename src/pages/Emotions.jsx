@@ -3,9 +3,8 @@ import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
 import { postEmotion } from "../services/emotion";
 import { getEmotion } from "../services/emotion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { activateErrorPopup } from "../redux/features/errorPopupSlice";
 
 export function Emotions(props) {
 
@@ -107,6 +106,11 @@ export function Emotions(props) {
                     </button>
                 </div>
             </div>
+            <Link to='/successful'
+                className="p-2 font-semibold flex items-center justify-center bg-gradient-to-r from-gray-500  to-gray-700 rounded"
+            >
+                {t("iPreferNotToAnswer")}
+            </Link>
         </div>
     )
 }

@@ -1,6 +1,8 @@
 export const resources = {
     en : {
         translation : {
+            "error" : "Error",
+            "success" : "Success",
             "signIn" : "Sign In",
             "signUp" : "Sign Up",
             "titleOne" : "Psychological help service",
@@ -31,7 +33,10 @@ export const resources = {
             "tranquil": "Tranquil",
             "rememberPassword": "Forgot password?",
             "forgotPasswordDescription" : "Enter your registered email so we can send you the recovery code.",
+            "emailForgotPassword" : "A link has been sent to your email. Through it, you'll be able to reset your password and regain access to our platform! If you can't find it, you can resend it within a minute.",
+            "subscriptionSuccess" : "Phew, almost there! A confirmation link has been sent to your email. Once you access it, your registration will be completed. If you can't find it, you can resend it within a minute.",
             "send" : "Send",
+            "resendEmail" : "Resend email",
             "newPassword": "New Password",
             "resetPassword" : "Reset password",
             "resetPassowordDesciption" : "Set a secure password to access the platform",
@@ -41,6 +46,7 @@ export const resources = {
             "resetSuccessfullDescription" : "Now you can login with the new registered password and continue using the platform normally.",
             "confirmedEmail" : "Confirmed Email!",
             "confirmedEmailDescription" : "Congratulations! Your email confirmation has been completed successfully. Thanks for confirming your email address and we can't wait to see you at CTP Acolhe!",
+            "iPreferNotToAnswer" : "I prefer not to answer",
             "tooltipName":{
                 "attribute":"Name must contain:",
                 "description":"* name and lastname"
@@ -70,6 +76,8 @@ export const resources = {
       },
       pt : {
         translation: {
+            "error" : "Erro",
+            "success" : "Sucesso",
             "signIn" : "Acessar",
             "signUp" : "Cadastrar",
             "titleOne" : "Atendimento para ajuda psicológica",
@@ -100,7 +108,10 @@ export const resources = {
             "tranquil": "Tranquilo",
             "rememberPassword": "Esqueceu a senha?",
             "forgotPasswordDescription" : "Coloque seu email cadastrado para enviarmos o código de recuperação.",
+            "emailForgotPassword" : "Um link foi enviado para o seu email. Por ele, você poderá redefinira sua senha e voltar a acessar nossa plataforma! Caso não consiga encontrá-lo, você poderá reenviá-lo dentro de um minuto.",
+            "subscriptionSuccess" : "Ufa, falta pouco! Um link de confirmação foi enviado para o seu email. Após acessá-lo, seu cadastro será concluído. Caso não consiga encontrá-lo, você poderá reenviá-lo dentro de um minuto.",
             "send" : "Enviar",
+            "resendEmail" : "Reenviar email",
             "newPassword": "Nova Senha",
             "resetPassword" : "Redefinir a senha",
             "resetPassowordDesciption" : "Defina uma senha segura para ter acesso a plataforma",
@@ -110,6 +121,7 @@ export const resources = {
             "resetSuccessfullDescription" : "Agora você pode acessar com a nova senha cadastrada e continuar utilizando a plataforma normalmente. ",
             "confirmedEmail" : "Email Confirmado!",
             "confirmedEmailDescription" : "Parabéns! Sua confirmação de email foi concluída com sucesso. Agradecemos por confirmar seu endereço de email e mal podemos esperar por você no CTP Acolhe!",
+            "iPreferNotToAnswer" : "Prefiro não responder",
             "tooltipName":{
                 "attribute":"Nome deve conter",
                 "description":"* nome e sobrenome"
