@@ -20,7 +20,7 @@ export const resources = {
             "email": "Institutional Email",
             "password": "Password",
             "confirmPassword": "Confirm Password",
-            "phone": "Phone",
+            "phone": "Phone Number",
             "registration": "Registration Number",
             "noRegistry" : "Don't have an account yet?",
             "haveRegistration": "Already have account?",

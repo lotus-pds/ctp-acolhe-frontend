@@ -1,23 +1,18 @@
 import {
     Card,
-    Input,
     Button,
     Typography,
     Dialog,
     DialogHeader,
     DialogBody,
-    DialogFooter,
-    Tooltip,
-    Checkbox
+    DialogFooter
 } from "@material-tailwind/react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
 import { postSubscribe, postResendVerification } from "../services/subscribe-signin";
-import { validateEmail, validateName, validatePassword, validateRegistration } from "../utils";
+import { validateEmail, validateName, validatePassword, validateRegistration, validatePhoneNumber, validateClass, validateCourse } from "../utils";
 import { useTranslation } from "react-i18next";
-import { InformationCircleIcon, EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
-import { useDispatch } from "react-redux";
 import { FormAccount } from "../components/FormAccount";
 import { FormDetails } from "../components/FormDetails";
 
@@ -26,50 +21,69 @@ export function Subscribe(props) {
 
     const { t } = useTranslation();
 
-    const [step, setStep] = useState(1); 
-
-    const getCompStep = () => {
-        switch(step){
-            case 1:
-                return <FormAccount/> 
-            case 2 : 
-                return <FormDetails/>
-            default:  
-                return <FormAccount/> 
-        }
-    } 
-
-    const [values, setValues] = useState({
-        password: "",
-        showPassword: false,
-    });
-
-    const handleClickShowPassword = () => {
-        setValues({ ...values, showPassword: !values.showPassword });
-    };
-
-    const handleClickShowConfirmPassword = () => {
-        setValues({ ...values, showConfirmPassword: !values.showConfirmPassword });
-    };
+    const [step, setStep] = useState(1);
 
     const [subscription, setSubscription] = useState({
         nome: '',
         email: '',
         prontuario: '',
-        senha: ''
+        senha: '',
+        telefone: '',
+        turma: '',
+        periodo: '',
+        curso: '',
+        termo: false,
+        confirmacao: ''
     });
 
-    const [isFieldValid, setIsFieldValid] = useState({terms: false});
+    const isFieldValid = [
+        {
+            name: subscription.nome === '' ? undefined : validateName(subscription.nome.trim()),
+            email: subscription.email === '' ? undefined : validateEmail(subscription.email.trim()),
+            registration: subscription.prontuario === '' ? undefined : validateRegistration(subscription.prontuario.trim()),
+            password: subscription.senha === '' ? undefined : validatePassword(subscription.senha),
+            passwordConfirmation: subscription.confirmacao === '' ? undefined : ((subscription.confirmacao == subscription.senha) && validatePassword(subscription.confirmacao)),
+            term: subscription.termo
+        },
+        {
+            phoneNumber: subscription.telefone === '' ? undefined : validatePhoneNumber(subscription.telefone.trim()),
+            class: subscription.turma === '' ? undefined : validateClass(subscription.turma.trim()),
+            period: subscription.periodo === '' ? false : true,
+            course: subscription.curso === '' ? undefined : validateCourse(subscription.curso.trim()),
+        }
+    ];
+
+    const getCompStep = () => {
+        switch (step) {
+            case 1:
+                return (
+                    <FormAccount
+                        subscription={subscription}
+                        setSubscription={setSubscription}
+                        isFieldValid={isFieldValid[0]}
+                    />
+                );
+            case 2:
+                return (
+                    <FormDetails
+                        subscription={subscription}
+                        setSubscription={setSubscription}
+                        isFieldValid={isFieldValid[1]}
+                    />
+                );
+            default:
+                return (
+                    <FormAccount
+                        subscription={subscription}
+                        setSubscription={setSubscription}
+                    />
+                );
+        }
+    }
 
     const [success, setSuccess] = useState(false);
 
-    const [passwordConfirmation, setPasswordConfirmation] = useState('');
-
     const [isResendEmailEnabled, setIsResendEmailEnabled] = useState(false);
-
-    const navigate = useNavigate();
-
-    const dispatch = useDispatch();
 
     const enableResendEmail = () => {
         setTimeout(() => {
@@ -78,43 +92,28 @@ export function Subscribe(props) {
     }
 
     const subscribe = async () => {
-        let isValid = true;
+        let newSubscription = { ...subscription };
 
-        for (const key in isFieldValid) {
-            isValid = isValid && isFieldValid[key];
-        }
-        if (
-            isValid
-            && subscription.nome != ''
-            && subscription.email != ''
-            && subscription.prontuario != ''
-            && subscription.senha != ''
-            && passwordConfirmation != ''
-        ) {
-            let newSubscription = { ...subscription };
-
-            for (const key in newSubscription) {
+        for (const key in newSubscription) {
+            if (typeof newSubscription[key] === 'string') {
                 newSubscription[key] = newSubscription[key].trim();
             }
-
-            await postSubscribe(newSubscription);
-            setSuccess(true);
-            enableResendEmail();
-        } else {
-            setIsFieldValid({
-                ...isFieldValid,
-                name: (subscription.nome == '' ? false : true) && isFieldValid.name,
-                email: (subscription.email == '' ? false : true) && isFieldValid.email,
-                registration: (subscription.email == '' ? false : true) && isFieldValid.registration,
-                password: (subscription.senha == '' ? false : true) && isFieldValid.password,
-                passwordConfirmation: (passwordConfirmation == '' ? false : true) && isFieldValid.passwordConfirmation
-            });
+            if(newSubscription[key] == '') {
+                delete newSubscription[key];
+            }
         }
+
+        delete newSubscription.termo;
+        delete newSubscription.confirmacao;
+
+        await postSubscribe(newSubscription);
+        setSuccess(true);
+        enableResendEmail();
     }
 
     return (
         <div>
-            <SecondHeader/>
+            <SecondHeader />
 
             <div
                 className="w-full h-full bg-none grid grid-cols-2 items-center justify-center"
@@ -143,13 +142,13 @@ export function Subscribe(props) {
                             {t("signUpDesc")}
                         </Typography>
                         <form className="mt-5 mb-2 w-full  flex items-center flex-col">
-                            
+
                             {getCompStep()}
 
                             <div className="flex gap-3 p-3 w-full justify-around align-center">
-                                <Button className="mt-0 bg-gradient-to-r from-gray-500  to-gray-700
-                                        dark:from-gray-200 dark:to-gray-400 dark:text-gray-900
-                                    "   
+                                <Button
+                                    className="mt-0 bg-gradient-to-r from-gray-500  to-gray-700
+                                        dark:from-gray-200 dark:to-gray-400 dark:text-gray-900"
                                     color="gray" variant="gradient"
                                     onClick={() => console.log(setStep(step - 1))}
                                     disabled={step === 1}
@@ -157,13 +156,14 @@ export function Subscribe(props) {
                                     {t("back")}
                                 </Button>
 
-                                <Button className="mt-0 bg-gradient-to-r from-green-200  to-green-300
-                                        dark:from-green-300 dark:to-green-400
-                                    "   
-                                        color="green" variant="gradient"
-                                        onClick={() => step === 1 ? setStep(step + 1) : subscribe}
-                                    >
-                                        {step === 2 ? t("subscribe") : t("next")}
+                                <Button
+                                    className="mt-0 bg-gradient-to-r from-green-200  to-green-300
+                                        dark:from-green-300 dark:to-green-400"
+                                    color="green" variant="gradient" /*key={subscription}*/
+                                    onClick={() => subscription.email.includes('@ifsp.edu.br') ? subscribe() : (step === 1 ? setStep(step + 1) : subscribe())}
+                                    disabled={!Object.values(isFieldValid[step - 1]).every(value => value === true)}
+                                >
+                                    {subscription.email.includes('@ifsp.edu.br') ? t("subscribe") : (step === 2 ? t("subscribe") : t("next"))}
                                 </Button>
                             </div>
 
