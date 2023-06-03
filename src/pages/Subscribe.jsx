@@ -18,11 +18,26 @@ import { validateEmail, validateName, validatePassword, validateRegistration } f
 import { useTranslation } from "react-i18next";
 import { InformationCircleIcon, EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { useDispatch } from "react-redux";
+import { FormAccount } from "../components/FormAccount";
+import { FormDetails } from "../components/FormDetails";
 
 
 export function Subscribe(props) {
 
     const { t } = useTranslation();
+
+    const [step, setStep] = useState(1); 
+
+    const getCompStep = () => {
+        switch(step){
+            case 1:
+                return <FormAccount/> 
+            case 2 : 
+                return <FormDetails/>
+            default:  
+                return <FormAccount/> 
+        }
+    } 
 
     const [values, setValues] = useState({
         password: "",
@@ -109,7 +124,7 @@ export function Subscribe(props) {
                     className="h-[500px] flex items-center justify-center"
                 >
                     <Card color="transparent" shadow={true}
-                        className="w-[351px] max-h-[600px] bg-gray-100
+                        className="w-[350px] max-h-[650px] bg-gray-100
                             dark:bg-gray-800
                             flex - items-center justify-evenly p-6 shadow-lg
                             dark:shadow-xl
@@ -128,212 +143,30 @@ export function Subscribe(props) {
                             {t("signUpDesc")}
                         </Typography>
                         <form className="mt-5 mb-2 w-full  flex items-center flex-col">
-                            <div className="mb-4 flex flex-col gap-6 w-full align-center justify-center">
-                                
-                               
-                                <Input size="md" label={t("name")} color="gray" required
-                                    className="text-gray-900 dark:text-gray-200"
-                                    success={isFieldValid.name}
-                                    value={subscription.nome} error={isFieldValid.name === false ? true : false}
-                                    onChange={(e) => {
-                                        setSubscription({ ...subscription, nome: e.target.value });
-                                        setIsFieldValid({ ...isFieldValid, name: validateName(e.target.value) });
-                                    }}
-
-                                    icon={
-                                        <Tooltip content={
-                                            <div className="w-70">
-                                              <Typography color="white" className="font-medium">{t("tooltipName.attribute")}</Typography>
-                                              <Typography
-                                                variant="small"
-                                                color="white" 
-                                                className="font-normal opacity-80"
-                                              >
-                                                {t("tooltipName.description")} <br/>
-                                              </Typography>
-                                            </div>
-                                          }>
-                                            <InformationCircleIcon 
-                                              strokeWidth={2} 
-                                              className="text-gray-800 dark:text-gray-200 w-5 h-5 cursor-pointer ml-[-8px]" 
-                                            />
-                                          </Tooltip>
-                                    } 
-
-                                />
-                               
-
-                                
-                                <Input size="md" label={t("email")} color="gray" required
-                                    className="text-gray-900 dark:text-gray-200"
-                                    success={isFieldValid.email}
-                                    type="email" value={subscription.email} error={isFieldValid.email === false ? true : false}
-                                    onChange={(e) => {
-                                        setSubscription({ ...subscription, email: e.target.value });
-                                        setIsFieldValid({ ...isFieldValid, email: validateEmail(e.target.value) });
-                                    }}
-
-                                    icon={
-                                        <Tooltip content={
-                                            <div className="w-70">
-                                              <Typography color="white" className="font-medium">{t("tooltipEmail.attribute")}</Typography>
-                                              <Typography
-                                                variant="small"
-                                                color="white" 
-                                                className="font-normal opacity-80"
-                                              >
-                                                {t("tooltipEmail.description")}<br/>
-                                              </Typography>
-                                            </div>
-                                          }>
-                                            <InformationCircleIcon 
-                                              strokeWidth={2} 
-                                              className="text-gray-800 dark:text-gray-200 w-5 h-5 cursor-pointer ml-[-8px]" 
-                                            />
-                                          </Tooltip>
-                                    } 
-                                />
-                                
-                                
-                                
-                                <Input size="md" label={t("registration")} color="gray" required
-                                    className="text-gray-900 dark:text-gray-200"
-                                    success={isFieldValid.registration}
-                                    value={subscription.prontuario} error={isFieldValid.registration === false ? true : false}
-                                    onChange={(e) => {
-                                        setSubscription({ ...subscription, prontuario: e.target.value });
-                                        setIsFieldValid({ ...isFieldValid, registration: validateRegistration(e.target.value) });
-                                    }}
-
-                                    icon={
-                                        <Tooltip content={
-                                            <div className="w-70">
-                                              <Typography color="white" className="font-medium">{t("tooltipRegistrationNumber.attribute")}</Typography>
-                                              <Typography
-                                                variant="small"
-                                                color="white" 
-                                                className="font-normal opacity-80"
-                                              >
-                                                {t("tooltipRegistrationNumber.description")} <br/>
-                                                {t("tooltipRegistrationNumber.descriptionTwo")}
-                                              </Typography>
-                                            </div>
-                                          }>
-                                            <InformationCircleIcon 
-                                              strokeWidth={2} 
-                                              className="text-gray-800 dark:text-gray-200 w-5 h-5 cursor-pointer ml-[-8px]" 
-                                            />
-                                          </Tooltip>
-                                    } 
-
-                                />
-                                
-
-                              
-                                <Input 
-                                    type={values.showPassword ? "text" : "password"} 
-                                    size="md" label={t("password")} color="gray" required
-                                    className="text-gray-900 dark:text-gray-200 flex items-center"
-                                    success={isFieldValid.password}
-                                    value={subscription.senha} error={isFieldValid.password === false ? true : false}
-                                    onChange={(e) => {
-                                        setSubscription({ ...subscription, senha: e.target.value });
-                                        setIsFieldValid({ ...isFieldValid, password: validatePassword(e.target.value), passwordConfirmation: (passwordConfirmation == e.target.value) && validatePassword(e.target.value)});
-                                    }}
-                                    icon={
-                                        <Tooltip content={
-                                            <div className="w-70">
-                                              <Typography color="white" className="font-medium">{t("tooltipPassword.attribute")}</Typography>
-                                              <Typography
-                                                variant="small"
-                                                color="white" 
-                                                className="font-normal opacity-80"
-                                              >
-                                                {t("tooltipPassword.description")} <br/>
-                                                {t("tooltipPassword.descriptionTwo")} <br/>
-                                                {t("tooltipPassword.descriptionThree")} <br/>
-                                                {t("tooltipPassword.descriptionFour")} <br/>
-                                                {t("tooltipPassword.descriptionFive")}
-                                              </Typography>
-                                            </div>
-                                          }>
-                                            <Button size="sm" variant="text" className="ml-[-12px] absolute rounded hover:bg-gray-200 active:bg-gray-200 dark:hover:bg-gray-900"
-                                                onClick={handleClickShowPassword}
-                                                
-                                            >   
-                                                {values.showPassword ? 
-                                                <EyeIcon 
-                                                    strokeWidth={2} 
-                                                    className="text-gray-800 dark:text-gray-200 w-5 h-5" 
-                                                />  : 
-                                                <EyeSlashIcon
-                                                    strokeWidth={2} 
-                                                    className="text-gray-800 dark:text-gray-200 w-5 h-5" 
-                                                /> 
-                                                }
-                                            </Button>
-                                          </Tooltip>
-                                    } 
-                                />
                             
+                            {getCompStep()}
 
-                                
+                            <div className="flex gap-3 p-3 w-full justify-around align-center">
+                                <Button className="mt-0 bg-gradient-to-r from-gray-500  to-gray-700
+                                        dark:from-gray-200 dark:to-gray-400 dark:text-gray-900
+                                    "   
+                                    color="gray" variant="gradient"
+                                    onClick={() => console.log(setStep(step - 1))}
+                                    disabled={step === 1}
+                                >
+                                    {t("back")}
+                                </Button>
 
-                                <Input type={values.showConfirmPassword ? "text" : "password"} 
-                                    size="md" label={t("confirmPassword")} color="gray" required
-                                    className="text-gray-900 dark:text-gray-200"
-                                    success={isFieldValid.passwordConfirmation} 
-                                    value={passwordConfirmation} error={isFieldValid.passwordConfirmation === false ? true : false}
-                                    onChange={(e) => {
-                                        setIsFieldValid({...isFieldValid, passwordConfirmation: (e.target.value == subscription.senha) && isFieldValid.password});
-                                        setPasswordConfirmation(e.target.value);
-                                    }}
-                                    icon={
-                                        <Button size="sm" variant="text" className="ml-[-12px] absolute rounded hover:bg-gray-200 dark:hover:bg-gray-900 active:bg-gray-200"
-                                                onClick={handleClickShowConfirmPassword}
-                                                
-                                            >   
-                                                {values.showConfirmPassword ? 
-                                                <EyeIcon 
-                                                    strokeWidth={2} 
-                                                    className="text-gray-800 dark:text-gray-200 w-5 h-5" 
-                                                />  : 
-                                                <EyeSlashIcon
-                                                    strokeWidth={2} 
-                                                    className="text-gray-800 dark:text-gray-200 w-5 h-5" 
-                                                /> 
-                                                }
-                                            </Button>
-                                    }     
-                                />
-
-                                <Checkbox
-                                    checked={isFieldValid.terms}
-                                    onChange={(e) => {
-                                        setIsFieldValid({...isFieldValid, terms: e.target.checked});
-                                    }}
-                                    ripple={false}
-                                    color="green"
-                                    className="flex align-start w-4 h-4 rounded p-1"
-                                    required
-                                    label={
-                                        <Typography className="text-sm text-gray-900 dark:text-gray-200 flex">{t("checkBox.desc")}
-                                            <Typography as="a" href="#" color="green" className="text-sm hover:text-green-700 transition-colors italic">
-                                            &nbsp;{t("checkBox.descTwo")}
-                                            </Typography>.
-                                        </Typography>
-                                } />
+                                <Button className="mt-0 bg-gradient-to-r from-green-200  to-green-300
+                                        dark:from-green-300 dark:to-green-400
+                                    "   
+                                        color="green" variant="gradient"
+                                        onClick={() => step === 1 ? setStep(step + 1) : subscribe}
+                                    >
+                                        {step === 2 ? t("subscribe") : t("next")}
+                                </Button>
                             </div>
 
-                            <Button className="mt-0 bg-gradient-to-r from-green-200  to-green-300
-                                dark:from-green-300 dark:to-green-400
-                            "
-                                color="green" variant="gradient"
-                                onClick={subscribe}
-                                disabled={!isFieldValid.terms}
-                            >
-                                {t("continue")}
-                            </Button>
                             <Typography className="mt-4 text-center font-normal text-gray-900 dark:text-gray-200">
                                 {t("haveRegistration")}{" "}
 

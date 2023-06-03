@@ -68,10 +68,30 @@ export const resources = {
                 "descriptionFour":"* special character",
                 "descriptionFive":"* eight digit minimum",
             },
+            "tooltipPhone":{
+                "attribute":"Phone must contain:",
+                "description":"* DDD (11, 73...)",
+                "descriptionTwo":"* format 11999999999",
+            },
+            "tooltipClass":{
+                "attribute":"Class must contain",
+                "description":"* number (213, 431, 310...)",
+            },
+            "tooltipCourse":{
+                "attribute":"Course must contain",
+                "description":"* name of course (informatica, mecanica...)",
+            },
             "checkBox":{
                 "desc":"I accept the",
                 "descTwo": " terms of use"
             },
+            "phone":"Phone",
+            "class":"Class",
+            "period":"Period",
+            "course":"Course",
+            "morning": "Morning",
+            "afternoon" : "Afternoon",
+            "night":"Night"
        },
       },
       pt : {
@@ -143,10 +163,30 @@ export const resources = {
                 "descriptionFour":"* caracter especial",
                 "descriptionFive":"* mínimo de oito caracteres",
             },
+            "tooltipPhone":{
+                "attribute":"Telefone deve conter",
+                "description":"* DDD (11, 73...)",
+                "descriptionTwo":"* formatato 11999999999",
+            },
+            "tooltipClass":{
+                "attribute":"Turma deve conter",
+                "description":"* numero (213, 431, 310...)",
+            },
+            "tooltipCourse":{
+                "attribute":"Curso deve conter",
+                "description":"* nome do curso (informatica, mecanica...)",
+            },
             "checkBox":{
                 "desc":"Eu aceito os",
                 "descTwo": " termos de uso"
             },
+            "phone":"Telefone",
+            "class":"Turma",
+            "period":"Período",
+            "course":"Curso",
+            "morning": "Matutino",
+            "afternoon" : "Verpertino",
+            "night":"Noturno"
         }
       },
 }
