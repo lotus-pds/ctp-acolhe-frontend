@@ -46,11 +46,9 @@ export function Home() {
                                 <h2
                                     className="font-mouse text-5xl"
                                 >
-                                    {t("titleTwo")}
+                                    {t("educationalTitle")}
                                 </h2>
-                                <p>
-                                    {t("descOne")}
-                                </p>
+                                <p dangerouslySetInnerHTML={{__html:t("educationalDesc")}} />
                                 <Link to="/subscribe">
                                     <div
                                         className="
@@ -78,11 +76,9 @@ export function Home() {
                                 <h2
                                     className="font-mouse text-5xl"
                                 >
-                                    {t("titleThree")}
+                                    {t("organizationTitle")}
                                 </h2>
-                                <p>
-                                    {t("descThree")}
-                                </p>
+                                <p dangerouslySetInnerHTML={{__html:t("organizationDesc")}} />
                                 <Link to="/subscribe">
                                     <div
                                         className="
@@ -111,11 +107,9 @@ export function Home() {
                                 <h2
                                     className="font-mouse text-5xl"
                                 >
-                                    {t("titleOne")} 
-                                   </h2>
-                                <p>
-                                {t("descOne")}
-                                </p>
+                                    {t("psychologicalTitle")}
+                                </h2>
+                                <p dangerouslySetInnerHTML={{__html:t("psychologicalDesc")}} />
                                 <Link to="/subscribe">
                                     <div
                                         className="
