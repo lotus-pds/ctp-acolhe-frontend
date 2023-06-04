@@ -2,7 +2,8 @@ import {
     Typography,
     Tooltip,
     Button,
-    Input
+    Input,
+    Avatar
 } from "@material-tailwind/react";
 import { useTranslation } from "react-i18next";
 import { HeaderUser } from "../components/HeaderUser";
@@ -27,7 +28,7 @@ export function Profile(){
             </Typography>
             <div className="w-[90%] grid grid-cols-[20%,78%] gap-8 mt-2">
                 <div className="bg-gray-100 dark:bg-gray-800 w-full h-[35%] float flex flex-col items-center p-6 rounded-xl drop-shadow-md ">
-                    <div className="h-24 w-24 bg-gray-200 dark:bg-gray-900 rounded-full">
+                    <div className="h-24 w-24 bg-gray-200 dark:bg-gray-900 rounded-full bg-[url('https://media.discordapp.net/attachments/1077345452694970438/1107082558170202232/Mask_group_7.png?width=480&height=480')] bg-center bg-cover">
                         <Tooltip content={
                             <div className="w-70">
                                 <Typography
