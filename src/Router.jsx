@@ -10,6 +10,11 @@ import { ResetPassword } from "./pages/ResetPassword";
 import { ResetSuccessfull } from "./pages/ResetSuccessfull";
 import { AccessConfirmation } from "./pages/AccessConfirmation";
 import { EmailConfirmation } from "./pages/EmailConfirmation";
+import { Posts } from "./pages/Posts";
+import { MyCalendar } from "./pages/MyCalendar";
+import { CreateIncident } from "./pages/CreateIncident";
+import { MyIncident } from "./pages/MyIncident";
+import { Profile } from "./pages/Profile";
 
 
 export function Router(props){
@@ -24,7 +29,19 @@ export function Router(props){
             <Route path="/reset-successfull" element={<ResetSuccessfull/>}/>
             <Route path="/access-confirmation" element={<AccessConfirmation/>}/>
             <Route path="/successful" element={<PrivateRoute user={['Aluno', 'Admin']}><Successful/></PrivateRoute>}/>
+            {/**
+                 <Route path="/posts" element={<PrivateRoute user={['Aluno', 'Admin']}><Posts/></PrivateRoute>}/>
+                <Route path="/my-calendar" element={<PrivateRoute user={['Aluno', 'Admin']}><MyCalendar/></PrivateRoute>}/>
+                <Route path="/create-incident" element={<PrivateRoute user={['Aluno', 'Admin']}><CreateIncident/></PrivateRoute>}/>
+                <Route path="/my-incident" element={<PrivateRoute user={['Aluno', 'Admin']}><MyIncident/></PrivateRoute>}/>
+                <Route path="/profile" element={<PrivateRoute user={['Aluno', 'Admin']}><Profile/></PrivateRoute>}/>
+            */}
             <Route path="/subscribe/verification/:token" element={<EmailConfirmation/>}/>
+            <Route path="/posts" element={<Posts/>}/>
+            <Route path="/my-calendar" element={<MyCalendar/>}/>
+            <Route path="/create-incident" element={<CreateIncident/>}/>
+            <Route path="/my-incident" element={<MyIncident/>}/>
+            <Route path="/profile" element={<Profile/>}/>
         </Routes>
     );
 }

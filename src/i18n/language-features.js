@@ -94,7 +94,15 @@ export const resources = {
             "night":"Night",
             "subscribe": "Subscribe",
             "next": "Next",
-            "back": "Back"
+            "back": "Back",
+            "tooltipHeader":{
+                "posts":"Post Wall",
+                "myCalendar": "My Calendar",
+                "createIncident": "Create a new Incident",
+                "myIncident": "My Incident",
+                "profile": "My Profile"
+            },
+            "loading":"Content available soon !!!"
        },
       },
       pt : {
@@ -192,7 +200,15 @@ export const resources = {
             "night":"Noturno",
             "subscribe": "Cadastrar",
             "next": "Próximo",
-            "back": "Voltar"
+            "back": "Voltar",
+            "tooltipHeader":{
+                "posts":" Mural de Postagens",
+                "myCalendar": "Meu Calendário",
+                "createIncident": "Criar um novo Incidente",
+                "myIncident": "Meus incidentes",
+                "profile": "Meu Perfil"
+            },
+            "loading":"Conteúdo disponível em breve !!!"
         }
       },
 }
