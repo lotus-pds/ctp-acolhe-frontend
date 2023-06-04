@@ -95,10 +95,13 @@ export function Subscribe(props) {
         let newSubscription = { ...subscription };
 
         for (const key in newSubscription) {
-            if (typeof newSubscription[key] === 'string') {
-                newSubscription[key] = newSubscription[key].trim();
+            if (key != 'password') {
+                if (typeof newSubscription[key] === 'string') {
+                    newSubscription[key] = newSubscription[key].trim();
+                }
             }
-            if(newSubscription[key] == '') {
+
+            if (newSubscription[key] == '') {
                 delete newSubscription[key];
             }
         }
@@ -150,7 +153,7 @@ export function Subscribe(props) {
                                     className="mt-0 bg-gradient-to-r from-gray-500  to-gray-700
                                         dark:from-gray-200 dark:to-gray-400 dark:text-gray-900"
                                     color="gray" variant="gradient"
-                                    onClick={() => console.log(setStep(step - 1))}
+                                    onClick={() => setStep(step - 1)}
                                     disabled={step === 1}
                                 >
                                     {t("back")}
@@ -159,7 +162,7 @@ export function Subscribe(props) {
                                 <Button
                                     className="mt-0 bg-gradient-to-r from-green-200  to-green-300
                                         dark:from-green-300 dark:to-green-400"
-                                    color="green" variant="gradient" /*key={subscription}*/
+                                    color="green" variant="gradient"
                                     onClick={() => subscription.email.includes('@ifsp.edu.br') ? subscribe() : (step === 1 ? setStep(step + 1) : subscribe())}
                                     disabled={!Object.values(isFieldValid[step - 1]).every(value => value === true)}
                                 >

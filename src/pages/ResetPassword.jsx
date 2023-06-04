@@ -10,25 +10,12 @@ import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
 import { validatePassword } from "../utils";
 import { useTranslation } from "react-i18next";
-import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { patchResetPassword } from "../services/subscribe-signin";
+import { InformationCircleIcon } from "@heroicons/react/24/outline";
 
 export function ResetPassword(props) {
 
     const { token } = useParams();
-
-    const [values, setValues] = useState({
-        password: "",
-        showPassword: false,
-    });
-
-    const handleClickShowPassword = () => {
-        setValues({ ...values, showPassword: !values.showPassword });
-    };
-
-    const handleClickShowConfirmPassword = () => {
-        setValues({ ...values, showConfirmPassword: !values.showConfirmPassword });
-    };
 
     const { t } = useTranslation();
 
@@ -36,27 +23,17 @@ export function ResetPassword(props) {
 
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
-    const [isFieldValid, setIsFieldValid] = useState({});
+    const isFieldValid = {
+        password: password === '' ? undefined : validatePassword(password),
+        passwordConfirmation: passwordConfirmation === '' ? undefined : ((passwordConfirmation == password) && validatePassword(passwordConfirmation))
+    }
 
     const navigate = useNavigate();
 
     const resetPassword = async () => {
-        let isValid = true;
-
-        for (const key in isFieldValid) {
-            isValid = isValid && isFieldValid[key];
-        }
-
-        if (isValid && password != '' && passwordConfirmation != '') {
-            let newPassword = { token, senha: password.trim() };
-            await patchResetPassword(newPassword);
-            navigate('/reset-successfull');
-        } else {
-            setIsFieldValid({
-                password: (password == '' ? false : true) && isFieldValid.password,
-                passwordConfirmation: (passwordConfirmation == '' ? false : true) && isFieldValid.passwordConfirmation
-            });
-        }
+        let newPassword = { token, senha: password.trim() };
+        await patchResetPassword(newPassword);
+        navigate('/reset-successfull');
     }
 
     return (
@@ -93,86 +70,57 @@ export function ResetPassword(props) {
                             <form className="mt-8 mb-2 w-full  flex items-center flex-col"
                             >
                                 <div className="mb-4 flex flex-col gap-6 w-full">
-                                    <Input 
-                                        type={values.showPassword ? "text" : "password"} 
+                                    <Input
+                                        type="password"
                                         size="lg" label={t("newPassword")} color="gray" value={password} required
                                         className="text-gray-900 dark:text-gray-200"
                                         success={isFieldValid.password} error={isFieldValid.password === false ? true : false}
                                         onChange={(e) => {
                                             setPassword(e.target.value);
-                                            setIsFieldValid({ ...isFieldValid, password: validatePassword(e.target.value), passwordConfirmation: (passwordConfirmation == e.target.value) && validatePassword(e.target.value) });
                                         }}
                                         icon={
                                             <Tooltip content={
                                                 <div className="w-70">
-                                                  <Typography color="white" className="font-medium">Senha deve conter:</Typography>
-                                                  <Typography
-                                                    variant="small"
-                                                    color="white" 
-                                                    className="font-normal opacity-80"
-                                                  >
-                                                    * Letra maiuscula <br/>
-                                                    * Letra minuscula <br/>
-                                                    * Número <br/>
-                                                    * Caracter especial <br/>
-                                                    * Mínimo de oito dígitos
-                                                  </Typography>
+                                                    <Typography color="white" className="font-medium">Senha deve conter:</Typography>
+                                                    <Typography
+                                                        variant="small"
+                                                        color="white"
+                                                        className="font-normal opacity-80"
+                                                    >
+                                                        * Letra maiuscula <br />
+                                                        * Letra minuscula <br />
+                                                        * Número <br />
+                                                        * Caracter especial <br />
+                                                        * Mínimo de oito dígitos
+                                                    </Typography>
                                                 </div>
-                                              }>
-                                                <Button size="sm" variant="text" className="ml-[-12px] absolute rounded hover:bg-gray-200 dark:hover:bg-gray-900 active:bg-gray-200"
-                                                    onClick={handleClickShowPassword}
-                                                    
-                                                >   
-                                                    {values.showPassword ? 
-                                                    <EyeIcon 
-                                                        strokeWidth={2} 
-                                                        className="text-gray-800 dark:text-gray-200 w-5 h-5" 
-                                                    />  : 
-                                                    <EyeSlashIcon
-                                                        strokeWidth={2} 
-                                                        className="text-gray-800 dark:text-gray-200 w-5 h-5" 
-                                                    /> 
-                                                    }
-                                                </Button>
-                                              </Tooltip>
-                                        } 
+                                            }>
+                                                <InformationCircleIcon
+                                                    strokeWidth={2}
+                                                    className="text-gray-800 dark:text-gray-200 w-5 h-5 cursor-pointer ml-[-8px]"
+                                                />
+                                            </Tooltip>
+                                        }
                                     />
 
 
-                                    <Input 
-                                        type={values.showConfirmPassword ? "text" : "password"}  
+                                    <Input
+                                        type="password"
                                         size="md" label={t("confirmPassword")} color="gray" required
                                         className="text-gray-900 dark:text-gray-200"
                                         success={isFieldValid.passwordConfirmation}
                                         value={passwordConfirmation} error={isFieldValid.passwordConfirmation === false ? true : false}
                                         onChange={(e) => {
-                                            setIsFieldValid({ ...isFieldValid, passwordConfirmation: (e.target.value == password) && isFieldValid.password });
                                             setPasswordConfirmation(e.target.value);
                                         }}
-                                        icon={
-                                            <Button size="sm" variant="text" className="ml-[-12px] absolute rounded hover:bg-gray-200 dark:hover:bg-gray-900 active:bg-gray-200"
-                                                    onClick={handleClickShowConfirmPassword}
-                                                    
-                                                >   
-                                                    {values.showConfirmPassword ? 
-                                                    <EyeIcon 
-                                                        strokeWidth={2} 
-                                                        className="text-gray-800 dark:text-gray-200 w-5 h-5" 
-                                                    />  : 
-                                                    <EyeSlashIcon
-                                                        strokeWidth={2} 
-                                                        className="text-gray-800 dark:text-gray-200 w-5 h-5" 
-                                                    /> 
-                                                    }
-                                                </Button>
-                                        }     
                                     />
 
                                 </div>
-                                
-                                <Button className="mt-4 bg-gradient-to-r from-blue-100  to-blue-200
-                                    dark:from-blue-400 dark:to-blue-700
-                                    " color="blue" variant="gradient" onClick={resetPassword}>
+
+                                <Button
+                                    className="mt-4 bg-gradient-to-r from-blue-100  to-blue-200
+                                    dark:from-blue-400 dark:to-blue-700"
+                                    color="blue" variant="gradient" onClick={resetPassword} disabled={!Object.values(isFieldValid).every(value => value === true)}>
                                     {t("confirmReset")}
                                 </Button>
                             </form>
