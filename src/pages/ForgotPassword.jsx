@@ -21,13 +21,11 @@ export function ForgotPassword(props) {
 
     const [email, setEmail] = useState('');
 
-    const [isEmailValid, setIsEmailValid] = useState();
+    const isEmailValid = email === '' ? undefined : validateEmail(email.trim());
 
     const [success, setSuccess] = useState(false);
 
     const [isResendEmailEnabled, setIsResendEmailEnabled] = useState(false);
-
-    const navigate = useNavigate();
 
     const enableResendEmail = () => {
         setTimeout(() => {
@@ -36,14 +34,9 @@ export function ForgotPassword(props) {
     }
 
     const sendEmail = async () => {
-
-        if (isEmailValid && email != '') {
-            await postForgotPassword(email.trim());
-            setSuccess(true);
-            enableResendEmail();
-        } else {
-            setIsEmailValid((email == '' ? false : true) && email);
-        }
+        await postForgotPassword(email.trim());
+        setSuccess(true);
+        enableResendEmail();
     }
 
     return (
@@ -85,13 +78,14 @@ export function ForgotPassword(props) {
                                         success={isEmailValid} error={isEmailValid === false ? true : false}
                                         onChange={(e) => {
                                             setEmail(e.target.value);
-                                            setIsEmailValid(validateEmail(e.target.value));
                                         }}
                                     />
                                 </div>
 
-                                <Button className="mt-4 bg-gradient-to-r from-blue-100  to-blue-200
-                                        dark:from-blue-400 dark:to-blue-700" color="blue" variant="gradient" onClick={sendEmail}>
+                                <Button
+                                    className="mt-4 bg-gradient-to-r from-blue-100  to-blue-200dark:from-blue-400 dark:to-blue-700" 
+                                    color="blue" variant="gradient" onClick={sendEmail} disabled={!isEmailValid}
+                                >
                                     {t("send")}
                                 </Button>
                             </form>
@@ -113,7 +107,7 @@ export function ForgotPassword(props) {
                         {t('success')}
                     </h4>
                 </DialogHeader>
-                <DialogBody  className='text-center'>
+                <DialogBody className='text-center'>
                     {t('emailForgotPassword')}
                 </DialogBody>
                 <DialogFooter>
