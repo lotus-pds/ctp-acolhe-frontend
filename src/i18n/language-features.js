@@ -91,7 +91,10 @@ export const resources = {
             "course":"Course",
             "morning": "Morning",
             "afternoon" : "Afternoon",
-            "night":"Night"
+            "night":"Night",
+            "subscribe": "Subscribe",
+            "next": "Next",
+            "back": "Back"
        },
       },
       pt : {
@@ -186,7 +189,10 @@ export const resources = {
             "course":"Curso",
             "morning": "Matutino",
             "afternoon" : "Verpertino",
-            "night":"Noturno"
+            "night":"Noturno",
+            "subscribe": "Cadastrar",
+            "next": "Próximo",
+            "back": "Voltar"
         }
       },
 }
