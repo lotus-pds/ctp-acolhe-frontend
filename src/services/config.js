@@ -18,7 +18,7 @@ axios.interceptors.response.use( res => {
     return res;
 }, res => {
     removeCountLoading();
-    store.dispatch(activateErrorPopup(res.response.data.errors[0]));
+    store.dispatch(activateErrorPopup((res.response === undefined ? [] : res.response.data.errors)[0] || 'Ocorreu um erro'));
     throw res;
 })
 
