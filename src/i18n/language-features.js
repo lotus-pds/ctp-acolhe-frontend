@@ -57,7 +57,7 @@ export const resources = {
             },
             "tooltipRegistrationNumber":{
                 "attribute":"Registration Number with IFSP domain:",
-                "description":"* sp3000000",
+                "description":"* SP3000000",
                 "descriptionTwo":"* between 8 and 9 characters"
             },
             "tooltipPassword":{
@@ -75,11 +75,11 @@ export const resources = {
             },
             "tooltipClass":{
                 "attribute":"Class must contain",
-                "description":"* number (213, 431, 310...)",
+                "description":"* numbers and letters (L1, 213, 310...)",
             },
             "tooltipCourse":{
                 "attribute":"Course must contain",
-                "description":"* name of course (informatica, mecanica...)",
+                "description":"* name of course (Informática, Mecânica...)",
             },
             "checkBox":{
                 "desc":"I accept the",
@@ -155,7 +155,7 @@ export const resources = {
             },
             "tooltipRegistrationNumber":{
                 "attribute":"Prontuário com domínio IFSP:",
-                "description":"* sp3000000",
+                "description":"* SP3000000",
                 "descriptionTwo":"* entre 8 e 9 caracteres"
             },
             "tooltipPassword":{
@@ -169,15 +169,15 @@ export const resources = {
             "tooltipPhone":{
                 "attribute":"Telefone deve conter",
                 "description":"* DDD (11, 73...)",
-                "descriptionTwo":"* formatato 11999999999",
+                "descriptionTwo":"* formato 11999999999",
             },
             "tooltipClass":{
                 "attribute":"Turma deve conter",
-                "description":"* numero (213, 431, 310...)",
+                "description":"* números e letras (L1, 213, 310...)",
             },
             "tooltipCourse":{
                 "attribute":"Curso deve conter",
-                "description":"* nome do curso (informatica, mecanica...)",
+                "description":"* nome do curso (Informática, Mecânica...)",
             },
             "checkBox":{
                 "desc":"Eu aceito os",

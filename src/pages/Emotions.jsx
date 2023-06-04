@@ -4,11 +4,8 @@ import { useState, useEffect } from "react";
 import { postEmotion } from "../services/emotion";
 import { getEmotion } from "../services/emotion";
 import { useNavigate, Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 export function Emotions(props) {
-
-    const { setError } = props;
 
     const [emotion, setEmotion] = useState([]);
 
@@ -107,7 +104,7 @@ export function Emotions(props) {
                 </div>
             </div>
             <Link to='/successful'
-                className="p-2 font-semibold flex items-center justify-center bg-gradient-to-r from-gray-500  to-gray-700 rounded"
+                className="p-2 font-semibold flex items-center justify-center bg-gradient-to-r from-gray-500  to-gray-700 rounded hover:-translate-y-1 hover:scale-110 transition"
             >
                 {t("iPreferNotToAnswer")}
             </Link>
