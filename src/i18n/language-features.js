@@ -102,7 +102,10 @@ export const resources = {
                 "myIncident": "My Incident",
                 "profile": "My Profile"
             },
-            "loading":"Content available soon !!!"
+            "loading":"Content available soon !!!",
+            "tooltipEditProfile":{
+                "picture":"Image Profile"      
+            }
        },
       },
       pt : {
@@ -208,7 +211,10 @@ export const resources = {
                 "myIncident": "Meus incidentes",
                 "profile": "Meu Perfil"
             },
-            "loading":"Conteúdo disponível em breve !!!"
+            "loading":"Conteúdo disponível em breve !!!",
+            "tooltipEditProfile":{
+                "picture":"Imagem de Perfil"
+            }
         }
       },
 }
