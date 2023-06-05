@@ -15,7 +15,7 @@ export function Footer(){
                 className="
                     w-full
                     absolute
-                    bottom-0 left-o
+                    bottom-0 left-0
                     flex items-center justify-around
                     bg-gradient-to-r from-red-100  to-red-300
                     font-medium

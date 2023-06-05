@@ -7,7 +7,7 @@ export function PrivateRoute(props) {
     let userFlag = false;
 
     for(const key in user) {
-        if(getStorage('rolesCtpAcolhe').includes(user[key])) {
+        if((getStorage('rolesCtpAcolhe') || []).includes(user[key])) {
             userFlag = true;
         }
     }

@@ -49,7 +49,7 @@ export function Subscribe(props) {
             phoneNumber: subscription.telefone === '' ? undefined : validatePhoneNumber(subscription.telefone.trim()),
             class: subscription.turma === '' ? undefined : validateClass(subscription.turma.trim()),
             period: subscription.periodo === '' ? false : true,
-            course: subscription.curso === '' ? undefined : validateCourse(subscription.curso.trim()),
+            course: subscription.curso === '' ? undefined : validateCourse(subscription.curso.trim())
         }
     ];
 

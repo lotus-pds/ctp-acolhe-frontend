@@ -15,7 +15,7 @@ export function Emotions(props) {
 
     const sendEmotion = async (emotion) => {
         await postEmotion({ idSentimento: emotion });
-        navigate('/successful');
+        navigate('/posts');
     }
 
     const hasEmotion = async () => {
@@ -37,7 +37,7 @@ export function Emotions(props) {
 
     useEffect(() => {
         if (emotion.length > 0) {
-            navigate('/successful');
+            navigate('/posts');
         }
     }, [emotion]);
 

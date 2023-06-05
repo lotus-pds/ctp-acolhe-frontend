@@ -81,17 +81,17 @@ export function ResetPassword(props) {
                                         icon={
                                             <Tooltip content={
                                                 <div className="w-70">
-                                                    <Typography color="white" className="font-medium">Senha deve conter:</Typography>
+                                                    <Typography color="white" className="font-medium">{t("tooltipPassword.attribute")}</Typography>
                                                     <Typography
                                                         variant="small"
                                                         color="white"
                                                         className="font-normal opacity-80"
                                                     >
-                                                        * Letra maiuscula <br />
-                                                        * Letra minuscula <br />
-                                                        * Número <br />
-                                                        * Caracter especial <br />
-                                                        * Mínimo de oito dígitos
+                                                        {t("tooltipPassword.description")} <br />
+                                                        {t("tooltipPassword.descriptionTwo")} <br />
+                                                        {t("tooltipPassword.descriptionThree")} <br />
+                                                        {t("tooltipPassword.descriptionFour")} <br />
+                                                        {t("tooltipPassword.descriptionFive")}
                                                     </Typography>
                                                 </div>
                                             }>

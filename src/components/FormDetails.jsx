@@ -7,6 +7,7 @@ import {
 } from "@material-tailwind/react";
 import { useTranslation } from "react-i18next";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
+import { PencilIcon } from "@heroicons/react/24/solid";
 
 export function FormDetails(props) {
 
@@ -15,19 +16,17 @@ export function FormDetails(props) {
     const { t } = useTranslation();
 
     return (
-        <div className="mb-4 flex flex-col gap-6 w-full align-center justify-center">
+        <div className="mb-4 flex flex-col gap-6 w-full items-center justify-center">
 
-            <Select
-                className="rounded-full flex flex-row align-center justify-center border-none w-[92px]  text-center"
-                arrow={false} size="lg" color="lime" label="profile" variant="static"
-            >
-                <Option className="flex align-center justify-center w-[65px]"><img className="w-[60px]" src="https://media.discordapp.net/attachments/1077345452694970438/1107082557515890758/Mask_group_9.png?width=480&height=480" alt="" /></Option>
-                <Option className="flex align-center justify-center w-[65px]"><img className="w-[60px]" src="https://media.discordapp.net/attachments/1077345452694970438/1107082558170202232/Mask_group_7.png?width=480&height=480" alt="" /></Option>
-                <Option className="flex align-center justify-center w-[65px]"><img className="w-[60px]" src="https://media.discordapp.net/attachments/1077345452694970438/1107082558572867645/Mask_group_6.png?width=480&height=480" alt="" /></Option>
-                <Option className="flex align-center justify-center w-[65px]"><img className="w-[60px]" src="https://media.discordapp.net/attachments/1077345452694970438/1107082557838864464/Mask_group_8.png?width=480&height=480" alt="" /></Option>
-                <Option className="flex align-center justify-center w-[65px]"><img className="w-[60px]" src="https://media.discordapp.net/attachments/1077345452694970438/1107082563455037591/Mask_group_4.png?width=480&height=480" alt="" /></Option>
-                <Option className="flex align-center justify-center w-[65px]"><img className="w-[60px]" src="https://media.discordapp.net/attachments/1077345452694970438/1107082559084560424/Mask_group_5.png?width=480&height=480" alt="" /></Option>
-            </Select>
+           
+            <div className="bg-center bg-cover bg-[url('https://media.discordapp.net/attachments/1077345452694970438/1107082558170202232/Mask_group_7.png?width=480&height=480')] w-20 h-20 rounded-full cursor-pointer relative">
+                <div className="bg-gradient-to-r from-green-200  to-green-300
+                        dark:from-green-300 dark:to-green-400 w-8 h-8 absolute bottom-0 right-0 rounded-full flex items-center justify-center">
+                        <PencilIcon
+                            className="w-5 text-gray-200"
+                        />
+                </div>
+            </div>
 
             <Input size="md" label={t("phone")} color="gray" required
                 type="tel"
