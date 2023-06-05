@@ -126,7 +126,7 @@ export const resources = {
       },
       pt : {
         translation: {
-            "error" : "Arraste",
+            "error" : "Erro",
             "drag":"Arraste",
             "success" : "Sucesso",
             "signIn" : "Acessar",
