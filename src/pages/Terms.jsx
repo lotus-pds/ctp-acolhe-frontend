@@ -1,5 +1,6 @@
 import { Typography } from "@material-tailwind/react";
 import { Logo } from "../components/Logo";
+import { Link } from "react-router-dom";
 
 export function Terms(){
     return(
@@ -10,7 +11,7 @@ export function Terms(){
             <Typography variant="h3" className="">Seja bem-vindo ao nosso site. Leia com atenção todos os termos abaixo.</Typography>
 
 
-            <Typography variant="paragraph" className="">Este documento, e todo o conteúdo do site é oferecido por (ADICIONAR DADOS DA EMPRESA OU NOME FANTASIA), neste termo representado apenas por “EMPRESA”, que regulamenta todos os direitos e obrigações com todos que acessam o site, denominado neste termo como “VISITANTE”, reguardado todos os direitos previstos na legislação, trazem as cláusulas abaixo como requisito para acesso e visita do mesmo, situado no endereço (ADICIONAR ENDEREÇO DO SITE).</Typography>
+            <Typography variant="paragraph" className="">Este documento, e todo o conteúdo do site é oferecido por <strong className="font-bold">Equipe Lotus</strong>, neste termo representado apenas por “EMPRESA”, que regulamenta todos os direitos e obrigações com todos que acessam o site, denominado neste termo como “VISITANTE”, reguardado todos os direitos previstos na legislação, trazem as cláusulas abaixo como requisito para acesso e visita do mesmo, situado no endereço <Link className="font-bold italic text-blue-900" to={"https://ctp-acolhe-v1.netlify.app"}> CTP Acolhe </Link>.</Typography>
 
             <Typography variant="paragraph" className="">A permanência no website implica-se automaticamente na leitura e aceitação tácita do presente termos de uso a seguir. Este termo foi atualizado pela última vez em 01 de junho de 2023.</Typography>
 
