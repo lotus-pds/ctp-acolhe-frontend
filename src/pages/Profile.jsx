@@ -6,11 +6,12 @@ import {
 } from "@material-tailwind/react";
 import { useTranslation } from "react-i18next";
 import { HeaderUser } from "../components/HeaderUser";
-import { CheckIcon } from "@heroicons/react/24/outline";
+import { ArrowLeftOnRectangleIcon, CheckIcon } from "@heroicons/react/24/outline";
 import { PencilIcon, AcademicCapIcon, KeyIcon, UserCircleIcon, ExclamationTriangleIcon, UserIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import { getUser, putUser } from "../services/user";
 import { validateClass, validateCourse, validateEmail, validateName, validatePassword, validatePhoneNumber, validateRegistration } from "../utils";
+import { Link } from "react-router-dom";
 
 export function Profile() {
 
@@ -82,7 +83,12 @@ export function Profile() {
                         <div className="w-[75%] ml-9 bg-gray-200 dark:bg-gray-900 h-7"></div>
                         <div className="w-[75%] ml-9 bg-gray-200 dark:bg-gray-900 h-7"></div>
                         <div className="w-[95%] bg-gray-200 dark:bg-gray-900 h-7"></div>
-                        <div className="w-[95%] bg-gray-200 dark:bg-gray-900 h-7"></div>
+                        
+                            <Link to={"/"} className="text-red-300 dark:text-red-200 italic font-bold flex gap-2 justify-center items-center">
+                                <ArrowLeftOnRectangleIcon className="w-6"/>
+                                {t('tooltipEditProfile.logout')}
+                            </Link>
+                        
                     </div>
                 </div>
                 <div className="bg-gray-100 dark:bg-gray-800 w-full max-h-[3000px] rounded-xl mb-8 drop-shadow-md">

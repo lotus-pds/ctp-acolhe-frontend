@@ -119,7 +119,8 @@ export const resources = {
                 "dagerousTitle":"Deactivate the account",
                 "dangerousDesc":"I want to deactivate my account and I am aware that I will need to confirm my data if I want to activate it again.",
                 "edit":"Edit Data",
-                "dangerousEdit":"Edit Dangerous Session"
+                "dangerousEdit":"Edit Dangerous Session",
+                "logout":"Account Logout"
             }
        },
       },
@@ -243,7 +244,8 @@ export const resources = {
                 "dagerousTitle":"Desativar a Conta",
                 "dangerousDesc":"Quero desativar minha conta e estou ciente de que precisarei confirmar meus dados caso queira ativá-la novamente.",
                 "edit":"Editar Dados",
-                "dangerousEdit":"Editar Sessão Perigosa"
+                "dangerousEdit":"Editar Sessão Perigosa",
+                "logout":"Sair da Conta"
             }
         }
       },
