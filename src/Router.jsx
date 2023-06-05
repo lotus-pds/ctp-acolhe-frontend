@@ -15,6 +15,7 @@ import { MyCalendar } from "./pages/MyCalendar";
 import { CreateIncident } from "./pages/CreateIncident";
 import { MyIncident } from "./pages/MyIncident";
 import { Profile } from "./pages/Profile";
+import { Terms } from "./pages/Terms";
 
 
 export function Router(props) {
@@ -25,6 +26,7 @@ export function Router(props) {
             <Route path="/subscribe" element={<Subscribe />} />
             <Route path="/emotions" element={<PrivateRoute user={['Aluno']} alternative='/successful'><Emotions /></PrivateRoute>} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/terms" element={<Terms />} />
             <Route path="/reset-my-password/:token" element={<ResetPassword />} />
             <Route path="/reset-successfull" element={<ResetSuccessfull />} />
             <Route path="/access-confirmation" element={<AccessConfirmation />} />

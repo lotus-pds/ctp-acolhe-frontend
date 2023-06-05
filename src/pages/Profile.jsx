@@ -6,8 +6,8 @@ import {
 } from "@material-tailwind/react";
 import { useTranslation } from "react-i18next";
 import { HeaderUser } from "../components/HeaderUser";
-import { PencilIcon, UserIcon, CheckIcon, ExclamationTriangleIcon } from "@heroicons/react/24/outline";
-import { AcademicCapIcon, KeyIcon, UserCircleIcon } from "@heroicons/react/24/solid";
+import { CheckIcon } from "@heroicons/react/24/outline";
+import { PencilIcon, AcademicCapIcon, KeyIcon, UserCircleIcon, ExclamationTriangleIcon, UserIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import { getUser, putUser } from "../services/user";
 import { validateClass, validateCourse, validateEmail, validateName, validatePassword, validatePhoneNumber, validateRegistration } from "../utils";
@@ -92,27 +92,25 @@ export function Profile() {
                             className="font-normal flex justify-center items-center gap-4"
                         >
                             <UserIcon className="w-8"></UserIcon>
-                            Informações da Conta
+                            {t("tooltipEditProfile.titleProfile")}
                         </Typography>
 
                         <Typography
-                            variant="lead"
+                            variant="paragraph"
                         >
-                            Bem-vindo à nossa página de edição de perfil de usuário! Aqui você pode personalizar e atualizar as informações do seu perfil para torná-lo único e relevante para a sua presença neste site.
-
-
+                            {t("tooltipEditProfile.descProfileOne")}
                         </Typography>
 
                         <Typography
-                            variant="lead"
+                            variant="paragraph"
                         >
-                            Nossa página de edição de perfil é projetada para ser intuitiva e fácil de usar. Aqui estão algumas das principais características e opções disponíveis para você:
+                            {t("tooltipEditProfile.descProfileTwo")}
                         </Typography>
 
                         <div className="w-full">
                             <div className="flex items-center justify-between">
                                 <Typography variant="h4">
-                                    Meu Perfil
+                                    {t("tooltipEditProfile.myProfile")}
                                 </Typography>
                                 <Tooltip content={
                                     <div className="w-70">
@@ -121,7 +119,7 @@ export function Profile() {
                                             color="white"
                                             className="font-normal opacity-80"
                                         >
-                                            {t('tooltipEditProfile.picture')}
+                                            {t('tooltipEditProfile.edit')}
                                         </Typography>
                                     </div>
                                 }>
@@ -144,17 +142,19 @@ export function Profile() {
 
                             <div className="flex flex-col p-6 gap-6">
                                 <Typography variant="h4" className='font-normal flex gap-4'>
-                                    <UserCircleIcon className="w-6" />
-                                    Informações Pessoais
+                                    <UserIcon className="w-6" />
+                                    {t("tooltipEditProfile.somethingInformations")}
                                 </Typography>
                                 <div className="grid grid-cols-2 gap-8 ">
                                     <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/
-                                        disabled={!sections.personalInfo} label="Nome Completo" value={user.nome}
+                                        disabled={!sections.personalInfo} label={t("name")} value={user.nome}
                                         onChange={(e) => setUser({ ...user, nome: e.target.value })} error={!isFieldValid.name} success={isFieldValid.name}
+                                        className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
                                     />
                                     <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/
-                                        disabled={!sections.personalInfo} label="Telefone" value={user.telefone}
+                                        disabled={!sections.personalInfo} label={t("phone")} value={user.telefone}
                                         onChange={(e) => setUser({ ...user, telefone: e.target.value })} error={!isFieldValid.phoneNumber} success={isFieldValid.phoneNumber}
+                                        className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
                                     />
                                 </div>
                             </div>
@@ -162,27 +162,32 @@ export function Profile() {
                             <div className="flex flex-col p-6 gap-6">
                                 <Typography variant="h4" className='font-normal flex gap-4'>
                                     <AcademicCapIcon className="w-6" />
-                                    Informações Institucionais
+                                    {t("tooltipEditProfile.institutionalInformations")}
                                 </Typography>
                                 <div className="grid grid-cols-2 gap-8 ">
                                     <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/
-                                        disabled label="E-mail Institucional" value={user.email}
+                                        disabled label={t("email")} value={user.email}
+                                        className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
                                     />
                                     <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/
-                                        disabled={!sections.personalInfo} label="Turma" value={user.turma}
+                                        disabled={!sections.personalInfo} label={t("class")} value={user.turma}
                                         onChange={(e) => setUser({ ...user, turma: e.target.value })} error={!isFieldValid.class} success={isFieldValid.class}
+                                        className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
                                     />
                                     <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/
-                                        disabled={!sections.personalInfo} label="Período" value={user.periodo}
+                                        disabled={!sections.personalInfo} label={t("period")} value={user.periodo}
                                         onChange={(e) => setUser({ ...user, periodo: e.target.value })} error={!isFieldValid.period} success={isFieldValid.period}
+                                        className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
                                     />
                                     <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/
-                                        disabled={!sections.personalInfo} label="Curso" value={user.curso}
+                                        disabled={!sections.personalInfo} label={t("course")} value={user.curso}
                                         onChange={(e) => setUser({ ...user, curso: e.target.value })} error={!isFieldValid.course} success={isFieldValid.course}
+                                        className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
                                     />
                                     <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/
-                                        disabled={!sections.personalInfo} label="Prontuário" value={user.prontuario}
+                                        disabled={!sections.personalInfo} label={t("registration")} value={user.prontuario}
                                         onChange={(e) => setUser({ ...user, prontuario: e.target.value })} error={!isFieldValid.registration} success={isFieldValid.registration}
+                                        className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:label:text-gray-200"
                                     />
                                 </div>
                             </div>
@@ -191,7 +196,7 @@ export function Profile() {
                         <div className="w-full">
                             <div className="flex items-center justify-between">
                                 <Typography variant="h4">
-                                    Segurança
+                                {t("tooltipEditProfile.security")}
                                 </Typography>
                                 <Tooltip content={
                                     <div className="w-70">
@@ -200,7 +205,7 @@ export function Profile() {
                                             color="white"
                                             className="font-normal opacity-80"
                                         >
-                                            {t('tooltipEditProfile.picture')}
+                                            {t('tooltipEditProfile.edit')}
                                         </Typography>
                                     </div>
                                 }>
@@ -220,11 +225,15 @@ export function Profile() {
                             <div className="flex flex-col p-6 gap-6">
                                 <Typography variant="h4" className='font-normal flex gap-4'>
                                     <KeyIcon className="w-6" />
-                                    Alterar a minha senha
+                                    {t("tooltipEditProfile.changePassword")}
                                 </Typography>
                                 <div className="grid grid-cols-2 gap-8 ">
-                                    <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/ disabled={!sections.security} label="Senha Antiga"></Input>
-                                    <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/ disabled={!sections.security} label="Nova Senha"></Input>
+                                    <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/ disabled={!sections.security} label={t("oldPassword")}
+                                        className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:label:text-gray-200"
+                                    ></Input>
+                                    <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/ disabled={!sections.security} label={t("newPassword")}
+                                        className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:label:text-gray-200"
+                                    ></Input>
                                 </div>
                             </div>
                         </div>
@@ -232,7 +241,7 @@ export function Profile() {
                         <div className="w-full">
                             <div className="flex items-center justify-between">
                                 <Typography variant="h4">
-                                    Área Perigosa
+                                {t("tooltipEditProfile.dangerous")}
                                 </Typography>
                                 <Tooltip content={
                                     <div className="w-70">
@@ -241,7 +250,7 @@ export function Profile() {
                                             color="white"
                                             className="font-normal opacity-80"
                                         >
-                                            {t('tooltipEditProfile.picture')}
+                                            {t('tooltipEditProfile.dangerousEdit')}
                                         </Typography>
                                     </div>
                                 }>
@@ -261,11 +270,11 @@ export function Profile() {
                             <div className="flex flex-col p-6 gap-6">
                                 <Typography variant="h4" color="red" className='font-normal flex gap-4'>
                                     <ExclamationTriangleIcon className="w-6" />
-                                    Desativar a Conta
+                                    {t("tooltipEditProfile.dagerousTitle")}
                                 </Typography>
 
                                 <Typography variant="small" color="red" className='font-normal italic flex gap-4'>
-                                    Quero desativar minha conta e estou ciente de que precisarei confirmar meus dados caso queira ativá-la novamente.
+                                {t("tooltipEditProfile.dangerousDesc")}
                                 </Typography>
                             </div>
                         </div>

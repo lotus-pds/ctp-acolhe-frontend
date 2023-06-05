@@ -3,12 +3,14 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from "swiper";
+import { ArrowLongRightIcon, ArrowLongLeftIcon } from "@heroicons/react/24/solid";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { Typography } from "@material-tailwind/react";
 
 export function Home() {
     const state = useSelector(state => state);
@@ -49,19 +51,27 @@ export function Home() {
                                     {t("educationalTitle")}
                                 </h2>
                                 <p dangerouslySetInnerHTML={{__html:t("educationalDesc")}} />
-                                <Link to="/subscribe">
-                                    <div
-                                        className="
-                                            w-[120px]
-                                            font-bold
-                                            rounded-lg
-                                            p-2
-                                            bg-gradient-to-r from-red-100 via-red-300 to-red-400
-                                            text-center
-                                        ">
-                                        {t("signUp")}
-                                    </div>
-                                </Link>
+                                <div className="flex flex-row items-center justify-between w-full">
+                                    <Link to="/subscribe">
+                                        <div
+                                            className="
+                                                w-[120px]
+                                                font-bold
+                                                rounded-lg
+                                                p-2
+                                                bg-gradient-to-r from-red-100 via-red-300 to-red-400
+                                                text-center
+                                            ">
+                                            {t("signUp")}
+                                        </div>
+                                    </Link>
+                                    <Typography variant="h5" className="flex items-center justify-center  m-w-[100px] gap-6 font-mouse font-normal">
+                                        {t("drag")}
+                                        <ArrowLongRightIcon className="w-6"/>
+                                                                    
+                                    </Typography>
+                                </div>
+                                
                             </div>
                             <div  className="flex items-center justify-center">
                                 <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572130138378250/studies.png?width=648&height=480" alt="" 
@@ -79,6 +89,7 @@ export function Home() {
                                     {t("organizationTitle")}
                                 </h2>
                                 <p dangerouslySetInnerHTML={{__html:t("organizationDesc")}} />
+                                <div className="flex items-center justify-between w-full">
                                 <Link to="/subscribe">
                                     <div
                                         className="
@@ -92,6 +103,13 @@ export function Home() {
                                         {t("signUp")}
                                     </div>
                                 </Link>
+                                <Typography variant="h5" className="flex items-center justify-center  m-w-[100px] gap-6 font-mouse font-normal">
+                                    <ArrowLongLeftIcon className="w-6"/>
+                                        {t("drag")}
+                                    <ArrowLongRightIcon className="w-6"/>
+                                </Typography>
+                                </div>
+                                
                             </div>
                             <div   className="flex items-center justify-center">
                                 <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572129647632436/organization.png?width=624&height=480" alt="" 
@@ -110,19 +128,26 @@ export function Home() {
                                     {t("psychologicalTitle")}
                                 </h2>
                                 <p dangerouslySetInnerHTML={{__html:t("psychologicalDesc")}} />
-                                <Link to="/subscribe">
-                                    <div
-                                        className="
-                                            w-[120px]
-                                            font-bold
-                                            rounded-lg
-                                            p-2
-                                            bg-gradient-to-r from-purple-100  to-purple-300
-                                            text-center
-                                        ">
-                                        {t("signUp")}
-                                    </div>
-                                </Link>
+                                <div className="flex items-center justify-between w-full">
+                                    <Link to="/subscribe">
+                                        <div
+                                            className="
+                                                w-[120px]
+                                                font-bold
+                                                rounded-lg
+                                                p-2
+                                                bg-gradient-to-r from-purple-100  to-purple-300
+                                                text-center
+                                            ">
+                                            {t("signUp")}
+                                        </div>
+                                    </Link>
+                                    <Typography variant="h5" className="flex items-center justify-center  m-w-[100px] gap-6 font-mouse font-normal">
+                                        <ArrowLongLeftIcon className="w-6"/>
+                                        {t("drag")}
+                                    </Typography>
+                                </div>
+                                
                             </div>
                             <div className="flex items-center justify-center"> 
                                 <img src="https://media.discordapp.net/attachments/1077345452694970438/1099732054565990410/Component_17_1.png?width=480&height=480" alt="" 

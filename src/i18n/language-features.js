@@ -2,6 +2,7 @@ export const resources = {
     en : {
         translation : {
             "error" : "Error",
+            "drag":"Drag",
             "success" : "Success",
             "signIn" : "Sign In",
             "signUp" : "Sign Up",
@@ -38,6 +39,7 @@ export const resources = {
             "send" : "Send",
             "resendEmail" : "Resend email",
             "newPassword": "New Password",
+            "oldPassword":"Old Password",
             "resetPassword" : "Reset password",
             "resetPassowordDesciption" : "Set a secure password to access the platform",
             "confirmNewPassword" : "Confirm new Passoword",
@@ -104,13 +106,27 @@ export const resources = {
             },
             "loading":"Content available soon !!!",
             "tooltipEditProfile":{
-                "picture":"Image Profile"      
+                "picture":"Image Profile",
+                "titleProfile":"Account information",
+                "descProfileOne":"Welcome to our user profile editing page! Here you can customize and update your profile information to make it unique and relevant to your presence on this site.",
+                "descProfileTwo":"Our profile editing page is designed to be intuitive and easy to use. Here are some of the key features and options available to you:",
+                "myProfile":"My Profile",
+                "somethingInformations":"Personal Information",
+                "institutionalInformations":"Institutional Information",
+                "security":"Security",
+                "changePassword":"Change My Password",
+                "dangerous":"Dangerous Area",
+                "dagerousTitle":"Deactivate the account",
+                "dangerousDesc":"I want to deactivate my account and I am aware that I will need to confirm my data if I want to activate it again.",
+                "edit":"Edit Data",
+                "dangerousEdit":"Edit Dangerous Session"
             }
        },
       },
       pt : {
         translation: {
-            "error" : "Erro",
+            "error" : "Arraste",
+            "drag":"Drag",
             "success" : "Sucesso",
             "signIn" : "Acessar",
             "signUp" : "Cadastrar",
@@ -147,6 +163,7 @@ export const resources = {
             "send" : "Enviar",
             "resendEmail" : "Reenviar email",
             "newPassword": "Nova Senha",
+            "oldPassword":"Senha Antiga",
             "resetPassword" : "Redefinir a senha",
             "resetPassowordDesciption" : "Defina uma senha segura para ter acesso a plataforma",
             "confirmNewPassword" : "Confirmar a nova senha",
@@ -213,7 +230,20 @@ export const resources = {
             },
             "loading":"Conteúdo disponível em breve !!!",
             "tooltipEditProfile":{
-                "picture":"Imagem de Perfil"
+                "picture":"Imagem de Perfil",
+                "titleProfile":"Informações da Conta",
+                "descProfileOne":"Bem-vindo à nossa página de edição de perfil de usuário! Aqui você pode personalizar e atualizar as informações do seu perfil para torná-lo único e relevante para a sua presença neste site.",
+                "descProfileTwo":"Nossa página de edição de perfil é projetada para ser intuitiva e fácil de usar. Aqui estão algumas das principais características e opções disponíveis para você:",
+                "myProfile":"Meu Perfil",
+                "somethingInformations":"Informações Pessoais",
+                "institutionalInformations":"Informações Institucionais",
+                "security":"Segurança",
+                "changePassword":"Alterar minha senha",
+                "dangerous":"Área perigosa",
+                "dagerousTitle":"Desativar a Conta",
+                "dangerousDesc":"Quero desativar minha conta e estou ciente de que precisarei confirmar meus dados caso queira ativá-la novamente.",
+                "edit":"Editar Dados",
+                "dangerousEdit":"Editar Sessão Perigosa"
             }
         }
       },

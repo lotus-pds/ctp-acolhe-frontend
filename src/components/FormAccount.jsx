@@ -6,6 +6,8 @@ import {
 } from "@material-tailwind/react";
 import { useTranslation } from "react-i18next";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
+
 
 export function FormAccount(props) {
 
@@ -161,9 +163,9 @@ export function FormAccount(props) {
                 required
                 label={
                     <Typography className="text-sm text-gray-900 dark:text-gray-200 flex">{t("checkBox.desc")}
-                        <Typography as="a" href="#" color="green" className="text-sm hover:text-green-700 transition-colors italic">
+                        <Link to="/terms" color="green" target="blank" className="text-green-500 text-sm hover:text-green-700 transition-colors italic">
                             &nbsp;{t("checkBox.descTwo")}
-                        </Typography>.
+                        </Link>.
                     </Typography>
                 } />
         </div>
