@@ -1,7 +1,7 @@
-import { Logo } from "./Logo";
 import { ThemeButton } from "./ThemeButton";
 import { LanguageButton } from "./LanguageButton";
 import { NavbarUser } from "./NavbarUser";
+import { LogoAuthorized } from "./LogoAuthorized";
 
 export function HeaderUser (){
 
@@ -10,7 +10,7 @@ export function HeaderUser (){
             <div 
                 className="ml-12"
             >
-                <Logo/>
+                <LogoAuthorized/>
             </div>
         
             <div>
