@@ -26,7 +26,12 @@ export function Emotions(props) {
 
         let newDate = year + '-' + month + '-' + day;
 
-        const emotions = await getEmotion(newDate);
+        const filters = {
+            dataInicial: newDate,
+            dataFinal: newDate
+        };
+
+        const emotions = await getEmotion(filters);
 
         setEmotion(emotions.data);
     }
