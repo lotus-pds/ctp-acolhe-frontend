@@ -13,9 +13,10 @@ import { PencilIcon, AcademicCapIcon, KeyIcon, ExclamationTriangleIcon, UserIcon
 import { useEffect, useState } from "react";
 import { getUser, putUser, patchUserPassword } from "../services/user";
 import { deleteSession } from "../services/subscribe-signin";
-import { validateClass, validateCourse, validateEmail, validateName, validatePassword, validatePhoneNumber, validateRegistration } from "../utils";
+import { validateClass, validateEmail, validateName, validatePassword, validatePhoneNumber, validateRegistration } from "../utils";
 import { useNavigate } from "react-router-dom";
 import { removeStorage } from "../services/config";
+import { getCourses } from "../services/course";
 
 export function Profile() {
 
@@ -23,6 +24,7 @@ export function Profile() {
     const navigate = useNavigate();
 
     const [user, setUser] = useState({});
+    const [courses, setCourses] = useState([]);
 
     const [password, setPassword] = useState({
         senhaAtual: '',
@@ -40,7 +42,12 @@ export function Profile() {
             let response = await getUser();
             setUser(response.data);
         }
+        const localGetCourses = async () => {
+            let response = await getCourses();
+            setCourses(response.data);
+        }
         localGetUser();
+        localGetCourses();
     }, []);
 
     const isFieldValid = {
@@ -49,8 +56,8 @@ export function Profile() {
         registration: validateRegistration(String(user.prontuario).trim()),
         phoneNumber: validatePhoneNumber(String(user.telefone).trim()),
         class: validateClass(String(user.turma).trim()),
-        period: user.period === '' ? false : true,
-        course: validateCourse(String(user.curso).trim())
+        period: user.periodo === '' ? false : true,
+        course: user.curso === '' ? false : true
     };
 
     const isPasswordValid = {
@@ -59,7 +66,7 @@ export function Profile() {
     }
 
     const updateUser = async () => {
-        let response = await putUser({ ...user });
+        let response = await putUser(user);
         setUser(response.data);
     }
 
@@ -70,6 +77,8 @@ export function Profile() {
             senhaNova: ''
         });
     }
+
+    console.log(user);
 
     return (
         <div className="flex flex-col items-center">
@@ -222,11 +231,18 @@ export function Profile() {
                                         <Option value="VESPERTINO">{t("afternoon")}</Option>
                                         <Option value="NOTURNO">{t("night")}</Option>
                                     </Select>
-                                    <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/
-                                        disabled={!sections.personalInfo} label={t("course")} value={user.curso}
-                                        onChange={(e) => setUser({ ...user, curso: e.target.value })} error={!isFieldValid.course} success={isFieldValid.course}
-                                        className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
-                                    />
+                                    <Select
+                                        label={t("course")}
+                                        color="gray"
+                                        className="text-gray-900 dark:text-gray-200"
+                                        value={user.idCurso || (user.curso || {}).idCurso} disabled={!sections.personalInfo}
+                                        onChange={(e) => setUser({ ...user, idCurso: e })}
+                                        success={isFieldValid.course}
+                                    >
+                                        {courses.map((value) =>
+                                            <Option value={value.idCurso}>{value.nome}</Option>)
+                                        }
+                                    </Select>
                                     <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/
                                         disabled label={t("registration")} value={user.prontuario}
                                         onChange={(e) => setUser({ ...user, prontuario: e.target.value })} error={!isFieldValid.registration} success={isFieldValid.registration}

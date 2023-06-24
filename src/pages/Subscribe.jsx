@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
 import { postSubscribe, postResendVerification } from "../services/subscribe-signin";
-import { validateEmail, validateName, validatePassword, validateRegistration, validatePhoneNumber, validateClass, validateCourse } from "../utils";
+import { validateEmail, validateName, validatePassword, validateRegistration, validatePhoneNumber, validateClass } from "../utils";
 import { useTranslation } from "react-i18next";
 import { FormAccount } from "../components/FormAccount";
 import { FormDetails } from "../components/FormDetails";
@@ -31,7 +31,7 @@ export function Subscribe(props) {
         telefone: '',
         turma: '',
         periodo: '',
-        curso: '',
+        idCurso: '',
         termo: false,
         confirmacao: ''
     });
@@ -49,7 +49,7 @@ export function Subscribe(props) {
             phoneNumber: subscription.telefone === '' ? undefined : validatePhoneNumber(subscription.telefone.trim()),
             class: subscription.turma === '' ? undefined : validateClass(subscription.turma.trim()),
             period: subscription.periodo === '' ? false : true,
-            course: subscription.curso === '' ? undefined : validateCourse(subscription.curso.trim())
+            idCourse: subscription.idCurso === '' ? false : true,
         }
     ];
 

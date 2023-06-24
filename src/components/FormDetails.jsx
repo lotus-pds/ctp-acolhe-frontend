@@ -8,6 +8,8 @@ import {
 import { useTranslation } from "react-i18next";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import { PencilIcon } from "@heroicons/react/24/solid";
+import { useEffect, useState } from "react";
+import { getCourses } from "../services/course";
 
 export function FormDetails(props) {
 
@@ -15,16 +17,27 @@ export function FormDetails(props) {
 
     const { t } = useTranslation();
 
+    const [courses, setCourses] = useState([]);
+
+    useEffect(() => {
+        const localGetCourses = async () => {
+            let response = await getCourses();
+            setCourses(response.data);
+        }
+
+        localGetCourses();
+    }, []);
+
     return (
         <div className="mb-4 flex flex-col gap-6 w-full items-center justify-center">
 
-           
+
             <div className="bg-center bg-cover bg-[url('https://media.discordapp.net/attachments/1077345452694970438/1107082558170202232/Mask_group_7.png?width=480&height=480')] w-20 h-20 rounded-full cursor-pointer relative">
                 <div className="bg-gradient-to-r from-green-200  to-green-300
                         dark:from-green-300 dark:to-green-400 w-8 h-8 absolute bottom-0 right-0 rounded-full flex items-center justify-center">
-                        <PencilIcon
-                            className="w-5 text-gray-200"
-                        />
+                    <PencilIcon
+                        className="w-5 text-gray-200"
+                    />
                 </div>
             </div>
 
@@ -89,7 +102,7 @@ export function FormDetails(props) {
                 }
             />
 
-            <Select 
+            <Select
                 label={t("period")}
                 color="gray"
                 className="text-gray-900 dark:text-gray-200"
@@ -102,34 +115,18 @@ export function FormDetails(props) {
                 <Option value="NOTURNO">{t("night")}</Option>
             </Select>
 
-            <Input size="md" label={t("course")} color="gray" required
+            <Select
+                label={t("course")}
+                color="gray"
                 className="text-gray-900 dark:text-gray-200"
-                success={isFieldValid.course}
-                type="email" value={subscription.curso} error={isFieldValid.course === false ? true : false}
-                onChange={(e) => {
-                    setSubscription({ ...subscription, curso: e.target.value });
-                }}
-
-                icon={
-                    <Tooltip content={
-                        <div className="w-70">
-                            <Typography color="white" className="font-medium">{t("tooltipCourse.attribute")}</Typography>
-                            <Typography
-                                variant="small"
-                                color="white"
-                                className="font-normal opacity-80"
-                            >
-                                {t("tooltipCourse.description")}<br />
-                            </Typography>
-                        </div>
-                    }>
-                        <InformationCircleIcon
-                            strokeWidth={2}
-                            className="text-gray-800 dark:text-gray-200 w-5 h-5 cursor-pointer"
-                        />
-                    </Tooltip>
+                value={subscription.idCurso}
+                onChange={(e) => setSubscription({ ...subscription, idCurso: e })}
+                success={isFieldValid.idCourse}
+            >
+                {courses.map((value) => 
+                    <Option value={value.idCurso}>{value.nome}</Option>)
                 }
-            />
+            </Select>
         </div>
     )
 }
