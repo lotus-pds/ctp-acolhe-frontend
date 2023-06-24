@@ -1,4 +1,4 @@
-import { 
+import {
     Card,
     Typography
 } from "@material-tailwind/react";
@@ -8,12 +8,12 @@ import { useTranslation } from "react-i18next";
 
 export function AccessConfirmation() {
 
-    const {t} = useTranslation()
+    const { t } = useTranslation()
 
-    return(
+    return (
         <div>
-            <SecondHeader/>
-            <div 
+            <SecondHeader />
+            <div
                 className="w-full bg-none grid grid-cols-1 items-center justify-center"
             >
                 <div
@@ -35,14 +35,14 @@ export function AccessConfirmation() {
                             <Typography variant="h4" className="
                                 bg-clip-text text-transparent bg-gradient-to-r from-green-100  to-green-300
                                 font-mouse text-3xl font-normal dark:from-green-300 dark:to-green-400
-                            "> 
+                            ">
                                 {t("confirmedEmail")}
                             </Typography>
                             <Typography className="mt-1 font-bold text-gray-900 dark:text-gray-200 text-center">
                                 {t("confirmedEmailDescription")}
                             </Typography>
-                            
-                                
+
+
                             {/**
                              * UTILIZAR ESSE COMPONENTE QUANTO O ROTEAMENTO ESTIVER PRONTO
                              * <Button className="mt-4 bg-gradient-to-r from-green-100  to-green-300
@@ -51,14 +51,14 @@ export function AccessConfirmation() {
                                 {t("signIn")}
                             </Button>
                              */}
-                            
+
                             <Link className="mt-4 bg-gradient-to-r from-green-100  to-green-300
                                 dark:from-green-300 dark:to-green-400 p-2 rounded text-gray-100
                             " to="/signin">
                                 {t("signIn")}
                             </Link>
                         </div>
-                    
+
                     </Card>
                 </div>
             </div>

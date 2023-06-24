@@ -4,12 +4,6 @@ export const validateClass = class_ => {
     return result;
 }
 
-export const validateCourse = course => {
-    const regex = /^[a-zA-Z\u00C0-\u00FF ]{5,50}$/;
-    const result = regex.exec(course) !== null ? true : false;
-    return result;
-}
-
 export const validateEmail = email => {
     const regex = /^[a-zA-Z0-9].*[a-zA-Z0-9._]*[a-zA-Z][a-zA-Z0-9._]*@(ifsp\.edu\.br|aluno\.ifsp\.edu\.br)$/;
     const result = regex.exec(email) !== null ? true : false;
