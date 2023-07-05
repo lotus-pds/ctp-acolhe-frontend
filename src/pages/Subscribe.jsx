@@ -109,6 +109,12 @@ export function Subscribe(props) {
         delete newSubscription.termo;
         delete newSubscription.confirmacao;
 
+        // TODO: enviar a url do Avatar de acordo com a escolha do usuário (solução temporária)
+        newSubscription = {
+            ...newSubscription,
+            urlAvatar: "https://media.discordapp.net/attachments/1077345452694970438/1097572563443531856/subscribe-img.png?width=480&height=480"
+        };
+
         await postSubscribe(newSubscription);
         setSuccess(true);
         enableResendEmail();

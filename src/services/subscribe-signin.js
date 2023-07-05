@@ -4,7 +4,7 @@ export const postSubscribe = body => postResource('/conta/cadastro', body);
 
 export const patchSubscriptionVerification = param => patchResource('/conta/cadastro/verificacao/' + param);
 
-export const postResendVerification = body => postResource('/conta/cadastro/reenviar-email', body, {
+export const postResendVerification = body => postResource('/conta/cadastro/verificacao/reenviar-email', body, {
     headers: {
         'Content-Type': 'application/plain'
     }
