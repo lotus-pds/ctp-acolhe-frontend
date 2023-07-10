@@ -12,7 +12,6 @@ import { useEffect, useState } from "react";
 import { getCourses } from "../services/course";
 
 export function FormDetails(props) {
-
     const { subscription, setSubscription, isFieldValid } = props;
 
     const { t } = useTranslation();
@@ -32,7 +31,7 @@ export function FormDetails(props) {
         <div className="mb-4 flex flex-col gap-6 w-full items-center justify-center">
 
 
-            <div className="bg-center bg-cover bg-[url('https://media.discordapp.net/attachments/1077345452694970438/1107082558170202232/Mask_group_7.png?width=480&height=480')] w-20 h-20 rounded-full cursor-pointer relative">
+            <div className={"bg-center bg-cover bg-[url('" + subscription.urlAvatar + "')] w-20 h-20 rounded-full cursor-pointer relative"}>
                 <div className="bg-gradient-to-r from-green-200  to-green-300
                         dark:from-green-300 dark:to-green-400 w-8 h-8 absolute bottom-0 right-0 rounded-full flex items-center justify-center">
                     <PencilIcon

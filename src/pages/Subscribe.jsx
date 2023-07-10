@@ -33,7 +33,8 @@ export function Subscribe(props) {
         periodo: '',
         idCurso: '',
         termo: false,
-        confirmacao: ''
+        confirmacao: '',
+        urlAvatar: "https://media.discordapp.net/attachments/1077345452694970438/1107082558170202232/Mask_group_7.png?width=480&height=480"
     });
 
     const isFieldValid = [
