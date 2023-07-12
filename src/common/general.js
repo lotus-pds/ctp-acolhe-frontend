@@ -20,8 +20,8 @@ export const removeAuthData = () => {
 export const refreshToken = async () => {
     const expirationTime = Number(getStorage('expirationTimeCtpAcolhe'));
 
-    // if(expirationTime < new Date().getTime()) {
+    if(expirationTime < new Date().getTime()) {
         let response = await postRefreshToken(getStorage('tokenRenovacaoCtpAcolhe'));
         setAuthData(response.data);
-    // }
+    }
 }
