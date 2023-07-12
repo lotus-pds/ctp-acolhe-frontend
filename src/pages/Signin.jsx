@@ -8,10 +8,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
 import { postSignin } from "../services/subscribe-signin";
-import { validateEmail, validatePassword } from "../utils";
+import { validateEmail, validatePassword } from "../common/validations";
 import { useTranslation } from "react-i18next";
-import { setStorage } from "../services/config";
+import { setStorage, getStorage } from "../services/config";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
+import { setAuthData } from "../common/general";
 
 export function Signin(props) {
 
@@ -37,9 +38,7 @@ export function Signin(props) {
         newSigninData.email = newSigninData.email.trim();
 
         let response = await postSignin(newSigninData);
-        setStorage('tokenCtpAcolhe', response.data.tokenAcesso);
-        setStorage('rolesCtpAcolhe', response.data.roles);
-        setStorage('authCtpAcolhe', 'true');
+        setAuthData(response.data);
         navigate('/emotions');
     }
 

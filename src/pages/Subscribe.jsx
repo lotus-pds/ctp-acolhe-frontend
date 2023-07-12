@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
 import { postSubscribe, postResendVerification } from "../services/subscribe-signin";
-import { validateEmail, validateName, validatePassword, validateRegistration, validatePhoneNumber, validateClass } from "../utils";
+import { validateEmail, validateName, validatePassword, validateRegistration, validatePhoneNumber, validateClass } from "../common/validations";
 import { useTranslation } from "react-i18next";
 import { FormAccount } from "../components/FormAccount";
 import { FormDetails } from "../components/FormDetails";
