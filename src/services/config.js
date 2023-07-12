@@ -3,7 +3,15 @@ import { activateErrorPopup } from '../redux/features/errorPopupSlice';
 import { store } from '../redux/store';
 import { addCountLoading, removeCountLoading } from '../components/Loading';
 import Cookies from 'js-cookie';
-import { refreshToken } from '../common/general';
+import { refreshToken, removeAuthData } from '../common/general';
+
+const frontendUrl = 'https://ctp-acolhe-v1.netlify.app/';
+
+export function ROOT_URL() {
+    // return 'https://ctpacolhe-production.up.railway.app/api/v1';
+    // return 'http://localhost:8080/api/v1';
+    return 'https://ctp-acolhe-backend-production.up.railway.app/api/v1';
+}
 
 axios.interceptors.request.use(async req => {
     if (!req.url.includes('/conta/renovar-token')) {
@@ -23,15 +31,16 @@ axios.interceptors.response.use(res => {
     return res;
 }, res => {
     removeCountLoading();
-    store.dispatch(activateErrorPopup((res.response === undefined ? [] : res.response.data.errors)[0] || 'Ocorreu um erro'));
+
+    if (res.config.url.includes('/conta/renovar-token')) {
+        removeAuthData();
+        window.location.href = frontendUrl;
+    } else {
+        store.dispatch(activateErrorPopup((res.response === undefined ? [] : res.response.data.errors)[0] || 'Ocorreu um erro'));
+    }
+
     throw res;
 });
-
-export function ROOT_URL() {
-    // return 'https://ctpacolhe-production.up.railway.app/api/v1';
-    return 'http://localhost:8080/api/v1';
-    // return 'https://ctp-acolhe-backend-production.up.railway.app/api/v1';
-}
 
 export async function postResource(resource, body, config, newInstance) {
     return getAxiosInstance(newInstance).post(ROOT_URL() + resource, body, config).then(resposta => {
