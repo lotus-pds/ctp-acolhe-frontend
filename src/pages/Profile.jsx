@@ -13,10 +13,11 @@ import { PencilIcon, AcademicCapIcon, KeyIcon, ExclamationTriangleIcon, UserIcon
 import { useEffect, useState } from "react";
 import { getUser, putUser, patchUserPassword } from "../services/user";
 import { deleteSession } from "../services/subscribe-signin";
-import { validateClass, validateEmail, validateName, validatePassword, validatePhoneNumber, validateRegistration } from "../utils";
+import { validateClass, validateEmail, validateName, validatePassword, validatePhoneNumber, validateRegistration } from "../common/validations";
 import { useNavigate } from "react-router-dom";
 import { removeStorage } from "../services/config";
 import { getCourses } from "../services/course";
+import { removeAuthData } from "../common/general";
 
 export function Profile() {
 
@@ -78,8 +79,6 @@ export function Profile() {
         });
     }
 
-    console.log(user);
-
     return (
         <div className="flex flex-col items-center">
             <HeaderUser />
@@ -118,9 +117,7 @@ export function Profile() {
                         <Button
                             onClick={async () => {
                                 await deleteSession();
-                                removeStorage('tokenCtpAcolhe');
-                                removeStorage('rolesCtpAcolhe');
-                                removeStorage('authCtpAcolhe');
+                                removeAuthData();
                                 navigate('/');
                             }}
                             className="bg-white text-red-300 dark:text-red-200 italic font-bold flex gap-2 justify-center items-center"

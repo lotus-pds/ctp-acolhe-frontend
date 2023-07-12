@@ -12,6 +12,12 @@ export const postResendVerification = body => postResource('/conta/cadastro/veri
 
 export const postSignin = body => postResource('/conta/acesso', body);
 
+export const postRefreshToken = body => postResource('/conta/renovar-token', body, {
+    headers: {
+        'Content-Type': 'application/plain'
+    }
+});
+
 export const postForgotPassword = body => postResource('/conta/senha/esqueci', body, {
     headers: {
         'Content-Type': 'application/plain'

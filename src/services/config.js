@@ -3,18 +3,22 @@ import { activateErrorPopup } from '../redux/features/errorPopupSlice';
 import { store } from '../redux/store';
 import { addCountLoading, removeCountLoading } from '../components/Loading';
 import Cookies from 'js-cookie';
+import { refreshToken } from '../common/general';
 
-axios.interceptors.request.use( req => {
+axios.interceptors.request.use(async req => {
+    if (!req.url.includes('/conta/renovar-token')) {
+        await refreshToken();
+    }
     addCountLoading();
     req.headers = {
         ...req.headers,
-        Authorization: getStorage('tokenCtpAcolhe') == null ? null : 'Bearer ' + getStorage('tokenCtpAcolhe'),
+        Authorization: getStorage('tokenAcessoCtpAcolhe') == null ? null : 'Bearer ' + getStorage('tokenAcessoCtpAcolhe'),
         roles: getStorage('rolesCtpAcolhe')
     }
     return req;
 });
 
-axios.interceptors.response.use( res => {
+axios.interceptors.response.use(res => {
     removeCountLoading();
     return res;
 }, res => {
@@ -23,10 +27,10 @@ axios.interceptors.response.use( res => {
     throw res;
 });
 
-export function ROOT_URL(){
+export function ROOT_URL() {
     // return 'https://ctpacolhe-production.up.railway.app/api/v1';
-    // return 'http://localhost:8080/api/v1';
-    return 'https://ctp-acolhe-backend-production.up.railway.app/api/v1';
+    return 'http://localhost:8080/api/v1';
+    // return 'https://ctp-acolhe-backend-production.up.railway.app/api/v1';
 }
 
 export async function postResource(resource, body, config, newInstance) {
