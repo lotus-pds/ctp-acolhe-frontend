@@ -8,7 +8,7 @@ export function NavbarUser(){
 
     return(
         <div>
-            <Navbar className="bg-gray-100 dark:bg-gray-800 border-none w-[350px] h-[50px] flex items-center justify-between">
+            <Navbar className="bg-gray-100 dark:bg-gray-800 border-none w-[350px] h-[50px] flex items-center justify-between sm:relative fixed bottom-0 left-3 sm:m-0 mr-6 mb-6">
                     <Tooltip 
                         content={
                             <div className="w-70">

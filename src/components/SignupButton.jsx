@@ -18,6 +18,8 @@ export function SignupButton()
                     border-2
                     border-gray-900
                     dark:border-gray-200
+                    sm:text-base
+                    text-xs
                 ">
                 {t("signUp")}
             </div>

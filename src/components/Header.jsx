@@ -10,21 +10,21 @@ export function Header () {
     
     
     return (
-        <header className="w-full px-6 py-3 flex items-center justify-between z-50 relative">
+        <header className="w-[100%] sm:py-3 grid grid-cols-3 items-center z-50 relative">
             <div 
-                className="ml-12"
+                className="flex items-center justify-start sm:ml-12 ml-[2px] p-1" 
             >
                 <Logo/>
             </div>
             <div
-                className="w-[300px] flex items-center justify-evenly"
+                className="flex w-50 items-center justify-evenly gap-4 sm:mr-0 mr-12"
             >
                 <LanguageButton/>
                 <ThemeButton/>
             </div>
             
             <div
-                className="w-[200px] flex items-center justify-around gap-2"
+                className=" p-1 flex items-center justify-end sm:gap-6 sm:mr-12"
             >
                 <SigninButton />
                 <SignupButton/>

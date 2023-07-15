@@ -13,6 +13,8 @@ export function SigninButton()
                     font-bold
                     rounded-lg
                     p-2
+                    sm:text-base
+                    text-xs
                 ">
                 {t("signIn")}
             </div>

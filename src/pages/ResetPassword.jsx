@@ -43,11 +43,11 @@ export function ResetPassword(props) {
                 className="w-full bg-none grid grid-cols-1 items-center justify-center"
             >
                 <div
-                    className="h-[500px] flex items-center justify-center"
+                    className="mt-[30px] sm:mt-0 max-h-[750px] flex items-center justify-center"
                 >
                     <Card color="transparent" shadow={false}
-                        className="w-[750px] h-full bg-gray-100 dark:bg-gray-800
-                            grid grid-cols-2 items-center justify-evenly p-6 shadow-lg 
+                        className="w-[750px] max-h-[750px] bg-gray-100 dark:bg-gray-800 m-4
+                            grid grid-cols-1 sm:grid-cols-2 items-center justify-evenly p-6 shadow-lg 
                             dark:shadow-xl
                         "
                     >

@@ -17,7 +17,7 @@ export function ResetSuccessfull() {
                 className="w-full bg-none grid grid-cols-1 items-center justify-center"
             >
                 <div
-                    className="h-[500px] flex items-center justify-center"
+                    className="h:[625px] sm:h-[500px] mt-16 m-4 sm:mt-0 flex items-center justify-center"
                 >
                     <Card color="transparent" shadow={false}
                         className="w-[750px] h-full bg-gray-100 dark:bg-gray-800

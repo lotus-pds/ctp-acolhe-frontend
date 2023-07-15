@@ -15,7 +15,7 @@ export function LanguageButton() {
     <Popover className="relative">
       <Popover.Button className="inline-flex items-center gap-x-1 leading-6 outline-none">    
           <img src="https://media.discordapp.net/attachments/1077345452694970438/1107078467738157147/Component_28.png?width=480&height=480"
-            className='h-[45px]'
+            className='sm:h-[45px] h-[25px]'
           />
       </Popover.Button>
 
@@ -29,7 +29,7 @@ export function LanguageButton() {
         leaveTo="opacity-0 translate-y-1"
       >
         <Popover.Panel className="absolute left-1/2 z-10 mt-2 flex w-screen max-w-max -translate-x-1/2 px-4">
-          <div className="w-[60px] max-w-md  flex flex-center justify-center overflow-hidden rounded bg-white dark:bg-gray-800  text-sm leading-6 shadow-lg 
+          <div className="sm:w-[60px] w-[40px] max-w-md  flex flex-center justify-center overflow-hidden rounded bg-white dark:bg-gray-800  text-sm leading-6 shadow-lg 
             dark:shadow-xl
           ">
             <div className="
@@ -41,7 +41,7 @@ export function LanguageButton() {
               >
 
               <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572128636801034/brazil-colorfull.png"
-                className='h-[45px]'
+                className='sm:h-[45px] h-[25px]'
               />
               </button>
 
@@ -50,7 +50,7 @@ export function LanguageButton() {
                 className='p-1'
               >
                 <img src="https://media.discordapp.net/attachments/1077345452694970438/1107078468014977034/estados-unidos.png?width=480&height=480"
-                  className='h-[45px]'
+                  className='sm:h-[45px] h-[25px]'
                 />
             
               </button> 

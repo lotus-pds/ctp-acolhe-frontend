@@ -119,18 +119,18 @@ export function Subscribe(props) {
             <SecondHeader />
 
             <div
-                className="w-full h-full bg-none grid grid-cols-2 items-center justify-center"
+                className="w-full h-full bg-none grid sm:grid-cols-2 grid-cols-1 items-center justify-center mb-12"
             >
 
                 <div
-                    className="h-[500px] flex items-center justify-center"
+                    className="h-[500px] flex items-center justify-center sm:mt-12 mb-12"
                 >
                     <Card color="transparent" shadow={true}
                         className="w-[350px] max-h-[650px] bg-gray-100
                             dark:bg-gray-800
                             flex - items-center justify-evenly p-6 shadow-lg
                             dark:shadow-xl
-                            ml-[100px]
+                            sm:ml-[100px] ml-8 mr-8 sm:mt-12 mt-[180px]
                         "
                     >
 
@@ -190,7 +190,7 @@ export function Subscribe(props) {
                     className="flex items-center justify-center"
                 >
                     <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572563443531856/subscribe-img.png?width=480&height=480" alt=""
-                        className="w-[530px] mr-[100px]"
+                        className="sm:w-[530px] w-[360px] sm:mr-[100px] sm:mt-0 mt-[120px]"
                     />
                 </div>
             </div>

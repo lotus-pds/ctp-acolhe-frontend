@@ -47,12 +47,12 @@ export function Emotions(props) {
     }, [emotion]);
 
     return (
-        <div className="w-full h-screen flex items-center justify-center flex-col p-10 gap-10">
+        <div className="w-full h-full flex items-center justify-center flex-col p-10 gap-16 sm:gap-10">
             <Typography variant="h3">
                 {t("emotion")}
             </Typography>
 
-            <div className="flex items-center justify-evenly w-full">
+            <div className="flex flex-col sm:flex-row items-center justify-evenly w-full">
                 <div className="flex items-center justify-center flex-col hover:-translate-y-1 hover:scale-110 transition"
                     onClick={() => sendEmotion('EST')}
                 >

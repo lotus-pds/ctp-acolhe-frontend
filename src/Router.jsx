@@ -30,7 +30,7 @@ export function Router(props) {
             <Route path="/reset-my-password/:token" element={<ResetPassword />} />
             <Route path="/reset-successfull" element={<ResetSuccessfull />} />
             <Route path="/access-confirmation" element={<AccessConfirmation />} />
-            <Route path="/successful" element={<PrivateRoute user={['Aluno', 'Admin']}><Successful /></PrivateRoute>} />
+            <Route path="/successful" element={<PrivateRoute user={['Aluno', 'Admin']}><Successful /></PrivateRoute>} />   
             <Route path="/posts" element={<PrivateRoute user={['Aluno', 'Admin']}><Posts /></PrivateRoute>} />
             <Route path="/my-calendar" element={<PrivateRoute user={['Aluno', 'Admin']}><MyCalendar /></PrivateRoute>} />
             <Route path="/create-incident" element={<PrivateRoute user={['Aluno', 'Admin']}><CreateIncident /></PrivateRoute>} />

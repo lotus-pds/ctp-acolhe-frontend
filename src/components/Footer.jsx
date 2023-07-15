@@ -16,9 +16,10 @@ export function Footer(){
                     w-full
                     absolute
                     bottom-0 left-0
-                    flex items-center justify-around
+                    flex sm:flex-row flex-col items-center justify-around
                     bg-gradient-to-r from-red-100  to-red-300
-                    font-medium
+                    sm:text-base
+                    text-sm
                     p-2
                 "
             >
@@ -34,10 +35,11 @@ export function Footer(){
             className="
                 w-full
                 absolute
-                bottom-0 left-o
-                flex items-center justify-around
+                bottom-0 left-0
+                flex sm:flex-row flex-col items-center justify-around
                 bg-gradient-to-r from-red-200  to-red-400
-                font-medium
+                sm:text-base
+                text-sm
                 p-2
             "
         >

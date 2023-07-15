@@ -6,7 +6,7 @@ import {
 } from "@material-tailwind/react";
 import { useTranslation } from "react-i18next";
 import { HeaderUser } from "../components/HeaderUser";
-import { ArrowLeftOnRectangleIcon, CheckIcon } from "@heroicons/react/24/outline";
+import { ArrowLeftOnRectangleIcon, CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { PencilIcon, AcademicCapIcon, KeyIcon, UserCircleIcon, ExclamationTriangleIcon, UserIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import { getUser, putUser } from "../services/user";
@@ -58,8 +58,8 @@ export function Profile() {
             >
                 {t("tooltipHeader.profile")}
             </Typography>
-            <div className="w-[90%] grid grid-cols-[20%,78%] gap-8 mt-2">
-                <div className="bg-gray-100 dark:bg-gray-800 w-full h-[35%] float flex flex-col items-center p-6 rounded-xl drop-shadow-md ">
+            <div className="w-[90%] grid sm:grid-cols-[20%,78%] grid-cols-1 gap-8 mt-2">
+                <div className="bg-gray-100 dark:bg-gray-800 w-full sm:h-[35%] gap-6 float flex flex-col items-center p-6 rounded-xl drop-shadow-md ">
                     <div className="h-24 w-24 bg-gray-200 dark:bg-gray-900 rounded-full bg-[url('https://media.discordapp.net/attachments/1077345452694970438/1107082558170202232/Mask_group_7.png?width=480&height=480')] bg-center bg-cover">
                         <Tooltip content={
                             <div className="w-70">
@@ -78,7 +78,7 @@ export function Profile() {
                         </Tooltip>
                     </div>
 
-                    <div className="w-full flex flex-col items-center justify-evenly h-full">
+                    <div className="w-full flex flex-col items-center sm:p-0 p-2 justify-evenly h-full">
                         <div className="w-[95%] bg-gray-200 dark:bg-gray-900 h-7"></div>
                         <div className="w-[75%] ml-9 bg-gray-200 dark:bg-gray-900 h-7"></div>
                         <div className="w-[75%] ml-9 bg-gray-200 dark:bg-gray-900 h-7"></div>
@@ -91,11 +91,12 @@ export function Profile() {
                         
                     </div>
                 </div>
+
                 <div className="bg-gray-100 dark:bg-gray-800 w-full max-h-[3000px] rounded-xl mb-8 drop-shadow-md">
                     <div className=" w-full  flex flex-col items-start justify-center p-12 gap-8">
                         <Typography
                             variant="h3"
-                            className="font-normal flex justify-center items-center gap-4"
+                            className="font-normal sm:text-3xl text-lg flex justify-center items-center gap-4"
                         >
                             <UserIcon className="w-8"></UserIcon>
                             {t("tooltipEditProfile.titleProfile")}
@@ -115,43 +116,64 @@ export function Profile() {
 
                         <div className="w-full">
                             <div className="flex items-center justify-between">
-                                <Typography variant="h4">
+                                <Typography variant="h4" className="sm:text-2xl text-xl">
                                     {t("tooltipEditProfile.myProfile")}
                                 </Typography>
-                                <Tooltip content={
-                                    <div className="w-70">
-                                        <Typography
-                                            variant="small"
-                                            color="white"
-                                            className="font-normal opacity-80"
-                                        >
-                                            {t('tooltipEditProfile.edit')}
-                                        </Typography>
-                                    </div>
-                                }>
-                                    {sections.personalInfo === false
-                                        ? <Button className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12"
-                                            disabled={!Object.values(sections).every(value => value === false)}
-                                            onClick={() => { setSections({ ...sections, personalInfo: !sections.personalInfo }) }}>
-                                            <PencilIcon className="w-5"></PencilIcon>
-                                        </Button>
-                                        : <Button className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12"
-                                            disabled={!Object.values(isFieldValid).every(value => value === true)}
-                                            onClick={async () => {
-                                                await updateUser();
-                                                setSections({ ...sections, personalInfo: !sections.personalInfo });
-                                            }}>
-                                            <CheckIcon className="w-5"></CheckIcon>
-                                        </Button>}
-                                </Tooltip>
+                                <div className="flex justify-center items-center">
+                                    <Tooltip content={
+                                        <div className="w-70">
+                                            <Typography
+                                                variant="small"
+                                                color="white"
+                                                className="font-normal opacity-80"
+                                            >
+                                                {t('tooltipEditProfile.edit')}
+                                            </Typography>
+                                        </div>
+                                    }>
+                                        {sections.personalInfo === false
+                                            ? <Button className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                                disabled={!Object.values(sections).every(value => value === false)}
+                                                onClick={() => { setSections({ ...sections, personalInfo: !sections.personalInfo }) }}>
+                                                <PencilIcon className="w-5"></PencilIcon>
+                                            </Button>
+                                            : <Button className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12"
+                                                disabled={!Object.values(isFieldValid).every(value => value === true)}
+                                                onClick={async () => {
+                                                    await updateUser();
+                                                    setSections({ ...sections, personalInfo: !sections.personalInfo });
+                                                }}>
+                                                <CheckIcon className="w-5"></CheckIcon>
+                                            </Button>}
+                                    </Tooltip>
+
+                                    <Tooltip content={
+                                        <div className="w-70">
+                                            <Typography
+                                                variant="small"
+                                                color="white"
+                                                className="font-normal opacity-80"
+                                            >
+                                                {t('tooltipEditProfile.cancel')}
+                                            </Typography>
+                                        </div>
+                                    }>
+                                        <Button color="red" className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center       justify-center sm:mt-12 sm:ml-12"
+                                                disabled={!Object.values(sections).every(value => value === false)}
+                                                onClick={() => { setSections({ ...sections, personalInfo: !sections.personalInfo }) }}>
+                                                <XMarkIcon className="w-8"></XMarkIcon>
+                                            </Button>
+                                    </Tooltip>
+                                </div>
+                                
                             </div>
 
-                            <div className="flex flex-col p-6 gap-6">
-                                <Typography variant="h4" className='font-normal flex gap-4'>
-                                    <UserIcon className="w-6" />
+                            <div className="flex flex-col sm:p-6 sm:gap-6 p-2 gap-2">
+                                <Typography variant="h4" className='font-normal sm:text-2xl text-xl flex gap-4 p-2'>
+                                    <UserIcon className="sm:w-6 w-5" />
                                     {t("tooltipEditProfile.somethingInformations")}
                                 </Typography>
-                                <div className="grid grid-cols-2 gap-8 ">
+                                <div className="grid sm:grid-cols-2 grid-cols-1 gap-8 ">
                                     <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/
                                         disabled={!sections.personalInfo} label={t("name")} value={user.nome}
                                         onChange={(e) => setUser({ ...user, nome: e.target.value })} error={!isFieldValid.name} success={isFieldValid.name}
@@ -165,12 +187,12 @@ export function Profile() {
                                 </div>
                             </div>
 
-                            <div className="flex flex-col p-6 gap-6">
-                                <Typography variant="h4" className='font-normal flex gap-4'>
+                            <div className="flex flex-col sm:p-6 sm:gap-6 p-2 gap-2">
+                                <Typography variant="h4" className='font-normal sm:text-2xl text-xl flex gap-4'>
                                     <AcademicCapIcon className="w-6" />
                                     {t("tooltipEditProfile.institutionalInformations")}
                                 </Typography>
-                                <div className="grid grid-cols-2 gap-8 ">
+                                <div className="grid sm:grid-cols-2 grid-cols-1 gap-8 ">
                                     <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/
                                         disabled label={t("email")} value={user.email}
                                         className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
@@ -201,39 +223,61 @@ export function Profile() {
 
                         <div className="w-full">
                             <div className="flex items-center justify-between">
-                                <Typography variant="h4">
+                                <Typography variant="h4" className='font-normal sm:text-2xl text-xl flex gap-4'>
                                 {t("tooltipEditProfile.security")}
                                 </Typography>
-                                <Tooltip content={
+                                <div className="flex justify-center items-center">
+                                    <Tooltip content={
+                                        <div className="w-70">
+                                            <Typography
+                                                variant="small"
+                                                color="white"
+                                                className="font-normal opacity-80"
+                                            >
+                                                {t('tooltipEditProfile.edit')}
+                                            </Typography>
+                                        </div>
+                                    }>
+                                        {sections.security === false
+                                            ? <Button className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                                onClick={() => { setSections({ ...sections, security: !sections.security }) }}
+                                                disabled={!Object.values(sections).every(value => value === false)}>
+                                                <PencilIcon className="w-5"></PencilIcon>
+                                            </Button>
+                                            : <Button className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                                onClick={() => { setSections({ ...sections, security: !sections.security }) }}>
+                                                <CheckIcon className="w-5"></CheckIcon>
+                                            </Button>}
+                                    </Tooltip>
+
+                                    <Tooltip content={
                                     <div className="w-70">
                                         <Typography
                                             variant="small"
                                             color="white"
                                             className="font-normal opacity-80"
                                         >
-                                            {t('tooltipEditProfile.edit')}
+                                            {t('tooltipEditProfile.cancel')}
                                         </Typography>
                                     </div>
-                                }>
-                                    {sections.security === false
-                                        ? <Button className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12"
+                                    }>
+                                    <Button color="red" className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                             onClick={() => { setSections({ ...sections, security: !sections.security }) }}
                                             disabled={!Object.values(sections).every(value => value === false)}>
-                                            <PencilIcon className="w-5"></PencilIcon>
+                                            <XMarkIcon className="w-8"></XMarkIcon>
                                         </Button>
-                                        : <Button className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12"
-                                            onClick={() => { setSections({ ...sections, security: !sections.security }) }}>
-                                            <CheckIcon className="w-5"></CheckIcon>
-                                        </Button>}
+                                        
                                 </Tooltip>
+                                </div>
+                                
                             </div>
 
-                            <div className="flex flex-col p-6 gap-6">
-                                <Typography variant="h4" className='font-normal flex gap-4'>
+                            <div className="flex flex-col sm:p-6 sm:gap-6 p-2 gap-2">
+                                <Typography variant="h4" className='font-normal sm:text-2xl text-xl flex gap-4'>
                                     <KeyIcon className="w-6" />
                                     {t("tooltipEditProfile.changePassword")}
                                 </Typography>
-                                <div className="grid grid-cols-2 gap-8 ">
+                                <div className="grid sm:grid-cols-2 grid-cols-1 gap-8 ">
                                     <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/ disabled={!sections.security} label={t("oldPassword")}
                                         className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:label:text-gray-200"
                                     ></Input>
@@ -246,7 +290,7 @@ export function Profile() {
 
                         <div className="w-full">
                             <div className="flex items-center justify-between">
-                                <Typography variant="h4">
+                                <Typography variant="h4" className='font-normal sm:text-2xl text-xl flex gap-4'>
                                 {t("tooltipEditProfile.dangerous")}
                                 </Typography>
                                 <Tooltip content={
@@ -261,12 +305,12 @@ export function Profile() {
                                     </div>
                                 }>
                                     {sections.danger === false
-                                        ? <Button color="red" className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12"
+                                        ? <Button color="red" className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                             onClick={() => { setSections({ ...sections, danger: !sections.danger }) }}
                                             disabled={!Object.values(sections).every(value => value === false)}>
                                             <ExclamationTriangleIcon className="w-5"></ExclamationTriangleIcon>
                                         </Button>
-                                        : <Button color="red" className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12"
+                                        : <Button color="red" className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                             onClick={() => { setSections({ ...sections, danger: !sections.danger }) }}>
                                             <CheckIcon className="w-5"></CheckIcon>
                                         </Button>}
@@ -274,7 +318,7 @@ export function Profile() {
                             </div>
 
                             <div className="flex flex-col p-6 gap-6">
-                                <Typography variant="h4" color="red" className='font-normal flex gap-4'>
+                                <Typography variant="h4" color="red" className='font-normal sm:text-2xl text-xl flex gap-4'>
                                     <ExclamationTriangleIcon className="w-6" />
                                     {t("tooltipEditProfile.dagerousTitle")}
                                 </Typography>
