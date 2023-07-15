@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
 import { postSubscribe, postResendVerification } from "../services/subscribe-signin";
-import { validateEmail, validateName, validatePassword, validateRegistration, validatePhoneNumber, validateClass, validateCourse } from "../utils";
+import { validateEmail, validateName, validatePassword, validateRegistration, validatePhoneNumber, validateClass } from "../common/validations";
 import { useTranslation } from "react-i18next";
 import { FormAccount } from "../components/FormAccount";
 import { FormDetails } from "../components/FormDetails";
@@ -31,9 +31,10 @@ export function Subscribe(props) {
         telefone: '',
         turma: '',
         periodo: '',
-        curso: '',
+        idCurso: '',
         termo: false,
-        confirmacao: ''
+        confirmacao: '',
+        urlAvatar: "https://media.discordapp.net/attachments/1077345452694970438/1107082558170202232/Mask_group_7.png?width=480&height=480"
     });
 
     const isFieldValid = [
@@ -49,7 +50,7 @@ export function Subscribe(props) {
             phoneNumber: subscription.telefone === '' ? undefined : validatePhoneNumber(subscription.telefone.trim()),
             class: subscription.turma === '' ? undefined : validateClass(subscription.turma.trim()),
             period: subscription.periodo === '' ? false : true,
-            course: subscription.curso === '' ? undefined : validateCourse(subscription.curso.trim())
+            idCourse: subscription.idCurso === '' ? false : true,
         }
     ];
 
@@ -108,6 +109,12 @@ export function Subscribe(props) {
 
         delete newSubscription.termo;
         delete newSubscription.confirmacao;
+
+        // TODO: enviar a url do Avatar de acordo com a escolha do usuário (solução temporária)
+        newSubscription = {
+            ...newSubscription,
+            urlAvatar: "https://media.discordapp.net/attachments/1077345452694970438/1097572563443531856/subscribe-img.png?width=480&height=480"
+        };
 
         await postSubscribe(newSubscription);
         setSuccess(true);

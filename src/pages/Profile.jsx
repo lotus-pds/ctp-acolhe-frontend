@@ -2,22 +2,35 @@ import {
     Typography,
     Tooltip,
     Button,
-    Input
+    Input,
+    Select,
+    Option
 } from "@material-tailwind/react";
 import { useTranslation } from "react-i18next";
 import { HeaderUser } from "../components/HeaderUser";
 import { ArrowLeftOnRectangleIcon, CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { PencilIcon, AcademicCapIcon, KeyIcon, UserCircleIcon, ExclamationTriangleIcon, UserIcon } from "@heroicons/react/24/solid";
+import { PencilIcon, AcademicCapIcon, KeyIcon, ExclamationTriangleIcon, UserIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
-import { getUser, putUser } from "../services/user";
-import { validateClass, validateCourse, validateEmail, validateName, validatePassword, validatePhoneNumber, validateRegistration } from "../utils";
-import { Link } from "react-router-dom";
+import { getUser, putUser, patchUserPassword } from "../services/user";
+import { deleteSession } from "../services/subscribe-signin";
+import { validateClass, validateEmail, validateName, validatePassword, validatePhoneNumber, validateRegistration } from "../common/validations";
+import { useNavigate } from "react-router-dom";
+import { removeStorage } from "../services/config";
+import { getCourses } from "../services/course";
+import { removeAuthData } from "../common/general";
 
 export function Profile() {
 
     const { t } = useTranslation();
+    const navigate = useNavigate();
 
     const [user, setUser] = useState({});
+    const [courses, setCourses] = useState([]);
+
+    const [password, setPassword] = useState({
+        senhaAtual: '',
+        senhaNova: ''
+    });
 
     const [sections, setSections] = useState({
         personalInfo: false,
@@ -30,7 +43,12 @@ export function Profile() {
             let response = await getUser();
             setUser(response.data);
         }
+        const localGetCourses = async () => {
+            let response = await getCourses();
+            setCourses(response.data);
+        }
         localGetUser();
+        localGetCourses();
     }, []);
 
     const isFieldValid = {
@@ -39,14 +57,26 @@ export function Profile() {
         registration: validateRegistration(String(user.prontuario).trim()),
         phoneNumber: validatePhoneNumber(String(user.telefone).trim()),
         class: validateClass(String(user.turma).trim()),
-        period: true,
-        course: validateCourse(String(user.curso).trim())
+        period: user.periodo === '' ? false : true,
+        course: user.curso === '' ? false : true
     };
 
+    const isPasswordValid = {
+        currentPassword: password.senhaAtual === '' ? undefined : validatePassword(password.senhaAtual),
+        newPassword: password.senhaNova === '' ? undefined : validatePassword(password.senhaNova)
+    }
+
     const updateUser = async () => {
-        await putUser({ ...user });
-        let response = await getUser();
+        let response = await putUser(user);
         setUser(response.data);
+    }
+
+    const updatePassword = async () => {
+        await patchUserPassword({ ...password });
+        setPassword({
+            senhaAtual: '',
+            senhaNova: ''
+        });
     }
 
     return (
@@ -83,12 +113,19 @@ export function Profile() {
                         <div className="w-[75%] ml-9 bg-gray-200 dark:bg-gray-900 h-7"></div>
                         <div className="w-[75%] ml-9 bg-gray-200 dark:bg-gray-900 h-7"></div>
                         <div className="w-[95%] bg-gray-200 dark:bg-gray-900 h-7"></div>
-                        
-                            <Link to={"/"} className="text-red-300 dark:text-red-200 italic font-bold flex gap-2 justify-center items-center">
-                                <ArrowLeftOnRectangleIcon className="w-6"/>
-                                {t('tooltipEditProfile.logout')}
-                            </Link>
-                        
+
+                        <Button
+                            onClick={async () => {
+                                await deleteSession();
+                                removeAuthData();
+                                navigate('/');
+                            }}
+                            className="bg-white text-red-300 dark:text-red-200 italic font-bold flex gap-2 justify-center items-center"
+                        >
+                            <ArrowLeftOnRectangleIcon className="w-6" />
+                            {t('tooltipEditProfile.logout')}
+                        </Button>
+
                     </div>
                 </div>
 
@@ -202,18 +239,31 @@ export function Profile() {
                                         onChange={(e) => setUser({ ...user, turma: e.target.value })} error={!isFieldValid.class} success={isFieldValid.class}
                                         className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
                                     />
-                                    <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/
-                                        disabled={!sections.personalInfo} label={t("period")} value={user.periodo}
-                                        onChange={(e) => setUser({ ...user, periodo: e.target.value })} error={!isFieldValid.period} success={isFieldValid.period}
+                                    <Select
+                                        label={t("period")}
                                         className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
-                                    />
+                                        value={user.periodo} disabled={!sections.personalInfo}
+                                        onChange={(e) => setUser({ ...user, periodo: e.target.value })}
+                                        success={isFieldValid.period} error={!isFieldValid.period}
+                                    >
+                                        <Option value="MATUTINO">{t("morning")}</Option>
+                                        <Option value="VESPERTINO">{t("afternoon")}</Option>
+                                        <Option value="NOTURNO">{t("night")}</Option>
+                                    </Select>
+                                    <Select
+                                        label={t("course")}
+                                        color="gray"
+                                        className="text-gray-900 dark:text-gray-200"
+                                        value={user.idCurso || (user.curso || {}).idCurso} disabled={!sections.personalInfo}
+                                        onChange={(e) => setUser({ ...user, idCurso: e })}
+                                        success={isFieldValid.course}
+                                    >
+                                        {courses.map((value) =>
+                                            <Option value={value.idCurso}>{value.nome}</Option>)
+                                        }
+                                    </Select>
                                     <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/
-                                        disabled={!sections.personalInfo} label={t("course")} value={user.curso}
-                                        onChange={(e) => setUser({ ...user, curso: e.target.value })} error={!isFieldValid.course} success={isFieldValid.course}
-                                        className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
-                                    />
-                                    <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/
-                                        disabled={!sections.personalInfo} label={t("registration")} value={user.prontuario}
+                                        disabled label={t("registration")} value={user.prontuario}
                                         onChange={(e) => setUser({ ...user, prontuario: e.target.value })} error={!isFieldValid.registration} success={isFieldValid.registration}
                                         className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:label:text-gray-200"
                                     />
@@ -223,8 +273,9 @@ export function Profile() {
 
                         <div className="w-full">
                             <div className="flex items-center justify-between">
+
                                 <Typography variant="h4" className='font-normal sm:text-2xl text-xl flex gap-4'>
-                                {t("tooltipEditProfile.security")}
+                                    {t("tooltipEditProfile.security")}
                                 </Typography>
                                 <div className="flex justify-center items-center">
                                     <Tooltip content={
@@ -277,21 +328,30 @@ export function Profile() {
                                     <KeyIcon className="w-6" />
                                     {t("tooltipEditProfile.changePassword")}
                                 </Typography>
+
                                 <div className="grid sm:grid-cols-2 grid-cols-1 gap-8 ">
-                                    <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/ disabled={!sections.security} label={t("oldPassword")}
+                                    <Input 
+                                        value={password.senhaAtual} onChange={e => setPassword({ ...password, senhaAtual: e.target.value })}
+                                        error={isPasswordValid.currentPassword === false ? true : false} success={isPasswordValid.currentPassword}
+                                        size="lg" disabled={!sections.security} label={t("currentPassword")} type='password'
+
                                         className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:label:text-gray-200"
-                                    ></Input>
-                                    <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/ disabled={!sections.security} label={t("newPassword")}
+                                    />
+                                    <Input
+                                        value={password.senhaNova} onChange={e => setPassword({ ...password, senhaNova: e.target.value })}
+                                        error={isPasswordValid.newPassword === false ? true : false} success={isPasswordValid.newPassword}
+                                        size="lg" disabled={!sections.security} label={t("newPassword")} type='password'
                                         className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:label:text-gray-200"
-                                    ></Input>
+                                    />
                                 </div>
                             </div>
                         </div>
 
                         <div className="w-full">
                             <div className="flex items-center justify-between">
+
                                 <Typography variant="h4" className='font-normal sm:text-2xl text-xl flex gap-4'>
-                                {t("tooltipEditProfile.dangerous")}
+                                    {t("tooltipEditProfile.dangerous")}
                                 </Typography>
                                 <Tooltip content={
                                     <div className="w-70">
@@ -324,7 +384,7 @@ export function Profile() {
                                 </Typography>
 
                                 <Typography variant="small" color="red" className='font-normal italic flex gap-4'>
-                                {t("tooltipEditProfile.dangerousDesc")}
+                                    {t("tooltipEditProfile.dangerousDesc")}
                                 </Typography>
                             </div>
                         </div>

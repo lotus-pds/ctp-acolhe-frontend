@@ -8,7 +8,7 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
-import { validatePassword } from "../utils";
+import { validatePassword } from "../common/validations";
 import { useTranslation } from "react-i18next";
 import { patchResetPassword } from "../services/subscribe-signin";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";

@@ -12,7 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
 import { postForgotPassword, postResendForgotPassword } from "../services/subscribe-signin";
-import { validateEmail } from "../utils";
+import { validateEmail } from "../common/validations";
 import { useTranslation } from "react-i18next";
 
 export function ForgotPassword(props) {

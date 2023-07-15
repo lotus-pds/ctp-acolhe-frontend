@@ -1,16 +1,22 @@
-import { postResource, patchResource } from './config.js';
+import { postResource, patchResource, deleteResource } from './config.js';
 
 export const postSubscribe = body => postResource('/conta/cadastro', body);
 
 export const patchSubscriptionVerification = param => patchResource('/conta/cadastro/verificacao/' + param);
 
-export const postResendVerification = body => postResource('/conta/cadastro/reenviar-email', body, {
+export const postResendVerification = body => postResource('/conta/cadastro/verificacao/reenviar-email', body, {
     headers: {
         'Content-Type': 'application/plain'
     }
 });
 
 export const postSignin = body => postResource('/conta/acesso', body);
+
+export const postRefreshToken = body => postResource('/conta/renovar-token', body, {
+    headers: {
+        'Content-Type': 'application/plain'
+    }
+});
 
 export const postForgotPassword = body => postResource('/conta/senha/esqueci', body, {
     headers: {
@@ -25,3 +31,5 @@ export const postResendForgotPassword = body => postResource('/conta/senha/esque
 });
 
 export const patchResetPassword = body => patchResource('/conta/senha/redefinir', body);
+
+export const deleteSession = () => deleteResource('/conta/sair');
