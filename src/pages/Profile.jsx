@@ -2,10 +2,9 @@ import {
     Typography,
     Tooltip,
     Button,
-    Input,
-    Select,
-    Option
+    Input
 } from "@material-tailwind/react";
+import { SelectOptions } from "../components/common/select/SelectOptions";
 import { useTranslation } from "react-i18next";
 import { HeaderUser } from "../components/HeaderUser";
 import { ArrowLeftOnRectangleIcon, CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -15,7 +14,6 @@ import { getUser, putUser, patchUserPassword } from "../services/user";
 import { deleteSession } from "../services/subscribe-signin";
 import { validateClass, validateEmail, validateName, validatePassword, validatePhoneNumber, validateRegistration } from "../common/validations";
 import { useNavigate } from "react-router-dom";
-import { removeStorage } from "../services/config";
 import { getCourses } from "../services/course";
 import { removeAuthData } from "../common/general";
 
@@ -38,15 +36,17 @@ export function Profile() {
         danger: false
     });
 
+    const localGetUser = async () => {
+        let response = await getUser();
+        setUser(response.data);
+    }
+
+    const localGetCourses = async () => {
+        let response = await getCourses();
+        setCourses(response.data);
+    }
+
     useEffect(() => {
-        const localGetUser = async () => {
-            let response = await getUser();
-            setUser(response.data);
-        }
-        const localGetCourses = async () => {
-            let response = await getCourses();
-            setCourses(response.data);
-        }
         localGetUser();
         localGetCourses();
     }, []);
@@ -78,6 +78,21 @@ export function Profile() {
             senhaNova: ''
         });
     }
+
+    const periods = [
+        {
+            label: t("morning"),
+            value: 'MATUTINO'
+        },
+        {
+            label: t("afternoon"),
+            value: 'VESPERTINO'
+        },
+        {
+            label: t("night"),
+            value: 'NOTURNO'
+        }
+    ]
 
     return (
         <div className="flex flex-col items-center">
@@ -169,40 +184,51 @@ export function Profile() {
                                         </div>
                                     }>
                                         {sections.personalInfo === false
-                                            ? <Button className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                            ? <Button
+                                                className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                                 disabled={!Object.values(sections).every(value => value === false)}
-                                                onClick={() => { setSections({ ...sections, personalInfo: !sections.personalInfo }) }}>
+                                                onClick={() => { setSections({ ...sections, personalInfo: !sections.personalInfo }) }}
+                                            >
                                                 <PencilIcon className="w-5"></PencilIcon>
                                             </Button>
-                                            : <Button className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12"
+                                            : <Button
+                                                className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12"
                                                 disabled={!Object.values(isFieldValid).every(value => value === true)}
                                                 onClick={async () => {
                                                     await updateUser();
                                                     setSections({ ...sections, personalInfo: !sections.personalInfo });
-                                                }}>
+                                                }}
+                                            >
                                                 <CheckIcon className="w-5"></CheckIcon>
                                             </Button>}
                                     </Tooltip>
-
-                                    <Tooltip content={
-                                        <div className="w-70">
-                                            <Typography
-                                                variant="small"
-                                                color="white"
-                                                className="font-normal opacity-80"
+                                    {sections.personalInfo === true ?
+                                        <Tooltip content={
+                                            <div className="w-70">
+                                                <Typography
+                                                    variant="small"
+                                                    color="white"
+                                                    className="font-normal opacity-80"
+                                                >
+                                                    {t('tooltipEditProfile.cancel')}
+                                                </Typography>
+                                            </div>
+                                        }>
+                                            <Button
+                                                color="red"
+                                                className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                                onClick={() => {
+                                                    setSections({ ...sections, personalInfo: false });
+                                                    localGetUser();
+                                                }}
                                             >
-                                                {t('tooltipEditProfile.cancel')}
-                                            </Typography>
-                                        </div>
-                                    }>
-                                        <Button color="red" className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center       justify-center sm:mt-12 sm:ml-12"
-                                                disabled={!Object.values(sections).every(value => value === false)}
-                                                onClick={() => { setSections({ ...sections, personalInfo: !sections.personalInfo }) }}>
                                                 <XMarkIcon className="w-8"></XMarkIcon>
                                             </Button>
-                                    </Tooltip>
+                                        </Tooltip> : undefined
+                                    }
+
                                 </div>
-                                
+
                             </div>
 
                             <div className="flex flex-col sm:p-6 sm:gap-6 p-2 gap-2">
@@ -211,14 +237,22 @@ export function Profile() {
                                     {t("tooltipEditProfile.somethingInformations")}
                                 </Typography>
                                 <div className="grid sm:grid-cols-2 grid-cols-1 gap-8 ">
-                                    <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/
-                                        disabled={!sections.personalInfo} label={t("name")} value={user.nome}
-                                        onChange={(e) => setUser({ ...user, nome: e.target.value })} error={!isFieldValid.name} success={isFieldValid.name}
+                                    <Input size="lg"
+                                        disabled={!sections.personalInfo}
+                                        label={t("name")}
+                                        value={user.nome}
+                                        onChange={(e) => setUser({ ...user, nome: e.target.value })}
+                                        error={!isFieldValid.name}
+                                        success={isFieldValid.name}
                                         className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
                                     />
-                                    <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/
-                                        disabled={!sections.personalInfo} label={t("phone")} value={user.telefone}
-                                        onChange={(e) => setUser({ ...user, telefone: e.target.value })} error={!isFieldValid.phoneNumber} success={isFieldValid.phoneNumber}
+                                    <Input size="lg"
+                                        disabled={!sections.personalInfo}
+                                        label={t("phone")}
+                                        value={user.telefone}
+                                        onChange={(e) => setUser({ ...user, telefone: e.target.value })}
+                                        error={!isFieldValid.phoneNumber}
+                                        success={isFieldValid.phoneNumber}
                                         className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
                                     />
                                 </div>
@@ -230,41 +264,49 @@ export function Profile() {
                                     {t("tooltipEditProfile.institutionalInformations")}
                                 </Typography>
                                 <div className="grid sm:grid-cols-2 grid-cols-1 gap-8 ">
-                                    <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/
-                                        disabled label={t("email")} value={user.email}
+                                    <Input size="lg"
+                                        disabled
+                                        label={t("email")}
+                                        value={user.email}
                                         className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
                                     />
-                                    <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/
-                                        disabled={!sections.personalInfo} label={t("class")} value={user.turma}
-                                        onChange={(e) => setUser({ ...user, turma: e.target.value })} error={!isFieldValid.class} success={isFieldValid.class}
+                                    <Input size="lg"
+                                        disabled={!sections.personalInfo}
+                                        label={t("class")}
+                                        value={user.turma}
+                                        onChange={(e) => setUser({ ...user, turma: e.target.value })}
+                                        error={!isFieldValid.class}
+                                        success={isFieldValid.class}
                                         className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
                                     />
-                                    <Select
+
+                                    <SelectOptions
                                         label={t("period")}
-                                        className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
-                                        value={user.periodo} disabled={!sections.personalInfo}
+                                        value={user.periodo}
+                                        disabled={!sections.personalInfo}
                                         onChange={(e) => setUser({ ...user, periodo: e.target.value })}
-                                        success={isFieldValid.period} error={!isFieldValid.period}
-                                    >
-                                        <Option value="MATUTINO">{t("morning")}</Option>
-                                        <Option value="VESPERTINO">{t("afternoon")}</Option>
-                                        <Option value="NOTURNO">{t("night")}</Option>
-                                    </Select>
-                                    <Select
+                                        success={isFieldValid.period}
+                                        error={!isFieldValid.period}
+                                        options={periods}
+                                    />
+
+                                    <SelectOptions
                                         label={t("course")}
                                         color="gray"
-                                        className="text-gray-900 dark:text-gray-200"
-                                        value={user.idCurso || (user.curso || {}).idCurso} disabled={!sections.personalInfo}
+                                        value={user.idCurso || (user.curso || {}).idCurso}
+                                        disabled={!sections.personalInfo}
                                         onChange={(e) => setUser({ ...user, idCurso: e })}
                                         success={isFieldValid.course}
-                                    >
-                                        {courses.map((value) =>
-                                            <Option value={value.idCurso}>{value.nome}</Option>)
-                                        }
-                                    </Select>
-                                    <Input size="lg" /*className="text-gray-900 dark:text-gray-200"*/
-                                        disabled label={t("registration")} value={user.prontuario}
-                                        onChange={(e) => setUser({ ...user, prontuario: e.target.value })} error={!isFieldValid.registration} success={isFieldValid.registration}
+                                        options={courses.map(course => ({ label: course.nome, value: course.idCurso }))}
+                                    />
+
+                                    <Input size="lg"
+                                        disabled
+                                        label={t("registration")}
+                                        value={user.prontuario}
+                                        onChange={(e) => setUser({ ...user, prontuario: e.target.value })}
+                                        error={!isFieldValid.registration}
+                                        success={isFieldValid.registration}
                                         className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:label:text-gray-200"
                                     />
                                 </div>
@@ -290,37 +332,54 @@ export function Profile() {
                                         </div>
                                     }>
                                         {sections.security === false
-                                            ? <Button className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                            ? <Button
+                                                className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                                 onClick={() => { setSections({ ...sections, security: !sections.security }) }}
-                                                disabled={!Object.values(sections).every(value => value === false)}>
+                                                disabled={!Object.values(sections).every(value => value === false)}
+                                            >
                                                 <PencilIcon className="w-5"></PencilIcon>
                                             </Button>
-                                            : <Button className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
-                                                onClick={() => { setSections({ ...sections, security: !sections.security }) }}>
+                                            : <Button
+                                                className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                                onClick={async () => {
+                                                    await updatePassword();
+                                                    setSections({ ...sections, security: !sections.security });
+                                                }}
+                                                disabled={!Object.values(isPasswordValid).every(value => value === true)}
+                                            >
                                                 <CheckIcon className="w-5"></CheckIcon>
                                             </Button>}
                                     </Tooltip>
+                                    {sections.security === true ?
+                                        <Tooltip content={
+                                            <div className="w-70">
+                                                <Typography
+                                                    variant="small"
+                                                    color="white"
+                                                    className="font-normal opacity-80"
+                                                >
+                                                    {t('tooltipEditProfile.cancel')}
+                                                </Typography>
+                                            </div>
+                                        }>
+                                            <Button
+                                                color="red"
+                                                className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                                onClick={() => {
+                                                    setSections({ ...sections, security: !sections.security });
+                                                    setPassword({
+                                                        senhaAtual: '',
+                                                        senhaNova: ''
+                                                    });
+                                                }}
+                                            >
+                                                <XMarkIcon className="w-8"></XMarkIcon>
+                                            </Button>
 
-                                    <Tooltip content={
-                                    <div className="w-70">
-                                        <Typography
-                                            variant="small"
-                                            color="white"
-                                            className="font-normal opacity-80"
-                                        >
-                                            {t('tooltipEditProfile.cancel')}
-                                        </Typography>
-                                    </div>
-                                    }>
-                                    <Button color="red" className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
-                                            onClick={() => { setSections({ ...sections, security: !sections.security }) }}
-                                            disabled={!Object.values(sections).every(value => value === false)}>
-                                            <XMarkIcon className="w-8"></XMarkIcon>
-                                        </Button>
-                                        
-                                </Tooltip>
+                                        </Tooltip> : undefined
+                                    }
                                 </div>
-                                
+
                             </div>
 
                             <div className="flex flex-col sm:p-6 sm:gap-6 p-2 gap-2">
@@ -330,17 +389,26 @@ export function Profile() {
                                 </Typography>
 
                                 <div className="grid sm:grid-cols-2 grid-cols-1 gap-8 ">
-                                    <Input 
-                                        value={password.senhaAtual} onChange={e => setPassword({ ...password, senhaAtual: e.target.value })}
-                                        error={isPasswordValid.currentPassword === false ? true : false} success={isPasswordValid.currentPassword}
-                                        size="lg" disabled={!sections.security} label={t("currentPassword")} type='password'
-
+                                    <Input
+                                        value={password.senhaAtual}
+                                        onChange={e => setPassword({ ...password, senhaAtual: e.target.value })}
+                                        error={isPasswordValid.currentPassword === false ? true : false}
+                                        success={isPasswordValid.currentPassword}
+                                        size="lg"
+                                        disabled={!sections.security}
+                                        label={t("currentPassword")}
+                                        type='password'
                                         className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:label:text-gray-200"
                                     />
                                     <Input
-                                        value={password.senhaNova} onChange={e => setPassword({ ...password, senhaNova: e.target.value })}
-                                        error={isPasswordValid.newPassword === false ? true : false} success={isPasswordValid.newPassword}
-                                        size="lg" disabled={!sections.security} label={t("newPassword")} type='password'
+                                        value={password.senhaNova}
+                                        onChange={e => setPassword({ ...password, senhaNova: e.target.value })}
+                                        error={isPasswordValid.newPassword === false ? true : false}
+                                        success={isPasswordValid.newPassword}
+                                        size="lg"
+                                        disabled={!sections.security}
+                                        label={t("newPassword")}
+                                        type='password'
                                         className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:label:text-gray-200"
                                     />
                                 </div>
@@ -365,12 +433,17 @@ export function Profile() {
                                     </div>
                                 }>
                                     {sections.danger === false
-                                        ? <Button color="red" className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                        ? <Button
+                                            color="red"
+                                            className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                             onClick={() => { setSections({ ...sections, danger: !sections.danger }) }}
-                                            disabled={!Object.values(sections).every(value => value === false)}>
+                                            disabled={!Object.values(sections).every(value => value === false)}
+                                        >
                                             <ExclamationTriangleIcon className="w-5"></ExclamationTriangleIcon>
                                         </Button>
-                                        : <Button color="red" className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                        : <Button
+                                            color="red"
+                                            className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                             onClick={() => { setSections({ ...sections, danger: !sections.danger }) }}>
                                             <CheckIcon className="w-5"></CheckIcon>
                                         </Button>}
@@ -378,12 +451,19 @@ export function Profile() {
                             </div>
 
                             <div className="flex flex-col p-6 gap-6">
-                                <Typography variant="h4" color="red" className='font-normal sm:text-2xl text-xl flex gap-4'>
+                                <Typography
+                                    variant="h4"
+                                    color="red"
+                                    className='font-normal sm:text-2xl text-xl flex gap-4'
+                                >
                                     <ExclamationTriangleIcon className="w-6" />
                                     {t("tooltipEditProfile.dagerousTitle")}
                                 </Typography>
-
-                                <Typography variant="small" color="red" className='font-normal italic flex gap-4'>
+                                <Typography
+                                    variant="small"
+                                    color="red"
+                                    className='font-normal italic flex gap-4'
+                                >
                                     {t("tooltipEditProfile.dangerousDesc")}
                                 </Typography>
                             </div>
@@ -392,7 +472,5 @@ export function Profile() {
                 </div>
             </div>
         </div>
-
-
     )
 }

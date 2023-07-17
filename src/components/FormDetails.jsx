@@ -1,10 +1,9 @@
 import {
     Input,
     Typography,
-    Tooltip,
-    Select,
-    Option
+    Tooltip
 } from "@material-tailwind/react";
+import { SelectOptions } from "./common/select/SelectOptions";
 import { useTranslation } from "react-i18next";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import { PencilIcon } from "@heroicons/react/24/solid";
@@ -26,6 +25,21 @@ export function FormDetails(props) {
 
         localGetCourses();
     }, []);
+
+    const periods = [
+        {
+            label: t("morning"),
+            value: 'MATUTINO'
+        },
+        {
+            label: t("afternoon"),
+            value: 'VESPERTINO'
+        },
+        {
+            label: t("night"),
+            value: 'NOTURNO'
+        }
+    ]
 
     return (
         <div className="mb-4 flex flex-col gap-6 w-full items-center justify-center">
@@ -101,31 +115,23 @@ export function FormDetails(props) {
                 }
             />
 
-            <Select
+            <SelectOptions
                 label={t("period")}
                 color="gray"
-                className="text-gray-900 dark:text-gray-200"
                 value={subscription.periodo}
                 onChange={(e) => setSubscription({ ...subscription, periodo: e })}
                 success={isFieldValid.period}
-            >
-                <Option value="MATUTINO">{t("morning")}</Option>
-                <Option value="VESPERTINO">{t("afternoon")}</Option>
-                <Option value="NOTURNO">{t("night")}</Option>
-            </Select>
+                options={periods}
+            />
 
-            <Select
+            <SelectOptions
                 label={t("course")}
                 color="gray"
-                className="text-gray-900 dark:text-gray-200"
                 value={subscription.idCurso}
                 onChange={(e) => setSubscription({ ...subscription, idCurso: e })}
                 success={isFieldValid.idCourse}
-            >
-                {courses.map((value) => 
-                    <Option value={value.idCurso}>{value.nome}</Option>)
-                }
-            </Select>
+                options={courses.map(course => ({ label: course.nome, value: course.idCurso }))}
+            />
         </div>
     )
 }
