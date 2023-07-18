@@ -1,7 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import { Router } from "./Router";
 import { ErrorPopup } from "./components/ErrorPopup";
-import { useEffect } from 'react';
 import { Loading } from "./components/Loading";
 
 function App() {

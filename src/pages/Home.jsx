@@ -4,20 +4,16 @@ import { Footer } from "../components/Footer";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from "swiper";
 import { ArrowLongRightIcon, ArrowLongLeftIcon } from "@heroicons/react/24/solid";
-
+import { CookieAlert } from "../components/CookieAlert";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 import { Typography } from "@material-tailwind/react";
 
 export function Home() {
-    const state = useSelector(state => state);
 
     const { t } = useTranslation();
-
-    //const navigate = useNavigate();
 
     return (
 
@@ -166,6 +162,7 @@ export function Home() {
                         </div>
                     </SwiperSlide>
                 </Swiper>
+                <CookieAlert/>
             </main>
             <footer className="sm:absolute relative bottom-0 left-0 mt-[80px] w-full">
                 <Footer />
