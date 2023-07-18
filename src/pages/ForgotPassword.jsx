@@ -1,6 +1,5 @@
 import {
     Card,
-    Input,
     Button,
     Typography,
     Dialog,
@@ -8,7 +7,7 @@ import {
     DialogBody,
     DialogFooter
 } from "@material-tailwind/react";
-import { Link, useNavigate } from "react-router-dom";
+import { CommonInput } from "../components/common/input/CommonInput";
 import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
 import { postForgotPassword, postResendForgotPassword } from "../services/subscribe-signin";
@@ -73,9 +72,13 @@ export function ForgotPassword(props) {
                             <form className="mt-8 mb-2 w-full  flex items-center flex-col"
                             >
                                 <div className="mb-4 flex flex-col gap-6 w-full">
-                                    <Input size="lg" label={t("email")} color="gray" value={email} required
-                                        className="text-gray-900 dark:text-gray-200"
-                                        success={isEmailValid} error={isEmailValid === false ? true : false}
+                                    <CommonInput
+                                        size="lg"
+                                        label={t("email")}
+                                        value={email}
+                                        required
+                                        success={isEmailValid}
+                                        error={isEmailValid === false ? true : false}
                                         onChange={(e) => {
                                             setEmail(e.target.value);
                                         }}
@@ -83,7 +86,7 @@ export function ForgotPassword(props) {
                                 </div>
 
                                 <Button
-                                    className="mt-4 bg-gradient-to-r from-blue-100  to-blue-200dark:from-blue-400 dark:to-blue-700" 
+                                    className="mt-4 bg-gradient-to-r from-blue-100  to-blue-200dark:from-blue-400 dark:to-blue-700"
                                     color="blue" variant="gradient" onClick={sendEmail} disabled={!isEmailValid}
                                 >
                                     {t("send")}

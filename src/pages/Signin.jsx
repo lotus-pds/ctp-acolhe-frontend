@@ -1,17 +1,16 @@
 import {
     Card,
-    Input,
     Button,
     Typography
 } from "@material-tailwind/react";
+import { CommonInput } from "../components/common/input/CommonInput";
+import { EyeInput } from "../components/common/input/EyeInput";
 import { Link, useNavigate } from "react-router-dom";
 import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
 import { postSignin } from "../services/subscribe-signin";
 import { validateEmail, validatePassword } from "../common/validations";
 import { useTranslation } from "react-i18next";
-import { setStorage, getStorage } from "../services/config";
-import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { setAuthData } from "../common/general";
 
 export function Signin(props) {
@@ -19,8 +18,6 @@ export function Signin(props) {
     const { t } = useTranslation();
 
     const navigate = useNavigate();
-
-    const [showPassword, setShowPassword] = useState(false);
 
     const [signinData, setSigninData] = useState({
         email: '',
@@ -76,39 +73,26 @@ export function Signin(props) {
                         <form className="mt-8 mb-2 w-full  flex items-center flex-col"
                         >
                             <div className="mb-4 flex flex-col gap-6 w-full">
-                                <Input size="lg" label={t("email")} color="gray" value={signinData.email} required
-                                    className="text-gray-900 dark:text-gray-200"
+                                <CommonInput
+                                    size="lg"
+                                    label={t("email")}
+                                    value={signinData.email}
+                                    required
                                     success={isFieldValid.email} error={isFieldValid.email === false ? true : false}
                                     onChange={(e) => {
                                         setSigninData({ ...signinData, email: e.target.value });
                                     }}
                                 />
-
-                                <Input type={showPassword ? "text" : "password"}
-
-                                    size="lg" label={t("password")} color="gray" value={signinData.senha} required
-                                    className="text-gray-900 dark:text-gray-200"
-                                    success={isFieldValid.password} error={isFieldValid.password === false ? true : false}
+                                <EyeInput
+                                    size="lg"
+                                    label={t("password")}
+                                    value={signinData.senha}
+                                    required
+                                    success={isFieldValid.password}
+                                    error={isFieldValid.password === false ? true : false}
                                     onChange={(e) => {
                                         setSigninData({ ...signinData, senha: e.target.value });
                                     }}
-                                    icon={
-                                        <Button size="sm" variant="text" className="ml-[-12px] absolute rounded hover:bg-gray-200 dark:hover:bg-gray-900 active:bg-gray-200"
-                                            onClick={() => setShowPassword(!showPassword)}
-
-                                        >
-                                            {showPassword ?
-                                                <EyeIcon
-                                                    strokeWidth={2}
-                                                    className="text-gray-800 dark:text-gray-200 w-5 h-5"
-                                                /> :
-                                                <EyeSlashIcon
-                                                    strokeWidth={2}
-                                                    className="text-gray-800 dark:text-gray-200 w-5 h-5"
-                                                />
-                                            }
-                                        </Button>
-                                    }
                                 />
 
                                 <div className="w-full flex justify-end">

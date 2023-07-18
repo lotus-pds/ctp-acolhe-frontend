@@ -1,11 +1,6 @@
-import {
-    Input,
-    Typography,
-    Tooltip
-} from "@material-tailwind/react";
+import { InfoInput } from "./common/input/InfoInput";
 import { SelectOptions } from "./common/select/SelectOptions";
 import { useTranslation } from "react-i18next";
-import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import { PencilIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import { getCourses } from "../services/course";
@@ -54,70 +49,42 @@ export function FormDetails(props) {
                 </div>
             </div>
 
-            <Input size="md" label={t("phone")} color="gray" required
+            <InfoInput
+                size="md"
+                label={t("phone")}
+                required
                 type="tel"
-                className="text-gray-900 dark:text-gray-200"
                 success={isFieldValid.phoneNumber}
-                value={subscription.telefone} error={isFieldValid.phoneNumber === false ? true : false}
+                value={subscription.telefone}
+                error={isFieldValid.phoneNumber === false ? true : false}
                 onChange={(e) => {
                     setSubscription({ ...subscription, telefone: e.target.value });
                 }}
-
-                icon={
-                    <Tooltip content={
-                        <div className="w-70">
-                            <Typography color="white" className="font-medium">{t("tooltipPhone.attribute")}</Typography>
-                            <Typography
-                                variant="small"
-                                color="white"
-                                className="font-normal opacity-80"
-                            >
-                                {t("tooltipPhone.description")} <br />
-                                {t("tooltipPhone.descriptionTwo")}
-                            </Typography>
-                        </div>
-                    }>
-                        <InformationCircleIcon
-                            strokeWidth={2}
-                            className="text-gray-800 dark:text-gray-200 w-5 h-5 cursor-pointer"
-                        />
-                    </Tooltip>
-                }
-
+                info={{
+                    title: t("tooltipPhone.attribute"),
+                    text: [t("tooltipPhone.description"), t("tooltipPhone.descriptionTwo")]
+                }}
             />
 
-            <Input size="md" label={t("class")} color="gray" required
-                className="text-gray-900 dark:text-gray-200"
+            <InfoInput
+                size="md"
+                label={t("class")}
+                required
                 success={isFieldValid.class}
-                type="email" value={subscription.turma} error={isFieldValid.class === false ? true : false}
+                type="email"
+                value={subscription.turma}
+                error={isFieldValid.class === false ? true : false}
                 onChange={(e) => {
                     setSubscription({ ...subscription, turma: e.target.value });
                 }}
-
-                icon={
-                    <Tooltip content={
-                        <div className="w-70">
-                            <Typography color="white" className="font-medium">{t("tooltipClass.attribute")}</Typography>
-                            <Typography
-                                variant="small"
-                                color="white"
-                                className="font-normal opacity-80"
-                            >
-                                {t("tooltipClass.description")}<br />
-                            </Typography>
-                        </div>
-                    }>
-                        <InformationCircleIcon
-                            strokeWidth={2}
-                            className="text-gray-800 dark:text-gray-200 w-5 h-5 cursor-pointer"
-                        />
-                    </Tooltip>
-                }
+                info={{
+                    title: t("tooltipClass.attribute"),
+                    text: [t("tooltipClass.description")]
+                }}
             />
 
             <SelectOptions
                 label={t("period")}
-                color="gray"
                 value={subscription.periodo}
                 onChange={(e) => setSubscription({ ...subscription, periodo: e })}
                 success={isFieldValid.period}
@@ -126,7 +93,6 @@ export function FormDetails(props) {
 
             <SelectOptions
                 label={t("course")}
-                color="gray"
                 value={subscription.idCurso}
                 onChange={(e) => setSubscription({ ...subscription, idCurso: e })}
                 success={isFieldValid.idCourse}

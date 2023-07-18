@@ -1,11 +1,10 @@
 import {
-    Input,
     Typography,
-    Tooltip,
     Checkbox
 } from "@material-tailwind/react";
+import { CommonInput } from "./common/input/CommonInput";
+import { InfoInput } from "./common/input/InfoInput";
 import { useTranslation } from "react-i18next";
-import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 
 
@@ -17,138 +16,86 @@ export function FormAccount(props) {
 
     return (
         <div className="mb-4 flex flex-col gap-6 w-full align-center justify-center">
-            <Input size="md" label={t("name")} color="gray" required
-                className="text-gray-900 dark:text-gray-200"
+
+            <InfoInput
+                size="md"
+                label={t("name")}
+                required
                 success={isFieldValid.name}
-                value={subscription.nome} error={isFieldValid.name === false ? true : false}
+                value={subscription.nome}
+                error={isFieldValid.name === false ? true : false}
                 onChange={(e) => {
                     setSubscription({ ...subscription, nome: e.target.value });
                 }}
-
-                icon={
-                    <Tooltip content={
-                        <div className="w-70">
-                            <Typography color="white" className="font-medium">{t("tooltipName.attribute")}</Typography>
-                            <Typography
-                                variant="small"
-                                color="white"
-                                className="font-normal opacity-80"
-                            >
-                                {t("tooltipName.description")} <br />
-                            </Typography>
-                        </div>
-                    }>
-                        <InformationCircleIcon
-                            strokeWidth={2}
-                            className="text-gray-800 dark:text-gray-200 w-5 h-5 cursor-pointer ml-[-8px]"
-                        />
-                    </Tooltip>
-                }
-
+                info={{ title: t("tooltipName.attribute"), text: [t("tooltipName.description")] }}
             />
 
-            <Input size="md" label={t("email")} color="gray" required
-                className="text-gray-900 dark:text-gray-200"
+            <InfoInput
+                size="md"
+                label={t("email")}
+                required
                 success={isFieldValid.email}
-                type="email" value={subscription.email} error={isFieldValid.email === false ? true : false}
+                type="email"
+                value={subscription.email}
+                error={isFieldValid.email === false ? true : false}
                 onChange={(e) => {
                     setSubscription({ ...subscription, email: e.target.value });
                 }}
-
-                icon={
-                    <Tooltip content={
-                        <div className="w-70">
-                            <Typography color="white" className="font-medium">{t("tooltipEmail.attribute")}</Typography>
-                            <Typography
-                                variant="small"
-                                color="white"
-                                className="font-normal opacity-80"
-                            >
-                                {t("tooltipEmail.description")}<br />
-                            </Typography>
-                        </div>
-                    }>
-                        <InformationCircleIcon
-                            strokeWidth={2}
-                            className="text-gray-800 dark:text-gray-200 w-5 h-5 cursor-pointer ml-[-8px]"
-                        />
-                    </Tooltip>
-                }
+                info={{
+                    title: t("tooltipEmail.attribute"),
+                    text: [t("tooltipEmail.description")]
+                }}
             />
 
-            <Input size="md" label={t("registration")} color="gray" required
-                className="text-gray-900 dark:text-gray-200"
+            <InfoInput
+                size="md"
+                label={t("registration")}
+                required
                 success={isFieldValid.registration}
-                value={subscription.prontuario} error={isFieldValid.registration === false ? true : false}
+                value={subscription.prontuario}
+                error={isFieldValid.registration === false ? true : false}
                 onChange={(e) => {
                     setSubscription({ ...subscription, prontuario: e.target.value });
                 }}
-
-                icon={
-                    <Tooltip content={
-                        <div className="w-70">
-                            <Typography color="white" className="font-medium">{t("tooltipRegistrationNumber.attribute")}</Typography>
-                            <Typography
-                                variant="small"
-                                color="white"
-                                className="font-normal opacity-80"
-                            >
-                                {t("tooltipRegistrationNumber.description")} <br />
-                                {t("tooltipRegistrationNumber.descriptionTwo")}
-                            </Typography>
-                        </div>
-                    }>
-                        <InformationCircleIcon
-                            strokeWidth={2}
-                            className="text-gray-800 dark:text-gray-200 w-5 h-5 cursor-pointer ml-[-8px]"
-                        />
-                    </Tooltip>
-                }
-
+                info={{
+                    title: t("tooltipRegistrationNumber.attribute"),
+                    text: [t("tooltipRegistrationNumber.description"), t("tooltipRegistrationNumber.descriptionTwo")]
+                }}
             />
 
-            <Input
+            <InfoInput
                 type="password"
-                size="md" label={t("password")} color="gray" required
-                className="text-gray-900 dark:text-gray-200 flex items-center"
+                size="md"
+                label={t("password")}
+                required
                 success={isFieldValid.password}
-                value={subscription.senha} error={isFieldValid.password === false ? true : false}
+                value={subscription.senha}
+                error={isFieldValid.password === false ? true : false}
                 onChange={(e) => {
                     setSubscription({ ...subscription, senha: e.target.value });
                 }}
-                icon={
-                    <Tooltip content={
-                        <div className="w-70">
-                            <Typography color="white" className="font-medium">{t("tooltipPassword.attribute")}</Typography>
-                            <Typography
-                                variant="small"
-                                color="white"
-                                className="font-normal opacity-80"
-                            >
-                                {t("tooltipPassword.description")} <br />
-                                {t("tooltipPassword.descriptionTwo")} <br />
-                                {t("tooltipPassword.descriptionThree")} <br />
-                                {t("tooltipPassword.descriptionFour")} <br />
-                                {t("tooltipPassword.descriptionFive")}
-                            </Typography>
-                        </div>
-                    }>
-                        <InformationCircleIcon
-                            strokeWidth={2}
-                            className="text-gray-800 dark:text-gray-200 w-5 h-5 cursor-pointer ml-[-8px]"
-                        />
-                    </Tooltip>
-                }
+                info={{
+                    title: t("tooltipPassword.attribute"),
+                    text: [
+                        t("tooltipPassword.description"),
+                        t("tooltipPassword.descriptionTwo"),
+                        t("tooltipPassword.descriptionThree"),
+                        t("tooltipPassword.descriptionFour"),
+                        t("tooltipPassword.descriptionFive")
+                    ]
+                }}
             />
 
-            <Input
+            <CommonInput
                 type="password"
-                size="md" label={t("confirmPassword")} color="gray" required
-                className="text-gray-900 dark:text-gray-200"
+                size="md"
+                label={t("confirmPassword")}
+                required
                 success={isFieldValid.passwordConfirmation}
-                value={subscription.confirmacao} error={isFieldValid.passwordConfirmation === false ? true : false}
+                value={subscription.confirmacao}
+                error={isFieldValid.passwordConfirmation === false ? true : false}
                 onChange={(e) => {
-                    setSubscription({ ...subscription, confirmacao: e.target.value});
+                    setSubscription({ ...subscription, confirmacao: e.target.value });
                 }}
             />
 

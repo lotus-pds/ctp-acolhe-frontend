@@ -1,17 +1,16 @@
 import {
     Card,
-    Input,
     Button,
     Typography,
-    Tooltip
 } from "@material-tailwind/react";
+import { CommonInput } from "../components/common/input/CommonInput";
+import { InfoInput } from "../components/common/input/InfoInput";
 import { useNavigate, useParams } from "react-router-dom";
 import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
 import { validatePassword } from "../common/validations";
 import { useTranslation } from "react-i18next";
 import { patchResetPassword } from "../services/subscribe-signin";
-import { InformationCircleIcon } from "@heroicons/react/24/outline";
 
 export function ResetPassword(props) {
 
@@ -70,51 +69,41 @@ export function ResetPassword(props) {
                             <form className="mt-8 mb-2 w-full  flex items-center flex-col"
                             >
                                 <div className="mb-4 flex flex-col gap-6 w-full">
-                                    <Input
+                                    <InfoInput
                                         type="password"
-                                        size="lg" label={t("newPassword")} color="gray" value={password} required
-                                        className="text-gray-900 dark:text-gray-200"
-                                        success={isFieldValid.password} error={isFieldValid.password === false ? true : false}
+                                        size="lg"
+                                        label={t("newPassword")}
+                                        value={password}
+                                        required
+                                        success={isFieldValid.password}
+                                        error={isFieldValid.password === false ? true : false}
                                         onChange={(e) => {
                                             setPassword(e.target.value);
                                         }}
-                                        icon={
-                                            <Tooltip content={
-                                                <div className="w-70">
-                                                    <Typography color="white" className="font-medium">{t("tooltipPassword.attribute")}</Typography>
-                                                    <Typography
-                                                        variant="small"
-                                                        color="white"
-                                                        className="font-normal opacity-80"
-                                                    >
-                                                        {t("tooltipPassword.description")} <br />
-                                                        {t("tooltipPassword.descriptionTwo")} <br />
-                                                        {t("tooltipPassword.descriptionThree")} <br />
-                                                        {t("tooltipPassword.descriptionFour")} <br />
-                                                        {t("tooltipPassword.descriptionFive")}
-                                                    </Typography>
-                                                </div>
-                                            }>
-                                                <InformationCircleIcon
-                                                    strokeWidth={2}
-                                                    className="text-gray-800 dark:text-gray-200 w-5 h-5 cursor-pointer ml-[-8px]"
-                                                />
-                                            </Tooltip>
-                                        }
+                                        info={{
+                                            title: t("tooltipPassword.attribute"),
+                                            text: [
+                                                t("tooltipPassword.description"),
+                                                t("tooltipPassword.descriptionTwo"),
+                                                t("tooltipPassword.descriptionThree"),
+                                                t("tooltipPassword.descriptionFour"),
+                                                t("tooltipPassword.descriptionFive")
+                                            ]
+                                        }}
                                     />
 
-
-                                    <Input
+                                    <CommonInput
                                         type="password"
-                                        size="md" label={t("confirmPassword")} color="gray" required
-                                        className="text-gray-900 dark:text-gray-200"
+                                        size="md"
+                                        label={t("confirmPassword")}
+                                        required
                                         success={isFieldValid.passwordConfirmation}
-                                        value={passwordConfirmation} error={isFieldValid.passwordConfirmation === false ? true : false}
+                                        value={passwordConfirmation}
+                                        error={isFieldValid.passwordConfirmation === false ? true : false}
                                         onChange={(e) => {
                                             setPasswordConfirmation(e.target.value);
                                         }}
                                     />
-
                                 </div>
 
                                 <Button

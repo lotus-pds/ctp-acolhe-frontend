@@ -1,9 +1,9 @@
 import {
     Typography,
     Tooltip,
-    Button,
-    Input
+    Button
 } from "@material-tailwind/react";
+import { CommonInput } from "../components/common/input/CommonInput";
 import { SelectOptions } from "../components/common/select/SelectOptions";
 import { useTranslation } from "react-i18next";
 import { HeaderUser } from "../components/HeaderUser";
@@ -237,23 +237,23 @@ export function Profile() {
                                     {t("tooltipEditProfile.somethingInformations")}
                                 </Typography>
                                 <div className="grid sm:grid-cols-2 grid-cols-1 gap-8 ">
-                                    <Input size="lg"
+                                    <CommonInput
+                                        size="lg"
                                         disabled={!sections.personalInfo}
                                         label={t("name")}
                                         value={user.nome}
                                         onChange={(e) => setUser({ ...user, nome: e.target.value })}
                                         error={!isFieldValid.name}
                                         success={isFieldValid.name}
-                                        className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
                                     />
-                                    <Input size="lg"
+                                    <CommonInput
+                                        size="lg"
                                         disabled={!sections.personalInfo}
                                         label={t("phone")}
                                         value={user.telefone}
                                         onChange={(e) => setUser({ ...user, telefone: e.target.value })}
                                         error={!isFieldValid.phoneNumber}
                                         success={isFieldValid.phoneNumber}
-                                        className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
                                     />
                                 </div>
                             </div>
@@ -264,20 +264,20 @@ export function Profile() {
                                     {t("tooltipEditProfile.institutionalInformations")}
                                 </Typography>
                                 <div className="grid sm:grid-cols-2 grid-cols-1 gap-8 ">
-                                    <Input size="lg"
+                                    <CommonInput
+                                        size="lg"
                                         disabled
                                         label={t("email")}
                                         value={user.email}
-                                        className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
                                     />
-                                    <Input size="lg"
+                                    <CommonInput
+                                        size="lg"
                                         disabled={!sections.personalInfo}
                                         label={t("class")}
                                         value={user.turma}
                                         onChange={(e) => setUser({ ...user, turma: e.target.value })}
                                         error={!isFieldValid.class}
                                         success={isFieldValid.class}
-                                        className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400"
                                     />
 
                                     <SelectOptions
@@ -292,7 +292,6 @@ export function Profile() {
 
                                     <SelectOptions
                                         label={t("course")}
-                                        color="gray"
                                         value={user.idCurso || (user.curso || {}).idCurso}
                                         disabled={!sections.personalInfo}
                                         onChange={(e) => setUser({ ...user, idCurso: e })}
@@ -300,14 +299,14 @@ export function Profile() {
                                         options={courses.map(course => ({ label: course.nome, value: course.idCurso }))}
                                     />
 
-                                    <Input size="lg"
+                                    <CommonInput
+                                        size="lg"
                                         disabled
                                         label={t("registration")}
                                         value={user.prontuario}
                                         onChange={(e) => setUser({ ...user, prontuario: e.target.value })}
                                         error={!isFieldValid.registration}
                                         success={isFieldValid.registration}
-                                        className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:label:text-gray-200"
                                     />
                                 </div>
                             </div>
@@ -389,7 +388,7 @@ export function Profile() {
                                 </Typography>
 
                                 <div className="grid sm:grid-cols-2 grid-cols-1 gap-8 ">
-                                    <Input
+                                    <CommonInput
                                         value={password.senhaAtual}
                                         onChange={e => setPassword({ ...password, senhaAtual: e.target.value })}
                                         error={isPasswordValid.currentPassword === false ? true : false}
@@ -398,9 +397,8 @@ export function Profile() {
                                         disabled={!sections.security}
                                         label={t("currentPassword")}
                                         type='password'
-                                        className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:label:text-gray-200"
                                     />
-                                    <Input
+                                    <CommonInput
                                         value={password.senhaNova}
                                         onChange={e => setPassword({ ...password, senhaNova: e.target.value })}
                                         error={isPasswordValid.newPassword === false ? true : false}
@@ -409,7 +407,6 @@ export function Profile() {
                                         disabled={!sections.security}
                                         label={t("newPassword")}
                                         type='password'
-                                        className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:label:text-gray-200"
                                     />
                                 </div>
                             </div>
