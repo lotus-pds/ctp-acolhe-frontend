@@ -1,8 +1,8 @@
 import {
     Card,
-    Button,
     Typography,
 } from "@material-tailwind/react";
+import { GnButton } from "../components/common/button/GnButton";
 import { CommonInput } from "../components/common/input/CommonInput";
 import { InfoInput } from "../components/common/input/InfoInput";
 import { useNavigate, useParams } from "react-router-dom";
@@ -106,12 +106,15 @@ export function ResetPassword(props) {
                                     />
                                 </div>
 
-                                <Button
-                                    className="mt-4 bg-gradient-to-r from-blue-100  to-blue-200
-                                    dark:from-blue-400 dark:to-blue-700"
-                                    color="blue" variant="gradient" onClick={resetPassword} disabled={!Object.values(isFieldValid).every(value => value === true)}>
+                                <GnButton
+                                    className="mt-4"
+                                    color="BLUE"
+                                    variant="gradient"
+                                    onClick={resetPassword}
+                                    disabled={!Object.values(isFieldValid).every(value => value === true)}
+                                >
                                     {t("confirmReset")}
-                                </Button>
+                                </GnButton>
                             </form>
                         </div>
 

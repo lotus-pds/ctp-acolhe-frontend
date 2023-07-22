@@ -1,11 +1,12 @@
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { useTheme } from '../hooks/useTheme'
+import { GnButton } from './common/button/GnButton'
 
 
 export function ThemeButton() {
 
-  const {setTheme} = useTheme()
+  const { setTheme } = useTheme()
 
   return (
     <Popover className="relative">
@@ -29,23 +30,25 @@ export function ThemeButton() {
             dark:shadow-xl
           ">
             <div className="flex flex-col items-center">
-                <button 
-                  className='p-1'
-                  onClick={() => setTheme("dark")}
-                >
-                  <img src="https://media.discordapp.net/attachments/1077345452694970438/1099694692653879366/Component_24.png"
-                    className='sm:h-[35px] h-[25px]'
-                  />
-                  
-                </button>
+              <GnButton
+                className='p-1'
+                onClick={() => setTheme("dark")}
+                color='NONE'
+              >
+                <img src="https://media.discordapp.net/attachments/1077345452694970438/1099694692653879366/Component_24.png"
+                  className='sm:h-[35px] h-[25px]'
+                />
 
-                <button 
-                  className='p-1'
-                  onClick={() => setTheme("light")}
-                >
+              </GnButton>
+
+              <GnButton
+                className='p-1'
+                onClick={() => setTheme("light")}
+                color='NONE'
+              >
                 <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572131325366343/light-theme-icon.png?width=480&height=480"
-                  className='sm:h-[45px] h-[30px]'/>
-                </button>
+                  className='sm:h-[45px] h-[30px]' />
+              </GnButton>
             </div>
           </div>
         </Popover.Panel>

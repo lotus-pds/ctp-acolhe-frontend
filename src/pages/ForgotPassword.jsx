@@ -1,12 +1,12 @@
 import {
     Card,
-    Button,
     Typography,
     Dialog,
     DialogHeader,
     DialogBody,
     DialogFooter
 } from "@material-tailwind/react";
+import { GnButton } from "../components/common/button/GnButton";
 import { CommonInput } from "../components/common/input/CommonInput";
 import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
@@ -85,12 +85,15 @@ export function ForgotPassword(props) {
                                     />
                                 </div>
 
-                                <Button
-                                    className="mt-4 bg-gradient-to-r from-blue-100  to-blue-200dark:from-blue-400 dark:to-blue-700"
-                                    color="blue" variant="gradient" onClick={sendEmail} disabled={!isEmailValid}
+                                <GnButton
+                                    className="mt-4 "
+                                    color="BLUE" 
+                                    variant="gradient"
+                                    onClick={sendEmail}
+                                    disabled={!isEmailValid}
                                 >
                                     {t("send")}
-                                </Button>
+                                </GnButton>
                             </form>
                         </div>
 
@@ -114,9 +117,8 @@ export function ForgotPassword(props) {
                     {t('emailForgotPassword')}
                 </DialogBody>
                 <DialogFooter>
-                    <Button
-                        className="bg-gradient-to-r from-green-200  to-green-300"
-                        color="green"
+                    <GnButton
+                        color="GREEN"
                         onClick={async () => {
                             await postResendForgotPassword(email);
                             setIsResendEmailEnabled(false);
@@ -125,7 +127,7 @@ export function ForgotPassword(props) {
                         disabled={!isResendEmailEnabled}
                     >
                         <span>{t('resendEmail')}</span>
-                    </Button>
+                    </GnButton>
                 </DialogFooter>
             </Dialog>
         </div>

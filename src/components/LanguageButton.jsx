@@ -1,11 +1,12 @@
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { useTranslation } from 'react-i18next';
+import { GnButton } from './common/button/GnButton';
 
 
 export function LanguageButton() {
 
-  const {i18n} = useTranslation()
+  const { i18n } = useTranslation()
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng)
@@ -13,10 +14,10 @@ export function LanguageButton() {
 
   return (
     <Popover className="relative">
-      <Popover.Button className="inline-flex items-center gap-x-1 leading-6 outline-none">    
-          <img src="https://media.discordapp.net/attachments/1077345452694970438/1107078467738157147/Component_28.png?width=480&height=480"
-            className='sm:h-[45px] h-[25px]'
-          />
+      <Popover.Button className="inline-flex items-center gap-x-1 leading-6 outline-none">
+        <img src="https://media.discordapp.net/attachments/1077345452694970438/1107078467738157147/Component_28.png?width=480&height=480"
+          className='sm:h-[45px] h-[25px]'
+        />
       </Popover.Button>
 
       <Transition
@@ -35,25 +36,26 @@ export function LanguageButton() {
             <div className="
               flex flex-col
             ">
-              <button
+              <GnButton
                 onClick={() => changeLanguage("pt")}
                 className='p-1'
+                color='NONE'
               >
+                <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572128636801034/brazil-colorfull.png"
+                  className='sm:h-[45px] h-[25px]'
+                />
+              </GnButton>
 
-              <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572128636801034/brazil-colorfull.png"
-                className='sm:h-[45px] h-[25px]'
-              />
-              </button>
-
-              <button 
+              <GnButton
                 onClick={() => changeLanguage("en")}
                 className='p-1'
+                color='NONE'
               >
                 <img src="https://media.discordapp.net/attachments/1077345452694970438/1107078468014977034/estados-unidos.png?width=480&height=480"
                   className='sm:h-[45px] h-[25px]'
                 />
-            
-              </button> 
+
+              </GnButton>
             </div>
           </div>
         </Popover.Panel>

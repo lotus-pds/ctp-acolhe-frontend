@@ -1,4 +1,4 @@
-import { Button } from "@material-tailwind/react";
+import { GnButton } from "../button/GnButton";
 import { CommonInput } from "./CommonInput";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
@@ -12,9 +12,11 @@ export function EyeInput(props) {
             {...props}
             type={showPassword ? "text" : "password"}
             icon={
-                <Button size="sm" variant="text" className="ml-[-12px] absolute rounded hover:bg-gray-200 dark:hover:bg-gray-900 active:bg-gray-200"
+                <GnButton
+                    size="sm"
+                    variant="text"
+                    className="ml-[-12px] absolute rounded hover:bg-gray-200 dark:hover:bg-gray-900 active:bg-gray-200"
                     onClick={() => setShowPassword(!showPassword)}
-
                 >
                     {showPassword ?
                         <EyeIcon
@@ -26,7 +28,7 @@ export function EyeInput(props) {
                             className="text-gray-800 dark:text-gray-200 w-5 h-5"
                         />
                     }
-                </Button>
+                </GnButton>
             }
         />
     )

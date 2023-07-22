@@ -42,19 +42,9 @@ export function AccessConfirmation() {
                                 {t("confirmedEmailDescription")}
                             </Typography>
 
-
-                            {/**
-                             * UTILIZAR ESSE COMPONENTE QUANTO O ROTEAMENTO ESTIVER PRONTO
-                             * <Button className="mt-4 bg-gradient-to-r from-green-100  to-green-300
-                                dark:from-green-300 dark:to-green-400
-                            " color="purple" variant="gradient" onClick="">
-                                {t("signIn")}
-                            </Button>
-                             */}
-
                             <Link className="mt-4 bg-gradient-to-r from-green-100  to-green-300
-                                dark:from-green-300 dark:to-green-400 p-2 rounded text-gray-100
-                            " to="/signin">
+                                dark:from-green-300 dark:to-green-400 p-2 rounded text-gray-100" 
+                                to="/signin">
                                 {t("signIn")}
                             </Link>
                         </div>

@@ -7,6 +7,7 @@ import {
     DialogBody,
     DialogFooter
 } from "@material-tailwind/react";
+import { GnButton } from "../components/common/button/GnButton";
 import { Link } from "react-router-dom";
 import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
@@ -156,25 +157,25 @@ export function Subscribe(props) {
                             {getCompStep()}
 
                             <div className="flex gap-3 p-3 w-full justify-around align-center">
-                                <Button
-                                    className="mt-0 bg-gradient-to-r from-gray-500  to-gray-700
-                                        dark:from-gray-200 dark:to-gray-400 dark:text-gray-900"
-                                    color="gray" variant="gradient"
+                                <GnButton
+                                    className="mt-0"
+                                    color="GRAY" 
+                                    variant="gradient"
                                     onClick={() => setStep(step - 1)}
                                     disabled={step === 1}
                                 >
                                     {t("back")}
-                                </Button>
+                                </GnButton>
 
-                                <Button
-                                    className="mt-0 bg-gradient-to-r from-green-200  to-green-300
-                                        dark:from-green-300 dark:to-green-400"
-                                    color="green" variant="gradient"
+                                <GnButton
+                                    className="mt-0"
+                                    color="GREEN"
+                                    variant="gradient"
                                     onClick={() => subscription.email.includes('@ifsp.edu.br') ? subscribe() : (step === 1 ? setStep(step + 1) : subscribe())}
                                     disabled={!Object.values(isFieldValid[step - 1]).every(value => value === true)}
                                 >
                                     {subscription.email.includes('@ifsp.edu.br') ? t("subscribe") : (step === 2 ? t("subscribe") : t("next"))}
-                                </Button>
+                                </GnButton>
                             </div>
 
                             <Typography className="mt-4 text-center font-normal text-gray-900 dark:text-gray-200">
@@ -219,9 +220,8 @@ export function Subscribe(props) {
                     {t('subscriptionSuccess')}
                 </DialogBody>
                 <DialogFooter>
-                    <Button
-                        className="bg-gradient-to-r from-green-200  to-green-300"
-                        color="green"
+                    <GnButton
+                        color="GREEN"
                         disabled={!isResendEmailEnabled}
                         onClick={async () => {
                             await postResendVerification(subscription.email);
@@ -230,7 +230,7 @@ export function Subscribe(props) {
                         }}
                     >
                         <span>{t('resendEmail')}</span>
-                    </Button>
+                    </GnButton>
                 </DialogFooter>
             </Dialog>
         </div>

@@ -42,16 +42,6 @@ export function ResetSuccessfull() {
                                 {t("resetSuccessfullDescription")}
                             </Typography>
                             
-                                
-                            {/**
-                             * UTILIZAR ESSE COMPONENTE QUANTO O ROTEAMENTO ESTIVER PRONTO
-                             * <Button className="mt-4 bg-gradient-to-r from-purple-100  to-purple-300
-                                dark:from-purple-400 dark:to-purple-500
-                            " color="purple" variant="gradient" onClick="">
-                                {t("signIn")}
-                            </Button>
-                             */}
-                            
                             <Link className="mt-4 bg-gradient-to-r from-blue-100  to-blue-300
                                 dark:from-blue-400 dark:to-blue-500 p-2 rounded text-gray-100
                             " to="/signin">

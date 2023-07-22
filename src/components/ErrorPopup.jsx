@@ -1,10 +1,10 @@
 import {
-    Button,
     Dialog,
     DialogHeader,
     DialogBody,
     DialogFooter
 } from "@material-tailwind/react";
+import { GnButton } from "./common/button/GnButton";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { inactivateErrorPopup } from "../redux/features/errorPopupSlice";
@@ -35,13 +35,12 @@ export const ErrorPopup = (props) => {
                 {message}
             </DialogBody>
             <DialogFooter>
-                <Button
-                    className="bg-gradient-to-r from-red-200  to-red-300"
-                    color="red"
+                <GnButton
+                    color="RED"
                     onClick={() => dispatch(inactivateErrorPopup())}
                 >
                     <span>OK</span>
-                </Button>
+                </GnButton>
             </DialogFooter>
         </Dialog>
     );

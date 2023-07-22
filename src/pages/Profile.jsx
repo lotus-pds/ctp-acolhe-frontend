@@ -3,6 +3,7 @@ import {
     Tooltip,
     Button
 } from "@material-tailwind/react";
+import { GnButton } from "../components/common/button/GnButton";
 import { CommonInput } from "../components/common/input/CommonInput";
 import { SelectOptions } from "../components/common/select/SelectOptions";
 import { useTranslation } from "react-i18next";
@@ -117,9 +118,9 @@ export function Profile() {
                                 </Typography>
                             </div>
                         }>
-                            <Button className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12">
+                            <GnButton className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12">
                                 <PencilIcon className="w-5"></PencilIcon>
-                            </Button>
+                            </GnButton>
                         </Tooltip>
                     </div>
 
@@ -129,17 +130,17 @@ export function Profile() {
                         <div className="w-[75%] ml-9 bg-gray-200 dark:bg-gray-900 h-7"></div>
                         <div className="w-[95%] bg-gray-200 dark:bg-gray-900 h-7"></div>
 
-                        <Button
+                        <GnButton
                             onClick={async () => {
                                 await deleteSession();
                                 removeAuthData();
                                 navigate('/');
                             }}
-                            className="bg-white text-red-300 dark:text-red-200 italic font-bold flex gap-2 justify-center items-center"
+                            className="bg-white text-red-300 dark:text-red-200 italic font-bold flex gap-2 justify-center items-center shadow-transparent hover:shadow-transparent hover:scale-110 transition"
                         >
                             <ArrowLeftOnRectangleIcon className="w-6" />
                             {t('tooltipEditProfile.logout')}
-                        </Button>
+                        </GnButton>
 
                     </div>
                 </div>
@@ -184,14 +185,14 @@ export function Profile() {
                                         </div>
                                     }>
                                         {sections.personalInfo === false
-                                            ? <Button
+                                            ? <GnButton
                                                 className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                                 disabled={!Object.values(sections).every(value => value === false)}
                                                 onClick={() => { setSections({ ...sections, personalInfo: !sections.personalInfo }) }}
                                             >
                                                 <PencilIcon className="w-5"></PencilIcon>
-                                            </Button>
-                                            : <Button
+                                            </GnButton>
+                                            : <GnButton
                                                 className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12"
                                                 disabled={!Object.values(isFieldValid).every(value => value === true)}
                                                 onClick={async () => {
@@ -200,7 +201,7 @@ export function Profile() {
                                                 }}
                                             >
                                                 <CheckIcon className="w-5"></CheckIcon>
-                                            </Button>}
+                                            </GnButton>}
                                     </Tooltip>
                                     {sections.personalInfo === true ?
                                         <Tooltip content={
@@ -214,7 +215,7 @@ export function Profile() {
                                                 </Typography>
                                             </div>
                                         }>
-                                            <Button
+                                            <GnButton
                                                 color="red"
                                                 className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                                 onClick={() => {
@@ -223,7 +224,7 @@ export function Profile() {
                                                 }}
                                             >
                                                 <XMarkIcon className="w-8"></XMarkIcon>
-                                            </Button>
+                                            </GnButton>
                                         </Tooltip> : undefined
                                     }
 
@@ -331,14 +332,14 @@ export function Profile() {
                                         </div>
                                     }>
                                         {sections.security === false
-                                            ? <Button
+                                            ? <GnButton
                                                 className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                                 onClick={() => { setSections({ ...sections, security: !sections.security }) }}
                                                 disabled={!Object.values(sections).every(value => value === false)}
                                             >
                                                 <PencilIcon className="w-5"></PencilIcon>
-                                            </Button>
-                                            : <Button
+                                            </GnButton>
+                                            : <GnButton
                                                 className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                                 onClick={async () => {
                                                     await updatePassword();
@@ -347,7 +348,7 @@ export function Profile() {
                                                 disabled={!Object.values(isPasswordValid).every(value => value === true)}
                                             >
                                                 <CheckIcon className="w-5"></CheckIcon>
-                                            </Button>}
+                                            </GnButton>}
                                     </Tooltip>
                                     {sections.security === true ?
                                         <Tooltip content={
@@ -361,7 +362,7 @@ export function Profile() {
                                                 </Typography>
                                             </div>
                                         }>
-                                            <Button
+                                            <GnButton
                                                 color="red"
                                                 className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                                 onClick={() => {
@@ -373,7 +374,7 @@ export function Profile() {
                                                 }}
                                             >
                                                 <XMarkIcon className="w-8"></XMarkIcon>
-                                            </Button>
+                                            </GnButton>
 
                                         </Tooltip> : undefined
                                     }
@@ -430,20 +431,20 @@ export function Profile() {
                                     </div>
                                 }>
                                     {sections.danger === false
-                                        ? <Button
+                                        ? <GnButton
                                             color="red"
                                             className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                             onClick={() => { setSections({ ...sections, danger: !sections.danger }) }}
                                             disabled={!Object.values(sections).every(value => value === false)}
                                         >
                                             <ExclamationTriangleIcon className="w-5"></ExclamationTriangleIcon>
-                                        </Button>
-                                        : <Button
+                                        </GnButton>
+                                        : <GnButton
                                             color="red"
                                             className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                             onClick={() => { setSections({ ...sections, danger: !sections.danger }) }}>
                                             <CheckIcon className="w-5"></CheckIcon>
-                                        </Button>}
+                                        </GnButton>}
                                 </Tooltip>
                             </div>
 

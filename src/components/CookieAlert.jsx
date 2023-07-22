@@ -1,4 +1,5 @@
-import { Alert, Button } from "@material-tailwind/react";
+import { Alert } from "@material-tailwind/react";
+import { GnButton } from "./common/button/GnButton";
 import { useState } from "react";
 import { InformationCircleIcon } from "@heroicons/react/24/solid"
 import { getStorage, setStorage } from "../services/config";
@@ -23,14 +24,14 @@ export function CookieAlert(props) {
             }
         >
             Este site utiliza cookies para armazenar informações. Ao continuar navegando, você concorda com o seu uso.
-            <Button
+            <GnButton
                 color='white'
                 size='sm'
                 className='ml-5'
                 onClick={handleClick}
             >
                 OK
-            </Button>
+            </GnButton>
         </Alert>
     )
 }
