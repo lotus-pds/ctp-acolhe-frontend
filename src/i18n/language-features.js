@@ -1,6 +1,8 @@
 export const resources = {
     en : {
         translation : {
+            "cookie" : "This website uses cookies to store information. By continuing to browse, you agree to their use.",
+            "loading" : "Loading...",
             "error" : "Error",
             "drag":"Drag",
             "success" : "Success",
@@ -104,7 +106,7 @@ export const resources = {
                 "myIncident": "My Incident",
                 "profile": "My Profile"
             },
-            "loading":"Content available soon !!!",
+            "loadingContent":"Content available soon !!!",
             "tooltipEditProfile":{
                 "picture":"Image Profile",
                 "titleProfile":"Account information",
@@ -127,6 +129,8 @@ export const resources = {
       },
       pt : {
         translation: {
+            "cookie" : "Este site utiliza cookies para armazenar informações. Ao continuar navegando, você concorda com o seu uso.",
+            "loading" : "Carregando...",
             "error" : "Erro",
             "drag":"Arraste",
             "success" : "Sucesso",
@@ -230,7 +234,7 @@ export const resources = {
                 "myIncident": "Meus incidentes",
                 "profile": "Meu Perfil"
             },
-            "loading":"Conteúdo disponível em breve !!!",
+            "loadingContent":"Conteúdo disponível em breve !!!",
             "tooltipEditProfile":{
                 "picture":"Imagem de Perfil",
                 "titleProfile":"Informações da Conta",

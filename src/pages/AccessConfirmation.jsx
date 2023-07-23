@@ -2,13 +2,16 @@ import {
     Card,
     Typography
 } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
 import { SecondHeader } from "../components/SecondHeader";
 import { useTranslation } from "react-i18next";
+import { GnButton } from "../components/common/button/GnButton";
+import { useNavigate } from "react-router-dom";
 
 export function AccessConfirmation() {
 
-    const { t } = useTranslation()
+    const { t } = useTranslation();
+
+    const navigate = useNavigate();
 
     return (
         <div>
@@ -41,12 +44,12 @@ export function AccessConfirmation() {
                             <Typography className="mt-1 font-bold text-gray-900 dark:text-gray-200 text-center">
                                 {t("confirmedEmailDescription")}
                             </Typography>
-
-                            <Link className="mt-4 bg-gradient-to-r from-green-100  to-green-300
-                                dark:from-green-300 dark:to-green-400 p-2 rounded text-gray-100" 
-                                to="/signin">
+                            <GnButton
+                                color="GREEN"
+                                onClick={() => navigate('/signin')}
+                            >
                                 {t("signIn")}
-                            </Link>
+                            </GnButton>
                         </div>
 
                     </Card>

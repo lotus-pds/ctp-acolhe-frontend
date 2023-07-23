@@ -1,11 +1,8 @@
 import {
     Card,
-    Typography,
-    Dialog,
-    DialogHeader,
-    DialogBody,
-    DialogFooter
+    Typography
 } from "@material-tailwind/react";
+import { GnPopup } from "../components/common/popup/GnPopup";
 import { GnButton } from "../components/common/button/GnButton";
 import { CommonInput } from "../components/common/input/CommonInput";
 import { SecondHeader } from "../components/SecondHeader";
@@ -87,7 +84,7 @@ export function ForgotPassword(props) {
 
                                 <GnButton
                                     className="mt-4 "
-                                    color="BLUE" 
+                                    color="BLUE"
                                     variant="gradient"
                                     onClick={sendEmail}
                                     disabled={!isEmailValid}
@@ -100,23 +97,11 @@ export function ForgotPassword(props) {
                     </Card>
                 </div>
             </div>
-            <Dialog
+            <GnPopup
                 open={success}
-                size="sm"
-                className="flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-100"
-            >
-                <DialogHeader>
-                    <h4 className="
-                    bg-clip-text text-transparent bg-gradient-to-r from-green-200  to-green-300
-                    font-mouse text-3xl
-                ">
-                        {t('success')}
-                    </h4>
-                </DialogHeader>
-                <DialogBody className='text-center'>
-                    {t('emailForgotPassword')}
-                </DialogBody>
-                <DialogFooter>
+                type='SUCCESS'
+                text={t('emailForgotPassword')}
+                btn={
                     <GnButton
                         color="GREEN"
                         onClick={async () => {
@@ -126,10 +111,10 @@ export function ForgotPassword(props) {
                         }}
                         disabled={!isResendEmailEnabled}
                     >
-                        <span>{t('resendEmail')}</span>
+                        {t('resendEmail')}
                     </GnButton>
-                </DialogFooter>
-            </Dialog>
+                }
+            />
         </div>
     )
 }

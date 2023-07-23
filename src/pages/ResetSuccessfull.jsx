@@ -2,13 +2,16 @@ import {
     Card,
     Typography
 } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { GnButton } from "../components/common/button/GnButton";
 import { SecondHeader } from "../components/SecondHeader";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 export function ResetSuccessfull() {
 
-    const {t} = useTranslation()
+    const {t} = useTranslation();
+
+    const navigate = useNavigate();
 
     return(
         <div>
@@ -41,14 +44,13 @@ export function ResetSuccessfull() {
                             <Typography className="mt-1 font-bold text-gray-900 dark:text-gray-200 text-center">
                                 {t("resetSuccessfullDescription")}
                             </Typography>
-                            
-                            <Link className="mt-4 bg-gradient-to-r from-blue-100  to-blue-300
-                                dark:from-blue-400 dark:to-blue-500 p-2 rounded text-gray-100
-                            " to="/signin">
+                            <GnButton
+                                color="BLUE"
+                                onClick={() => navigate('/signin')}
+                            >
                                 {t("signIn")}
-                            </Link>
+                            </GnButton>
                         </div>
-                    
                     </Card>
                 </div>
             </div>

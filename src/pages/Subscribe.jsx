@@ -1,13 +1,9 @@
 import {
     Card,
-    Button,
-    Typography,
-    Dialog,
-    DialogHeader,
-    DialogBody,
-    DialogFooter
+    Typography
 } from "@material-tailwind/react";
 import { GnButton } from "../components/common/button/GnButton";
+import { GnPopup } from "../components/common/popup/GnPopup";
 import { Link } from "react-router-dom";
 import { SecondHeader } from "../components/SecondHeader";
 import { useState } from 'react';
@@ -159,7 +155,7 @@ export function Subscribe(props) {
                             <div className="flex gap-3 p-3 w-full justify-around align-center">
                                 <GnButton
                                     className="mt-0"
-                                    color="GRAY" 
+                                    color="GRAY"
                                     variant="gradient"
                                     onClick={() => setStep(step - 1)}
                                     disabled={step === 1}
@@ -203,23 +199,11 @@ export function Subscribe(props) {
                 </div>
             </div>
 
-            <Dialog
+            <GnPopup
                 open={success}
-                size="sm"
-                className="flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-100"
-            >
-                <DialogHeader>
-                    <h4 className="
-                    bg-clip-text text-transparent bg-gradient-to-r from-green-200  to-green-300
-                    font-mouse text-3xl
-                ">
-                        {t('success')}
-                    </h4>
-                </DialogHeader>
-                <DialogBody className='text-center'>
-                    {t('subscriptionSuccess')}
-                </DialogBody>
-                <DialogFooter>
+                type={'SUCCESS'}
+                text={t('subscriptionSuccess')}
+                btn={
                     <GnButton
                         color="GREEN"
                         disabled={!isResendEmailEnabled}
@@ -229,10 +213,10 @@ export function Subscribe(props) {
                             enableResendEmail();
                         }}
                     >
-                        <span>{t('resendEmail')}</span>
+                        {t('resendEmail')}
                     </GnButton>
-                </DialogFooter>
-            </Dialog>
+                }
+            />
         </div>
     )
 }

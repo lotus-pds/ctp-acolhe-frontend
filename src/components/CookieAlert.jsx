@@ -3,6 +3,7 @@ import { GnButton } from "./common/button/GnButton";
 import { useState } from "react";
 import { InformationCircleIcon } from "@heroicons/react/24/solid"
 import { getStorage, setStorage } from "../services/config";
+import { useTranslation } from "react-i18next";
 
 export function CookieAlert(props) {
     let cookie = (getStorage('cookieCtpAcolhe') || 'false') != 'true'
@@ -14,6 +15,8 @@ export function CookieAlert(props) {
         setStorage('cookieCtpAcolhe', 'true');
     }
 
+    const { t } = useTranslation();
+
     return (
         <Alert
             color="blue"
@@ -23,7 +26,7 @@ export function CookieAlert(props) {
                 <InformationCircleIcon className="h-8 w-6" />
             }
         >
-            Este site utiliza cookies para armazenar informações. Ao continuar navegando, você concorda com o seu uso.
+            {t('cookie')}
             <GnButton
                 color='white'
                 size='sm'

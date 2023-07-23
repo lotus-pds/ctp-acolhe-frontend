@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { GnButton } from "../components/common/button/GnButton";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,14 +16,16 @@ export function Home() {
 
     const { t } = useTranslation();
 
+    const navigate = useNavigate();
+
     return (
 
         <div
             className="h-full"
-        >   
-            <Header/>
-            <img src="https://cdn.discordapp.com/attachments/1077345452694970438/1107315225662849134/Vector_337.png" alt="" 
-                className="absolute  top-0 right-0 z-10 sm:w-[35%] w-[42%]" 
+        >
+            <Header />
+            <img src="https://cdn.discordapp.com/attachments/1077345452694970438/1107315225662849134/Vector_337.png" alt=""
+                className="absolute  top-0 right-0 z-10 sm:w-[35%] w-[42%]"
             />
             <main className="
                 w-full
@@ -46,36 +49,26 @@ export function Home() {
                                 >
                                     {t("educationalTitle")}
                                 </h2>
-                                <p className="sm:text-base text-sm" dangerouslySetInnerHTML={{__html:t("educationalDesc")}} />
+                                <p className="sm:text-base text-sm" dangerouslySetInnerHTML={{ __html: t("educationalDesc") }} />
                                 <div className="flex flex-row items-center justify-between w-full">
-                                    <Link to="/subscribe">
-                                        <div
-                                            className="
-                                                sm:w-[120px]
-                                                w-[80px]
-                                                font-bold
-                                                rounded-lg
-                                                sm:text-base
-                                                text-sm
-                                                p-2
-                                                bg-gradient-to-r from-red-100 via-red-300 to-red-400
-                                                text-center
-                                            ">
-                                            {t("signUp")}
-                                        </div>
-                                    </Link>
+                                    <GnButton
+                                        color="RED"
+                                        onClick={() => navigate('/subscribe')}
+                                    >
+                                        {t("signUp")}
+                                    </GnButton>
                                     <Typography variant="h5" className="flex items-center justify-center  m-w-[100px] gap-6 font-mouse font-normal">
                                         {t("drag")}
-                                        <ArrowLongRightIcon className="w-6"/>
-                                                                    
+                                        <ArrowLongRightIcon className="w-6" />
+
                                     </Typography>
                                 </div>
-                                
+
                             </div>
-                            <div  className="sm:mt-0 mt-[-50px] flex items-center justify-center">
-                                <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572130138378250/studies.png?width=648&height=480" alt="" 
-                                className="sm:w-[600px] w-[300px]"
-                            />
+                            <div className="sm:mt-0 mt-[-50px] flex items-center justify-center">
+                                <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572130138378250/studies.png?width=648&height=480" alt=""
+                                    className="sm:w-[600px] w-[300px]"
+                                />
                             </div>
                         </div>
                     </SwiperSlide>
@@ -87,36 +80,26 @@ export function Home() {
                                 >
                                     {t("organizationTitle")}
                                 </h2>
-                                <p className="sm:text-base text-sm" dangerouslySetInnerHTML={{__html:t("organizationDesc")}} />
+                                <p className="sm:text-base text-sm" dangerouslySetInnerHTML={{ __html: t("organizationDesc") }} />
                                 <div className="flex items-center justify-between w-full">
-                                <Link to="/subscribe">
-                                    <div
-                                        className="
-                                            sm:w-[120px]
-                                            w-[80px]
-                                            font-bold
-                                            rounded-lg
-                                            sm:text-base
-                                            text-sm
-                                            p-2
-                                            bg-gradient-to-r from-blue-400  to-blue-200
-                                            text-center
-                                        ">
+                                    <GnButton
+                                        color="BLUE"
+                                        onClick={() => navigate('/subscribe')}
+                                    >
                                         {t("signUp")}
-                                    </div>
-                                </Link>
-                                <Typography variant="h5" className="flex items-center justify-center  m-w-[100px] gap-6 font-mouse font-normal">
-                                    <ArrowLongLeftIcon className="w-6"/>
+                                    </GnButton>
+                                    <Typography variant="h5" className="flex items-center justify-center  m-w-[100px] gap-6 font-mouse font-normal">
+                                        <ArrowLongLeftIcon className="w-6" />
                                         {t("drag")}
-                                    <ArrowLongRightIcon className="w-6"/>
-                                </Typography>
+                                        <ArrowLongRightIcon className="w-6" />
+                                    </Typography>
                                 </div>
-                                
+
                             </div>
-                            <div   className="sm:mt-0 mt-[-30px] flex items-center justify-center">
-                                <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572129647632436/organization.png?width=624&height=480" alt="" 
-                                className="sm:w-[600px] w-[330px]"
-                            />
+                            <div className="sm:mt-0 mt-[-30px] flex items-center justify-center">
+                                <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572129647632436/organization.png?width=624&height=480" alt=""
+                                    className="sm:w-[600px] w-[330px]"
+                                />
                             </div>
                         </div>
                     </SwiperSlide>
@@ -129,40 +112,30 @@ export function Home() {
                                 >
                                     {t("psychologicalTitle")}
                                 </h2>
-                                <p className="sm:text-base text-sm" dangerouslySetInnerHTML={{__html:t("psychologicalDesc")}} />
+                                <p className="sm:text-base text-sm" dangerouslySetInnerHTML={{ __html: t("psychologicalDesc") }} />
                                 <div className="flex items-center justify-between w-full">
-                                    <Link to="/subscribe">
-                                        <div
-                                            className="
-                                                sm:w-[120px]
-                                                w-[80px]
-                                                font-bold
-                                                rounded-lg
-                                                sm:text-base
-                                                text-sm
-                                                p-2
-                                                bg-gradient-to-r from-purple-100  to-purple-300
-                                                text-center
-                                            ">
-                                            {t("signUp")}
-                                        </div>
-                                    </Link>
+                                    <GnButton
+                                        color="PURPLE"
+                                        onClick={() => navigate('/subscribe')}
+                                    >
+                                        {t("signUp")}
+                                    </GnButton>
                                     <Typography variant="h5" className="flex items-center justify-center  m-w-[100px] gap-6 font-mouse font-normal">
-                                        <ArrowLongLeftIcon className="w-6"/>
+                                        <ArrowLongLeftIcon className="w-6" />
                                         {t("drag")}
                                     </Typography>
                                 </div>
-                                
+
                             </div>
-                            <div className="sm:mt-0 mt-[-30px] flex items-center justify-center"> 
-                                <img src="https://media.discordapp.net/attachments/1077345452694970438/1099732054565990410/Component_17_1.png?width=480&height=480" alt="" 
-                                className="sm:w-[480px] w-[300px]"
-                            />
+                            <div className="sm:mt-0 mt-[-30px] flex items-center justify-center">
+                                <img src="https://media.discordapp.net/attachments/1077345452694970438/1099732054565990410/Component_17_1.png?width=480&height=480" alt=""
+                                    className="sm:w-[480px] w-[300px]"
+                                />
                             </div>
                         </div>
                     </SwiperSlide>
                 </Swiper>
-                <CookieAlert/>
+                <CookieAlert />
             </main>
             <footer className="sm:absolute relative bottom-0 left-0 mt-[80px] w-full">
                 <Footer />

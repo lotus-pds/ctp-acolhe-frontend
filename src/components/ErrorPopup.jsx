@@ -1,9 +1,4 @@
-import {
-    Dialog,
-    DialogHeader,
-    DialogBody,
-    DialogFooter
-} from "@material-tailwind/react";
+import { GnPopup } from "./common/popup/GnPopup";
 import { GnButton } from "./common/button/GnButton";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -18,30 +13,18 @@ export const ErrorPopup = (props) => {
     const { t } = useTranslation();
 
     return (
-        <Dialog
+        <GnPopup
             open={open}
-            size="sm"
-            className="flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-900 dark:text-white"
-        >
-            <DialogHeader>
-                <h4 className="
-                    bg-clip-text text-transparent bg-gradient-to-r from-red-200  to-red-300
-                    font-mouse text-3xl
-                ">
-                    {t("error")}
-                </h4>
-            </DialogHeader>
-            <DialogBody className='text-center'>
-                {message}
-            </DialogBody>
-            <DialogFooter>
+            type='ERROR'
+            text={message}
+            btn={
                 <GnButton
                     color="RED"
                     onClick={() => dispatch(inactivateErrorPopup())}
                 >
-                    <span>OK</span>
+                    OK
                 </GnButton>
-            </DialogFooter>
-        </Dialog>
+            }
+        />
     );
 }
