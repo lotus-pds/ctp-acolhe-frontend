@@ -118,7 +118,7 @@ export function Profile() {
                                 </Typography>
                             </div>
                         }>
-                            <GnButton className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12">
+                            <GnButton color="BLUE" className="w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12">
                                 <PencilIcon className="w-5"></PencilIcon>
                             </GnButton>
                         </Tooltip>
@@ -136,7 +136,7 @@ export function Profile() {
                                 removeAuthData();
                                 navigate('/');
                             }}
-                            className="bg-white text-red-300 dark:text-red-200 italic font-bold flex gap-2 justify-center items-center shadow-transparent hover:shadow-transparent hover:scale-110 transition"
+                            className="bg-transparent text-red-300 dark:text-red-200 italic font-bold flex gap-2 justify-center items-center shadow-transparent hover:shadow-transparent hover:scale-110 transition"
                         >
                             <ArrowLeftOnRectangleIcon className="w-6" />
                             {t('tooltipEditProfile.logout')}
@@ -186,14 +186,16 @@ export function Profile() {
                                     }>
                                         {sections.personalInfo === false
                                             ? <GnButton
-                                                className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                                color="BLUE"
+                                                className="w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                                 disabled={!Object.values(sections).every(value => value === false)}
                                                 onClick={() => { setSections({ ...sections, personalInfo: !sections.personalInfo }) }}
                                             >
                                                 <PencilIcon className="w-5"></PencilIcon>
                                             </GnButton>
                                             : <GnButton
-                                                className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12"
+                                                color="BLUE"
+                                                className=" w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12"
                                                 disabled={!Object.values(isFieldValid).every(value => value === true)}
                                                 onClick={async () => {
                                                     await updateUser();
@@ -216,8 +218,8 @@ export function Profile() {
                                             </div>
                                         }>
                                             <GnButton
-                                                color="red"
-                                                className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                                color="RED"
+                                                className=" w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                                 onClick={() => {
                                                     setSections({ ...sections, personalInfo: false });
                                                     localGetUser();
@@ -333,14 +335,16 @@ export function Profile() {
                                     }>
                                         {sections.security === false
                                             ? <GnButton
-                                                className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                                color="BLUE"
+                                                className=" w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                                 onClick={() => { setSections({ ...sections, security: !sections.security }) }}
                                                 disabled={!Object.values(sections).every(value => value === false)}
                                             >
                                                 <PencilIcon className="w-5"></PencilIcon>
                                             </GnButton>
                                             : <GnButton
-                                                className="bg-blue-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                                color="BLUE"
+                                                className=" w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                                 onClick={async () => {
                                                     await updatePassword();
                                                     setSections({ ...sections, security: !sections.security });
@@ -363,8 +367,8 @@ export function Profile() {
                                             </div>
                                         }>
                                             <GnButton
-                                                color="red"
-                                                className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                                color="RED"
+                                                className="w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                                 onClick={() => {
                                                     setSections({ ...sections, security: !sections.security });
                                                     setPassword({
@@ -432,16 +436,16 @@ export function Profile() {
                                 }>
                                     {sections.danger === false
                                         ? <GnButton
-                                            color="red"
-                                            className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                            color="RED"
+                                            className="w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                             onClick={() => { setSections({ ...sections, danger: !sections.danger }) }}
                                             disabled={!Object.values(sections).every(value => value === false)}
                                         >
                                             <ExclamationTriangleIcon className="w-5"></ExclamationTriangleIcon>
                                         </GnButton>
                                         : <GnButton
-                                            color="red"
-                                            className="bg-red-700 w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                            color="RED"
+                                            className="w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                             onClick={() => { setSections({ ...sections, danger: !sections.danger }) }}>
                                             <CheckIcon className="w-5"></CheckIcon>
                                         </GnButton>}

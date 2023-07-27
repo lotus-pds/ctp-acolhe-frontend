@@ -1,13 +1,16 @@
 export const resources = {
     en : {
         translation : {
+            "cancel":"Cancel",
+            "confirm":"Confirm",
             "cookie" : "This website uses cookies to store information. By continuing to browse, you agree to their use.",
+            "selectAvatar":"Choose your profile picture",
             "loading" : "Loading...",
             "error" : "Error",
             "drag":"Drag",
             "success" : "Success",
-            "signIn" : "Sign In",
-            "signUp" : "Sign Up",
+            "signIn" : "SignIn",
+            "signUp" : "SignUp",
             "educationalTitle" : "Assistance for educational conflicts",
             "educationalDesc" : "An important process for dealing with issues and problems that arise in the educational context, through strategies and resources that can mediate conflicts involving students, parents, teachers, school staff, or other members of the school community. <br/><br/>Its main objective is to promote a safe, inclusive, and conducive educational environment, fostering emotional education, social skills training, anti-bullying and cyberbullying policies, among other initiatives.",
             "organizationTitle": "Support for student organization",
@@ -129,7 +132,10 @@ export const resources = {
       },
       pt : {
         translation: {
+            "cancel":"Cancelar",
+            "confirm":"Confirmar",
             "cookie" : "Este site utiliza cookies para armazenar informações. Ao continuar navegando, você concorda com o seu uso.",
+            "selectAvatar":"Escolha a imagem do seu perfil",
             "loading" : "Carregando...",
             "error" : "Erro",
             "drag":"Arraste",

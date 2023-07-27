@@ -8,7 +8,8 @@ export function NavbarUser(){
 
     return(
         <div>
-            <Navbar className="bg-gray-100 dark:bg-gray-800 border-none w-[350px] h-[50px] flex items-center justify-between sm:relative fixed bottom-0 left-3 sm:m-0 mr-6 mb-6">
+            <Navbar className="bg-gray-100 dark:bg-gray-800 border-none sm:w-[350px] w-[255px] h-[45px] sm:h-[50px] flex items-center justify-between sm:relative fixed
+            bottom-0 left-5 right-5 sm:m-0 mb-3 ml-2 mr-2">
                     <Tooltip 
                         content={
                             <div className="w-70">
@@ -22,9 +23,11 @@ export function NavbarUser(){
                             </div>
                         }
                     >
-                        <NavLink 
+                        <NavLink  
                         to={"/posts"}>
-                            <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930264821485649/Component_58.png" alt="" />
+                            <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930264821485649/Component_58.png" alt="" 
+                            className="sm:w-7 w-6"
+                            />
                         </NavLink>
                     </Tooltip>
                     
@@ -40,10 +43,12 @@ export function NavbarUser(){
                         </div>
                     }>
                         <NavLink to={"/my-calendar"}
-                            className=""
+                             
                             
                         >   
-                           <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930264565612575/Component_10.png" alt="" /> 
+                           <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930264565612575/Component_10.png" alt="" 
+                           className="sm:w-8 w-7"
+                           /> 
                             
                         </NavLink>
                     </Tooltip><Tooltip content={
@@ -57,8 +62,8 @@ export function NavbarUser(){
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/create-incident"}>
-                            <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930264129425530/Component_11_1.png" alt="" />
+                        <NavLink to={"/create-incident"} >
+                            <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930264129425530/Component_11_1.png" alt="" className="sm:w-10 w-8"/>
                         </NavLink>
                     </Tooltip><Tooltip content={
                         <div className="w-70">
@@ -71,8 +76,10 @@ export function NavbarUser(){
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/my-incident"}>
-                            <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930264322359406/Component_9.png" alt="" />
+                        <NavLink to={"/my-incident"} >
+                            <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930264322359406/Component_9.png" 
+                            className="sm:w-7 w-6"
+                            alt="" />
                         </NavLink>
                     </Tooltip><Tooltip content={
                         <div className="w-70">
@@ -85,8 +92,8 @@ export function NavbarUser(){
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/profile"}>
-                            <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930263869358222/Component_12_1.png" alt="" />
+                        <NavLink to={"/profile"} >
+                            <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930263869358222/Component_12_1.png" alt="" className="sm:w-7 w-6" />
                         </NavLink>
                     </Tooltip>
                 </Navbar>

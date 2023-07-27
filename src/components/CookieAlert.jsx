@@ -19,8 +19,7 @@ export function CookieAlert(props) {
 
     return (
         <Alert
-            color="blue"
-            className='fixed w-500 bottom-14 z-50 drop-shadow-lg pr-0'
+            className='bg-white dark:bg-gray-900 fixed border border-solid border-gray-900 dark:border-gray-200 text-gray-900 dark:text-gray-200 w-500 bottom-14 z-50 shadow-lg pr-0'
             show={show}
             icon={
                 <InformationCircleIcon className="h-8 w-6" />
@@ -30,7 +29,7 @@ export function CookieAlert(props) {
             <GnButton
                 color='white'
                 size='sm'
-                className='ml-5'
+                className='ml-5 border border-solid border-gray-900 dark:border-gray-200'
                 onClick={handleClick}
             >
                 OK
