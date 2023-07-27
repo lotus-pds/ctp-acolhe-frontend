@@ -30,19 +30,19 @@ export function Router(props) {
             <Route path="/reset-my-password/:token" element={<OpenRoute><ResetPassword /></OpenRoute>} />
             <Route path="/reset-successfull" element={<OpenRoute><ResetSuccessfull /></OpenRoute>} />
             <Route path="/access-confirmation" element={<OpenRoute><AccessConfirmation /></OpenRoute>} />
+            <Route path="/create-incident" element={<PrivateRoute user={['Aluno', 'Admin']}><CreateIncident /></PrivateRoute>} />
+            <Route path="/posts" element={<PrivateRoute user={['Aluno', 'Admin']}><Posts /></PrivateRoute>} />
+            <Route path="/my-calendar" element={<PrivateRoute user={['Aluno', 'Admin']}><MyCalendar /></PrivateRoute>} />
+            {/**
             <Route path="/posts" element={<Posts />} />
             <Route path="/my-calendar" element={<MyCalendar />} />
             <Route path="/create-incident" element={<CreateIncident />} />
+            */}
+            <Route path="/profile" element={<PrivateRoute user={['Aluno', 'Admin']}><Profile /></PrivateRoute>} />
+            <Route path="/my-incident" element={<PrivateRoute user={['Aluno', 'Admin']}><MyIncident /></PrivateRoute>} />
             {/**
-             * <Route path="/create-incident" element={<PrivateRoute user={['Aluno', 'Admin']}><CreateIncident /></PrivateRoute>} />
-             * <Route path="/posts" element={<PrivateRoute user={['Aluno', 'Admin']}><Posts /></PrivateRoute>} />
-            <Route path="/my-calendar" element={<PrivateRoute user={['Aluno', 'Admin']}><MyCalendar /></PrivateRoute>} />
-             */}
             <Route path="/my-incident" element={<MyIncident />} />
             <Route path="/profile" element={<Profile />} />
-            {/**
-             *  <Route path="/profile" element={<PrivateRoute user={['Aluno', 'Admin']}><Profile /></PrivateRoute>} />
-             * <Route path="/my-incident" element={<PrivateRoute user={['Aluno', 'Admin']}><MyIncident /></PrivateRoute>} />
              */}
             <Route path="/subscribe/verification/:token" element={<EmailConfirmation />} />
         </Routes>
