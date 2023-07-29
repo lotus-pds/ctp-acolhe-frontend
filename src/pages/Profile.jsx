@@ -315,9 +315,9 @@ export function Profile() {
 
                                     <SelectOptions
                                         label={t("course")}
-                                        value={user.idCurso || (user.curso || {}).idCurso}
+                                        value={user?.curso?.idCurso}
                                         disabled={!sections.personalInfo}
-                                        onChange={(e) => setUser({ ...user, idCurso: e })}
+                                        onChange={(e) => setUser({ ...user, curso: { idCurso: e.target.value } })}
                                         success={isFieldValid.course}
                                         options={courses.map(course => ({ label: course.nome, value: course.idCurso }))}
                                     />
