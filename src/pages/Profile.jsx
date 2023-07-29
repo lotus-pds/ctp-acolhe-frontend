@@ -1,7 +1,6 @@
 import {
     Typography,
-    Tooltip,
-    Button
+    Tooltip
 } from "@material-tailwind/react";
 import { GnButton } from "../components/common/button/GnButton";
 import { CommonInput } from "../components/common/input/CommonInput";
@@ -11,12 +10,13 @@ import { HeaderUser } from "../components/HeaderUser";
 import { ArrowLeftOnRectangleIcon, CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { PencilIcon, AcademicCapIcon, KeyIcon, ExclamationTriangleIcon, UserIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
-import { getUser, putUser, patchUserPassword } from "../services/user";
+import { getUser, putUser, patchUserPassword, patchUserAvatar } from "../services/user";
 import { deleteSession } from "../services/subscribe-signin";
 import { validateClass, validateEmail, validateName, validatePassword, validatePhoneNumber, validateRegistration } from "../common/validations";
 import { useNavigate } from "react-router-dom";
 import { getCourses } from "../services/course";
 import { removeAuthData } from "../common/general";
+import { PicturePopup } from "../components/PicturePopup";
 
 export function Profile() {
 
@@ -36,6 +36,9 @@ export function Profile() {
         security: false,
         danger: false
     });
+
+    const [openPicturePopup, setOpenPicturePopup] = useState(false);
+    const handleOpenPicturePopup = () => setOpenPicturePopup(!openPicturePopup);
 
     const localGetUser = async () => {
         let response = await getUser();
@@ -72,6 +75,11 @@ export function Profile() {
         setUser(response.data);
     }
 
+    const updateAvatar = async (urlAvatar) => {
+        await patchUserAvatar({ urlAvatar });
+        localGetUser();
+    }
+
     const updatePassword = async () => {
         await patchUserPassword({ ...password });
         setPassword({
@@ -106,7 +114,7 @@ export function Profile() {
             </Typography>
             <div className="w-[90%] grid sm:grid-cols-[20%,78%] grid-cols-1 gap-8 mt-2">
                 <div className="bg-gray-100 dark:bg-gray-800 w-full sm:h-[35%] gap-6 float flex flex-col items-center p-6 rounded-xl drop-shadow-md ">
-                    <div className="h-24 w-24 bg-gray-200 dark:bg-gray-900 rounded-full bg-[url('https://media.discordapp.net/attachments/1077345452694970438/1107082558170202232/Mask_group_7.png?width=480&height=480')] bg-center bg-cover">
+                    <div className={"h-24 w-24 bg-gray-200 dark:bg-gray-900 rounded-full bg-[url('" + user.urlAvatar + "')] bg-center bg-cover"}>
                         <Tooltip content={
                             <div className="w-70">
                                 <Typography
@@ -118,10 +126,22 @@ export function Profile() {
                                 </Typography>
                             </div>
                         }>
-                            <GnButton color="BLUE" className="w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12">
+                            <GnButton color="BLUE" onClick={handleOpenPicturePopup} className="w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12">
                                 <PencilIcon className="w-5"></PencilIcon>
                             </GnButton>
                         </Tooltip>
+                        <PicturePopup
+                            open={openPicturePopup}
+                            handleConfirm={selected => {
+                                updateAvatar(selected);
+                                handleOpenPicturePopup();
+                            }}
+                            handleOpen={() => {
+                                handleOpenPicturePopup();
+                                localGetUser();
+                            }}
+                            preSelected={user.urlAvatar}
+                        />
                     </div>
 
                     <div className="w-full flex flex-col items-center sm:p-0 p-2 justify-evenly h-full">
