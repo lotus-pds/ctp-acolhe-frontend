@@ -14,14 +14,12 @@ import { FormAccount } from "../components/FormAccount";
 import { FormDetails } from "../components/FormDetails";
 import { getCourses } from "../services/course";
 
-
 export function Subscribe(props) {
+    const { courses } = props;
 
     const { t } = useTranslation();
 
     const [step, setStep] = useState(1);
-
-    const [courses, setCourses] = useState([]);
 
     const enableResendEmail = () => {
         setTimeout(() => {
@@ -115,15 +113,6 @@ export function Subscribe(props) {
         setSuccess(true);
         enableResendEmail();
     }
-
-    useEffect(() => {
-        const localGetCourses = async () => {
-            let response = await getCourses();
-            setCourses(response.data);
-        }
-
-        localGetCourses();
-    }, []);
 
     return (
         <div>

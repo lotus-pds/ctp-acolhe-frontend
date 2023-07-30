@@ -6,7 +6,7 @@ import {
 export function SelectOptions(props) {
     const { label, color = 'gray', value, onChange, success, error, disabled, options = [] } = props;
 
-    let children = options.map(option => <Option value={option.value}>{option.label}</Option>)
+    let children = options.map(option => <Option value={option.value}>{option.label}</Option>);
 
     return (
         <Select

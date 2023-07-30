@@ -30,8 +30,6 @@ export function FormDetails(props) {
         }
     ]
 
-    console.log(subscription?.idCurso);
-
     return (
         <div className="mb-4 flex flex-col gap-6 w-full items-center justify-center">
             <div className={"bg-center bg-cover bg-[url('" + subscription.urlAvatar + "')] w-20 h-20 rounded-full relative"}>

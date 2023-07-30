@@ -18,13 +18,15 @@ import { getCourses } from "../services/course";
 import { removeAuthData } from "../common/general";
 import { PicturePopup } from "../components/PicturePopup";
 
-export function Profile() {
+export function Profile(props) {
+    const { courses } = props;
+
+    console.log(courses);
 
     const { t } = useTranslation();
     const navigate = useNavigate();
 
     const [user, setUser] = useState({});
-    const [courses, setCourses] = useState([]);
 
     const [password, setPassword] = useState({
         senhaAtual: '',
@@ -45,14 +47,8 @@ export function Profile() {
         setUser(response.data);
     }
 
-    const localGetCourses = async () => {
-        let response = await getCourses();
-        setCourses(response.data);
-    }
-
     useEffect(() => {
         localGetUser();
-        localGetCourses();
     }, []);
 
     const isFieldValid = {
