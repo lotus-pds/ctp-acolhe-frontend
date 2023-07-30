@@ -32,7 +32,7 @@ export function FormDetails(props) {
 
     return (
         <div className="mb-4 flex flex-col gap-6 w-full items-center justify-center">
-            <div className={"bg-center bg-cover bg-[url('" + subscription.urlAvatar + "')] w-20 h-20 rounded-full relative"}>
+            <div style={{ backgroundImage: `url(${subscription.urlAvatar})` }} className={"bg-center bg-cover w-20 h-20 rounded-full relative"}>
                 <div className="bg-gradient-to-r from-green-200  to-green-300 dark:from-green-300 dark:to-green-400 w-10 h-10 absolute bottom-0 right-0 rounded-full flex items-center justify-center">
                     <GnButton onClick={handleOpenPicturePopup} className="w-5 h-12 bg-transparent shadow-none rounded-full items-center hover:shadow-none relative">
                         <PencilIcon

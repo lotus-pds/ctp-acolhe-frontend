@@ -21,8 +21,6 @@ import { PicturePopup } from "../components/PicturePopup";
 export function Profile(props) {
     const { courses } = props;
 
-    console.log(courses);
-
     const { t } = useTranslation();
     const navigate = useNavigate();
 
@@ -110,7 +108,7 @@ export function Profile(props) {
             </Typography>
             <div className="w-[90%] grid sm:grid-cols-[20%,78%] grid-cols-1 gap-8 mt-2">
                 <div className="bg-gray-100 dark:bg-gray-800 w-full sm:h-[35%] gap-6 float flex flex-col items-center p-6 rounded-xl drop-shadow-md ">
-                    <div className={"h-24 w-24 bg-gray-200 dark:bg-gray-900 rounded-full bg-[url('" + user.urlAvatar + "')] bg-center bg-cover"}>
+                    <div style={{ backgroundImage: `url(${user.urlAvatar})` }} className={"h-24 w-24 bg-gray-200 dark:bg-gray-900 rounded-full bg-center bg-cover"}>
                         <Tooltip content={
                             <div className="w-70">
                                 <Typography
