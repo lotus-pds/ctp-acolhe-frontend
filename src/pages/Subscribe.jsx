@@ -6,12 +6,13 @@ import { GnButton } from "../components/common/button/GnButton";
 import { GnPopup } from "../components/common/popup/GnPopup";
 import { Link } from "react-router-dom";
 import { SecondHeader } from "../components/SecondHeader";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { postSubscribe, postResendVerification } from "../services/subscribe-signin";
 import { validateEmail, validateName, validatePassword, validateRegistration, validatePhoneNumber, validateClass } from "../common/validations";
 import { useTranslation } from "react-i18next";
 import { FormAccount } from "../components/FormAccount";
 import { FormDetails } from "../components/FormDetails";
+import { getCourses } from "../services/course";
 
 
 export function Subscribe(props) {
@@ -19,6 +20,14 @@ export function Subscribe(props) {
     const { t } = useTranslation();
 
     const [step, setStep] = useState(1);
+
+    const [courses, setCourses] = useState([]);
+
+    const enableResendEmail = () => {
+        setTimeout(() => {
+            setIsResendEmailEnabled(true);
+        }, 60000);
+    }
 
     const [subscription, setSubscription] = useState({
         nome: '',
@@ -67,6 +76,7 @@ export function Subscribe(props) {
                         subscription={subscription}
                         setSubscription={setSubscription}
                         isFieldValid={isFieldValid[1]}
+                        courses={courses}
                     />
                 );
             default:
@@ -82,12 +92,6 @@ export function Subscribe(props) {
     const [success, setSuccess] = useState(false);
 
     const [isResendEmailEnabled, setIsResendEmailEnabled] = useState(false);
-
-    const enableResendEmail = () => {
-        setTimeout(() => {
-            setIsResendEmailEnabled(true);
-        }, 60000);
-    }
 
     const subscribe = async () => {
         let newSubscription = { ...subscription };
@@ -111,6 +115,15 @@ export function Subscribe(props) {
         setSuccess(true);
         enableResendEmail();
     }
+
+    useEffect(() => {
+        const localGetCourses = async () => {
+            let response = await getCourses();
+            setCourses(response.data);
+        }
+
+        localGetCourses();
+    }, []);
 
     return (
         <div>

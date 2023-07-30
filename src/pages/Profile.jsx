@@ -62,7 +62,7 @@ export function Profile() {
         phoneNumber: validatePhoneNumber(String(user.telefone).trim()),
         class: validateClass(String(user.turma).trim()),
         period: user.periodo === '' ? false : true,
-        course: user.curso === '' ? false : true
+        course: user.curso?.idCurso === '' ? false : true
     };
 
     const isPasswordValid = {
@@ -317,7 +317,7 @@ export function Profile() {
                                         label={t("course")}
                                         value={user?.curso?.idCurso}
                                         disabled={!sections.personalInfo}
-                                        onChange={(e) => setUser({ ...user, curso: { idCurso: e.target.value } })}
+                                        onChange={value => setUser({ ...user, curso: { idCurso: value } })}
                                         success={isFieldValid.course}
                                         options={courses.map(course => ({ label: course.nome, value: course.idCurso }))}
                                     />
@@ -437,7 +437,7 @@ export function Profile() {
                             </div>
                         </div>
 
-                        <div className="w-full">
+                        {/* <div className="w-full">
                             <div className="flex items-center justify-between">
 
                                 <Typography variant="h4" className='font-normal sm:text-2xl text-xl flex gap-4'>
@@ -489,7 +489,7 @@ export function Profile() {
                                     {t("tooltipEditProfile.dangerousDesc")}
                                 </Typography>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

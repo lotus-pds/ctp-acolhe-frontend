@@ -36,7 +36,7 @@ axios.interceptors.response.use(res => {
         removeAuthData();
         window.location.href = frontendUrl;
     } else {
-        store.dispatch(activateErrorPopup((res.response === undefined ? [] : res.response.data.errors)[0] || 'Ocorreu um erro'));
+        store.dispatch(activateErrorPopup((res?.response?.data?.errors)[0] || 'Ocorreu um erro'));
     }
 
     throw res;

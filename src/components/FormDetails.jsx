@@ -2,30 +2,18 @@ import { InfoInput } from "./common/input/InfoInput";
 import { SelectOptions } from "./common/select/SelectOptions";
 import { useTranslation } from "react-i18next";
 import { PencilIcon } from "@heroicons/react/24/solid";
-import { useEffect, useState } from "react";
-import { getCourses } from "../services/course";
+import { useState } from "react";
 import { PicturePopup } from "./PicturePopup";
 import { GnButton } from "./common/button/GnButton";
 
 export function FormDetails(props) {
-    const { subscription, setSubscription, isFieldValid } = props;
+    const { subscription, setSubscription, isFieldValid, courses } = props;
 
     const { t } = useTranslation();
-
-    const [courses, setCourses] = useState([]);
 
     const [openPicturePopup, setOpenPicturePopup] = useState(false);
 
     const handleOpenPicturePopup = () => setOpenPicturePopup(!openPicturePopup);
-
-    useEffect(() => {
-        const localGetCourses = async () => {
-            let response = await getCourses();
-            setCourses(response.data);
-        }
-
-        localGetCourses();
-    }, []);
 
     const periods = [
         {
@@ -41,6 +29,8 @@ export function FormDetails(props) {
             value: 'NOTURNO'
         }
     ]
+
+    console.log(subscription?.idCurso);
 
     return (
         <div className="mb-4 flex flex-col gap-6 w-full items-center justify-center">
