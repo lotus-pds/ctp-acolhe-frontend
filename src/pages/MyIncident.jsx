@@ -1,11 +1,11 @@
 import { HeaderUser } from "../components/HeaderUser";
-import { LoadContent } from "../components/LoadingContent";
+import { IncidentTable } from "../components/IncidentTable";
 
 export function MyIncident(){
     return(
         <div className="flex flex-col items-center">
             <HeaderUser/>
-            <LoadContent/>
+            <IncidentTable/>
         </div>
     )
 }
