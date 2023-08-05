@@ -3,14 +3,14 @@ import {
     Card,
     CardHeader,
     Typography,
-    Button,
     CardBody,
     Chip,
     CardFooter,
     IconButton,
     Tooltip,
-    Input,
 } from "@material-tailwind/react";
+import { Input, DatePicker, Select } from "antd";
+import { GnButton } from "../../common/button/GnButton";
 
 const TABLE_HEAD = ["Assunto", "Data", "Status", "Tipos", ""];
 
@@ -49,7 +49,7 @@ const TABLE_ROWS = [
 
 const getIncidentTypes = incidentTypes => {
     let types;
-    if(incidentTypes.join(", ").length > 50) {
+    if (incidentTypes.join(", ").length > 50) {
         types = incidentTypes.join(", ").slice(0, 50) + "...";
     } else {
         types = incidentTypes.join(", ");
@@ -94,14 +94,39 @@ export function IncidentTable(props) {
     return (
         <Card className="h-full w-[90%] my-8 rounded">
             <CardHeader floated={false} shadow={false} className="rounded-none">
-                <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
-                    <div>
-                        <Typography variant="h5" color="blue-gray">
-                            Meus incidentes
-                        </Typography>
-                        <Typography color="gray" className="mt-1 font-normal">
-                            Estes são seus incidentes criados.
-                        </Typography>
+                <div className="mb-4">
+
+                    <Typography variant="h5" color="blue-gray">
+                        Meus incidentes
+                    </Typography>
+                    <Typography color="gray" className="mt-1 font-normal">
+                        Estes são seus incidentes criados.
+                    </Typography>
+                    <div
+                        className="flex justify-center flex-row w-full gap-2 mt-2"
+                    >
+                        <Input
+                            placeholder="Assunto"
+                            className="w-[20%]"
+                        />
+                        <DatePicker
+                            placeholder="Data Início"
+                            className="w-[20%]"
+                        />
+                        <DatePicker
+                            placeholder="Data Final"
+                            className="w-[20%]"
+                        />
+                        <Select
+                            className="w-[20%]"
+                            size="large"
+                        />
+                        <GnButton
+                            color="BLUE"
+                            className="w-[20%]"
+                        >
+                            Pesquisar
+                        </GnButton>
                     </div>
                 </div>
             </CardHeader>
@@ -168,7 +193,8 @@ export function IncidentTable(props) {
                     </tbody>
                 </table>
             </CardBody>
-            <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
+            {/* INSERIR QUANDO TIVER PAGINAÇÃO: */}
+            {/* <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
                 <Button variant="outlined" color="blue-gray" size="sm">
                     Anterior
                 </Button>
@@ -198,7 +224,7 @@ export function IncidentTable(props) {
                 <Button variant="outlined" color="blue-gray" size="sm">
                     Próximo
                 </Button>
-            </CardFooter>
+            </CardFooter> */}
         </Card>
     );
 }
