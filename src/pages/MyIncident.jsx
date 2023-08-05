@@ -1,5 +1,5 @@
 import { HeaderUser } from "../components/HeaderUser";
-import { IncidentTable } from "../components/IncidentTable";
+import { IncidentTable } from "../components/cutomized/studentIncidents/IncidentTable";
 
 export function MyIncident(){
     return(

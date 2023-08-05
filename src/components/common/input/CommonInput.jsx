@@ -3,7 +3,7 @@ import {
 } from "@material-tailwind/react";
 
 export function CommonInput(props) {
-    const { label, color = 'gray', value, onChange, success, error, disabled, size, required, type, icon } = props;
+    const { label, color = 'gray', value, onChange, success, error, disabled, size, required, type, icon, className } = props;
 
     return (
         <Input
@@ -14,7 +14,7 @@ export function CommonInput(props) {
             success={success}
             error={error}
             disabled={disabled}
-            className="text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400 flex items-center"
+            className={"text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400 flex items-center " + (className || '')}
             size={size}
             required={required}
             type={type}
