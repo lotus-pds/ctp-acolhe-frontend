@@ -17,39 +17,6 @@ import { useState } from "react";
 
 const TABLE_HEAD = ["Assunto", "Data", "Status", "Tipos", ""];
 
-const TABLE_ROWS = [
-    {
-        name: "Conflito com professor",
-        date: "01/06/2023",
-        types: ["Conflito"],
-        status: "finalizado"
-    },
-    {
-        name: "Organizar melhor o meu tempo",
-        date: "24/02/2023",
-        types: ["Acolhimento psicológico voltado ao meio educacional/institucional"],
-        status: "pendente"
-    },
-    {
-        name: "Problema com o Gossip",
-        date: "03/12/2022",
-        types: ["Bullying", "Cyberbullying", "Conflito"],
-        status: "em processo"
-    },
-    {
-        name: "Como melhorar minhas notas",
-        date: "29/11/2022",
-        types: ["Organização escolar"],
-        status: "finalizado"
-    },
-    {
-        name: "Bullying",
-        date: "18/10/2022",
-        types: ["Bullying", "Cyberbullying", "Conflito", "Acolhimento psicológico voltado ao meio educacional/institucional"],
-        status: "cancelado"
-    },
-];
-
 const getIncidentTypes = incidentTypes => {
     let types = incidentTypes.map(t => t.tipo);
     if (types.join(", ").length > 50) {
@@ -71,8 +38,6 @@ export function IncidentTable(props) {
     const searchIncidents = filters => {
         let innerFilters = filters;
 
-        console.log(innerFilters);
-
         if (innerFilters.dataIncidenteInicial != undefined) {
             innerFilters.dataIncidenteInicial = convertDateHyphen(innerFilters.dataIncidenteInicial);
         }
@@ -84,7 +49,24 @@ export function IncidentTable(props) {
         search(innerFilters);
     }
 
-    console.log(filters);
+    const STATUS = [
+        {
+            label: t("incidentTypes.FIN"),
+            value: "FIN"
+        },
+        {
+            label: t("incidentTypes.EPR"),
+            value: "EPR"
+        },
+        {
+            label: t("incidentTypes.CAN"),
+            value: "CAN"
+        },
+        {
+            label: t("incidentTypes.PEN"),
+            value: "PEN"
+        }
+    ];
 
     return (
         <Card className="h-full w-[90%] my-8 rounded">
@@ -98,9 +80,16 @@ export function IncidentTable(props) {
                         Estes são seus incidentes criados.
                     </Typography>
                     <div className="flex justify-center flex-row w-full gap-2 mt-2" >
+                        <Input
+                            placeholder={t("subject")}
+                            className="w-[50%]"
+                            onChange={e => setFilters({ ...filters, assunto: e.target.value })}
+                            allowClear={true}
+                            value={filters.assunto}
+                        />
                         <Select
                             placeholder={t("types")}
-                            className="w-full"
+                            className="w-[50%]"
                             size="large"
                             mode="multiple"
                             onChange={(value, option) => setFilters({ ...filters, idTipoIncidente: value })}
@@ -108,15 +97,19 @@ export function IncidentTable(props) {
                             value={filters.idTipoIncidente}
                             allowClear={true}
                         />
+
                     </div>
                     <div className="flex justify-center flex-row w-full gap-2 mt-2" >
-                        <Input
-                            placeholder={t("subject")}
+                        <Select
+                            placeholder="Status"
                             className="w-[25%]"
-                            onChange={e => setFilters({ ...filters, assunto: e.target.value })}
+                            size="large"
+                            onChange={(value, option) => setFilters({ ...filters, idStatus: value })}
+                            options={STATUS}
+                            value={filters.status}
                             allowClear={true}
-                            value={filters.assunto}
                         />
+
                         <DatePicker
                             placeholder={t("startDate")}
                             className="w-[25%]"
@@ -163,7 +156,7 @@ export function IncidentTable(props) {
                     <tbody>
                         {incidents.map(
                             (i, index) => {
-                                const isLast = index === TABLE_ROWS.length - 1;
+                                const isLast = index === incidents.length - 1;
                                 const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
 
                                 return (
