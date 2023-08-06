@@ -12,8 +12,7 @@ import {
 import { Input, DatePicker, Select } from "antd";
 import { GnButton } from "../../common/button/GnButton";
 import { useTranslation } from "react-i18next";
-import { convertDateBars, convertDateHyphen } from "../../../common/general";
-import { useState } from "react";
+import { convertDateBars } from "../../../common/general";
 
 const TABLE_HEAD = ["Assunto", "Data", "Status", "Tipos", ""];
 
@@ -29,25 +28,9 @@ const getIncidentTypes = incidentTypes => {
 }
 
 export function IncidentTable(props) {
-    const { incidents = [], toggleDetailsOpen, detailIncident, ChipStatus, search, incidentTypes } = props;
+    const { incidents = [], toggleDetailsOpen, detailIncident, ChipStatus, search, incidentTypes, filters, setFilters } = props;
 
     const { t } = useTranslation();
-
-    const [filters, setFilters] = useState({});
-
-    const searchIncidents = filters => {
-        let innerFilters = filters;
-
-        if (innerFilters.dataIncidenteInicial != undefined) {
-            innerFilters.dataIncidenteInicial = convertDateHyphen(innerFilters.dataIncidenteInicial);
-        }
-
-        if (innerFilters.dataIncidenteFinal != undefined) {
-            innerFilters.dataIncidenteFinal = convertDateHyphen(innerFilters.dataIncidenteFinal);
-        }
-
-        search(innerFilters);
-    }
 
     const STATUS = [
         {
@@ -113,7 +96,7 @@ export function IncidentTable(props) {
                         <DatePicker
                             placeholder={t("startDate")}
                             className="w-[25%]"
-                            onChange={(date, string) => setFilters({ ...filters, dataIncidenteInicial: date })}
+                            onChange={(date, string) => setFilters({ ...filters, dataIncidenteInicial: string })}
                             value={filters.dataInicio}
                             format="DD/MM/YYYY"
                             allowClear={true}
@@ -121,7 +104,7 @@ export function IncidentTable(props) {
                         <DatePicker
                             placeholder={t("endDate")}
                             className="w-[25%]"
-                            onChange={(date, string) => setFilters({ ...filters, dataIncidenteFinal: date })}
+                            onChange={(date, string) => setFilters({ ...filters, dataIncidenteFinal: string })}
                             value={filters.dataFinal}
                             format="DD/MM/YYYY"
                             allowClear={true}
@@ -129,7 +112,7 @@ export function IncidentTable(props) {
                         <GnButton
                             color="BLUE"
                             className="w-[25%]"
-                            onClick={() => searchIncidents(filters)}
+                            onClick={() => search()}
                         >
                             {t("search")}
                         </GnButton>

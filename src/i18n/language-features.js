@@ -139,8 +139,8 @@ export const resources = {
                 "FIN":"Completed",
                 "PEN":"Pending"
             },
-            "danger":"Danger",
-            "dangerAction":"This action cannot be undone. Do you want to proceed?"
+            "warning":"Warning",
+            "warningAction":"This action cannot be undone. Do you want to proceed?"
        },
       },
       pt : {
@@ -283,8 +283,8 @@ export const resources = {
                 "FIN":"Finalizado",
                 "PEN":"Pendente"
             },
-            "danger":"Perigo",
-            "dangerAction":"Esta ação não pode ser desfeita. Deseja prosseguir?"
+            "warning":"Atenção",
+            "warningAction":"Esta ação não pode ser desfeita. Deseja prosseguir?"
         }
       },
 }
