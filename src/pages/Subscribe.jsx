@@ -12,7 +12,6 @@ import { validateEmail, validateName, validatePassword, validateRegistration, va
 import { useTranslation } from "react-i18next";
 import { FormAccount } from "../components/FormAccount";
 import { FormDetails } from "../components/FormDetails";
-import { getCourses } from "../services/course";
 
 export function Subscribe(props) {
     const { courses } = props;
