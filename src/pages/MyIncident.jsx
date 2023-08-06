@@ -2,10 +2,10 @@ import { HeaderUser } from "../components/HeaderUser";
 import { IncidentTable } from "../components/cutomized/studentIncidents/IncidentTable";
 import { IncidentDetails } from "../components/cutomized/studentIncidents/IncidentDetails";
 import { useEffect, useState } from "react";
-import { getMyIncidents, getIncidentTypes } from "../services/incident";
+import { getMyIncidents, getIncidentTypes, cancelIncident } from "../services/incident";
 import { useTranslation } from "react-i18next";
 import { Chip } from "@material-tailwind/react";
-import { DangerPopup } from "../components/common/popup/DangerPopup";
+import { WarningPopup } from "../components/common/popup/WarningPopup";
 
 const ChipStatus = props => {
     const { t } = useTranslation();
@@ -52,13 +52,25 @@ export function MyIncident() {
     const [incidents, setIncidents] = useState([]);
     const [incident, setIncident] = useState({});
     const [incidentTypes, setIncidentTypes] = useState([]);
-    const [dangerOpen, setDangerOpen] = useState(false);
-    const [onConfirmDanger, setOnConfirmDanger] = useState(() => { });
+    const [warningOpen, setWarningOpen] = useState(false);
+    const [filters, setFilters] = useState({});
 
     const detailIncident = incident => setIncident({ ...incident });
 
-    const localGetMyIncidents = async filters => {
-        let response = await getMyIncidents(filters);
+    const localGetMyIncidents = async () => {
+        let innerFilters = {...filters};
+
+        if (innerFilters.dataIncidenteInicial != undefined && innerFilters.dataIncidenteInicial != "") {
+            let parts = innerFilters.dataIncidenteInicial.split("/");
+            innerFilters.dataIncidenteInicial = `${parts[2]}-${parts[1]}-${parts[0]}`;
+        }
+
+        if (innerFilters.dataIncidenteFinal != undefined && innerFilters.dataIncidenteFinal != "") {
+            let parts = innerFilters.dataIncidenteFinal.split("/");
+            innerFilters.dataIncidenteFinal = `${parts[2]}-${parts[1]}-${parts[0]}`;
+        }
+
+        let response = await getMyIncidents(innerFilters);
         setIncidents(response.data);
     }
 
@@ -83,9 +95,7 @@ export function MyIncident() {
                 handleOpen={toggleDetailsOpen}
                 incident={incident}
                 ChipStatus={ChipStatus}
-                setDangerOpen={setDangerOpen}
-                setOnConfirmDanger={setOnConfirmDanger}
-                localGetMyIncidents={localGetMyIncidents}
+                setWarningOpen={setWarningOpen}
             />
 
             <IncidentTable
@@ -95,12 +105,19 @@ export function MyIncident() {
                 ChipStatus={ChipStatus}
                 search={localGetMyIncidents}
                 incidentTypes={incidentTypes}
+                filters={filters}
+                setFilters={setFilters}
             />
 
-            <DangerPopup
-                open={dangerOpen}
-                setOpen={setDangerOpen}
-                onConfirm={onConfirmDanger}
+            <WarningPopup
+                open={warningOpen}
+                setOpen={setWarningOpen}
+                onConfirm={() => {
+                    cancelIncident(incident?.idIncidente);
+                    setWarningOpen(!open);
+                    setDetailsOpen(!open);
+                    setTimeout(localGetMyIncidents, 1000);
+                }}
             />
         </div>
     )

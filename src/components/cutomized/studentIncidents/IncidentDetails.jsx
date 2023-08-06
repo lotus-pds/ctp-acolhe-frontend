@@ -9,7 +9,6 @@ import {
 import { GnButton } from "../../common/button/GnButton";
 import { useTranslation } from "react-i18next";
 import { convertDateBars } from "../../../common/general";
-import { cancelIncident } from "../../../services/incident";
 
 const getIncidentTypes = (incidentTypes = []) => {
     let types = incidentTypes.map(t => t.tipo);
@@ -36,11 +35,9 @@ const getQuestionsAndAnswers = (questions = []) => {
 }
 
 export function IncidentDetails(props) {
-    const { open, handleOpen, incident, ChipStatus, setDangerOpen, setOnConfirmDanger, localGetMyIncidents } = props;
+    const { open, handleOpen, incident, ChipStatus, setWarningOpen } = props;
 
     const { t } = useTranslation();
-
-    console.log(incident);
 
     return (
         <>
@@ -80,12 +77,7 @@ export function IncidentDetails(props) {
                         <GnButton
                             color="RED"
                             onClick={() => {
-                                setDangerOpen(true);
-                                setOnConfirmDanger(() => {
-                                    cancelIncident(incident?.idIncidente);
-                                    setDangerOpen(false);
-                                    localGetMyIncidents();
-                                });
+                                setWarningOpen(true);
                             }}
                         >
                             {t("cancel")}
