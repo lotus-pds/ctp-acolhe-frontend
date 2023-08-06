@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getMyIncidents, getIncidentTypes } from "../services/incident";
 import { useTranslation } from "react-i18next";
 import { Chip } from "@material-tailwind/react";
+import { DangerPopup } from "../components/common/popup/DangerPopup";
 
 const ChipStatus = props => {
     const { t } = useTranslation();
@@ -29,8 +30,8 @@ const ChipStatus = props => {
             break;
         case "EPR":
             color: "blue";
-            className += " from-blue-100 to-blue-200 dark:from-blue-400 dark:to-blue-700'"
-
+            className += " from-blue-100 to-blue-200 dark:from-blue-400 dark:to-blue-700'";
+            break;
         default:
             color = "blue";
             className += " from-blue-100 to-blue-200 dark:from-blue-400 dark:to-blue-700'"
@@ -51,6 +52,8 @@ export function MyIncident() {
     const [incidents, setIncidents] = useState([]);
     const [incident, setIncident] = useState({});
     const [incidentTypes, setIncidentTypes] = useState([]);
+    const [dangerOpen, setDangerOpen] = useState(false);
+    const [onConfirmDanger, setOnConfirmDanger] = useState(() => { });
 
     const detailIncident = incident => setIncident({ ...incident });
 
@@ -80,6 +83,9 @@ export function MyIncident() {
                 handleOpen={toggleDetailsOpen}
                 incident={incident}
                 ChipStatus={ChipStatus}
+                setDangerOpen={setDangerOpen}
+                setOnConfirmDanger={setOnConfirmDanger}
+                localGetMyIncidents={localGetMyIncidents}
             />
 
             <IncidentTable
@@ -89,6 +95,12 @@ export function MyIncident() {
                 ChipStatus={ChipStatus}
                 search={localGetMyIncidents}
                 incidentTypes={incidentTypes}
+            />
+
+            <DangerPopup
+                open={dangerOpen}
+                setOpen={setDangerOpen}
+                onConfirm={onConfirmDanger}
             />
         </div>
     )

@@ -138,7 +138,9 @@ export const resources = {
                 "EPR":"In Process",
                 "FIN":"Completed",
                 "PEN":"Pending"
-            }
+            },
+            "danger":"Danger",
+            "dangerAction":"This action cannot be undone. Do you want to proceed?"
        },
       },
       pt : {
@@ -280,7 +282,9 @@ export const resources = {
                 "EPR":"Em progresso",
                 "FIN":"Finalizado",
                 "PEN":"Pendente"
-            }
+            },
+            "danger":"Perigo",
+            "dangerAction":"Esta ação não pode ser desfeita. Deseja prosseguir?"
         }
       },
 }
