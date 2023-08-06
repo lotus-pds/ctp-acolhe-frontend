@@ -3,9 +3,9 @@ import { serializeObjectToParam } from './utils.js';
 
 /* RECURSOS AUTENTICADO */
 
-export const postIncident = body => postResource('/usuario/autenticado/incidente', body);
+export const postMyIncident = body => postResource('/usuario/autenticado/incidente', body);
 
-export const getIncidents = filters => getResource('/usuario/autenticado/incidente' + serializeObjectToParam(filters));
+export const getMyIncidents = filters => getResource('/usuario/autenticado/incidente' + serializeObjectToParam(filters));
 
 /* RECURSOS GERAIS */
 

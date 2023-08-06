@@ -2,6 +2,11 @@ export const resources = {
     en : {
         translation : {
             "cancel":"Cancel",
+            "startDate":"Start Date",
+            "endDate":"End Date",
+            "types":"Types",
+            "search":"Search",
+            "subject":"Subject",
             "confirm":"Confirm",
             "cookie" : "This website uses cookies to store information. By continuing to browse, you agree to their use.",
             "selectAvatar":"Choose your profile picture",
@@ -127,12 +132,23 @@ export const resources = {
                 "dangerousEdit":"Edit Dangerous Session",
                 "logout":"Account Logout",
                 "cancel":"Cancel"
+            },
+            "incidentTypes":{
+                "CAN":"Canceled",
+                "EPR":"In Process",
+                "FIN":"Completed",
+                "PEN":"Pending"
             }
        },
       },
       pt : {
         translation: {
             "cancel":"Cancelar",
+            "subject":"Assunto",
+            "startDate":"Data Início",
+            "endDate":"Data Fim",
+            "types":"Tipos",
+            "search":"Pesquisar",
             "confirm":"Confirmar",
             "cookie" : "Este site utiliza cookies para armazenar informações. Ao continuar navegando, você concorda com o seu uso.",
             "selectAvatar":"Escolha a imagem do seu perfil",
@@ -258,6 +274,12 @@ export const resources = {
                 "dangerousEdit":"Editar Sessão Perigosa",
                 "logout":"Sair da Conta",
                 "cancel":"Cancelar"
+            },
+            "incidentTypes":{
+                "CAN":"Cancelado",
+                "EPR":"Em progresso",
+                "FIN":"Finalizado",
+                "PEN":"Pendente"
             }
         }
       },

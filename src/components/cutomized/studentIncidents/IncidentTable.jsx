@@ -11,6 +11,9 @@ import {
 } from "@material-tailwind/react";
 import { Input, DatePicker, Select } from "antd";
 import { GnButton } from "../../common/button/GnButton";
+import { useTranslation } from "react-i18next";
+import { convertDateBars, convertDateHyphen } from "../../../common/general";
+import { useState } from "react";
 
 const TABLE_HEAD = ["Assunto", "Data", "Status", "Tipos", ""];
 
@@ -48,49 +51,41 @@ const TABLE_ROWS = [
 ];
 
 const getIncidentTypes = incidentTypes => {
-    let types;
-    if (incidentTypes.join(", ").length > 50) {
-        types = incidentTypes.join(", ").slice(0, 50) + "...";
+    let types = incidentTypes.map(t => t.tipo);
+    if (types.join(", ").length > 50) {
+        types = types.join(", ").slice(0, 50) + "...";
     } else {
-        types = incidentTypes.join(", ");
+        types = types.join(", ");
     }
 
     return types;
 }
 
-const ChipStatus = props => {
-    const { status } = props;
-    let color = "";
-    let className = "text-white bg-gradient-to-r";
+export function IncidentTable(props) {
+    const { incidents = [], toggleDetailsOpen, detailIncident, ChipStatus, search, incidentTypes } = props;
 
-    switch (status) {
-        case "finalizado":
-            color = "green";
-            className += " from-green-200 to-green-300";
-            break;
-        case "pendente":
-            color = "yellow";
-            className += " from-yellow-100 to-yellow-200";
-            break;
-        case "cancelado":
-            color = "red";
-            className += " from-red-200 to-red-300";
-            break;
-        default:
-            color = "blue";
-            className += " from-blue-100 to-blue-200 dark:from-blue-400 dark:to-blue-700'"
+    const { t } = useTranslation();
+
+    const [filters, setFilters] = useState({});
+
+    const searchIncidents = filters => {
+        let innerFilters = filters;
+
+        console.log(innerFilters);
+
+        if (innerFilters.dataIncidenteInicial != undefined) {
+            innerFilters.dataIncidenteInicial = convertDateHyphen(innerFilters.dataIncidenteInicial);
+        }
+
+        if (innerFilters.dataIncidenteFinal != undefined) {
+            innerFilters.dataIncidenteFinal = convertDateHyphen(innerFilters.dataIncidenteFinal);
+        }
+
+        search(innerFilters);
     }
 
-    return (<Chip
-        size="sm"
-        variant="ghost"
-        value={status}
-        color={color}
-        className={className}
-    />);
-}
+    console.log(filters);
 
-export function IncidentTable(props) {
     return (
         <Card className="h-full w-[90%] my-8 rounded">
             <CardHeader floated={false} shadow={false} className="rounded-none">
@@ -102,30 +97,48 @@ export function IncidentTable(props) {
                     <Typography color="gray" className="mt-1 font-normal">
                         Estes são seus incidentes criados.
                     </Typography>
-                    <div
-                        className="flex justify-center flex-row w-full gap-2 mt-2"
-                    >
-                        <Input
-                            placeholder="Assunto"
-                            className="w-[20%]"
-                        />
-                        <DatePicker
-                            placeholder="Data Início"
-                            className="w-[20%]"
-                        />
-                        <DatePicker
-                            placeholder="Data Final"
-                            className="w-[20%]"
-                        />
+                    <div className="flex justify-center flex-row w-full gap-2 mt-2" >
                         <Select
-                            className="w-[20%]"
+                            placeholder={t("types")}
+                            className="w-full"
                             size="large"
+                            mode="multiple"
+                            onChange={(value, option) => setFilters({ ...filters, idTipoIncidente: value })}
+                            options={incidentTypes.map(t => ({ label: t.tipo, value: t.idTipoIncidente }))}
+                            value={filters.idTipoIncidente}
+                            allowClear={true}
+                        />
+                    </div>
+                    <div className="flex justify-center flex-row w-full gap-2 mt-2" >
+                        <Input
+                            placeholder={t("subject")}
+                            className="w-[25%]"
+                            onChange={e => setFilters({ ...filters, assunto: e.target.value })}
+                            allowClear={true}
+                            value={filters.assunto}
+                        />
+                        <DatePicker
+                            placeholder={t("startDate")}
+                            className="w-[25%]"
+                            onChange={(date, string) => setFilters({ ...filters, dataIncidenteInicial: date })}
+                            value={filters.dataInicio}
+                            format="DD/MM/YYYY"
+                            allowClear={true}
+                        />
+                        <DatePicker
+                            placeholder={t("endDate")}
+                            className="w-[25%]"
+                            onChange={(date, string) => setFilters({ ...filters, dataIncidenteFinal: date })}
+                            value={filters.dataFinal}
+                            format="DD/MM/YYYY"
+                            allowClear={true}
                         />
                         <GnButton
                             color="BLUE"
-                            className="w-[20%]"
+                            className="w-[25%]"
+                            onClick={() => searchIncidents(filters)}
                         >
-                            Pesquisar
+                            {t("search")}
                         </GnButton>
                     </div>
                 </div>
@@ -148,40 +161,47 @@ export function IncidentTable(props) {
                         </tr>
                     </thead>
                     <tbody>
-                        {TABLE_ROWS.map(
-                            ({ name, date, types, status }, index) => {
+                        {incidents.map(
+                            (i, index) => {
                                 const isLast = index === TABLE_ROWS.length - 1;
                                 const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
 
                                 return (
-                                    <tr key={name}>
+                                    <tr key={i?.idIncidente}>
                                         <td className={classes}>
                                             <div className="flex items-center gap-3">
                                                 <Typography variant="small" color="blue-gray" className="font-bold">
-                                                    {name}
+                                                    {i?.assunto}
                                                 </Typography>
                                             </div>
                                         </td>
                                         <td className={classes}>
                                             <Typography variant="small" color="blue-gray" className="font-normal">
-                                                {date}
+                                                {convertDateBars(new Date(i?.dataIncidente))}
                                             </Typography>
                                         </td>
                                         <td className={classes}>
                                             <div className="w-max">
                                                 <ChipStatus
-                                                    status={status}
+                                                    status={i?.status?.idStatus}
                                                 />
                                             </div>
                                         </td>
                                         <td className={classes}>
                                             <Typography variant="small" color="blue-gray" className="font-normal">
-                                                {getIncidentTypes(types)}
+                                                {getIncidentTypes(i?.tipos)}
                                             </Typography>
                                         </td>
                                         <td className={classes}>
                                             <Tooltip content="Edit User">
-                                                <IconButton variant="text" color="purple">
+                                                <IconButton
+                                                    variant="text"
+                                                    color="purple"
+                                                    onClick={() => {
+                                                        detailIncident(i);
+                                                        toggleDetailsOpen();
+                                                    }}
+                                                >
                                                     <MagnifyingGlassIcon className="h-4 w-4 " />
                                                 </IconButton>
                                             </Tooltip>
@@ -225,6 +245,6 @@ export function IncidentTable(props) {
                     Próximo
                 </Button>
             </CardFooter> */}
-        </Card>
+        </Card >
     );
 }
