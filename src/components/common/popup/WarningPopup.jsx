@@ -33,10 +33,10 @@ export function WarningPopup(props) {
                     onClick={() => setOpen(false)}
                     className="mr-1"
                 >
-                    {t("cancel")}
+                    {t("no")}
                 </GnButton>
                 <GnButton color="RED" onClick={() => onConfirm()}>
-                    {t("confirm")}
+                    {t("yes")}
                 </GnButton>
             </DialogFooter>
         </Dialog>

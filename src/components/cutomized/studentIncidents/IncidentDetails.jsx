@@ -39,6 +39,8 @@ export function IncidentDetails(props) {
 
     const { t } = useTranslation();
 
+    console.log(incident);
+
     return (
         <>
             <Dialog open={open} handler={() => { }}>

@@ -1,6 +1,8 @@
 export const resources = {
     en : {
         translation : {
+            "yes":"Yes",
+            "no":"No",
             "cancel":"Cancel",
             "startDate":"Start Date",
             "endDate":"End Date",
@@ -145,6 +147,8 @@ export const resources = {
       },
       pt : {
         translation: {
+            "yes":"Sim",
+            "no":"Não",
             "cancel":"Cancelar",
             "subject":"Assunto",
             "startDate":"Data Início",

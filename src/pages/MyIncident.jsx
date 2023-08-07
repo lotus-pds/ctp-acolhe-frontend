@@ -84,7 +84,20 @@ export function MyIncident() {
         localGetIncidentTypes();
     }, []);
 
-    const toggleDetailsOpen = () => setDetailsOpen(!detailsOpen);
+    useEffect(() => {
+        if( incident != {}) {
+            let newIncident = incidents.filter(i => i?.idIncidente == incident?.idIncidente)[0];
+            setIncident(newIncident);
+        }
+    }, [incidents]);
+
+    const toggleDetailsOpen = () => {
+        if( detailsOpen == true) {
+            setIncident({});
+        }
+
+        setDetailsOpen(!detailsOpen)
+    };
 
     return (
         <div className="flex flex-col items-center">
@@ -115,7 +128,6 @@ export function MyIncident() {
                 onConfirm={() => {
                     cancelIncident(incident?.idIncidente);
                     setWarningOpen(!open);
-                    setDetailsOpen(!open);
                     setTimeout(localGetMyIncidents, 1000);
                 }}
             />
