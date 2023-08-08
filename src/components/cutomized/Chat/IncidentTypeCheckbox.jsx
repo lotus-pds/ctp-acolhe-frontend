@@ -13,9 +13,11 @@ export function IncidentTypeCheckbox(props) {
     const [checkedList, setCheckedList] = useState([]);
     const [visible, setVisible] = useState(true);
 
+    console.log(list);
+
     return (
         visible
-            ? <div className="flex flex-col sm:flex-row gap-4 sm:mr-[236px] mt-[100px] sm:mt-12 h-[550px]">
+            ? <div className="flex flex-col sm:flex-row gap-4 sm:mr-[236px] h-[550px] items-start">
                 <Avatar src={avatar}></Avatar>
 
                 <div className="flex flex-col gap-2 relative justify-center">
@@ -31,17 +33,17 @@ export function IncidentTypeCheckbox(props) {
                                             containerProps={{
                                                 className: "p-0",
                                             }}
-                                            checked={checkedList.filter(i => i?.idTipoIncidente == element?.id).length != 0}
+                                            checked={checkedList.filter(i => i?.idTipoIncidente == element?.idTipoIncidente).length != 0}
                                             onChange={(e) => {
                                                 if (e.target.checked == true) {
-                                                    setCheckedList([...checkedList, { idTipoIncidente: element?.id }]);
+                                                    setCheckedList([...checkedList, { idTipoIncidente: element?.idTipoIncidente, tipo: element?.tipo }]);
                                                 } else {
-                                                    setCheckedList([...checkedList].filter(i => i?.idTipoIncidente != element?.id))
+                                                    setCheckedList([...checkedList].filter(i => i?.idTipoIncidente != element?.idTipoIncidente))
                                                 }
                                             }}
                                         />
                                         <Typography color="blue-gray" className="font-medium">
-                                            {element?.label}
+                                            {element?.tipo}
                                         </Typography>
                                     </div>
                                 );
