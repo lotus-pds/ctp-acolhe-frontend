@@ -133,7 +133,17 @@ export const resources = {
                 "edit":"Edit Data",
                 "dangerousEdit":"Edit Dangerous Session",
                 "logout":"Account Logout",
-                "cancel":"Cancel"
+                "cancel":"Cancel",
+            },
+            "chatTitle":"What is incident creation?",
+            "chatDesc":"The system specializes in creating incidents and captures details of requests, categorizing their severity and priority, and monitors the entire resolution process, including assignment of specialized technicians and transparent communication with users to the Technical Pedagogical Coordination sector of the Instituto Federal Campus São Paulo (CTP) It is a tool that allows users to create incidents related to problems such as: student organization, educational conflicts and psychological problems that directly affect the study - such as anxiety due to activities, deadlines, etc. Do it a request for support related to these processes and wait until it is resolved. This solution aims to speed up the resolution of problems, guaranteeing the operational efficiency of the organization.",
+            "calendarTitle":"Keep track of your emotions log!",
+            "calendarDesc":"The Emotions Calendar is a tool that combines a traditional calendar with a daily record of the emotions you feel. Each day has a space to describe your emotions, allowing you to identify patterns over time. This helps with self-reflection, self-care, and understanding your emotional health. It's a practical way to monitor and process your emotions throughout the month.",
+            "tooltipTae":{
+                "createPost":"Create Post",
+                "listIncident":"List of Incident",
+                "scheduleRoom":"Schedule Room",
+                "manageStudent":"Manage Students",
             },
             "incidentTypes":{
                 "CAN":"Canceled",
@@ -279,7 +289,17 @@ export const resources = {
                 "edit":"Editar Dados",
                 "dangerousEdit":"Editar Sessão Perigosa",
                 "logout":"Sair da Conta",
-                "cancel":"Cancelar"
+                "cancel":"Cancelar",
+            },
+            "chatTitle":"O que é a criação de incidentes?",
+            "chatDesc":"O sistema é especializado em criar incidentes e captura detalhes das solicitações, categorizando sua gravidade e prioridade, e acompanha todo o processo de resolução, incluindo atribuição de técnicos especializados e comunicação transparente com os usuários para o setor da Coordenadoria Técnico Pedagógica do Instituto Federal Campus São Paulo (CTP). Ele é uma ferramenta que permite aos usuários criar incidentes relacionados à problemas como: organização estudantil, conflitos educacionais e problemas psicológicos que afetem diretamente o estudo - como ansiedade por conta das atividades, do prazo de entrega,  etc. Faça uma solicitação para ter um suporte relacionado à estes processos e aguarde até a sua resolução. Essa solução visa agilizar a resolução de problemas, garantindo a eficiência operacional da organização.",
+            "calendarTitle":"Acompanhe seu registro de emoçoes!",
+            "calendarDesc":"O Calendário de Emoções é uma ferramenta que combina um calendário tradicional com o registro diário das emoções que você sente. Cada dia tem um espaço para descrever suas emoções, permitindo a identificação de padrões ao longo do tempo. Isso auxilia na autorreflexão, no autocuidado e na compreensão da sua saúde emocional. É uma maneira prática de monitorar e processar suas emoções ao longo do mês.",
+            "tooltipTae":{
+                "createPost":"Criar Postagens",
+                "listIncident":"Lista de incidentes",
+                "scheduleRoom":"Agendar sala",
+                "manageStudent":"Gestão de estudantes",
             },
             "incidentTypes":{
                 "CAN":"Cancelado",
