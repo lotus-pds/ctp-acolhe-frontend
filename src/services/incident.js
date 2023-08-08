@@ -20,3 +20,7 @@ export const cancelIncident = id => patchResource(`/usuario/autenticado/incident
 export const processIncident = id => patchResource(`/incidente/${id}/processar`);
 
 export const completeIncident = id => patchResource(`/incidente/${id}/finalizar`);
+
+/* PRGUNTAS */
+
+export const getQuestions = () => getResource('/pergunta');

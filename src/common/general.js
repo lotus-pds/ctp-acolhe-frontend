@@ -33,3 +33,7 @@ export const convertDateBars = date => {
 export const convertDateHyphen = date => {
     return date.getFullYear().toString().padStart(4, "0"); + "-" + (date.getMonth() + 1).toString().padStart(2, "0") + "-" + date.getDate().toString().padStart(2, "0");
 }
+
+export const getTime = date => {
+    return date.getHours().toString().padStart(2, "0") + ":" + date.getMinutes().toString().padStart(2, "0");
+}

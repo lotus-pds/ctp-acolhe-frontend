@@ -35,8 +35,6 @@ export function AdmIncidentDetails(props) {
 
     const [incident, setIncident] = useState({});
 
-    console.log(incident);
-
     const localGetIncident = async () => {
         let response = await getIncident(id);
         setIncident(response.data);
