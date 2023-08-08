@@ -1,7 +1,14 @@
 export const resources = {
     en : {
         translation : {
+            "yes":"Yes",
+            "no":"No",
             "cancel":"Cancel",
+            "startDate":"Start Date",
+            "endDate":"End Date",
+            "types":"Types",
+            "search":"Search",
+            "subject":"Subject",
             "confirm":"Confirm",
             "cookie" : "This website uses cookies to store information. By continuing to browse, you agree to their use.",
             "selectAvatar":"Choose your profile picture",
@@ -136,13 +143,28 @@ export const resources = {
                 "createPost":"Create Post",
                 "listIncident":"List of Incident",
                 "scheduleRoom":"Schedule Room",
-                "manageStudent":"Manage Students"
-            }
+                "manageStudent":"Manage Students",
+            },
+            "incidentTypes":{
+                "CAN":"Canceled",
+                "EPR":"In Process",
+                "FIN":"Completed",
+                "PEN":"Pending"
+            },
+            "warning":"Warning",
+            "warningAction":"This action cannot be undone. Do you want to proceed?"
        },
       },
       pt : {
         translation: {
+            "yes":"Sim",
+            "no":"Não",
             "cancel":"Cancelar",
+            "subject":"Assunto",
+            "startDate":"Data Início",
+            "endDate":"Data Fim",
+            "types":"Tipos",
+            "search":"Pesquisar",
             "confirm":"Confirmar",
             "cookie" : "Este site utiliza cookies para armazenar informações. Ao continuar navegando, você concorda com o seu uso.",
             "selectAvatar":"Escolha a imagem do seu perfil",
@@ -277,8 +299,16 @@ export const resources = {
                 "createPost":"Criar Postagens",
                 "listIncident":"Lista de incidentes",
                 "scheduleRoom":"Agendar sala",
-                "manageStudent":"Gestão de estudantes"
-            }
+                "manageStudent":"Gestão de estudantes",
+            },
+            "incidentTypes":{
+                "CAN":"Cancelado",
+                "EPR":"Em progresso",
+                "FIN":"Finalizado",
+                "PEN":"Pendente"
+            },
+            "warning":"Atenção",
+            "warningAction":"Esta ação não pode ser desfeita. Deseja prosseguir?"
         }
       },
 }

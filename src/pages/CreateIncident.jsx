@@ -5,7 +5,7 @@ import { Chat } from "../components/Chat";
 import { Typography } from "@material-tailwind/react";
 import { useTranslation } from "react-i18next";
 
-export function CreateIncident(){
+export function CreateIncident() {
 
     const {t} = useTranslation();
 
@@ -15,23 +15,29 @@ export function CreateIncident(){
         switch (step) {
             case 1:
                 return (
-                    <GnButton color="BLUE"
+                    <GnButton
+                        color="BLUE"
                         onClick={() => setStep(step + 1)}
-                    >Iniciar criação de incidente</GnButton>
+                    >
+                        Iniciar criação de incidente
+                    </GnButton>
                 );
             case 2:
                 return (
-                    <Chat/>
+                    <Chat />
                 );
             default:
                 return (
-                    <GnButton color="BLUE"
+                    <GnButton
+                        color="BLUE"
                         onClick={() => setStep(step + 1)}
-                    >Iniciar criação de incidente</GnButton>
+                    >
+                        Iniciar criação de incidente
+                    </GnButton>
                 );
         }
     }
-    return(
+    return (
         <div className="flex flex-col items-center">
             <HeaderUser/>
             <div className="grid grid-cols-1 sm:grid-cols-2 justify-center align-center sm:m-7">
