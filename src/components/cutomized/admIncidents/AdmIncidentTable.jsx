@@ -16,18 +16,7 @@ import { useTranslation } from "react-i18next";
 import { convertDateBars } from "../../../common/general";
 import { useNavigate } from "react-router-dom";
 
-const TABLE_HEAD = ["Aluno", "Prontuário", "Assunto", "Data", "Status", "Tipos", ""];
-
-const getIncidentTypes = incidentTypes => {
-    let types = incidentTypes.map(t => t.tipo);
-    if (types.join(", ").length > 50) {
-        types = types.join(", ").slice(0, 50) + "...";
-    } else {
-        types = types.join(", ");
-    }
-
-    return types;
-}
+const TABLE_HEAD = ["Aluno", "Prontuário", "Assunto", "Data", "Status", ""];
 
 export function AdmIncidentTable(props) {
     const { incidents = [], search, incidentTypes, filters, setFilters } = props;
@@ -180,11 +169,6 @@ export function AdmIncidentTable(props) {
                                                     status={i?.status?.idStatus}
                                                 />
                                             </div>
-                                        </td>
-                                        <td className={classes}>
-                                            <Typography variant="small" color="blue-gray" className="font-normal">
-                                                {getIncidentTypes(i?.tipos)}
-                                            </Typography>
                                         </td>
                                         <td className={classes}>
                                             <Tooltip content="Edit User">
