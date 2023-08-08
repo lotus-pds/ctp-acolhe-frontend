@@ -7,7 +7,7 @@ import {
 import { useTranslation } from "react-i18next";
 
 const getTitle = type => {
-    const pattern = 'bg-clip-text text-transparent bg-gradient-to-r font-mouse text-3xl';
+    const pattern = 'bg-clip-text text-transparent bg-gradient-to-r font-mouse text-xl sm:text-3xl p-4';
 
     const { t } = useTranslation();
 

@@ -2,8 +2,12 @@ import { HeaderUser } from "../components/HeaderUser";
 import { GnButton } from "../components/common/button/GnButton";
 import { useState } from 'react';
 import { Chat } from "../components/Chat";
+import { Typography } from "@material-tailwind/react";
+import { useTranslation } from "react-i18next";
 
 export function CreateIncident(){
+
+    const {t} = useTranslation();
 
     const [step, setStep] = useState(1);
 
@@ -30,10 +34,32 @@ export function CreateIncident(){
     return(
         <div className="flex flex-col items-center">
             <HeaderUser/>
-            <div className="flex flex-col p-6 gap-7 justify-center mt-8 items-center w-[90%] h-[500px] bg-gray-100 dark:bg-gray-800 rounded drop-shadow-md">
-
+            <div className="grid grid-cols-1 sm:grid-cols-2 justify-center align-center sm:m-7">
+                <div className="flex justify-center align-center">
+                    <img className="w-[300px] sm:w-[450px]" src="https://media.discordapp.net/attachments/1077345452694970438/1138249185024557157/3780782_77881.png?width=480&height=480" alt="" />
+                </div>
+                <div className="flex flex-col align-end justify-center gap-8 p-12">
+                    <Typography
+                        variant="h2"
+                        className="font-mouse sm:text-4xl text-2xl"
+                    >
+                        {t("chatTitle")}
+                    </Typography>
+                    <Typography
+                        variant="paragraph"
+                        className="font-normal sm:text-md text-md"
+                    >
+                        {t("chatDesc")}
+                    </Typography>
+                </div>
+            </div>
+            <div className="sm:mt-[-50px] mb-[-60px] z-20">
+                <a href="#chat" className="flex items-center justify-center">
+                    <img className="w-[180px] sm:w-[300px]" src="https://media.discordapp.net/attachments/1077345452694970438/1138258126919958528/Component_64.png" alt="" />
+                </a>
+            </div>
+            <div id="chat" className="flex flex-col p-6 gap-7 justify-center mt-8 items-center w-[90%] h-[500px] bg-gray-100 dark:bg-gray-800 rounded drop-shadow-md mb-9 border border-solid border-black dark:border-white">
                 {getCompStep()}
-                
             </div>
         </div>
     )
