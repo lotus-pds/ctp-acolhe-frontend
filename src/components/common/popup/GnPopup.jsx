@@ -36,13 +36,13 @@ const getTitle = type => {
 }
 
 export const GnPopup = (props) => {
-    const { open, size = 'sm', text = undefined, btn = undefined, type } = props;
+    const { open, size = 'sm', text = undefined, btn = undefined, type, className = '' } = props;
 
     return (
         <Dialog
             open={open}
             size={size}
-            className={'flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-100'}
+            className={'flex flex-col items-center bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-100 ' + className}
         >
             <DialogHeader>
                 {getTitle(type)}

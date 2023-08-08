@@ -20,10 +20,13 @@ export const removeCountLoading = () => {
 };
 
 export const Loading = (props) => {
+    const { className } = props;
+
     const { open } = useSelector(state => state.loading);
 
     return (
         <GnPopup
+            className={className}
             open={open}
             size="xs"
             type='LOADING'

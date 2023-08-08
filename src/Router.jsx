@@ -18,6 +18,8 @@ import { Terms } from "./pages/Terms";
 import { OpenRoute } from "./pages/OpenRoutes";
 import { useState, useEffect } from "react";
 import { getCourses } from "./services/course";
+import { Incidents } from "./pages/Incidents";
+import { AdmIncidentDetails } from "./pages/AdmIncidentDetails";
 
 export function Router(props) {
     const[courses, setCourses] = useState([]);
@@ -42,21 +44,23 @@ export function Router(props) {
             <Route path="/reset-my-password/:token" element={<OpenRoute><ResetPassword /></OpenRoute>} />
             <Route path="/reset-successfull" element={<OpenRoute><ResetSuccessfull /></OpenRoute>} />
             <Route path="/access-confirmation" element={<OpenRoute><AccessConfirmation /></OpenRoute>} />
-            <Route path="/create-incident" element={<PrivateRoute user={['Aluno', 'Admin']}><CreateIncident /></PrivateRoute>} />
-            <Route path="/posts" element={<PrivateRoute user={['Aluno', 'Admin']}><Posts /></PrivateRoute>} />
-            <Route path="/my-calendar" element={<PrivateRoute user={['Aluno', 'Admin']}><MyCalendar /></PrivateRoute>} />
+            <Route path="/create-incident" element={<PrivateRoute user={['Aluno']}><CreateIncident /></PrivateRoute>} />
+            <Route path="/posts" element={<PrivateRoute user={['Aluno']}><Posts /></PrivateRoute>} />
+            <Route path="/my-calendar" element={<PrivateRoute user={['Aluno']}><MyCalendar /></PrivateRoute>} />
             {/**
             <Route path="/posts" element={<Posts />} />
             <Route path="/my-calendar" element={<MyCalendar />} />
             <Route path="/create-incident" element={<CreateIncident />} />
             */}
-            <Route path="/profile" element={<PrivateRoute user={['Aluno', 'Admin']}><Profile courses={courses}/></PrivateRoute>} />
-            <Route path="/my-incident" element={<PrivateRoute user={['Aluno', 'Admin']}><MyIncident /></PrivateRoute>} />
+            <Route path="/profile" element={<PrivateRoute user={['Aluno']}><Profile courses={courses}/></PrivateRoute>} />
+            <Route path="/my-incident" element={<PrivateRoute user={['Aluno']}><MyIncident /></PrivateRoute>} />
             {/**
             <Route path="/my-incident" element={<MyIncident />} />
             <Route path="/profile" element={<Profile />} />
              */}
             <Route path="/subscribe/verification/:token" element={<EmailConfirmation />} />
+            <Route path="/adm/incident" element={<PrivateRoute user={['Admin']}><Incidents /></PrivateRoute>} />
+            <Route path="/adm/incident/:id" element={<PrivateRoute user={['Admin']}><AdmIncidentDetails /></PrivateRoute>} />
         </Routes>
     );
 }
