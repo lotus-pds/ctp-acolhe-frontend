@@ -10,7 +10,7 @@ function App() {
         <Router/>
       </BrowserRouter>
       <ErrorPopup/>
-      <Loading/>
+      <Loading className="z-1000"/>
     </div>
   )
 }
