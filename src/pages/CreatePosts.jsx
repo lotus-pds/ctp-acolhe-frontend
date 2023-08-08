@@ -1,11 +1,10 @@
-import { HeaderUser } from "../components/HeaderUser";
 import { LoadContent } from "../components/LoadingContent";
+import { HeaderTae } from "../components/HeaderTae";
 
-export function Posts(props){
-
+export function CreatePosts(){
     return(
         <div className="flex flex-col items-center">
-            <HeaderUser/>
+            <HeaderTae/>
             <LoadContent/>
         </div>
     )
