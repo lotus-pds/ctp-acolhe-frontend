@@ -13,8 +13,6 @@ export function IncidentTypeCheckbox(props) {
     const [checkedList, setCheckedList] = useState([]);
     const [visible, setVisible] = useState(true);
 
-    console.log(list);
-
     return (
         visible
             ? <div className="flex flex-col sm:flex-row gap-4 sm:mr-[236px] h-[550px] items-start">

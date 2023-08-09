@@ -36,7 +36,12 @@ export function Signin(props) {
 
         let response = await postSignin(newSigninData);
         setAuthData(response.data);
-        navigate('/emotions');
+
+        if (response.data?.roles.includes("Admin")) {
+            navigate('/adm/incident')
+        } else {
+            navigate('/emotions');
+        }
     }
 
     return (

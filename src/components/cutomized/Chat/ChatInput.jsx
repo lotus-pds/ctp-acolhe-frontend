@@ -22,7 +22,6 @@ export function ChatInput(props) {
                         className="w-full"
                         value={content}
                         onChange={e => {
-                            console.log(e.target.value.length);
                             if(e.target.value.length <= maxLength) {
                                 setContent(e.target.value);
                             }

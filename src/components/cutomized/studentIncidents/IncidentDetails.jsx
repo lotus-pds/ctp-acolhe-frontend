@@ -41,7 +41,11 @@ export function IncidentDetails(props) {
 
     return (
         <>
-            <Dialog open={open} handler={() => { }}>
+            <Dialog
+                open={open}
+                handler={() => { }}
+                className="max-h-[90vh] overflow-auto"
+            >
                 <DialogHeader className="flex justify-between">
                     <Typography>
                         {incident?.assunto}

@@ -24,7 +24,7 @@ export function NavbarTae(){
                         }
                     >
                         <NavLink  
-                        to={"/post-tae"}>
+                        to={"/adm/post"}>
                             <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930264821485649/Component_58.png" alt="" 
                             className="sm:w-7 w-6"
                             />
@@ -42,7 +42,7 @@ export function NavbarTae(){
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/create-posts"}
+                        <NavLink to={"/adm/create-post"}
                              
                             
                         >   
@@ -62,7 +62,7 @@ export function NavbarTae(){
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/list-incident"} >
+                        <NavLink to={"/adm/incident"} >
                             <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930335579389993/Component_62.png" alt="" className="sm:w-10 w-8"/>
                         </NavLink>
                     </Tooltip><Tooltip content={
@@ -76,7 +76,7 @@ export function NavbarTae(){
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/schedule-room"} >
+                        <NavLink to={"/adm/schedule-room"} >
                             <img src="https://cdn.discordapp.com/attachments/1077345452694970438/1135645138429935777/Component_37.png" 
                             className="sm:w-7 w-6"
                             alt="" />
@@ -94,7 +94,7 @@ export function NavbarTae(){
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/manage-students"} >
+                        <NavLink to={"/adm/manage-students"} >
                             <img src="https://media.discordapp.net/attachments/1077345452694970438/1135645221955309678/Component_40.png" alt="" className="sm:w-7 w-6" />
                         </NavLink>
                     </Tooltip>
@@ -110,7 +110,7 @@ export function NavbarTae(){
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/my-profile-tae"} >
+                        <NavLink to={"/adm/profile"} >
                             <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930263869358222/Component_12_1.png" alt="" className="sm:w-7 w-6" />
                         </NavLink>
                     </Tooltip>
