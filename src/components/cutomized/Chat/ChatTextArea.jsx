@@ -4,7 +4,7 @@ import { GnButton } from "../../common/button/GnButton";
 import { useState } from "react";
 
 export function ChatTextArea(props) {
-    const { onConfirm, avatar = "", maxLength = 0 } = props;
+    const { onConfirm, avatar = "", maxLength = 0, minLength = 0 } = props;
 
     const [content, setContent] = useState("");
     const [visible, setVisible] = useState(true);
@@ -18,7 +18,7 @@ export function ChatTextArea(props) {
                     <div className="bg-gray shadow-xl max-w-[340px] mr-2 rounded-t-[2.5rem] rounded-bl-[2.5rem] flex flex-col items-center justify-center pl-4 pt-3 pb-3 pr-5 relative m-auto">
                         <Textarea
                             label={t("message")}
-                            className="w-[270px] h-[150px]"
+                            className="w-[290px] h-[150px]"
                             value={content}
                             onChange={e => {
                                 if (e.target.value.length <= maxLength) {
@@ -30,6 +30,7 @@ export function ChatTextArea(props) {
                             color="BLUE"
                             size="sm"
                             className="ml-[7px]"
+                            disabled={content.length <= minLength}
                             onClick={() => {
                                 onConfirm(content);
                                 setVisible(!visible);

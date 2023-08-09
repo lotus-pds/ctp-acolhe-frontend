@@ -116,7 +116,7 @@ export function Chat() {
     }
 
     const localPostMyIncident = async () => {
-        let response = await postMyIncident({...incident});
+        await postMyIncident({...incident});
     }
 
     useEffect(() => {
@@ -144,6 +144,7 @@ export function Chat() {
             <ChatInput
                 avatar={user?.urlAvatar}
                 maxLength={50}
+                minLength={15}
                 onConfirm={subject => setIncident({ ...incident, assunto: subject })}
             />
         ]);

@@ -5,7 +5,7 @@ import { GnButton } from "../../common/button/GnButton";
 import { useState } from "react";
 
 export function ChatInput(props) {
-    const { onConfirm, avatar = "", maxLength = 0 } = props;
+    const { onConfirm, avatar = "", maxLength = 0, minLength = 0 } = props;
 
     const [content, setContent] = useState("");
     const [visible, setVisible] = useState(true);
@@ -31,6 +31,7 @@ export function ChatInput(props) {
                         color="BLUE"
                         size="sm"
                         className="ml-[7px]"
+                        disabled={content.length <= minLength}
                         onClick={() => {
                             onConfirm(content);
                             setVisible(!visible);
