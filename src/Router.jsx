@@ -53,15 +53,14 @@ export function Router(props) {
             <Route path="/create-incident" element={<PrivateRoute user={['Aluno']}><CreateIncident /></PrivateRoute>} />
             <Route path="/posts" element={<PrivateRoute user={['Aluno']}><Posts /></PrivateRoute>} />
             <Route path="/my-calendar" element={<PrivateRoute user={['Aluno']}><MyCalendar /></PrivateRoute>} />
-            <Route path="/create-incident" element={<PrivateRoute user={['Aluno', 'Admin']}><CreateIncident /></PrivateRoute>} />
-            <Route path="/posts" element={<PrivateRoute user={['Aluno', 'Admin']}><Posts /></PrivateRoute>} />
-            <Route path="/my-calendar" element={<PrivateRoute user={['Aluno', 'Admin']}><MyCalendar /></PrivateRoute>} />
-            <Route path="/create-posts" element={<CreatePosts />} />
-            <Route path="/schedule-room" element={<ScheduleRoom />} />
-            <Route path="/list-incident" element={<ListIncident />} />
-            <Route path="/manage-students" element={<ManageStudents />} />
-            <Route path="/post-tae" element={<PostTae />} />
-            <Route path="/my-profile-tae" element={<ProfileTae />} />
+            <Route path="/create-incident" element={<PrivateRoute user={['Aluno']}><CreateIncident /></PrivateRoute>} />
+            <Route path="/posts" element={<PrivateRoute user={['Aluno']}><Posts /></PrivateRoute>} />
+            <Route path="/my-calendar" element={<PrivateRoute user={['Aluno']}><MyCalendar /></PrivateRoute>} />
+            <Route path="/adm/create-post" element={<PrivateRoute user={['Admin']}><CreatePosts /></PrivateRoute>} />
+            <Route path="/adm/schedule-room" element={<PrivateRoute user={['Admin']}><ScheduleRoom /></PrivateRoute>} />
+            <Route path="/adm/manage-students" element={<PrivateRoute user={['Admin']}><ManageStudents /></PrivateRoute>} />
+            <Route path="/adm/post" element={<PrivateRoute user={['Admin']}><PostTae /></PrivateRoute>} />
+            <Route path="/adm/profile" element={<PrivateRoute user={['Admin']}><ProfileTae /></PrivateRoute>} />
             {/**
             <Route path="/create-incident" element={<PrivateRoute user={['Aluno', 'Admin']}><CreateIncident /></PrivateRoute>} />
             <Route path="/posts" element={<PrivateRoute user={['Aluno', 'Admin']}><Posts /></PrivateRoute>} />

@@ -1,4 +1,4 @@
-import { HeaderUser } from "../components/HeaderUser";
+import { HeaderTae } from "../components/HeaderTae";
 import { AdmIncidentTable } from "../components/cutomized/admIncidents/AdmIncidentTable";
 import { useEffect, useState } from "react";
 import { getIncidents, getIncidentTypes } from "../services/incident";
@@ -37,7 +37,7 @@ export function Incidents() {
 
     return (
         <div className="flex flex-col items-center">
-            <HeaderUser />
+            <HeaderTae />
 
             <AdmIncidentTable
                 incidents={incidents}
