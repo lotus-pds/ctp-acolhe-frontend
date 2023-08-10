@@ -26,6 +26,7 @@ import { ListIncident } from "./pages/ListIncident";
 import { ManageStudents } from "./pages/ManageStudents";
 import { PostTae } from "./pages/PostTae";
 import { ProfileTae } from "./pages/ProfileTae";
+import { NotFound } from "./pages/NotFound";
 
 export function Router(props) {
     const[courses, setCourses] = useState([]);
@@ -41,6 +42,7 @@ export function Router(props) {
 
     return (
         <Routes>
+            
             <Route exact path="/" element={<OpenRoute><Home /></OpenRoute>} />
             <Route path="/signin" element={<OpenRoute><Signin /></OpenRoute>} />
             <Route path="/subscribe" element={<OpenRoute><Subscribe courses={courses}/></OpenRoute>} />
@@ -77,6 +79,7 @@ export function Router(props) {
             <Route path="/subscribe/verification/:token" element={<EmailConfirmation />} />
             <Route path="/adm/incident" element={<PrivateRoute user={['Admin']}><Incidents /></PrivateRoute>} />
             <Route path="/adm/incident/:id" element={<PrivateRoute user={['Admin']}><AdmIncidentDetails /></PrivateRoute>} />
+            <Route path="/404" element={<NotFound/>}/>
         </Routes>
     );
 }

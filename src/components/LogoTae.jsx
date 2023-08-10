@@ -9,7 +9,7 @@ export function LogoTae()
     if(theme === "light"){
         return (
             <Link
-                to={'/post-tae'}
+                to={'/adm/post'}
             >
                 <img 
                     src="https://media.discordapp.net/attachments/1077345452694970438/1099690236369444924/Logo_1.png?width=1020&height=397"

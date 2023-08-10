@@ -2,8 +2,10 @@ import {
     Dialog,
     DialogHeader,
     DialogBody,
-    DialogFooter
+    DialogFooter,
+    Spinner
 } from "@material-tailwind/react";
+import { Spin } from "antd";
 import { useTranslation } from "react-i18next";
 
 const getTitle = type => {
@@ -26,9 +28,7 @@ const getTitle = type => {
             );
         case 'LOADING':
             return (
-                <h4 className={pattern + ' from-purple-200 to-purple-300'}>
-                    {t('loading')}
-                </h4>
+                <Spin></Spin>
             );
         default:
             return undefined;

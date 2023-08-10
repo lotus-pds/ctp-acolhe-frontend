@@ -300,7 +300,7 @@ export const resources = {
             },
             "chatTitle": "O que é a criação de incidentes?",
             "chatDesc": "O sistema é especializado em criar incidentes e captura detalhes das solicitações, categorizando sua gravidade e prioridade, e acompanha todo o processo de resolução, incluindo atribuição de técnicos especializados e comunicação transparente com os usuários para o setor da Coordenadoria Técnico Pedagógica do Instituto Federal Campus São Paulo (CTP). Ele é uma ferramenta que permite aos usuários criar incidentes relacionados à problemas como: organização estudantil, conflitos educacionais e problemas psicológicos que afetem diretamente o estudo - como ansiedade por conta das atividades, do prazo de entrega,  etc. Faça uma solicitação para ter um suporte relacionado a estes processos e aguarde até a sua resolução. Essa solução visa agilizar a resolução de problemas, garantindo a eficiência operacional da organização.",
-            "calendarTitle": "Acompanhe seu registro de emoçoes!",
+            "calendarTitle": "Acompanhe seu registro de emoções!",
             "calendarDesc": "O Calendário de Emoções é uma ferramenta que combina um calendário tradicional com o registro diário das emoções que você sente. Cada dia tem um espaço para descrever suas emoções, permitindo a identificação de padrões ao longo do tempo. Isso auxilia na autorreflexão, no autocuidado e na compreensão da sua saúde emocional. É uma maneira prática de monitorar e processar suas emoções ao longo do mês.",
             "tooltipTae": {
                 "createPost": "Criar Postagens",

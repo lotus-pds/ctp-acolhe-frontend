@@ -12,31 +12,29 @@ export const ChipIncidentStatus = props => {
     switch (status) {
         case "FIN":
             color = "green";
-            className += " from-green-200 to-green-300";
+            className += " from-green-400 to-green-600";
             break;
         case "PEN":
             color = "yellow";
-            className += " from-yellow-100 to-yellow-200";
+            className += " from-amber-500 to-orange-600";
             break;
         case "CAN":
             color = "red";
-            className += " from-red-200 to-red-300";
+            className += " from-red-400 to-red-500";
             break;
         case "EPR":
-            color: "blue";
-            className += " from-blue-100 to-blue-200 dark:from-blue-400 dark:to-blue-700'";
+            color = "blue";
+            className += " from-blue-200 to-blue-400";
             break;
         default:
             color = "blue";
-            className += " from-blue-100 to-blue-200 dark:from-blue-400 dark:to-blue-700'"
+            className += " from-blue-300 to-blue-400"
     }
 
-    return (<Chip
+    return <Chip
         size="sm"
-        variant="ghost"
         value={t("incidentTypes." + status)}
         color={color}
         className={className}
-    />
-    );
+    />;
 }
