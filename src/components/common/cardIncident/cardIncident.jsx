@@ -6,13 +6,13 @@ import {
   CardHeader,
   Typography,
 } from "@material-tailwind/react";
+import { Tooltip } from "antd";
 import { convertDateBars } from "../../../common/general";
 import { ChipIncidentStatus } from "../../cutomized/gnIncidents/ChipIncidentStatus";
-import { Tooltip } from "antd";
 
-export function IncidentCard(props) {
+export function CardIncident(props) {
   const {
-    incident={},
+    incident = {},
     color,
     size,
     variant,
@@ -22,12 +22,12 @@ export function IncidentCard(props) {
     children
   } = props;
 
-  const { assunto, dataIncidente, status = {}, tipos = [],  usuarioCopia = {}  } = incident;
+  const { assunto, dataIncidente, status = {}, tipos = [], usuarioCopia = {} } = incident;
   const { nome, email, prontuario, nomeCurso, turma, urlAvatar } = usuarioCopia || {};
   const temas = tipos.flatMap((t) => [t.tipo]).join(', ');
 
   return (
-    <Card color="transparent" className="w-full max-w-[47%] inline-block border-2 border-sky-500 px-8 pt-2 pb-3 ml-4 mb-4">
+    <Card color="transparent" className="w-full max-w-[47%] inline-block border-2 hover:bg-gray-50 px-8 pt-2 pb-3 ml-4 mb-4" onClick={onClick}>
       <CardHeader
         color="transparent"
         floated={false}
@@ -48,7 +48,7 @@ export function IncidentCard(props) {
         </div>
       </CardHeader>
       <CardBody className="p-0">
-        <hr/>
+        <hr />
         <span className="grid grid-cols-5 gap-y-2 my-4">
           <span className="col-span-1">
             <Typography variant="h6">Prontuário</Typography>

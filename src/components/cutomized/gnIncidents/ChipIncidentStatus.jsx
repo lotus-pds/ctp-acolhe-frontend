@@ -31,11 +31,10 @@ export const ChipIncidentStatus = props => {
             className += " from-blue-300 to-blue-400"
     }
 
-    return (<Chip
+    return <Chip
         size="sm"
         value={t("incidentTypes." + status)}
         color={color}
         className={className}
-    />
-    );
+    />;
 }

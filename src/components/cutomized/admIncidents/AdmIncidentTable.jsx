@@ -15,7 +15,7 @@ import { GnButton } from "../../common/button/GnButton";
 import { useTranslation } from "react-i18next";
 import { convertDateBars } from "../../../common/general";
 import { useNavigate } from "react-router-dom";
-import { IncidentCard } from "../../common/cardIncident/cardIncident";
+import { CardIncident } from "../../common/cardIncident/CardIncident";
 
 const TABLE_HEAD = ["Aluno", "Prontuário", "Assunto", "Data", "Status", ""];
 
@@ -45,83 +45,90 @@ export function AdmIncidentTable(props) {
     ];
 
     return (
-        <Card className="h-full w-[90%] my-8 rounded">
-            <CardHeader floated={false} shadow={false} className="rounded-none">
-                <div className="mb-4">
-                    <Typography variant="h5" color="blue-gray">
-                        Lista de incidentes
-                    </Typography>
-                    <Typography color="gray" className="mt-1 font-normal">
-                        Estes são os incidentes dos alunos.
-                    </Typography>
-                    <div className="flex justify-center flex-row w-full gap-2 mt-2" >
-                        <Input
-                            placeholder={t("subject")}
-                            className="w-[50%]"
-                            onChange={e => setFilters({ ...filters, assunto: e.target.value })}
-                            allowClear={true}
-                            value={filters.assunto}
-                        />
-                        <Select
-                            placeholder={t("types")}
-                            className="w-[50%]"
-                            size="large"
-                            mode="multiple"
-                            onChange={(value, option) => setFilters({ ...filters, idTipoIncidente: value })}
-                            options={incidentTypes.map(t => ({ label: t.tipo, value: t.idTipoIncidente }))}
-                            value={filters.idTipoIncidente}
-                            allowClear={true}
-                        />
+        <>
+            <Card className="h-full w-[90%] mt-8 mb-6">
+                <CardBody floated={false} >
+                    <div className="mb-4">
+                        <Typography variant="h2" color="blue-gray" className="font-mouse sm:text-4xl text-2xl">
+                            Lista de incidentes
+                        </Typography>
+                        <Typography color="gray" className="mt-2 mb-8 font-normal sm:text-md text-md">
+                            Estes são os incidentes dos alunos.
+                        </Typography>
+                        <div className="flex justify-center flex-row w-full gap-2 mt-2" >
+                            <Input
+                                placeholder={t("subject")}
+                                className="w-[50%]"
+                                onChange={e => setFilters({ ...filters, assunto: e.target.value })}
+                                allowClear={true}
+                                value={filters.assunto}
+                            />
+                            <Select
+                                placeholder={t("types")}
+                                className="w-[50%]"
+                                size="large"
+                                mode="multiple"
+                                onChange={(value, option) => setFilters({ ...filters, idTipoIncidente: value })}
+                                options={incidentTypes.map(t => ({ label: t.tipo, value: t.idTipoIncidente }))}
+                                value={filters.idTipoIncidente}
+                                allowClear={true}
+                            />
 
-                    </div>
-                    <div className="flex justify-center flex-row w-full gap-2 mt-2" >
-                        <Select
-                            placeholder="Status"
-                            className="w-[25%]"
-                            size="large"
-                            onChange={(value, option) => setFilters({ ...filters, idStatus: value })}
-                            options={STATUS}
-                            value={filters.status}
-                            allowClear={true}
-                        />
+                        </div>
+                        <div className="flex justify-center flex-row w-full gap-2 mt-2" >
+                            <Select
+                                placeholder="Status"
+                                className="w-[25%]"
+                                size="large"
+                                onChange={(value, option) => setFilters({ ...filters, idStatus: value })}
+                                options={STATUS}
+                                value={filters.status}
+                                allowClear={true}
+                            />
 
-                        <DatePicker
-                            placeholder={t("startDate")}
-                            className="w-[25%]"
-                            onChange={(date, string) => setFilters({ ...filters, dataIncidenteInicial: string })}
-                            value={filters.dataInicio}
-                            format="DD/MM/YYYY"
-                            allowClear={true}
-                        />
-                        <DatePicker
-                            placeholder={t("endDate")}
-                            className="w-[25%]"
-                            onChange={(date, string) => setFilters({ ...filters, dataIncidenteFinal: string })}
-                            value={filters.dataFinal}
-                            format="DD/MM/YYYY"
-                            allowClear={true}
-                        />
-                        <GnButton
-                            color="BLUE"
-                            className="w-[25%]"
-                            onClick={() => search()}
-                        >
-                            {t("search")}
-                        </GnButton>
+                            <DatePicker
+                                placeholder={t("startDate")}
+                                className="w-[25%]"
+                                onChange={(date, string) => setFilters({ ...filters, dataIncidenteInicial: string })}
+                                value={filters.dataInicio}
+                                format="DD/MM/YYYY"
+                                allowClear={true}
+                            />
+                            <DatePicker
+                                placeholder={t("endDate")}
+                                className="w-[25%]"
+                                onChange={(date, string) => setFilters({ ...filters, dataIncidenteFinal: string })}
+                                value={filters.dataFinal}
+                                format="DD/MM/YYYY"
+                                allowClear={true}
+                            />
+                            <GnButton
+                                color="BLUE"
+                                className="w-[25%]"
+                                onClick={() => search()}
+                            >
+                                {t("search")}
+                            </GnButton>
+                        </div>
                     </div>
-                </div>
-            </CardHeader>
-            <CardBody className="overflow-scroll px-0">
-                {incidents.map(
-                    (incident, index) => (
-                        <IncidentCard
-                            incident={incident}
-                        />
-                    )
-                )}
-            </CardBody>
-            {/* INSERIR QUANDO TIVER PAGINAÇÃO: */}
-            {/* <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
+                </CardBody>
+            </Card>
+            <Card className="h-full w-[90%] mb-8">
+                <CardBody className="px-0">
+                    <Typography variant="h4" color="blue-gray" className="ml-5 mb-5">
+                        0 incidente(s) encontrado(s)
+                    </Typography>
+                    {incidents.map(
+                        (incident) => (
+                            <CardIncident
+                                incident={incident}
+                                onClick={() => navigate(`/adm/incident/${incident?.idIncidente}`)}
+                            />
+                        )
+                    )}
+                </CardBody>
+                {/* INSERIR QUANDO TIVER PAGINAÇÃO: */}
+                {/* <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
                 <Button variant="outlined" color="blue-gray" size="sm">
                     Anterior
                 </Button>
@@ -152,6 +159,7 @@ export function AdmIncidentTable(props) {
                     Próximo
                 </Button>
             </CardFooter> */}
-        </Card >
+            </Card >
+        </>
     );
 }
