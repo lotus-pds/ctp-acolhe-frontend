@@ -20,7 +20,7 @@ export function CookieAlert(props) {
     return (
         <Alert
             className='bg-white dark:bg-gray-900 fixed border border-solid border-gray-900 dark:border-gray-200 text-gray-900 dark:text-gray-200 w-500 bottom-14 z-50 shadow-lg pr-0'
-            show={show}
+            open={show}
             icon={
                 <InformationCircleIcon className="h-8 w-6" />
             }
