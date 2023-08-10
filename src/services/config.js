@@ -9,8 +9,8 @@ const frontendUrl = 'https://ctp-acolhe-v1.netlify.app/';
 
 export function ROOT_URL() {
     // return 'https://ctpacolhe-production.up.railway.app/api/v1';
-    //return 'http://localhost:8080/api/v1';
-    return 'https://ctp-acolhe-backend-production.up.railway.app/api/v1';
+    return 'http://localhost:8080/api/v1';
+    // return 'https://ctp-acolhe-backend-production.up.railway.app/api/v1';
 }
 
 axios.interceptors.request.use(async req => {
