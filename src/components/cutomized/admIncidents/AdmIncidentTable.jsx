@@ -15,6 +15,7 @@ import { GnButton } from "../../common/button/GnButton";
 import { useTranslation } from "react-i18next";
 import { convertDateBars } from "../../../common/general";
 import { useNavigate } from "react-router-dom";
+import { IncidentCard } from "../../common/cardIncident/cardIncident";
 
 const TABLE_HEAD = ["Aluno", "Prontuário", "Assunto", "Data", "Status", ""];
 
@@ -48,10 +49,10 @@ export function AdmIncidentTable(props) {
             <CardHeader floated={false} shadow={false} className="rounded-none">
                 <div className="mb-4">
                     <Typography variant="h5" color="blue-gray">
-                        Meus incidentes
+                        Lista de incidentes
                     </Typography>
                     <Typography color="gray" className="mt-1 font-normal">
-                        Estes são seus incidentes criados.
+                        Estes são os incidentes dos alunos.
                     </Typography>
                     <div className="flex justify-center flex-row w-full gap-2 mt-2" >
                         <Input
@@ -111,82 +112,13 @@ export function AdmIncidentTable(props) {
                 </div>
             </CardHeader>
             <CardBody className="overflow-scroll px-0">
-                <table className="w-full min-w-max table-auto text-left">
-                    <thead>
-                        <tr>
-                            {TABLE_HEAD.map((head) => (
-                                <th key={head} className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
-                                    <Typography
-                                        variant="small"
-                                        color="blue-gray"
-                                        className="font-normal leading-none opacity-70"
-                                    >
-                                        {head}
-                                    </Typography>
-                                </th>
-                            ))}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {incidents.map(
-                            (i, index) => {
-                                const isLast = index === incidents.length - 1;
-                                const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
-
-                                return (
-                                    <tr key={i?.idIncidente}>
-                                        <td className={classes}>
-                                            <div className="flex items-center gap-3">
-                                                <Avatar
-                                                    src={i?.usuarioCopia?.urlAvatar}
-                                                    size="md"
-                                                />
-                                                <Typography variant="small" color="blue-gray" className="font-normal">
-                                                    {i?.usuarioCopia?.nome}
-                                                </Typography>
-                                            </div>
-                                        </td>
-                                        <td className={classes}>
-                                            <Typography variant="small" color="blue-gray" className="font-normal">
-                                                {i?.usuarioCopia?.prontuario}
-                                            </Typography>
-                                        </td>
-                                        <td className={classes}>
-                                            <div className="flex items-center gap-3">
-                                                <Typography variant="small" color="blue-gray" className="font-bold">
-                                                    {i?.assunto}
-                                                </Typography>
-                                            </div>
-                                        </td>
-                                        <td className={classes}>
-                                            <Typography variant="small" color="blue-gray" className="font-normal">
-                                                {convertDateBars(new Date(i?.dataIncidente))}
-                                            </Typography>
-                                        </td>
-                                        <td className={classes}>
-                                            <div className="w-max">
-                                                <ChipIncidentStatus
-                                                    status={i?.status?.idStatus}
-                                                />
-                                            </div>
-                                        </td>
-                                        <td className={classes}>
-                                            <Tooltip content="Edit User">
-                                                <IconButton
-                                                    variant="text"
-                                                    color="purple"
-                                                    onClick={() => navigate(`/adm/incident/${i?.idIncidente}`)}
-                                                >
-                                                    <MagnifyingGlassIcon className="h-4 w-4 " />
-                                                </IconButton>
-                                            </Tooltip>
-                                        </td>
-                                    </tr>
-                                );
-                            },
-                        )}
-                    </tbody>
-                </table>
+                {incidents.map(
+                    (incident, index) => (
+                        <IncidentCard
+                            incident={incident}
+                        />
+                    )
+                )}
             </CardBody>
             {/* INSERIR QUANDO TIVER PAGINAÇÃO: */}
             {/* <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
