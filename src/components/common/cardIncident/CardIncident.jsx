@@ -27,7 +27,7 @@ export function CardIncident(props) {
   const temas = tipos.flatMap((t) => [t.tipo]).join(', ');
 
   return (
-    <Card color="transparent" className="w-full max-w-[47%] inline-block border-2 hover:bg-gray-50 px-8 pt-2 pb-3 ml-4 mb-4" onClick={onClick}>
+    <Card color="transparent" className="w-full max-w-[47%] inline-block border-2 hover:bg-gray-50 cursor-pointer px-8 pt-2 pb-3 ml-4 mb-4" onClick={onClick}>
       <CardHeader
         color="transparent"
         floated={false}
