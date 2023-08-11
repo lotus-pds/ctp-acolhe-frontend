@@ -7,6 +7,7 @@ export function Incidents() {
     const [incidents, setIncidents] = useState([]);
     const [incidentTypes, setIncidentTypes] = useState([]);
     const [filters, setFilters] = useState({});
+    const [totalAmount, setTotalAmount] = useState("0");
 
     const localGetIncidents = async () => {
         let innerFilters = {...filters};
@@ -23,6 +24,7 @@ export function Incidents() {
 
         let response = await getIncidents(innerFilters);
         setIncidents(response.data);
+        setTotalAmount(response.headers['quantidade-total']);
     }
 
     const localGetIncidentTypes = async () => {
@@ -41,6 +43,7 @@ export function Incidents() {
 
             <AdmIncidentTable
                 incidents={incidents}
+                totalAmount={totalAmount}
                 search={localGetIncidents}
                 incidentTypes={incidentTypes}
                 filters={filters}

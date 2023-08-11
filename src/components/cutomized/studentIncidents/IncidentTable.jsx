@@ -29,7 +29,7 @@ const getIncidentTypes = incidentTypes => {
 }
 
 export function IncidentTable(props) {
-    const { incidents = [], toggleDetailsOpen, detailIncident, ChipStatus, search, incidentTypes, filters, setFilters } = props;
+    const { incidents = [], totalAmount, toggleDetailsOpen, detailIncident, ChipStatus, search, incidentTypes, filters, setFilters } = props;
 
     const { t } = useTranslation();
 
@@ -124,7 +124,7 @@ export function IncidentTable(props) {
             <Card className="h-full w-[90%] mb-8">
                 <CardBody className="px-0">
                     <Typography variant="h4" color="blue-gray" className="ml-5 mb-5">
-                        0 incidente(s) encontrado(s)
+                        {totalAmount} incidente(s) encontrado(s)
                     </Typography>
                     {incidents.map(
                         (incident) => (

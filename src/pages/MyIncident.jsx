@@ -54,6 +54,7 @@ export function MyIncident() {
     const [incidentTypes, setIncidentTypes] = useState([]);
     const [warningOpen, setWarningOpen] = useState(false);
     const [filters, setFilters] = useState({});
+    const [totalAmount, setTotalAmount] = useState("0");
 
     const detailIncident = incident => setIncident({ ...incident });
 
@@ -72,6 +73,7 @@ export function MyIncident() {
 
         let response = await getMyIncidents(innerFilters);
         setIncidents(response.data);
+        setTotalAmount(response.headers['quantidade-total']);
     }
 
     const localGetIncidentTypes = async () => {
@@ -114,6 +116,7 @@ export function MyIncident() {
             <IncidentTable
                 toggleDetailsOpen={toggleDetailsOpen}
                 incidents={incidents}
+                totalAmount={totalAmount}
                 detailIncident={detailIncident}
                 ChipStatus={ChipStatus}
                 search={localGetMyIncidents}
