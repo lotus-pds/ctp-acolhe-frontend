@@ -1,11 +1,13 @@
-import { GnButton } from "../components/common/button/GnButton";
-import { useTranslation } from "react-i18next";
-import { convertDateBars } from "../common/general";
+import { ChatBubbleLeftRightIcon, ChevronLeftIcon, StarIcon } from "@heroicons/react/24/outline";
+import { Card, CardHeader, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
-import { getIncident, processIncident, completeIncident } from "../services/incident";
-import { ChipIncidentStatus } from "../components/cutomized/gnIncidents/ChipIncidentStatus";
+import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
-import { Typography, Avatar } from "@material-tailwind/react";
+import { convertDateBars } from "../common/general";
+import { HeaderTae } from "../components/HeaderTae";
+import { GnButton } from "../components/common/button/GnButton";
+import { ChipIncidentStatus } from "../components/cutomized/gnIncidents/ChipIncidentStatus";
+import { completeIncident, getIncident, processIncident } from "../services/incident";
 
 const getIncidentTypes = (incidentTypes = []) => {
     let types = incidentTypes.map(t => t.tipo);
@@ -15,17 +17,15 @@ const getIncidentTypes = (incidentTypes = []) => {
 const getQuestionsAndAnswers = (questions = []) => {
     return (
         <div>
-            {questions.map(q => {
-                return (
-                    <div>
-                        <p>PERGUNTA</p>
-                        <p>{q.descricao}</p>
-                        <p>RESPOSTAS</p>
-                        <p>{q?.respostas.map(r => r.descricao).join(", ")}</p>
-                        <br />
-                    </div>
-                );
-            })}
+            {questions.sort((a, b) => a.ordem - b.ordem)
+                .map(q => {
+                    return (
+                        <div className="flex gap-2 my-5 mx-5">
+                            <ChatBubbleLeftRightIcon className="h-6 w-6 inline ml-2 mb-1"></ChatBubbleLeftRightIcon><Typography variant="h6">{q.descricao}</Typography>
+                            <Typography>{q?.respostas.map(r => r.descricao).join(", ")}</Typography>
+                        </div>
+                    );
+                })}
         </div>
     );
 }
@@ -58,102 +58,130 @@ export function AdmIncidentDetails(props) {
     const navigate = useNavigate();
 
     return (
-        <>
+        <div className="flex flex-col items-center">
+            <HeaderTae />
 
-            <GnButton
-                color="PURPLE"
-                onClick={() => navigate('/adm/incident')}
-            >
-                {"< Voltar"}
-            </GnButton><br />
+            <Card className="h-full w-[90%] mt-8 mb-6">
+                <CardHeader floated={false} shadow={false} >
+                    <div className="flex gap-5 mb-4">
+                        <ChevronLeftIcon
+                            className="h-10 w-8 inline cursor-pointer" onClick={() => navigate('/adm/incident')}
+                        />
+                        <Typography variant="h2" color="blue-gray" className="font-mouse sm:text-4xl text-2xl">
+                            Detalhes do incidente
+                        </Typography>
+                    </div>
+                    <hr />
+                    <div className="my-5 mx-5">
+                        <Typography variant="h5" color="blue-gray">
+                            Informações gerais do aluno(a)
+                        </Typography>
 
-            <Typography>
-                ALUNO
-            </Typography>
+                        <span className="grid grid-cols-12 gap-y-2 my-4">
+                            <span className="col-span-5">
+                                <Typography variant="h6">Nome</Typography>
+                                <Typography>{incident?.usuarioCopia?.nome}</Typography>
+                            </span>
 
-            <Typography>
-                <Avatar
-                    src={incident?.usuarioCopia?.urlAvatar}
-                    size="md"
-                />
-            </Typography>
+                            <span className="col-span-3">
+                                <Typography variant="h6">Prontuário</Typography>
+                                <Typography>{incident?.usuarioCopia?.prontuario}</Typography>
+                            </span>
 
-            <Typography>
-                Nome: {incident?.usuarioCopia?.nome}
-            </Typography>
+                            <span className="col-span-4">
+                                <Typography variant="h6">E-mail</Typography>
+                                <Typography>{incident?.usuarioCopia?.email}</Typography>
+                            </span>
 
-            <Typography>
-                Prontuário: {incident?.usuarioCopia?.prontuario}
-            </Typography>
+                            <span className="col-span-2">
+                                <Typography variant="h6">Telefone</Typography>
+                                <Typography>{incident?.usuarioCopia?.telefone}</Typography>
+                            </span>
 
-            <Typography>
-                Email: {incident?.usuarioCopia?.email}
-            </Typography>
+                            <span className="col-span-6">
+                                <Typography variant="h6">Curso</Typography>
+                                <Typography>{incident?.usuarioCopia?.nomeCurso} - {incident?.usuarioCopia?.tipoCurso}</Typography>
+                            </span>
 
-            <Typography>
-                Telefone: {incident?.usuarioCopia?.telefone}
-            </Typography>
+                            <span className="col-span-2">
+                                <Typography variant="h6">Turma</Typography>
+                                <Typography>{incident?.usuarioCopia?.turma}</Typography>
+                            </span>
 
-            <Typography>
-                Curso: {incident?.usuarioCopia?.nomeCurso} ({incident?.usuarioCopia?.tipoCurso})
-            </Typography>
+                            <span className="col-span-2">
+                                <Typography variant="h6">Período</Typography>
+                                <Typography>{incident?.usuarioCopia?.periodo}</Typography>
+                            </span>
+                        </span>
+                    </div>
+                    <hr />
+                    <div className="my-5 mx-5">
+                        <Typography variant="h5" color="blue-gray">
+                            Informações do incidente
+                        </Typography>
 
-            <Typography>
-                Turma: {incident?.usuarioCopia?.turma}
-            </Typography>
+                        <span className="grid grid-cols-12 gap-y-2 my-4">
+                            <span className="col-span-5">
+                                <Typography variant="h6">Assunto</Typography>
+                                <Typography>{incident?.assunto}</Typography>
+                            </span>
 
-            <Typography>
-                Período: {incident?.usuarioCopia?.periodo}
-            </Typography>
+                            <span className="col-span-2">
+                                <Typography variant="h6">Data de criação</Typography>
+                                <Typography>{convertDateBars(new Date(incident?.dataIncidente))}</Typography>
+                            </span>
 
-            <br />
+                            <span className="col-span-3">
+                                <Typography variant="h6">Status</Typography>
+                                <ChipIncidentStatus status={incident?.status?.idStatus} />
+                            </span>
 
-            <Typography>
-                INCIDENTE
-            </Typography>
+                            <span className="col-span-12">
+                                <Typography variant="h6">Temas</Typography>
+                                <Typography className="-ml-2 text-ellipsis overflow-hidden">
+                                    {incident?.tipos?.map((t) => (
+                                        <><StarIcon className="h-6 w-6 inline mr-1 ml-2 mb-1"></StarIcon>
+                                            {t?.tipo}</>
+                                    ))}
+                                </Typography>
+                            </span>
+                        </span>
+                    </div>
+                    <hr />
+                    <div className="my-5 mx-5">
+                        <Typography variant="h5" color="blue-gray">
+                            Triagem
+                        </Typography>
 
-            <Typography>
-                Assunto: {incident?.assunto}
-            </Typography>
+                        {getQuestionsAndAnswers(incident?.perguntas)}
+                    </div>
+                    <div className="flex justify-end my-6 mx-5">
+                        {(incident?.status?.idStatus == "PEN")
+                            ? <GnButton
+                                color="BLUE"
+                                onClick={() => {
+                                    localProcessIncident(incident?.idIncidente);
+                                }}
+                            >
+                                {t("initiateProcess")}
+                            </GnButton>
+                            : <></>
+                        }
+                        {(incident?.status?.idStatus == "EPR")
+                            ? <GnButton
+                                color="GREEN"
+                                onClick={() => {
+                                    localCompleteIncident(incident?.idIncidente);
+                                }}
+                            >
+                                {t("completeProcess")}
+                            </GnButton>
+                            : <></>
+                        }
+                    </div>
 
-            <Typography>
-                Data: {convertDateBars(new Date(incident?.dataIncidente))}
-            </Typography>
-
-            <Typography>
-                Status: <ChipIncidentStatus status={incident?.status?.idStatus} />
-            </Typography>
-
-            <Typography>
-                Tipos: {getIncidentTypes(incident?.tipos)}
-            </Typography>
-
-            <br />
-
-            {getQuestionsAndAnswers(incident?.perguntas)}
-
-            {(incident?.status?.idStatus == "PEN")
-                ? <GnButton
-                    color="BLUE"
-                    onClick={() => {
-                        localProcessIncident(incident?.idIncidente);
-                    }}
-                >
-                    {t("initiateProcess")}
-                </GnButton>
-                : <></>
-            }
-            {(incident?.status?.idStatus == "EPR")
-                ? <GnButton
-                    color="GREEN"
-                    onClick={() => {
-                        localCompleteIncident(incident?.idIncidente);
-                    }}
-                >
-                    {t("completeProcess")}
-                </GnButton>
-                : <></>
-            }
-        </>
+                </CardHeader>
+            </Card>
+        </div>
     );
 }
