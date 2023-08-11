@@ -13,6 +13,7 @@ import { Input, DatePicker, Select } from "antd";
 import { GnButton } from "../../common/button/GnButton";
 import { useTranslation } from "react-i18next";
 import { convertDateBars } from "../../../common/general";
+import { CardIncident } from "../../common/cardIncident/CardIncident";
 
 const TABLE_HEAD = ["Assunto", "Data", "Status", "Tipos", ""];
 
@@ -53,8 +54,8 @@ export function IncidentTable(props) {
 
     return (
         <>
-            <Card className="h-full w-[90%] mt-8 mb-6">
-                <CardHeader floated={false} >
+            <Card shadow={false} className="h-full w-[90%] mt-8 mb-6" >
+                <CardBody floated={false} >
                     <div className="mb-4">
                         <Typography variant="h2" color="blue-gray" className="font-mouse sm:text-4xl text-2xl">
                             Meus incidentes
@@ -118,81 +119,24 @@ export function IncidentTable(props) {
                             </GnButton>
                         </div>
                     </div>
-                </CardHeader>
+                </CardBody>
             </Card>
             <Card className="h-full w-[90%] mb-8">
                 <CardBody className="px-0">
                     <Typography variant="h4" color="blue-gray" className="ml-5 mb-5">
                         0 incidente(s) encontrado(s)
                     </Typography>
-                    <table className="w-full min-w-max table-auto text-left">
-                        <thead>
-                            <tr>
-                                {TABLE_HEAD.map((head) => (
-                                    <th key={head} className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
-                                        <Typography
-                                            variant="small"
-                                            color="blue-gray"
-                                            className="font-normal leading-none opacity-70"
-                                        >
-                                            {head}
-                                        </Typography>
-                                    </th>
-                                ))}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {incidents.map(
-                                (i, index) => {
-                                    const isLast = index === incidents.length - 1;
-                                    const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
-
-                                    return (
-                                        <tr key={i?.idIncidente}>
-                                            <td className={classes}>
-                                                <div className="flex items-center gap-3">
-                                                    <Typography variant="small" color="blue-gray" className="font-bold">
-                                                        {i?.assunto}
-                                                    </Typography>
-                                                </div>
-                                            </td>
-                                            <td className={classes}>
-                                                <Typography variant="small" color="blue-gray" className="font-normal">
-                                                    {convertDateBars(new Date(i?.dataIncidente))}
-                                                </Typography>
-                                            </td>
-                                            <td className={classes}>
-                                                <div className="w-max">
-                                                    <ChipStatus
-                                                        status={i?.status?.idStatus}
-                                                    />
-                                                </div>
-                                            </td>
-                                            <td className={classes}>
-                                                <Typography variant="small" color="blue-gray" className="font-normal">
-                                                    {getIncidentTypes(i?.tipos)}
-                                                </Typography>
-                                            </td>
-                                            <td className={classes}>
-                                                <Tooltip content="Edit User">
-                                                    <IconButton
-                                                        variant="text"
-                                                        color="purple"
-                                                        onClick={() => {
-                                                            detailIncident(i);
-                                                            toggleDetailsOpen();
-                                                        }}
-                                                    >
-                                                        <MagnifyingGlassIcon className="h-4 w-4 " />
-                                                    </IconButton>
-                                                </Tooltip>
-                                            </td>
-                                        </tr>
-                                    );
-                                },
-                            )}
-                        </tbody>
-                    </table>
+                    {incidents.map(
+                        (incident) => (
+                            <CardIncident
+                                incident={incident}
+                                onClick={() => {
+                                    detailIncident(incident);
+                                    toggleDetailsOpen();
+                                }}
+                            />
+                        )
+                    )}
                 </CardBody>
                 {/* INSERIR QUANDO TIVER PAGINAÇÃO: */}
                 {/* <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
