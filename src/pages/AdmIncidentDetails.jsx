@@ -1,9 +1,10 @@
-import { ChatBubbleLeftRightIcon, ChevronLeftIcon, StarIcon } from "@heroicons/react/24/outline";
+import { ChatBubbleLeftRightIcon, ChevronLeftIcon, ClipboardDocumentListIcon, StarIcon, UserIcon } from "@heroicons/react/24/solid";
 import { Card, CardHeader, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
-import { convertDateBars } from "../common/general";
+import { courseTypesEnum, periodTypesEnum } from "../common/constants";
+import { concatStrings, convertDateBars, phoneNumberMask } from "../common/general";
 import { HeaderTae } from "../components/HeaderTae";
 import { GnButton } from "../components/common/button/GnButton";
 import { ChipIncidentStatus } from "../components/cutomized/gnIncidents/ChipIncidentStatus";
@@ -62,7 +63,7 @@ export function AdmIncidentDetails(props) {
             <HeaderTae />
 
             <Card className="h-full w-[90%] mt-8 mb-6">
-                <CardHeader floated={false} shadow={false} >
+                <CardHeader floated={false} shadow={false} className="my-5 mx-10" >
                     <div className="flex gap-5 mb-4">
                         <ChevronLeftIcon
                             className="h-10 w-8 inline cursor-pointer" onClick={() => navigate('/adm/incident')}
@@ -72,61 +73,63 @@ export function AdmIncidentDetails(props) {
                         </Typography>
                     </div>
                     <hr />
-                    <div className="my-5 mx-5">
-                        <Typography variant="h5" color="blue-gray">
-                            Informações gerais do aluno(a)
+                    <div className="my-5 ml-14 mr-14">
+                        <Typography variant="h4" color="blue-gray" className="flex gap-4 py-2 pr-2">
+                            <UserIcon className="sm:w-6 w-5 inline" />
+                            Informações do Aluno(a)
                         </Typography>
 
-                        <span className="grid grid-cols-12 gap-y-2 my-4">
-                            <span className="col-span-5">
+                        <span className="grid grid-cols-12 gap-y-5 my-8 ml-10">
+                            <span className="col-span-4">
                                 <Typography variant="h6">Nome</Typography>
                                 <Typography>{incident?.usuarioCopia?.nome}</Typography>
                             </span>
 
-                            <span className="col-span-3">
+                            <span className="col-span-2">
                                 <Typography variant="h6">Prontuário</Typography>
                                 <Typography>{incident?.usuarioCopia?.prontuario}</Typography>
                             </span>
 
-                            <span className="col-span-4">
+                            <span className="col-span-3">
                                 <Typography variant="h6">E-mail</Typography>
                                 <Typography>{incident?.usuarioCopia?.email}</Typography>
                             </span>
 
                             <span className="col-span-2">
                                 <Typography variant="h6">Telefone</Typography>
-                                <Typography>{incident?.usuarioCopia?.telefone}</Typography>
+                                <Typography>{phoneNumberMask(incident?.usuarioCopia?.telefone) || "Não informado."}</Typography>
                             </span>
 
                             <span className="col-span-6">
                                 <Typography variant="h6">Curso</Typography>
-                                <Typography>{incident?.usuarioCopia?.nomeCurso} - {incident?.usuarioCopia?.tipoCurso}</Typography>
+                                <Typography>{concatStrings([incident?.usuarioCopia?.nomeCurso, courseTypesEnum.get(incident?.usuarioCopia?.tipoCurso)]) || "Não informado."}</Typography>
                             </span>
 
-                            <span className="col-span-2">
+                            <span className="col-span-3">
                                 <Typography variant="h6">Turma</Typography>
-                                <Typography>{incident?.usuarioCopia?.turma}</Typography>
+                                <Typography>{incident?.usuarioCopia?.turma || "Não informado."}</Typography>
                             </span>
 
                             <span className="col-span-2">
                                 <Typography variant="h6">Período</Typography>
-                                <Typography>{incident?.usuarioCopia?.periodo}</Typography>
+                                <Typography>{periodTypesEnum.get(incident?.usuarioCopia?.periodo) || "Não informado."}</Typography>
                             </span>
                         </span>
                     </div>
                     <hr />
-                    <div className="my-5 mx-5">
-                        <Typography variant="h5" color="blue-gray">
-                            Informações do incidente
+                    <div className="my-5 ml-14 mr-14">
+                        <Typography variant="h4" color="blue-gray" className="flex gap-4 py-2 pr-2">
+                            <ClipboardDocumentListIcon className="sm:w-6 w-5 inline" />
+                            Informações do Incidente
                         </Typography>
 
-                        <span className="grid grid-cols-12 gap-y-2 my-4">
-                            <span className="col-span-5">
+                        <span className="grid grid-cols-12 gap-y-5 my-8 ml-10">
+                            <span className="col-span-6">
                                 <Typography variant="h6">Assunto</Typography>
                                 <Typography>{incident?.assunto}</Typography>
                             </span>
 
-                            <span className="col-span-2">
+                            <span className="col-span-3">
                                 <Typography variant="h6">Data de criação</Typography>
                                 <Typography>{convertDateBars(new Date(incident?.dataIncidente))}</Typography>
                             </span>
@@ -148,8 +151,9 @@ export function AdmIncidentDetails(props) {
                         </span>
                     </div>
                     <hr />
-                    <div className="my-5 mx-5">
-                        <Typography variant="h5" color="blue-gray">
+                    <div className="my-5 ml-14 mr-14">
+                        <Typography variant="h4" color="blue-gray" className="flex gap-4 py-2 pr-2">
+                            <ChatBubbleLeftRightIcon className="sm:w-6 w-5 inline" />
                             Triagem
                         </Typography>
 

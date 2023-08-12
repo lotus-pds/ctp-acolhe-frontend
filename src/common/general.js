@@ -37,3 +37,16 @@ export const convertDateHyphen = date => {
 export const getTime = date => {
     return date.getHours().toString().padStart(2, "0") + ":" + date.getMinutes().toString().padStart(2, "0");
 }
+
+export const phoneNumberMask = (phoneNumber = "") => {
+    if (!phoneNumber) return "";
+    const cleanedNumber = phoneNumber.replace(/\D/g, '');
+    const formattedNumber = `(${cleanedNumber.substring(0, 2)}) ${cleanedNumber.substring(2, 3)} ${cleanedNumber.substring(3, 7)}-${cleanedNumber.substring(7)}`;
+    return formattedNumber;
+}
+
+export const concatStrings = (strings = [], divider = " - ") => {
+    if (!Array.isArray(strings) || strings.length === 0) return "";
+    const validStrings = strings.filter(str => typeof str === "string" && str.trim() !== "");
+    return validStrings.join(divider);
+}
