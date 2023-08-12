@@ -4,14 +4,12 @@ import {
 import { useTheme } from "../../../hooks/useTheme";
 
 export function CommonInput(props) {
+    
     const theme = useTheme()
-    const { label, value, onChange, success, error, disabled, size, required, type, icon, className } = props;
 
-    let { color = 'gray' } = props;
+    const { label, color="gray", value, onChange, success, error, disabled, size, required, type, icon, className } = props;
 
-    if (theme === "dark") {
-        color = 'white'; 
-    }
+   
 
     return (
         <Input
