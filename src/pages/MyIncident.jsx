@@ -1,6 +1,6 @@
 import { HeaderUser } from "../components/HeaderUser";
-import { IncidentTable } from "../components/cutomized/studentIncidents/IncidentTable";
-import { IncidentDetails } from "../components/cutomized/studentIncidents/IncidentDetails";
+import { IncidentTable } from "../components/customized/studentIncidents/IncidentTable";
+import { IncidentDetails } from "../components/customized/studentIncidents/IncidentDetails";
 import { useEffect, useState } from "react";
 import { getMyIncidents, getIncidentTypes, cancelIncident } from "../services/incident";
 import { useTranslation } from "react-i18next";

@@ -1,7 +1,7 @@
 import { HeaderUser } from "../components/HeaderUser";
 import { GnButton } from "../components/common/button/GnButton";
 import { useState } from 'react';
-import { Chat } from "../components/cutomized/chat/Chat";
+import { Chat } from "../components/customized/chat/Chat";
 import { Typography } from "@material-tailwind/react";
 import { useTranslation } from "react-i18next";
 

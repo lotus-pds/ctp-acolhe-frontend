@@ -7,7 +7,7 @@ import { courseTypesEnum, periodTypesEnum } from "../common/constants";
 import { concatStrings, convertDateBars, phoneNumberMask } from "../common/general";
 import { HeaderTae } from "../components/HeaderTae";
 import { GnButton } from "../components/common/button/GnButton";
-import { ChipIncidentStatus } from "../components/cutomized/gnIncidents/ChipIncidentStatus";
+import { ChipIncidentStatus } from "../components/customized/gnIncidents/ChipIncidentStatus";
 import { completeIncident, getIncident, processIncident } from "../services/incident";
 
 const getIncidentTypes = (incidentTypes = []) => {

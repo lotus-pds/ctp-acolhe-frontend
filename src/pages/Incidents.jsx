@@ -1,5 +1,5 @@
 import { HeaderTae } from "../components/HeaderTae";
-import { AdmIncidentTable } from "../components/cutomized/admIncidents/AdmIncidentTable";
+import { AdmIncidentTable } from "../components/customized/admIncidents/AdmIncidentTable";
 import { useEffect, useState } from "react";
 import { getIncidents, getIncidentTypes } from "../services/incident";
 

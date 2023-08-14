@@ -1,7 +1,7 @@
 import { Typography } from "@material-tailwind/react";
 import { HeaderUser } from "../components/HeaderUser";
 import { useTranslation } from "react-i18next";
-import { EmotionCalendar } from "../components/cutomized/emotions/EmotionCalendar";
+import { EmotionCalendar } from "../components/customized/emotions/EmotionCalendar";
 import { convertDateHyphen, getFirstAndLastDateOfMonth } from "../common/general";
 import { useEffect, useState } from "react";
 import { getEmotion } from "../services/emotion";

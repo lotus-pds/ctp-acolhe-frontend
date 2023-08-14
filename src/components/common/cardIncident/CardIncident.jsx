@@ -8,7 +8,7 @@ import {
 } from "@material-tailwind/react";
 import { Tooltip } from "antd";
 import { convertDateBars } from "../../../common/general";
-import { ChipIncidentStatus } from "../../cutomized/gnIncidents/ChipIncidentStatus";
+import { ChipIncidentStatus } from "../../customized/gnIncidents/ChipIncidentStatus";
 
 export function CardIncident(props) {
   const {
