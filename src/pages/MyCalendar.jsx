@@ -10,6 +10,7 @@ export function MyCalendar(props) {
     const [emotions, setEmotions] = useState([]);
 
     const localGetEmotion = async (year, month) => {
+        console.log(year, month)
         let initialDate = getFirstAndLastDateOfMonth(new Date(year, month - 1)).firstDate;
         let finalDate = getFirstAndLastDateOfMonth(new Date(year, month + 1)).lastDate;
 
@@ -22,7 +23,7 @@ export function MyCalendar(props) {
     }
 
     useEffect(() => {
-        localGetEmotion(new Date().getFullYear, new Date().getMonth());
+        localGetEmotion(new Date().getFullYear(), new Date().getMonth());
     }, []);
 
     const { t } = useTranslation();
