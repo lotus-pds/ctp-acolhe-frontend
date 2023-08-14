@@ -43,8 +43,6 @@ export function AdmIncidentTable(props) {
             value: "PEN"
         }
     ];
-    
-    console.log(totalAmount)
 
     return (
         <>

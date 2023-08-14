@@ -36,7 +36,7 @@ const getClassName = color => {
         case 'GRAY':
             return ' bg-gradient-to-r from-gray-500  to-gray-700 dark:from-gray-200 dark:to-gray-400 dark:text-gray-900';
         case 'YELLOW':
-            return ' bg-gradient-to-r from-yellow-100 to-yellow-200'
+            return ' bg-gradient-to-r from-yellow-100 to-yellow-200 text-white'
         case 'NONE':
             return ' bg-transparent shadow-transparent hover:shadow-transparent';
     }

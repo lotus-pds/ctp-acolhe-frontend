@@ -7,26 +7,24 @@ let count = 0;
 
 export const addCountLoading = () => {
     count++;
-    if(count == 1) {
+    if (count == 1) {
         store.dispatch(activateLoading());
     }
 };
 
 export const removeCountLoading = () => {
     count--;
-    if(count == 0) {
+    if (count == 0) {
         store.dispatch(inactivateLoading());
     }
 };
 
 export const Loading = (props) => {
-    const { className } = props;
-
     const { open } = useSelector(state => state.loading);
 
     return (
         <GnPopup
-            className={className}
+            className="z-1000"
             open={open}
             size="xs"
             type='LOADING'

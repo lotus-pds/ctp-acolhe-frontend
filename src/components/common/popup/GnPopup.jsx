@@ -5,7 +5,6 @@ import {
     DialogFooter,
     Spinner
 } from "@material-tailwind/react";
-import { Spin } from "antd";
 import { useTranslation } from "react-i18next";
 
 const getTitle = type => {
@@ -28,7 +27,7 @@ const getTitle = type => {
             );
         case 'LOADING':
             return (
-                <Spin></Spin>
+                <Spinner color="purple" className="h-12 w-12" />
             );
         default:
             return undefined;

@@ -31,11 +31,24 @@ export const convertDateBars = date => {
 }
 
 export const convertDateHyphen = date => {
-    return date.getFullYear().toString().padStart(4, "0"); + "-" + (date.getMonth() + 1).toString().padStart(2, "0") + "-" + date.getDate().toString().padStart(2, "0");
+    return date.getFullYear().toString().padStart(4, "0") + "-" + (date.getMonth() + 1).toString().padStart(2, "0") + "-" + date.getDate().toString().padStart(2, "0");
 }
 
 export const getTime = date => {
     return date.getHours().toString().padStart(2, "0") + ":" + date.getMinutes().toString().padStart(2, "0");
+}
+
+export function getFirstAndLastDateOfMonth(date) {
+    const month = date.getMonth();
+    const year = date.getFullYear();
+
+    const firstDate = new Date(year, month, 1);
+    const lastDate = new Date(year, month + 1, 0);
+
+    return {
+        firstDate: firstDate,
+        lastDate: lastDate
+    };
 }
 
 export const phoneNumberMask = (phoneNumber = "") => {
