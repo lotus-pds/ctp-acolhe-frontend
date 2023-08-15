@@ -2,7 +2,7 @@ import { Typography } from "@material-tailwind/react";
 import { HeaderUser } from "../components/HeaderUser";
 import { useTranslation } from "react-i18next";
 import { EmotionCalendar } from "../components/customized/emotions/EmotionCalendar";
-import { convertDateHyphen, getFirstAndLastDateOfMonth } from "../common/general";
+import { convertDateHyphen } from "../common/general";
 import { useEffect, useState } from "react";
 import { getEmotion } from "../services/emotion";
 import { Reminder } from "../components/customized/emotions/Reminder";
@@ -11,9 +11,10 @@ export function MyCalendar(props) {
     const [emotions, setEmotions] = useState([]);
 
     const localGetEmotion = async (year, month) => {
-        console.log(year, month)
-        let initialDate = getFirstAndLastDateOfMonth(new Date(year, month - 1)).firstDate;
-        let finalDate = getFirstAndLastDateOfMonth(new Date(year, month + 1)).lastDate;
+        let initialDate = new Date(year, month - 1, 15);
+        let finalDate = new Date(year, month + 1, 15);
+
+        console.log(initialDate, finalDate);
 
         let response = await getEmotion({
             dataInicial: convertDateHyphen(initialDate),

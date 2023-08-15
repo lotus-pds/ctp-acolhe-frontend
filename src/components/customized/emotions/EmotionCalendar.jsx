@@ -1,5 +1,5 @@
 import { Calendar } from 'antd';
-import { convertDateHyphen } from '../../../common/general';
+import { convertDateHyphen, getFirstAndLastDateOfMonth } from '../../../common/general';
 import { EMOTIONS } from '../../../common/constants';
 
 export const EmotionCalendar = (props) => {
@@ -30,8 +30,13 @@ export const EmotionCalendar = (props) => {
     return (
         <Calendar
             onPanelChange={(date, mode) => {
+                let firstSelectedMonthDay = getFirstAndLastDateOfMonth(date.toDate()).firstDate;
+                let firstCurrentMonthDay = getFirstAndLastDateOfMonth(new Date()).firstDate;
+
                 if(mode == 'month') {
-                    localGetEmotion(date.month());
+                    if(firstSelectedMonthDay <= firstCurrentMonthDay){
+                        localGetEmotion(date.year(), date.month());
+                    }
                 }
             }}
             cellRender={cellRender}
