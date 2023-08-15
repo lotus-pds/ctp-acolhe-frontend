@@ -47,7 +47,7 @@ export function CreateIncident() {
                 <div className="flex flex-col align-end justify-center gap-8 p-12">
                     <Typography
                         variant="h2"
-                        className="font-mouse sm:text-4xl text-2xl"
+                        className="font-mouse font-normal sm:text-4xl text-2xl"
                     >
                         {t("chatTitle")}
                     </Typography>

@@ -39,10 +39,9 @@ export function MyCalendar(props) {
                 <div className="flex flex-col align-end justify-center gap-8 p-12">
                     <Typography
                         variant="h2"
-                        className="font-mouse sm:text-4xl text-2xl"
+                        className="font-mouse font-normal sm:text-4xl text-2xl"
                     >
                         {t("calendarTitle")}
-                        {props.user}
                     </Typography>
                     <Typography
                         variant="paragraph"
@@ -53,7 +52,7 @@ export function MyCalendar(props) {
 
                 </div>
             </div>
-
+            <></>
             <EmotionCalendar emotions={emotions} localGetEmotion={localGetEmotion}/>
         </div>
     )
