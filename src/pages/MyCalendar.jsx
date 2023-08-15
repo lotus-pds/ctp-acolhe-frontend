@@ -5,6 +5,7 @@ import { EmotionCalendar } from "../components/customized/emotions/EmotionCalend
 import { convertDateHyphen, getFirstAndLastDateOfMonth } from "../common/general";
 import { useEffect, useState } from "react";
 import { getEmotion } from "../services/emotion";
+import { Reminder } from "../components/customized/emotions/Reminder";
 
 export function MyCalendar(props) {
     const [emotions, setEmotions] = useState([]);
@@ -52,7 +53,9 @@ export function MyCalendar(props) {
 
                 </div>
             </div>
-            <></>
+
+            <Reminder/>
+            
             <EmotionCalendar emotions={emotions} localGetEmotion={localGetEmotion}/>
         </div>
     )

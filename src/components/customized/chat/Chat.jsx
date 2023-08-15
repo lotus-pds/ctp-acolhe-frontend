@@ -2,7 +2,7 @@ import { IncidentTypeCheckbox } from "./IncidentTypeCheckbox";
 import { ChatTextArea } from "./ChatTextArea";
 import { ChatInput } from "./ChatInput";
 import { Message } from "./Message";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getQuestions, getIncidentTypes, postMyIncident } from "../../../services/incident";
 import { getUser } from "../../../services/user";
 import { ChatAlternatives } from "./ChatAlternatives";
