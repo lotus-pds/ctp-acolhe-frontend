@@ -27,7 +27,8 @@ module.exports = withMT({
         gray: {
           100: '#FFFFFF',
           200: '#ECECEC',
-          500: '#A4A4A4',
+          500: '#A4A4A4', 
+          700: '#1B1B1B',
           800: '#424242',
           900: '#282828'
         },

@@ -1,21 +1,14 @@
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import {
     Card,
-    CardHeader,
-    Typography,
     CardBody,
-    CardFooter,
-    IconButton,
-    Tooltip,
-    Avatar
+    Typography
 } from "@material-tailwind/react";
-import { ChipIncidentStatus } from "../gnIncidents/ChipIncidentStatus";
-import { Input, DatePicker, Select } from "antd";
-import { GnButton } from "../../common/button/GnButton";
+import { DatePicker, Input, Select } from "antd";
 import { useTranslation } from "react-i18next";
-import { convertDateBars } from "../../../common/general";
 import { useNavigate } from "react-router-dom";
+import { GnButton } from "../../common/button/GnButton";
 import { CardIncident } from "../../common/cardIncident/CardIncident";
+
 
 const TABLE_HEAD = ["Aluno", "Prontuário", "Assunto", "Data", "Status", ""];
 
@@ -46,13 +39,13 @@ export function AdmIncidentTable(props) {
 
     return (
         <>
-            <Card className="h-full w-[90%] mt-8 mb-6">
+            <Card className="h-full w-[90%] mt-8 mb-6 dark:bg-gray-800">
                 <CardBody floated={false} >
                     <div className="mb-4">
-                        <Typography variant="h2" color="blue-gray" className="font-mouse sm:text-4xl text-2xl">
+                        <Typography variant="h2" color="blue-gray" className="dark:text-gray-200 font-normal font-mouse sm:text-4xl text-2xl">
                             Lista de incidentes
                         </Typography>
-                        <Typography color="gray" className="mt-2 mb-8 font-normal sm:text-md text-md">
+                        <Typography color="gray" className="mt-2 mb-8 dark:text-gray-200 font-normal sm:text-md text-md">
                             Estes são os incidentes dos alunos.
                         </Typography>
                         <div className="flex justify-center flex-row w-full gap-2 mt-2" >
@@ -113,9 +106,9 @@ export function AdmIncidentTable(props) {
                     </div>
                 </CardBody>
             </Card>
-            <Card className="h-full w-[90%] mb-8">
+            <Card className="h-full w-[90%] mb-8 dark:bg-gray-800">
                 <CardBody className="px-0">
-                    <Typography variant="h4" color="blue-gray" className="ml-5 mb-5">
+                    <Typography variant="h4" color="blue-gray" className="ml-5 dark:text-gray-200 mb-5">
                         {totalAmount} incidente(s) encontrado(s)
                     </Typography>
                     {incidents.map(

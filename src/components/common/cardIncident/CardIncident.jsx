@@ -27,7 +27,7 @@ export function CardIncident(props) {
   const temas = tipos.flatMap((t) => [t.tipo]).join(', ');
 
   return (
-    <Card color="transparent" className="w-full max-w-[47%] inline-block dark:bg-gray-900 border-2 hover:bg-gray-50 cursor-pointer px-8 pt-2 pb-3 ml-4 mb-4" onClick={onClick}>
+    <Card color="transparent" className="w-full max-w-[47%] inline-block dark:bg-gray-900 dark:border-gray-600 dark:shadow dark:hover:bg-gray-700 transition-colors border-2 hover:bg-gray-50 cursor-pointer px-8 pt-2 pb-3 ml-4 mb-4" onClick={onClick}>
       <CardHeader
         color="transparent"
         floated={false}
@@ -51,22 +51,22 @@ export function CardIncident(props) {
         <hr />
         <span className="grid grid-cols-5 gap-y-2 my-4">
           <span className="col-span-1">
-            <Typography variant="h6" className="dark:text-gray-300">Prontuário</Typography>
+            <Typography variant="h6" className="dark:text-gray-100">Prontuário</Typography>
             <Typography className="dark:text-gray-300">{prontuario}</Typography>
           </span>
 
           <span className="col-span-4">
-            <Typography variant="h6" className="dark:text-gray-300">Curso</Typography>
+            <Typography variant="h6" className="dark:text-gray-100">Curso</Typography>
             <Typography className="dark:text-gray-300">{nomeCurso}</Typography>
           </span>
 
           <span className="col-span-1">
-            <Typography variant="h6" className="dark:text-gray-300">Turma</Typography>
+            <Typography variant="h6" className="dark:text-gray-100">Turma</Typography>
             <Typography className="dark:text-gray-300">{turma}</Typography>
           </span>
 
           <span className="col-span-4">
-            <Typography variant="h6" className="dark:text-gray-300" >Temas</Typography>
+            <Typography variant="h6" className="dark:text-gray-100" >Temas</Typography>
             <Tooltip title={temas} mouseEnterDelay={0.2} >
               <Typography className="-ml-2 dark:text-gray-300 text-ellipsis overflow-hidden whitespace-nowrap">
                 {tipos.map((t) => (
