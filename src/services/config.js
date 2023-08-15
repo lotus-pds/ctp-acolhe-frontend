@@ -21,7 +21,8 @@ axios.interceptors.request.use(async req => {
     req.headers = {
         ...req.headers,
         Authorization: getStorage('tokenAcessoCtpAcolhe') == null ? null : 'Bearer ' + getStorage('tokenAcessoCtpAcolhe'),
-        roles: getStorage('rolesCtpAcolhe')
+        roles: getStorage('rolesCtpAcolhe'),
+        "Accept-Language": localStorage.getItem("i18nextLng") == "en" ? "en-US" : "pt-BR"
     }
     return req;
 });
