@@ -24,7 +24,7 @@ export const Loading = (props) => {
 
     if (open) {
         return (
-            <div style={{ zIndex: 1000000000 }} className="fixed top-0 left-0 w-[100vw] h-[100vh] bg-black/80 flex justify-center items-center">
+            <div style={{ zIndex: 1000000000 }} className="fixed top-0 left-0 w-[100vw] h-[100vh] bg-black/80 dark:bg-white/50 flex justify-center items-center">
                 <Spinner color="purple" className="h-12 w-12" />
             </div>
         );
