@@ -25,10 +25,6 @@ const getTitle = type => {
                     {t('success')}
                 </h4>
             );
-        case 'LOADING':
-            return (
-                <Spinner color="purple" className="h-12 w-12" />
-            );
         default:
             return undefined;
     }
