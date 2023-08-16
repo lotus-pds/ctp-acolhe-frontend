@@ -147,17 +147,19 @@ export function Subscribe(props) {
 
                             {getCompStep()}
 
-                            <div className="flex gap-3 p-3 w-full justify-around align-center">
-                                <GnButton
-                                    className="mt-0"
-                                    color="GRAY"
-                                    variant="gradient"
-                                    onClick={() => setStep(step - 1)}
-                                    disabled={step === 1}
-                                >
-                                    {t("back")}
-                                </GnButton>
-
+                            <div className="flex gap-5 p-3 w-full justify-center align-center">
+                                {step > 1
+                                    ? <GnButton
+                                        className="mt-0"
+                                        color="GRAY"
+                                        variant="gradient"
+                                        onClick={() => setStep(step - 1)}
+                                        disabled={step === 1}
+                                    >
+                                        {t("back")}
+                                    </GnButton>
+                                    : <></>
+                                }
                                 <GnButton
                                     className="mt-0"
                                     color="GREEN"
