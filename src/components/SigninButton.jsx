@@ -7,7 +7,7 @@ export function SigninButton()
     const {t} = useTranslation()
     
     return(
-        <Link to="/signin">
+        <Link to="/acesso">
             <div 
                 className="
                     font-bold

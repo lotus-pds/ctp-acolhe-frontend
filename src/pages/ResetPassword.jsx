@@ -32,7 +32,7 @@ export function ResetPassword(props) {
     const resetPassword = async () => {
         let newPassword = { token, senha: password.trim() };
         await patchResetPassword(newPassword);
-        navigate('/reset-successfull');
+        navigate('/redefinir_senha/sucesso');
     }
 
     return (

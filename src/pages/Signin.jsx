@@ -38,9 +38,9 @@ export function Signin(props) {
         setAuthData(response.data);
 
         if (response.data?.roles.includes("Admin")) {
-            navigate('/adm/incident')
+            navigate('/adm/incidente')
         } else {
-            navigate('/emotions');
+            navigate('/emocao');
         }
     }
 
@@ -101,7 +101,7 @@ export function Signin(props) {
                                 />
 
                                 <div className="w-full flex justify-end">
-                                    <Link to="/forgot-password" className="
+                                    <Link to="/redefinir_senha" className="
                                         text-xs  text-gray-500 dark:text-gray-500 italic
                                     ">
                                         {t("rememberPassword")}
@@ -122,7 +122,7 @@ export function Signin(props) {
                             <Typography className="mt-6 text-center font-normal text-gray-900 dark:text-gray-200">
                                 {t("noRegistry")}{" "}
 
-                                <Link to="/subscribe" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-100  to-purple-300
+                                <Link to="/cadastro" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-100  to-purple-300
                                 dark:from-purple-400 dark:to-purple-500
                             ">
 

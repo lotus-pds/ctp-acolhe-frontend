@@ -42,7 +42,7 @@ export function NavbarTae(){
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/adm/create-post"}
+                        <NavLink to={"/adm/post/criacao"}
                              
                             
                         >   
@@ -62,7 +62,7 @@ export function NavbarTae(){
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/adm/incident"} >
+                        <NavLink to={"/adm/incidente"} >
                             <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930335579389993/Component_62.png" alt="" className="sm:w-10 w-8"/>
                         </NavLink>
                     </Tooltip><Tooltip content={
@@ -76,7 +76,7 @@ export function NavbarTae(){
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/adm/schedule-room"} >
+                        <NavLink to={"/adm/agendamento"} >
                             <img src="https://cdn.discordapp.com/attachments/1077345452694970438/1135645138429935777/Component_37.png" 
                             className="sm:w-7 w-6"
                             alt="" />
@@ -94,7 +94,7 @@ export function NavbarTae(){
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/adm/manage-students"} >
+                        <NavLink to={"/adm/cadastro/gerenciamento"} >
                             <img src="https://media.discordapp.net/attachments/1077345452694970438/1135645221955309678/Component_40.png" alt="" className="sm:w-7 w-6" />
                         </NavLink>
                     </Tooltip>
@@ -110,7 +110,7 @@ export function NavbarTae(){
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/adm/profile"} >
+                        <NavLink to={"/adm/perfil"} >
                             <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930263869358222/Component_12_1.png" alt="" className="sm:w-7 w-6" />
                         </NavLink>
                     </Tooltip>

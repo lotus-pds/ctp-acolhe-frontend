@@ -115,7 +115,7 @@ export function AdmIncidentTable(props) {
                         (incident) => (
                             <CardIncident
                                 incident={incident}
-                                onClick={() => navigate(`/adm/incident/${incident?.idIncidente}`)}
+                                onClick={() => navigate(`/adm/incidente/${incident?.idIncidente}`)}
                             />
                         )
                     )}

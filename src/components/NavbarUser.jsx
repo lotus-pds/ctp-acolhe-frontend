@@ -42,7 +42,7 @@ export function NavbarUser(){
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/my-calendar"}
+                        <NavLink to={"/calendario"}
                              
                             
                         >   
@@ -62,7 +62,7 @@ export function NavbarUser(){
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/create-incident"} >
+                        <NavLink to={"/incidente/criacao"} >
                             <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930264129425530/Component_11_1.png" alt="" className="sm:w-10 w-8"/>
                         </NavLink>
                     </Tooltip><Tooltip content={
@@ -76,7 +76,7 @@ export function NavbarUser(){
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/my-incident"} >
+                        <NavLink to={"/incidente"} >
                             <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930264322359406/Component_9.png" 
                             className="sm:w-7 w-6"
                             alt="" />
@@ -92,7 +92,7 @@ export function NavbarUser(){
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/profile"} >
+                        <NavLink to={"/perfil"} >
                             <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930263869358222/Component_12_1.png" alt="" className="sm:w-7 w-6" />
                         </NavLink>
                     </Tooltip>

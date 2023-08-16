@@ -13,7 +13,7 @@ export function EmailConfirmation() {
     useEffect(() => {
         const subscriptionVerification = async () => {
             await patchSubscriptionVerification(token);
-            navigate('/access-confirmation');
+            navigate('/cadastro/sucesso');
         }
         subscriptionVerification();
     }, []);

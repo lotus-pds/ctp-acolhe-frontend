@@ -66,7 +66,7 @@ export function AdmIncidentDetails(props) {
                 <CardHeader floated={false} shadow={false} className="my-5 mx-10" >
                     <div className="flex gap-5 mb-4">
                         <ChevronLeftIcon
-                            className="h-10 w-8 inline cursor-pointer" onClick={() => navigate('/adm/incident')}
+                            className="h-10 w-8 inline cursor-pointer" onClick={() => navigate('/adm/incidente')}
                         />
                         <Typography variant="h2" color="blue-gray" className="font-mouse sm:text-4xl text-2xl">
                             Detalhes do incidente

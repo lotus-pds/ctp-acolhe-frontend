@@ -174,7 +174,7 @@ export function Subscribe(props) {
                             <Typography className="mt-4 text-center font-normal text-gray-900 dark:text-gray-200">
                                 {t("haveRegistration")}{" "}
 
-                                <Link to="/signin" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-200  to-green-400
+                                <Link to="/acesso" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-200  to-green-400
                                 dark:from-green-300 dark:to-green-400
                             ">
 
