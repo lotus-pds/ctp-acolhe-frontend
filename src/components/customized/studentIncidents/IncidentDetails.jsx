@@ -9,6 +9,7 @@ import {
 import { GnButton } from "../../common/button/GnButton";
 import { useTranslation } from "react-i18next";
 import { convertDateBars } from "../../../common/general";
+import { ChipIncidentStatus } from "../gnIncidents/ChipIncidentStatus";
 
 const getIncidentTypes = (incidentTypes = []) => {
     let types = incidentTypes.map(t => t.tipo);
@@ -35,7 +36,7 @@ const getQuestionsAndAnswers = (questions = []) => {
 }
 
 export function IncidentDetails(props) {
-    const { open, handleOpen, incident, ChipStatus, setWarningOpen } = props;
+    const { open, handleOpen, incident, setWarningOpen } = props;
 
     const { t } = useTranslation();
 
@@ -72,7 +73,7 @@ export function IncidentDetails(props) {
                         </svg>
                     </IconButton></DialogHeader>
                 <DialogBody>
-                    Data: {convertDateBars(new Date(incident?.dataIncidente))} | Status: <ChipStatus status={incident?.status?.idStatus} /><br />
+                    Data: {convertDateBars(new Date(incident?.dataIncidente))} | Status: <ChipIncidentStatus status={incident?.status?.idStatus} /><br />
                     Tipos: {getIncidentTypes(incident?.tipos)}<br /><br />
                     {getQuestionsAndAnswers(incident?.perguntas)}
                 </DialogBody>

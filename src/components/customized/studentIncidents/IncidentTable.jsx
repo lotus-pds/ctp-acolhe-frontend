@@ -1,18 +1,11 @@
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import {
     Card,
-    CardHeader,
     Typography,
-    CardBody,
-    Chip,
-    CardFooter,
-    IconButton,
-    Tooltip,
+    CardBody
 } from "@material-tailwind/react";
 import { Input, DatePicker, Select } from "antd";
 import { GnButton } from "../../common/button/GnButton";
 import { useTranslation } from "react-i18next";
-import { convertDateBars } from "../../../common/general";
 import { CardIncident } from "../../common/cardIncident/CardIncident";
 
 const TABLE_HEAD = ["Assunto", "Data", "Status", "Tipos", ""];

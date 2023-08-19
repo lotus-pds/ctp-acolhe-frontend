@@ -1,5 +1,5 @@
-import { Chip } from "@material-tailwind/react";
 import { useTranslation } from "react-i18next";
+import { GnChip } from "../../common/chip/GnChip";
 
 export const ChipIncidentStatus = props => {
     const { t } = useTranslation();
@@ -7,34 +7,26 @@ export const ChipIncidentStatus = props => {
     const { status } = props;
 
     let color = "";
-    let className = "text-white bg-gradient-to-r";
 
     switch (status) {
         case "FIN":
-            color = "green";
-            className += " from-green-400 to-green-600";
+            color = "GREEN";
             break;
         case "PEN":
-            color = "yellow";
-            className += " from-amber-500 to-orange-600";
+            color = "YELLOW";
             break;
         case "CAN":
-            color = "red";
-            className += " from-red-400 to-red-500";
+            color = "RED";
             break;
         case "EPR":
-            color = "blue";
-            className += " from-blue-200 to-blue-400";
+            color = "BLUE";
             break;
         default:
-            color = "blue";
-            className += " from-blue-300 to-blue-400"
+            color = "BLUE";
     }
 
-    return <Chip
-        size="sm"
+    return <GnChip
         value={t("incidentTypes." + status)}
         color={color}
-        className={className}
     />;
 }
