@@ -22,7 +22,6 @@ import { Incidents } from "./pages/Incidents";
 import { AdmIncidentDetails } from "./pages/AdmIncidentDetails";
 import { CreatePosts } from "./pages/CreatePosts";
 import { ScheduleRoom } from "./pages/ScheduleRoom";
-import { ListIncident } from "./pages/ListIncident";
 import { ManageStudents } from "./pages/ManageStudents";
 import { PostTae } from "./pages/PostTae";
 import { ProfileTae } from "./pages/ProfileTae";
@@ -59,7 +58,6 @@ export function Router(props) {
             <Route path="/adm/agendamento" element={<PrivateRoute user={['Admin']}><ScheduleRoom /></PrivateRoute>} />
             <Route path="/adm/cadastro/gerenciamento" element={<PrivateRoute user={['Admin']}><ManageStudents /></PrivateRoute>} />
             <Route path="/adm/post" element={<PrivateRoute user={['Admin']}><PostTae /></PrivateRoute>} />
-            <Route path="/adm/perfil" element={<PrivateRoute user={['Admin']}><ProfileTae /></PrivateRoute>} />
             {/**
             <Route path="/create-incident" element={<PrivateRoute user={['Aluno', 'Admin']}><CreateIncident /></PrivateRoute>} />
             <Route path="/posts" element={<PrivateRoute user={['Aluno', 'Admin']}><Posts /></PrivateRoute>} />
@@ -68,6 +66,7 @@ export function Router(props) {
             <Route path="/create-incident" element={<CreateIncident />} />
             */}
             <Route path="/perfil" element={<PrivateRoute user={['Aluno']}><Profile courses={courses}/></PrivateRoute>} />
+            <Route path="/adm/perfil" element={<PrivateRoute user={['Admin']}><ProfileTae/></PrivateRoute>} />
             <Route path="/incidente" element={<PrivateRoute user={['Aluno']}><MyIncident /></PrivateRoute>} />
             {/**
             <Route path="/my-incident" element={<MyIncident />} />
