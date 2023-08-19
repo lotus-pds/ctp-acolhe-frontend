@@ -16,7 +16,7 @@ export const EmotionCalendar = (props) => {
 
         if (emotionData != undefined) {
             return (
-                <div className="flex flex-row items-center">
+                <div className="flex flex-row items-center justify-center">
                     <img className="h-[70px] mr-[10px]" src={emotionData?.img} />
                     <GnChip
                         value={emotionData?.desc}
