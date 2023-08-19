@@ -77,7 +77,7 @@ export function Emotions(props) {
                 className='hover:-translate-y-1 hover:scale-110 transition'
                 onClick={() => navigate('/posts')}
             >
-                {t("iPreferNotToAnswer")}
+                {t("leaveForLater")}
             </GnButton>
         </div>
     )

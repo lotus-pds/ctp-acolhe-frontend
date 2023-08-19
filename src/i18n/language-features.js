@@ -63,7 +63,7 @@ export const resources = {
             "resetSuccessfullDescription": "Now you can login with the new registered password and continue using the platform normally.",
             "confirmedEmail": "Confirmed Email!",
             "confirmedEmailDescription": "Congratulations! Your email confirmation has been completed successfully. Thanks for confirming your email address and we can't wait to see you at CTP Acolhe!",
-            "iPreferNotToAnswer": "I prefer not to answer",
+            "leaveForLater": "Leave it for later",
             "tooltipName": {
                 "attribute": "Name must contain:",
                 "description": "* name and lastname"
@@ -156,7 +156,11 @@ export const resources = {
             },
             "warning": "Warning",
             "warningAction": "This action cannot be undone. Do you want to proceed?",
-            "message":"Message"
+            "message": "Message",
+            "emotionReminder": {
+                "notYet": "* Haven't you recorded your emotion today yet?",
+                "add": "Add it now!"
+            }
         },
     },
     pt: {
@@ -223,7 +227,7 @@ export const resources = {
             "resetSuccessfullDescription": "Agora você pode acessar com a nova senha cadastrada e continuar utilizando a plataforma normalmente. ",
             "confirmedEmail": "Email Confirmado!",
             "confirmedEmailDescription": "Parabéns! Sua confirmação de email foi concluída com sucesso. Agradecemos por confirmar seu endereço de email e mal podemos esperar por você no CTP Acolhe!",
-            "iPreferNotToAnswer": "Prefiro não responder",
+            "leaveForLater": "Deixar para depois",
             "tooltipName": {
                 "attribute": "Nome deve conter",
                 "description": "* nome e sobrenome"
@@ -316,7 +320,11 @@ export const resources = {
             },
             "warning": "Atenção",
             "warningAction": "Esta ação não pode ser desfeita. Deseja prosseguir?",
-            "message": "Mensagem"
+            "message": "Mensagem",
+            "emotionReminder": {
+                "notYet": "* Ainda não registrou sua emoção hoje?",
+                "add": "Adicione ela agora!"
+            }
         }
     },
 }

@@ -19,7 +19,7 @@ export const GnChip = props => {
             className += " border-blue-500 text-blue-500";
             break;
         case "PURPLE":
-            className += " border-purple-600 text-purple-600 dark:border-purple-500 text-purple-500";
+            className += " border-purple-600 text-purple-600 dark:border-purple-500 dark:text-purple-500";
             break;
     }
 

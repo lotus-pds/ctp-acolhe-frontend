@@ -6,15 +6,18 @@ import { convertDateHyphen } from "../common/general";
 import { useEffect, useState } from "react";
 import { getEmotion } from "../services/emotion";
 import { Reminder } from "../components/customized/emotions/Reminder";
+import { EmotionPopup } from "../components/customized/emotions/EmotionPopup";
 
 export function MyCalendar(props) {
     const [emotions, setEmotions] = useState([]);
+    const [popupOpen, setPopupOpen] = useState(false);
+    const [time, setTime] = useState({});
+
+    const { t } = useTranslation();
 
     const localGetEmotion = async (year, month) => {
         let initialDate = new Date(year, month - 1, 15);
         let finalDate = new Date(year, month + 1, 15);
-
-        console.log(initialDate, finalDate);
 
         let response = await getEmotion({
             dataInicial: convertDateHyphen(initialDate),
@@ -22,13 +25,14 @@ export function MyCalendar(props) {
         });
 
         setEmotions(response.data);
+        setTime({ year, month });
     }
 
     useEffect(() => {
         localGetEmotion(new Date().getFullYear(), new Date().getMonth());
     }, []);
 
-    const { t } = useTranslation();
+    const handlePopupOpen = () => setPopupOpen(!popupOpen);
 
     return (
         <div className="flex flex-col items-center">
@@ -55,9 +59,19 @@ export function MyCalendar(props) {
                 </div>
             </div>
 
-            <Reminder/>
-            
-            <EmotionCalendar emotions={emotions} localGetEmotion={localGetEmotion}/>
+            <Reminder
+                show={emotions.filter(e => e.dataHumor == convertDateHyphen(new Date())).length == 0}
+                onClick={handlePopupOpen}
+            />
+
+            <EmotionCalendar emotions={emotions} localGetEmotion={localGetEmotion} />
+
+            <EmotionPopup
+                open={popupOpen}
+                handleOpen={handlePopupOpen}
+                localGetEmotion={localGetEmotion}
+                time={time}
+            />
         </div>
     )
 }
