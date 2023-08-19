@@ -147,17 +147,19 @@ export function Subscribe(props) {
 
                             {getCompStep()}
 
-                            <div className="flex gap-3 p-3 w-full justify-around align-center">
-                                <GnButton
-                                    className="mt-0"
-                                    color="GRAY"
-                                    variant="gradient"
-                                    onClick={() => setStep(step - 1)}
-                                    disabled={step === 1}
-                                >
-                                    {t("back")}
-                                </GnButton>
-
+                            <div className="flex gap-5 p-3 w-full justify-center align-center">
+                                {step > 1
+                                    ? <GnButton
+                                        className="mt-0"
+                                        color="GRAY"
+                                        variant="gradient"
+                                        onClick={() => setStep(step - 1)}
+                                        disabled={step === 1}
+                                    >
+                                        {t("back")}
+                                    </GnButton>
+                                    : <></>
+                                }
                                 <GnButton
                                     className="mt-0"
                                     color="GREEN"
@@ -172,7 +174,7 @@ export function Subscribe(props) {
                             <Typography className="mt-4 text-center font-normal text-gray-900 dark:text-gray-200">
                                 {t("haveRegistration")}{" "}
 
-                                <Link to="/signin" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-200  to-green-400
+                                <Link to="/acesso" className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-200  to-green-400
                                 dark:from-green-300 dark:to-green-400
                             ">
 

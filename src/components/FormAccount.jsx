@@ -110,7 +110,7 @@ export function FormAccount(props) {
                 required
                 label={
                     <Typography className="text-sm text-gray-900 dark:text-gray-200 flex">{t("checkBox.desc")}
-                        <Link to="/terms" color="green" target="blank" className="text-green-500 text-sm hover:text-green-700 transition-colors italic">
+                        <Link to="/termos" color="green" target="blank" className="text-green-500 text-sm hover:text-green-700 transition-colors italic">
                             &nbsp;{t("checkBox.descTwo")}
                         </Link>.
                     </Typography>

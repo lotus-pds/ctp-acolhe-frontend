@@ -278,7 +278,7 @@ export function Chat() {
                 <GnButton
                     onClick={async () => {
                         await localPostMyIncident();
-                        navigate("/my-incident");
+                        navigate("/incidente");
                     }}
                 >{t("createIncident")}</GnButton>
             ]);

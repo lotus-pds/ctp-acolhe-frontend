@@ -53,7 +53,7 @@ export function Home() {
                                 <div className="flex flex-row items-center justify-between w-full">
                                     <GnButton
                                         color="RED"
-                                        onClick={() => navigate('/subscribe')}
+                                        onClick={() => navigate('/cadastro')}
                                     >
                                         {t("signUp")}
                                     </GnButton>
@@ -84,7 +84,7 @@ export function Home() {
                                 <div className="flex items-center justify-between w-full">
                                     <GnButton
                                         color="BLUE"
-                                        onClick={() => navigate('/subscribe')}
+                                        onClick={() => navigate('/cadastro')}
                                     >
                                         {t("signUp")}
                                     </GnButton>
@@ -116,7 +116,7 @@ export function Home() {
                                 <div className="flex items-center justify-between w-full">
                                     <GnButton
                                         color="PURPLE"
-                                        onClick={() => navigate('/subscribe')}
+                                        onClick={() => navigate('/cadastro')}
                                     >
                                         {t("signUp")}
                                     </GnButton>

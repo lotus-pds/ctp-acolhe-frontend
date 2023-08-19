@@ -46,7 +46,7 @@ export function AccessConfirmation() {
                             </Typography>
                             <GnButton
                                 color="GREEN"
-                                onClick={() => navigate('/signin')}
+                                onClick={() => navigate('/acesso')}
                             >
                                 {t("signIn")}
                             </GnButton>

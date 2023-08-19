@@ -7,7 +7,7 @@ export function SignupButton()
     const {t} = useTranslation()
 
     return(
-        <Link to="/subscribe">
+        <Link to="/cadastro">
             <div 
                 className="
                     

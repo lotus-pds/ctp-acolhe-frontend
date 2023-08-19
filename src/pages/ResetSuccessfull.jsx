@@ -46,7 +46,7 @@ export function ResetSuccessfull() {
                             </Typography>
                             <GnButton
                                 color="BLUE"
-                                onClick={() => navigate('/signin')}
+                                onClick={() => navigate('/acesso')}
                             >
                                 {t("signIn")}
                             </GnButton>
