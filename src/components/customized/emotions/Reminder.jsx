@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 
 export function Reminder(props) {
-    const { onClick, show, time } = props;
+    const { onClick, show, getTodayEmotion } = props;
 
     const { t } = useTranslation();
 

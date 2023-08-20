@@ -11,9 +11,19 @@ import { EmotionPopup } from "../components/customized/emotions/EmotionPopup";
 export function MyCalendar(props) {
     const [emotions, setEmotions] = useState([]);
     const [popupOpen, setPopupOpen] = useState(false);
+    const [todayEmotion, setTodayEmotion] = useState([]);
     const [time, setTime] = useState({});
 
     const { t } = useTranslation();
+
+    const getTodayEmotion = async () => {
+        let response = await getEmotion({
+            dataInicial: convertDateHyphen(new Date()),
+            dataFinal: convertDateHyphen(new Date())
+        });
+
+        setTodayEmotion(response.data);
+    }
 
     const localGetEmotion = async (year, month) => {
         let initialDate = new Date(year, month - 1, 15);
@@ -30,6 +40,7 @@ export function MyCalendar(props) {
 
     useEffect(() => {
         localGetEmotion(new Date().getFullYear(), new Date().getMonth());
+        getTodayEmotion();
     }, []);
 
     const handlePopupOpen = () => setPopupOpen(!popupOpen);
@@ -60,7 +71,7 @@ export function MyCalendar(props) {
             </div>
 
             <Reminder
-                show={emotions.filter(e => e.dataHumor == convertDateHyphen(new Date())).length == 0}
+                show={todayEmotion.length == 0}
                 onClick={handlePopupOpen}
             />
 
@@ -71,6 +82,7 @@ export function MyCalendar(props) {
                 handleOpen={handlePopupOpen}
                 localGetEmotion={localGetEmotion}
                 time={time}
+                getTodayEmotion={getTodayEmotion}
             />
         </div>
     )

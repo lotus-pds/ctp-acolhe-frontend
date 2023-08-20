@@ -12,7 +12,7 @@ import { EMOTIONS } from "../../../common/constants";
 import { postEmotion } from "../../../services/emotion";
 
 export function EmotionPopup(props) {
-    const { open, handleOpen, localGetEmotion, time  } = props;
+    const { open, handleOpen, localGetEmotion, time, getTodayEmotion  } = props;
 
     const { t } = useTranslation();
 
@@ -22,6 +22,7 @@ export function EmotionPopup(props) {
         await postEmotion({ idSentimento: emotion });
         handleOpen();
         localGetEmotion(time?.year, time?.month);
+        getTodayEmotion();
     }
 
     return (
@@ -48,7 +49,7 @@ export function EmotionPopup(props) {
                                             color='NONE'
                                             className='p-0'
                                         >
-                                            <img src={emotion.img} alt="" className="h-[350px]" />
+                                            <img src={emotion.img} alt="" className="h-[250px]" />
                                         </GnButton>
                                         <GnButton color={emotion.color}>
                                             {emotion.desc}
