@@ -2,8 +2,9 @@ import { Chip } from "@material-tailwind/react";
 
 export const GnChip = props => {
     const { color, value, size = "sm" } = props;
+    let { className = "" } = props;
 
-    let className = "border-2 bg-transparent";
+    className += " border-2 bg-transparent";
 
     switch (color) {
         case "GREEN":

@@ -21,6 +21,7 @@ export const EmotionCalendar = (props) => {
                     <GnChip
                         value={emotionData?.desc}
                         color={emotionData?.color}
+                        className="text-[0.7em]"
                     />
                 </div>
             );
