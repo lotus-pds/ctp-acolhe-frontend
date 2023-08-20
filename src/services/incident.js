@@ -1,4 +1,4 @@
-import { getResource, putResource, patchResource, postResource } from './config.js';
+import { getResource, patchResource, postResource } from './config.js';
 import { serializeObjectToParam } from './utils.js';
 
 /* RECURSOS AUTENTICADO */
