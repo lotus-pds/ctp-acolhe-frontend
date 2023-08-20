@@ -29,7 +29,7 @@ export const validatePhoneNumber = phoneNumber => {
 }
 
 export const validateRegistration = registration => {
-    const regex = /^(sp|SP|Sp|sP)+(?:[A-Z a-z 0-9]){6,7}$/;
+    const regex = /^[a-zA-Z]{2}\d{6,7}$/;
     const result = regex.exec(registration) !== null ? true : false;
     return result;
 }
