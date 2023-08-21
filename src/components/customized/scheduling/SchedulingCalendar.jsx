@@ -1,6 +1,6 @@
-import { Calendar, Badge } from 'antd';
-import { convertDateHyphen, getTimeH, getFirstAndLastDateOfMonth } from '../../../common/general';
+import { Badge, Calendar } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { concatStrings, convertDateHyphen, getTimeH } from '../../../common/general';
 
 export const SchedulingCalendar = (props) => {
     const { schedulings, localGetSchedulings, time } = props;
@@ -22,7 +22,7 @@ export const SchedulingCalendar = (props) => {
                 <ul className="flex flex-col gap-3 events">
                     {daySchedulings.map((scheduling) => (
                         <li key={scheduling.idAgendamento} >
-                            <Badge status="success" text={`${scheduling.time}: ${scheduling.taeName}`} />
+                            <Badge status="success" text={`${concatStrings([scheduling.time, scheduling.taeName], ": ")}`} />
                         </li>
                     ))}
                 </ul>
