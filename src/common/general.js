@@ -38,6 +38,10 @@ export const getTime = date => {
     return date.getHours().toString().padStart(2, "0") + ":" + date.getMinutes().toString().padStart(2, "0");
 }
 
+export const getTimeH = date => {
+    return date.getHours().toString().padStart(2, "0") + "h" + date.getMinutes().toString().padStart(2, "0");
+}
+
 export function getFirstAndLastDateOfMonth(date) {
     const month = date.getMonth();
     const year = date.getFullYear();

@@ -3,7 +3,6 @@ import { IncidentTable } from "../components/customized/studentIncidents/Inciden
 import { IncidentDetails } from "../components/customized/studentIncidents/IncidentDetails";
 import { useEffect, useState } from "react";
 import { getMyIncidents, getIncidentTypes, cancelIncident } from "../services/incident";
-import { useTranslation } from "react-i18next";
 import { WarningPopup } from "../components/common/popup/WarningPopup";
 
 export function MyIncident() {
@@ -84,7 +83,7 @@ export function MyIncident() {
 
             <WarningPopup
                 open={warningOpen}
-                setOpen={setWarningOpen}
+                handleOpen={() => setWarningOpen(!warningOpen)}
                 onConfirm={() => {
                     cancelIncident(incident?.idIncidente);
                     setWarningOpen(!open);

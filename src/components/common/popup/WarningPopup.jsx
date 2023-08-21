@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import { GnButton } from "../button/GnButton";
 
 export function WarningPopup(props) {
-    const { open, setOpen, onConfirm } = props;
+    const { open, handleOpen, onConfirm } = props;
 
     const { t } = useTranslation();
 
@@ -30,7 +30,7 @@ export function WarningPopup(props) {
                 <GnButton
                     variant="text"
                     color="red"
-                    onClick={() => setOpen(false)}
+                    onClick={handleOpen}
                     className="mr-1"
                 >
                     {t("no")}

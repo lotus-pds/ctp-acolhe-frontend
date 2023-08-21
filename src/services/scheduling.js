@@ -1,6 +1,7 @@
 import { getResource, putResource, deleteResource, postResource } from './config.js';
+import { serializeObjectToParam } from './utils.js';
 
-export const getScheduling = () => getResource('/agendamentoSala');
+export const getSchedulings = filters => getResource('/agendamentoSala' + serializeObjectToParam(filters));
 
 export const postScheduling = body => postResource('/agendamentoSala', body);
 
