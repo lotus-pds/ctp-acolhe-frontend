@@ -14,11 +14,9 @@ import { GnButton } from "../../common/button/GnButton";
 const TABLE_HEAD = ["Técnico", "Aluno(s)", "Criado Por", "Horário do Atendimento", ""];
 
 export const SchedulingTable = (props) => {
-  const { dateScheduling, schedulings, setScheduling } = props;
+  const { dateScheduling, schedulings, setScheduling, setWarningOpen, setPopup } = props;
 
   const navigate = useNavigate();
-
-  console.log('teste', schedulings)
 
   return (
     <div className="flex flex-col items-center">
@@ -138,7 +136,7 @@ export const SchedulingTable = (props) => {
                           className="p-2 m-3 mb-10"
                           onClick={() => {
                             setScheduling({ ...scheduling });
-                            setWarningOpen(!warningOpen);
+                            setWarningOpen(true);
                           }}
                         >
                           <TrashIcon className="w-5 h-5" />

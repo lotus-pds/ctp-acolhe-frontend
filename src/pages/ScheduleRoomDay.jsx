@@ -63,9 +63,12 @@ export function ScheduleRoomDay(props) {
                 dateScheduling={convertDateBars(localDate)}
                 schedulings={schedulings}
                 setScheduling={setScheduling}
+                setWarningOpen={setWarningOpen}
+                setPopup={setPopup}
             />
 
             <SchedulingPopup
+                date={date}
                 open={popup.open}
                 operation={popup.operation}
                 scheduling={scheduling}

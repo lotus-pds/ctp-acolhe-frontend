@@ -1,6 +1,10 @@
 import { Badge, Calendar } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { concatStrings, convertDateHyphen, getTimeH } from '../../../common/general';
+import 'dayjs/locale/pt-br';
+import 'dayjs/locale/en';
+import localePt from 'antd/es/date-picker/locale/pt_BR';
+import localeEn from 'antd/es/date-picker/locale/en_US';
 
 export const SchedulingCalendar = (props) => {
     const { schedulings, localGetSchedulings, time } = props;
@@ -36,6 +40,8 @@ export const SchedulingCalendar = (props) => {
         return info.originNode;
     };
 
+    const language = localStorage.getItem("i18nextLng");
+
     return (
         <Calendar
             onPanelChange={(date, mode) => {
@@ -52,6 +58,7 @@ export const SchedulingCalendar = (props) => {
 
             cellRender={cellRender}
             className="w-[90%] p-[20px] mb-[20px] mt-[40px] rounded"
+            locale={language == "pt" ? localePt : localeEn}
         />
     );
 };

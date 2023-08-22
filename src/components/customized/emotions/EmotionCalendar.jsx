@@ -2,6 +2,10 @@ import { Calendar } from 'antd';
 import { convertDateHyphen, getFirstAndLastDateOfMonth } from '../../../common/general';
 import { EMOTIONS } from '../../../common/constants';
 import { GnChip } from '../../common/chip/GnChip';
+import 'dayjs/locale/pt-br';
+import 'dayjs/locale/en';
+import localePt from 'antd/es/date-picker/locale/pt_BR';
+import localeEn from 'antd/es/date-picker/locale/en_US';
 
 export const EmotionCalendar = (props) => {
     const { emotions, localGetEmotion } = props;
@@ -35,6 +39,8 @@ export const EmotionCalendar = (props) => {
         return info.originNode;
     };
 
+    const language = localStorage.getItem("i18nextLng");
+
     return (
         <Calendar
             onPanelChange={(date, mode) => {
@@ -49,6 +55,7 @@ export const EmotionCalendar = (props) => {
             }}
             cellRender={cellRender}
             className="w-[90%] p-[20px] mb-[20px] mt-[40px] rounded"
+            locale={language == "pt" ? localePt : localeEn}
         />
     );
 };

@@ -1,23 +1,33 @@
 import {
-    Dialog,
-    DialogBody,
-    DialogFooter,
-    DialogHeader,
-    IconButton,
     Typography
 } from "@material-tailwind/react";
+import { Modal, DatePicker, Input } from "antd";
 import { useTranslation } from "react-i18next";
 import { GnButton } from "../../common/button/GnButton";
 import { useEffect, useState } from "react";
-import { CommonInput } from "../../common/input/CommonInput";
-import { InfoInput } from "../../common/input/InfoInput";
+import dayjs from "dayjs";
+import 'dayjs/locale/pt-br';
+import 'dayjs/locale/en';
+import localePt from 'antd/es/date-picker/locale/pt_BR';
+import localeEn from 'antd/es/date-picker/locale/en_US';
 
 export function SchedulingPopup(props) {
-    const { open, operation = "", scheduling = {}, handleOpen, localPostSchedulings, localPutSchedulings } = props;
+    const { date, open, operation = "", scheduling = {}, handleOpen, localPostSchedulings, localPutSchedulings } = props;
 
     const { t } = useTranslation();
 
-    let localScheduling = scheduling;
+    const [localScheduling, setLocalScheduling] = useState({ ...scheduling });
+
+    useEffect(() => {
+        if (Object.keys(scheduling).length != 0) {
+            setLocalScheduling({ ...scheduling });
+        } else {
+            setLocalScheduling({
+                dataAtendimentoInicial: dayjs(date).startOf("day").format("YYYY-MM-DDTHH:mm:ss"),
+                dataAtendimentoFinal: dayjs(date).startOf("day").format("YYYY-MM-DDTHH:mm:ss")
+            });
+        }
+    }, [scheduling]);
 
     let title = "";
     let color = "";
@@ -45,70 +55,90 @@ export function SchedulingPopup(props) {
             break;
     }
 
+    const language = localStorage.getItem("i18nextLng");
+
     return (
         <>
-            <Dialog
+            <Modal
                 open={open}
+                onCancel={handleOpen}
                 className="max-h-[90vh] overflow-auto"
+                footer={[]}
             >
-                <DialogHeader className="flex justify-between">
-                    <Typography>
-                        {title}
-                    </Typography>
-                    <IconButton
-                        color="blue-gray"
-                        size="sm"
-                        variant="text"
-                        onClick={handleOpen}
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                            className="h-5 w-5"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M6 18L18 6M6 6l12 12"
+                <Typography>
+                    {title}
+                </Typography>
+                <div className="flex flex-col gap-2 w-full">
+                    <div className="flex flex-row gap-2 w-full">
+                        <Input
+                            placeholder="Nome Técnico"
+                            className={operation == "UPDATE" ? "w-[50%]" : ""}
+                            size="large"
+                            value={localScheduling?.nomeTecnico}
+                            onChange={e => setLocalScheduling({ ...localScheduling, nomeTecnico: e.target.value })}
+                        />
+
+                        {operation == "UPDATE"
+                            ? <DatePicker
+                                placeholder="Data"
+                                className="w-[50%]"
+                                format="DD/MM/YYYY"
+                                value={dayjs(localScheduling?.dataAtendimentoInicial)}
+                                size="large"
+                                locale={language == "pt" ? localePt : localeEn}
+                                onChange={date => setLocalScheduling({
+                                    ...localScheduling,
+                                    dataAtendimentoInicial: date.format("YYYY-MM-DDT") + localScheduling.dataAtendimentoInicial.split("T")[1],
+                                    dataAtendimentoFinal: date.format("YYYY-MM-DDT") + localScheduling.dataAtendimentoFinal.split("T")[1]
+                                })}
                             />
-                        </svg>
-                    </IconButton>
-                </DialogHeader>
-                <DialogBody>
-                    <div className="flex flex-col gap-2 w-full">
-                        <div className="flex flex-row gap-2 w-full">
-                            <CommonInput label="Nome Técnico" />
-                            <InfoInput
-                                label="Data"
-                                info={{ title: t("tooltipName.attribute"), text: [t("tooltipName.description")] }}
-                            />
-                        </div>
-                        <div className="flex flex-row gap-2 w-full">
-                            <InfoInput
-                                label="Horário Inicial"
-                                info={{ title: t("tooltipName.attribute"), text: [t("tooltipName.description")] }} />
-                            <InfoInput
-                                label="Horário Final"
-                                info={{ title: t("tooltipName.attribute"), text: [t("tooltipName.description")] }}
-                            />
-                        </div>
-                        <div className="flex flex-row gap-2 w-full">
-                            <CommonInput label="Nome Alunos" />
-                        </div>
+                            : <></>
+                        }
                     </div>
-                </DialogBody>
-                <DialogFooter>
-                    <GnButton
-                        color={color}
-                        onClick={fn}
-                    >
-                        {order}
-                    </GnButton>
-                </DialogFooter>
-            </Dialog >
+                    <div className="flex flex-row gap-2 w-full">
+                        <Input
+                            placeholder="Alunos"
+                            size="large"
+                            value={localScheduling?.nomeAlunos}
+                            onChange={e => setLocalScheduling({ ...localScheduling, nomeAlunos: e.target.value })}
+                        />
+                    </div>
+                    <div className="flex flex-row gap-2 w-full">
+                        <DatePicker
+                            placeholder="Horário Início"
+                            className="w-[50%]"
+                            picker="time"
+                            format="HH:mm"
+                            value={dayjs(localScheduling?.dataAtendimentoInicial)}
+                            size="large"
+                            locale={language == "pt" ? localePt : localeEn}
+                            onChange={date => setLocalScheduling({
+                                ...localScheduling,
+                                dataAtendimentoInicial: localScheduling.dataAtendimentoInicial.split("T")[0] + date.format("THH:mm:ss")
+                            })}
+                        />
+                        <DatePicker
+                            placeholder="Horário Fim"
+                            className="w-[50%]"
+                            picker="time"
+                            format="HH:mm"
+                            value={dayjs(localScheduling?.dataAtendimentoFinal)}
+                            size="large"
+                            locale={language == "pt" ? localePt : localeEn}
+                            onChange={date => setLocalScheduling({
+                                ...localScheduling,
+                                dataAtendimentoFinal: localScheduling.dataAtendimentoFinal.split("T")[0] + date.format("THH:mm:ss")
+                            })}
+                        />
+                    </div>
+                </div>
+                <GnButton
+                    color={color}
+                    onClick={fn}
+                >
+                    {order}
+                </GnButton>
+            </Modal >
         </>
     );
 }

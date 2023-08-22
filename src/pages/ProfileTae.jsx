@@ -5,7 +5,6 @@ import {
 import { GnButton } from "../components/common/button/GnButton";
 import { CommonInput } from "../components/common/input/CommonInput";
 import { useTranslation } from "react-i18next";
-import { HeaderUser } from "../components/HeaderUser";
 import { ArrowLeftOnRectangleIcon, CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { PencilIcon, AcademicCapIcon, KeyIcon, UserIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
@@ -15,6 +14,7 @@ import { validateEmail, validateName, validatePassword, validateRegistration } f
 import { useNavigate } from "react-router-dom";
 import { removeAuthData } from "../common/general";
 import { PicturePopup } from "../components/PicturePopup";
+import { HeaderTae } from "../components/HeaderTae";
 
 export function ProfileTae(props) {
 
@@ -77,7 +77,7 @@ export function ProfileTae(props) {
 
     return (
         <div className="flex flex-col items-center">
-            <HeaderUser />
+            <HeaderTae />
             <Typography
                 variant="h2"
                 className="p-6 font-mouse font-normal"
