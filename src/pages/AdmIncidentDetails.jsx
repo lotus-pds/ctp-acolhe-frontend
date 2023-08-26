@@ -10,20 +10,14 @@ import { GnButton } from "../components/common/button/GnButton";
 import { ChipIncidentStatus } from "../components/customized/gnIncidents/ChipIncidentStatus";
 import { completeIncident, getIncident, processIncident } from "../services/incident";
 
-const getIncidentTypes = (incidentTypes = []) => {
-    let types = incidentTypes.map(t => t.tipo);
-    return types.join(", ");
-}
-
 const getQuestionsAndAnswers = (questions = []) => {
     return (
         <div>
             {questions.sort((a, b) => a.ordem - b.ordem)
                 .map(q => {
                     return (
-                        <div className="flex gap-2 my-5 mx-5">
-                            <ChatBubbleLeftRightIcon className="h-6 w-6 inline ml-2 mb-1"></ChatBubbleLeftRightIcon><Typography variant="h6">{q.descricao}</Typography>
-                            <Typography>{q?.respostas.map(r => r.descricao).join(", ")}</Typography>
+                        <div className="flex gap-2 my-3 mx-5 ml-10">
+                            &#x2022;<Typography variant="h6">{q.descricao} <Typography>{q?.respostas.map(r => r.descricao).join(", ")}</Typography></Typography>
                         </div>
                     );
                 })}
@@ -73,13 +67,13 @@ export function AdmIncidentDetails(props) {
                         </Typography>
                     </div>
                     <hr />
-                    <div className="my-5 ml-14 mr-14">
+                    <div className="my-3 mx-14">
                         <Typography variant="h4" color="blue-gray" className="flex gap-4 py-2 pr-2">
                             <UserIcon className="sm:w-6 w-5 inline" />
                             Informações do Aluno(a)
                         </Typography>
 
-                        <span className="grid grid-cols-12 gap-y-5 my-8 ml-10">
+                        <span className="grid grid-cols-12 gap-y-5 my-4 ml-10">
                             <span className="col-span-4">
                                 <Typography variant="h6">Nome</Typography>
                                 <Typography>{incident?.usuarioCopia?.nome}</Typography>
@@ -117,13 +111,13 @@ export function AdmIncidentDetails(props) {
                         </span>
                     </div>
                     <hr />
-                    <div className="my-5 ml-14 mr-14">
+                    <div className="my-3 mx-14">
                         <Typography variant="h4" color="blue-gray" className="flex gap-4 py-2 pr-2">
                             <ClipboardDocumentListIcon className="sm:w-6 w-5 inline" />
                             Informações do Incidente
                         </Typography>
 
-                        <span className="grid grid-cols-12 gap-y-5 my-8 ml-10">
+                        <span className="grid grid-cols-12 gap-y-5 my-4 ml-10">
                             <span className="col-span-6">
                                 <Typography variant="h6">Assunto</Typography>
                                 <Typography>{incident?.assunto}</Typography>
@@ -151,7 +145,7 @@ export function AdmIncidentDetails(props) {
                         </span>
                     </div>
                     <hr />
-                    <div className="my-5 ml-14 mr-14">
+                    <div className="my-3 mx-14">
                         <Typography variant="h4" color="blue-gray" className="flex gap-4 py-2 pr-2">
                             <ChatBubbleLeftRightIcon className="sm:w-6 w-5 inline" />
                             Triagem
@@ -159,7 +153,7 @@ export function AdmIncidentDetails(props) {
 
                         {getQuestionsAndAnswers(incident?.perguntas)}
                     </div>
-                    <div className="flex justify-end my-6 mx-5">
+                    <div className="flex justify-end mb-6 mr-5">
                         {(incident?.status?.idStatus == "PEN")
                             ? <GnButton
                                 color="BLUE"
