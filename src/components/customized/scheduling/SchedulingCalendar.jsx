@@ -57,7 +57,7 @@ export const SchedulingCalendar = (props) => {
             }}
 
             cellRender={cellRender}
-            className="w-[90%] p-[20px] mb-[20px] mt-[40px] rounded"
+            className="w-[90%] p-[20px] mb-[20px] mt-[40px] rounded-2xl"
             locale={language == "pt" ? localePt : localeEn}
         />
     );
