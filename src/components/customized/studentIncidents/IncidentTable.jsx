@@ -7,8 +7,7 @@ import { Input, DatePicker, Select } from "antd";
 import { GnButton } from "../../common/button/GnButton";
 import { useTranslation } from "react-i18next";
 import { CardIncident } from "../../common/cardIncident/CardIncident";
-
-const TABLE_HEAD = ["Assunto", "Data", "Status", "Tipos", ""];
+import dayjs from "dayjs";
 
 const getIncidentTypes = incidentTypes => {
     let types = incidentTypes.map(t => t.tipo);
@@ -90,16 +89,16 @@ export function IncidentTable(props) {
                             <DatePicker
                                 placeholder={t("startDate")}
                                 className="w-[25%]"
-                                onChange={(date, string) => setFilters({ ...filters, dataIncidenteInicial: string })}
-                                value={filters.dataInicio}
+                                onChange={date => setFilters({ ...filters, dataIncidenteInicial: date.format("YYYY-MM-DD") })}
+                                value={filters.dataInicio != undefined ? dayjs(filters.dataInicio) : undefined}
                                 format="DD/MM/YYYY"
                                 allowClear={true}
                             />
                             <DatePicker
                                 placeholder={t("endDate")}
                                 className="w-[25%]"
-                                onChange={(date, string) => setFilters({ ...filters, dataIncidenteFinal: string })}
-                                value={filters.dataFinal}
+                                onChange={date => setFilters({ ...filters, dataIncidenteFinal: date.format("YYYY-MM-DD") })}
+                                value={filters.dataFinal != undefined ? dayjs(filters.dataFinal) : undefined}
                                 format="DD/MM/YYYY"
                                 allowClear={true}
                             />

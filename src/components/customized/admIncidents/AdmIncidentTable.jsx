@@ -8,9 +8,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { GnButton } from "../../common/button/GnButton";
 import { CardIncident } from "../../common/cardIncident/CardIncident";
-
-
-const TABLE_HEAD = ["Aluno", "Prontuário", "Assunto", "Data", "Status", ""];
+import dayjs from "dayjs";
 
 export function AdmIncidentTable(props) {
     const { incidents = [], totalAmount, search, incidentTypes, filters, setFilters } = props;
@@ -82,16 +80,16 @@ export function AdmIncidentTable(props) {
                             <DatePicker
                                 placeholder={t("startDate")}
                                 className="w-[25%]"
-                                onChange={(date, string) => setFilters({ ...filters, dataIncidenteInicial: string })}
-                                value={filters.dataInicio}
+                                onChange={date => setFilters({ ...filters, dataIncidenteInicial: date.format("YYYY-MM-DD") })}
+                                value={filters.dataInicio != undefined ? dayjs(filters.dataInicio) : undefined}
                                 format="DD/MM/YYYY"
                                 allowClear={true}
                             />
                             <DatePicker
                                 placeholder={t("endDate")}
                                 className="w-[25%]"
-                                onChange={(date, string) => setFilters({ ...filters, dataIncidenteFinal: string })}
-                                value={filters.dataFinal}
+                                onChange={date => setFilters({ ...filters, dataIncidenteInicial: date.format("YYYY-MM-DD") })}
+                                value={filters.dataFinal != undefined ? dayjs(filters.dataFinal) : undefined}
                                 format="DD/MM/YYYY"
                                 allowClear={true}
                             />
