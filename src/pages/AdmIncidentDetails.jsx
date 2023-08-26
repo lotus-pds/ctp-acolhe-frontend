@@ -53,22 +53,22 @@ export function AdmIncidentDetails(props) {
     const navigate = useNavigate();
 
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center ">
             <HeaderTae />
 
-            <Card className="h-full w-[90%] mt-8 mb-6">
-                <CardHeader floated={false} shadow={false} className="my-5 mx-10" >
+            <Card className="h-full w-[90%] mt-8 mb-6 dark:bg-gray-800">
+                <CardHeader floated={false} shadow={false} className="my-5 mx-10 dark:bg-gray-800 dark:text-gray-200 font-normal" >
                     <div className="flex gap-5 mb-4">
                         <ChevronLeftIcon
                             className="h-10 w-8 inline cursor-pointer" onClick={() => navigate('/adm/incidente')}
                         />
-                        <Typography variant="h2" color="blue-gray" className="font-mouse sm:text-4xl text-2xl">
+                        <Typography variant="h2" color="blue-gray" className="dark:text-gray-200 font-normal font-mouse sm:text-4xl text-2xl">
                             Detalhes do incidente
                         </Typography>
                     </div>
                     <hr />
                     <div className="my-3 mx-14">
-                        <Typography variant="h4" color="blue-gray" className="flex gap-4 py-2 pr-2">
+                        <Typography variant="h4" color="blue-gray" className="dark:text-gray-200 font-normal flex gap-4 py-2 pr-2">
                             <UserIcon className="sm:w-6 w-5 inline" />
                             Informações do Aluno(a)
                         </Typography>
@@ -112,7 +112,7 @@ export function AdmIncidentDetails(props) {
                     </div>
                     <hr />
                     <div className="my-3 mx-14">
-                        <Typography variant="h4" color="blue-gray" className="flex gap-4 py-2 pr-2">
+                        <Typography variant="h4" color="blue-gray" className="dark:text-gray-200 font-normal flex gap-4 py-2 pr-2">
                             <ClipboardDocumentListIcon className="sm:w-6 w-5 inline" />
                             Informações do Incidente
                         </Typography>
@@ -146,7 +146,7 @@ export function AdmIncidentDetails(props) {
                     </div>
                     <hr />
                     <div className="my-3 mx-14">
-                        <Typography variant="h4" color="blue-gray" className="flex gap-4 py-2 pr-2">
+                        <Typography variant="h4" color="blue-gray" className="dark:text-gray-200 font-normal flex gap-4 py-2 pr-2">
                             <ChatBubbleLeftRightIcon className="sm:w-6 w-5 inline" />
                             Triagem
                         </Typography>
@@ -177,7 +177,6 @@ export function AdmIncidentDetails(props) {
                             : <></>
                         }
                     </div>
-
                 </CardHeader>
             </Card>
         </div>

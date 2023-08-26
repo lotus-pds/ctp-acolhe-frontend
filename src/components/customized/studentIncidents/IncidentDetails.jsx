@@ -38,10 +38,10 @@ export function IncidentDetails(props) {
                 open={open}
                 handler={() => { }}
                 size="xl"
-                className="min-h-[60vh] max-h-[95vh] overflow-auto"
+                className="min-h-[60vh] max-h-[95vh] overflow-auto dark:bg-gray-800"
             >
                 <DialogHeader className="flex justify-between pl-7">
-                    <Typography variant="h2" color="blue-gray" className="font-mouse sm:text-4xl text-2xl">
+                    <Typography variant="h2" color="blue-gray" className="font-mouse sm:text-4xl text-2xl dark:text-gray-200 font-normal">
                         Detalhes do incidente
                     </Typography>
                     <IconButton
@@ -56,7 +56,7 @@ export function IncidentDetails(props) {
                             viewBox="0 0 24 24"
                             stroke="currentColor"
                             strokeWidth={2}
-                            className="h-5 w-5"
+                            className="h-5 w-5 dark:text-gray-200 font-normal"
                         >
                             <path
                                 strokeLinecap="round"
@@ -67,9 +67,9 @@ export function IncidentDetails(props) {
                     </IconButton>
                 </DialogHeader>
                 <hr />
-                <DialogBody className="py-0 px-10">
+                <DialogBody className="py-0 px-10 dark:text-gray-200 font-normal">
                     <div className="my-3 mx-2">
-                        <Typography variant="h4" color="blue-gray" className="flex gap-4 py-2 pr-2">
+                        <Typography variant="h4" color="blue-gray" className="flex gap-4 py-2 pr-2 dark:text-gray-200 font-normal">
                             <ClipboardDocumentListIcon className="sm:w-6 w-5 inline" />
                             Informações do Incidente
                         </Typography>
@@ -101,8 +101,8 @@ export function IncidentDetails(props) {
                         </span>
                     </div>
                     <hr />
-                    <div className="my-3 mx-2">
-                        <Typography variant="h4" color="blue-gray" className="flex gap-4 py-2 pr-2">
+                    <div className="my-3 mx-2 mb-5">
+                        <Typography variant="h4" color="blue-gray" className="flex gap-4 py-2 pr-2 dark:text-gray-200 font-normal">
                             <ChatBubbleLeftRightIcon className="sm:w-6 w-5 inline" />
                             Triagem
                         </Typography>

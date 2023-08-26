@@ -47,13 +47,13 @@ export function IncidentTable(props) {
 
     return (
         <>
-            <Card shadow={false} className="h-full w-[90%] mt-8 mb-6" >
+            <Card shadow={false} className="h-full w-[90%] mt-8 mb-6 dark:bg-gray-800" >
                 <CardBody floated={false} >
                     <div className="mb-4">
-                        <Typography variant="h2" color="blue-gray" className="font-mouse sm:text-4xl text-2xl">
+                        <Typography variant="h2" color="blue-gray" className="dark:text-gray-200 font-normal font-mouse sm:text-4xl text-2xl">
                             Meus incidentes
                         </Typography>
-                        <Typography color="gray" className="mt-2 mb-8 font-normal sm:text-md text-md">
+                        <Typography color="gray" className="mt-2 mb-8 dark:text-gray-200 font-normal sm:text-md text-md">
                             Estes são seus incidentes criados.
                         </Typography>
                         <div className="flex justify-center flex-row w-full gap-2 mt-2" >
@@ -114,9 +114,9 @@ export function IncidentTable(props) {
                     </div>
                 </CardBody>
             </Card>
-            <Card className="h-full w-[90%] mb-8">
+            <Card className="h-full w-[90%] mb-8 dark:bg-gray-800">
                 <CardBody className="px-0">
-                    <Typography variant="h4" color="blue-gray" className="ml-5 mb-5">
+                    <Typography variant="h4" color="blue-gray" className="ml-5 dark:text-gray-200 mb-5">
                         {totalAmount} incidente(s) encontrado(s)
                     </Typography>
                     {incidents.map(
