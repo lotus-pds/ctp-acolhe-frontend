@@ -1,6 +1,5 @@
 import { HeaderTae } from "../components/HeaderTae";
 import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { SchedulingCalendar } from "../components/customized/scheduling/SchedulingCalendar";
 import { getSchedulings } from "../services/scheduling";
 import { convertDateHyphen } from "../common/general";
@@ -8,8 +7,6 @@ import { convertDateHyphen } from "../common/general";
 export function ScheduleRoom() {
     const [schedulings, setSchedulings] = useState([]);
     const [time, setTime] = useState({});
-
-    const { t } = useTranslation();
 
     const localGetSchedulings = async (year, month) => {
         let initialDate = new Date(year, month - 1, 15);

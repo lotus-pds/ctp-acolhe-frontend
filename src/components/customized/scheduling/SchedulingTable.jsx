@@ -1,5 +1,5 @@
 import { TrashIcon } from "@heroicons/react/24/outline";
-import { ChevronLeftIcon, PencilIcon } from "@heroicons/react/24/solid";
+import { ChevronLeftIcon, PencilIcon, PlusIcon } from "@heroicons/react/24/solid";
 import {
   Avatar,
   Card,
@@ -22,13 +22,24 @@ export const SchedulingTable = (props) => {
     <div className="flex flex-col items-center">
       <Card className="h-full w-[90%] mt-8 dark:bg-gray-800">
         <CardBody floated={false} >
-          <div className="flex gap-5 mb-4">
-            <ChevronLeftIcon
-              className="h-10 w-8 inline cursor-pointer" onClick={() => navigate('/adm/agendamento')}
-            />
-            <Typography variant="h2" color="blue-gray" className="font-mouse sm:text-4xl text-2xl">
-              Lista de agendamentos para o dia {dateScheduling}
-            </Typography>
+          <div className="w-full flex flex-row items-center justify-between">
+            <div className="flex gap-5 mb-4">
+              <ChevronLeftIcon
+                className="h-10 w-8 inline cursor-pointer" onClick={() => navigate('/adm/agendamento')}
+              />
+              <Typography variant="h2" color="blue-gray" className="font-mouse sm:text-4xl text-2xl">
+                Lista de agendamentos para o dia {dateScheduling}
+              </Typography>
+            </div>
+            <GnButton
+              color="GREEN"
+              className="p-2 m-3 mb-10"
+              onClick={() => {
+                setPopup({ open: true, operation: "CREATE" });
+              }}
+            >
+              <PlusIcon className="w-5 h-5" />
+            </GnButton>
           </div>
           <hr />
           <div className="mt-4">

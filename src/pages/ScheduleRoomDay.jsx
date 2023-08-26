@@ -1,9 +1,7 @@
-import { PlusIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { convertDateBars, convertDateHyphen } from "../common/general";
 import { HeaderTae } from "../components/HeaderTae";
-import { GnButton } from "../components/common/button/GnButton";
 import { WarningPopup } from "../components/common/popup/WarningPopup";
 import { SchedulingPopup } from "../components/customized/scheduling/SchedulingPopup";
 import { SchedulingTable } from "../components/customized/scheduling/SchedulingTable";
@@ -49,15 +47,6 @@ export function ScheduleRoomDay(props) {
     return (
         <>
             <HeaderTae />
-            <GnButton
-                color="GREEN"
-                className="p-2 m-3 mb-10"
-                onClick={() => {
-                    setPopup({ open: true, operation: "CREATE" });
-                }}
-            >
-                <PlusIcon className="w-5 h-5" />
-            </GnButton>
 
             <SchedulingTable
                 dateScheduling={convertDateBars(localDate)}
