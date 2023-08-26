@@ -27,6 +27,7 @@ export const ChipIncidentStatus = props => {
 
     return <GnChip
         value={t("incidentTypes." + status)}
+        className="inline-block"
         color={color}
     />;
 }
