@@ -30,7 +30,7 @@ export function ChatTextArea(props) {
                             color="BLUE"
                             size="sm"
                             className="ml-[7px]"
-                            disabled={content.length <= minLength}
+                            disabled={content.length < minLength}
                             onClick={() => {
                                 onConfirm(content);
                                 setVisible(!visible);

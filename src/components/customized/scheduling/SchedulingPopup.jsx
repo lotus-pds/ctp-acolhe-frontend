@@ -10,6 +10,7 @@ import 'dayjs/locale/pt-br';
 import 'dayjs/locale/en';
 import localePt from 'antd/es/date-picker/locale/pt_BR';
 import localeEn from 'antd/es/date-picker/locale/en_US';
+import { validateNames } from "../../../common/validations";
 
 export function SchedulingPopup(props) {
     const { date, open, operation = "", scheduling = {}, handleOpen, localPostSchedulings, localPutSchedulings } = props;
@@ -17,6 +18,11 @@ export function SchedulingPopup(props) {
     const { t } = useTranslation();
 
     const [localScheduling, setLocalScheduling] = useState({ ...scheduling });
+
+    const isFieldValid = {
+        taeName: localScheduling.nomeTecnico != undefined && validateNames(localScheduling.nomeTecnico),
+        studentName: localScheduling.nomeAlunos != undefined && validateNames(localScheduling.nomeAlunos)
+    };
 
     useEffect(() => {
         if (Object.keys(scheduling).length != 0) {
@@ -45,7 +51,7 @@ export function SchedulingPopup(props) {
             };
             break;
         case "UPDATE":
-            title = "Atualizar agendamento";
+            title = t("modifyScheduling");
             color = "BLUE";
             order = t("update");
             fn = () => {
@@ -65,15 +71,19 @@ export function SchedulingPopup(props) {
                 className="max-h-[90vh] overflow-auto"
                 footer={[]}
             >
-                <Typography>
-                    {title}
-                </Typography>
+                <div className="mb-5">
+                    <Typography className="font-bold uppercase">
+                        {title}
+                    </Typography>
+                </div>
                 <div className="flex flex-col gap-2 w-full">
                     <div className="flex flex-row gap-2 w-full">
                         <Input
                             placeholder="Nome Técnico"
                             className={operation == "UPDATE" ? "w-[50%]" : ""}
+                            allowClear={true}
                             size="large"
+                            status={!isFieldValid.taeName ? "error" : undefined}
                             value={localScheduling?.nomeTecnico}
                             onChange={e => setLocalScheduling({ ...localScheduling, nomeTecnico: e.target.value })}
                         />
@@ -86,6 +96,7 @@ export function SchedulingPopup(props) {
                                 value={dayjs(localScheduling?.dataAtendimentoInicial)}
                                 size="large"
                                 locale={language == "pt" ? localePt : localeEn}
+                                allowClear={false}
                                 onChange={date => setLocalScheduling({
                                     ...localScheduling,
                                     dataAtendimentoInicial: date.format("YYYY-MM-DDT") + localScheduling.dataAtendimentoInicial.split("T")[1],
@@ -99,7 +110,9 @@ export function SchedulingPopup(props) {
                         <Input
                             placeholder="Alunos"
                             size="large"
+                            status={!isFieldValid.studentName ? "error" : undefined}
                             value={localScheduling?.nomeAlunos}
+                            allowClear={true}
                             onChange={e => setLocalScheduling({ ...localScheduling, nomeAlunos: e.target.value })}
                         />
                     </div>
@@ -112,6 +125,7 @@ export function SchedulingPopup(props) {
                             value={dayjs(localScheduling?.dataAtendimentoInicial)}
                             size="large"
                             locale={language == "pt" ? localePt : localeEn}
+                            allowClear={false}
                             onChange={date => setLocalScheduling({
                                 ...localScheduling,
                                 dataAtendimentoInicial: localScheduling.dataAtendimentoInicial.split("T")[0] + date.format("THH:mm:ss")
@@ -125,6 +139,7 @@ export function SchedulingPopup(props) {
                             value={dayjs(localScheduling?.dataAtendimentoFinal)}
                             size="large"
                             locale={language == "pt" ? localePt : localeEn}
+                            allowClear={false}
                             onChange={date => setLocalScheduling({
                                 ...localScheduling,
                                 dataAtendimentoFinal: localScheduling.dataAtendimentoFinal.split("T")[0] + date.format("THH:mm:ss")
@@ -133,8 +148,10 @@ export function SchedulingPopup(props) {
                     </div>
                 </div>
                 <GnButton
+                    className="mt-5"
                     color={color}
                     onClick={fn}
+                    disabled={!Object.values(isFieldValid).every(value => value === true)}
                 >
                     {order}
                 </GnButton>

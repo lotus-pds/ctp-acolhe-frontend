@@ -16,6 +16,12 @@ export const validateName = name => {
     return result;
 }
 
+export const validateNames = name => {
+    const regex = /^(?:([a-zA-Z\u00C0-\u00FF, ])){5,100}$/;
+    const result = regex.exec(name) !== null ? true : false;
+    return result;
+}
+
 export const validatePassword = password => {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%?\.,;*(){}_+^&])(?:([0-9a-zA-Z!@#$%?\.,;*(){}_+^&])){8,32}$/;
     const result = regex.exec(password) !== null ? true : false;

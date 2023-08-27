@@ -8,7 +8,7 @@ import { GnButton } from "../../common/button/GnButton";
 import { useState } from "react";
 
 export function IncidentTypeCheckbox(props) {
-    const { list = [], avatar, onConfirm } = props;
+    const { list = [], avatar, onConfirm, minQty = 0 } = props;
 
     const [checkedList, setCheckedList] = useState([]);
     const [visible, setVisible] = useState(true);
@@ -20,7 +20,7 @@ export function IncidentTypeCheckbox(props) {
 
                 <div className="flex flex-col gap-2 relative justify-center">
                     <div className="bg-white dark:bg-gray-900 shadow-lg max-w-[340px] ml-2 rounded-t-[2.5rem] rounded-br-[2.5rem] flex flex-col items-center justify-start pl-5 pt-3 pb-3 pr-4 relative m-auto">
-                        <Card>
+                        <Card className="shadow-none">
                             {list.map(element => {
                                 return (
                                     <div className="flex flex-row items-start gap-2">
@@ -46,10 +46,15 @@ export function IncidentTypeCheckbox(props) {
                                     </div>
                                 );
                             })}
-                            <GnButton color="BLUE" onClick={() => {
-                                onConfirm(checkedList);
-                                setVisible(!visible);
-                            }}>
+                            <GnButton
+                                color="BLUE"
+                                className="mt-5"
+                                onClick={() => {
+                                    onConfirm(checkedList);
+                                    setVisible(!visible);
+                                }}
+                                disabled={checkedList.length < minQty}
+                            >
                                 OK
                             </GnButton>
                         </Card >

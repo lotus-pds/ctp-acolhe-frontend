@@ -67,6 +67,7 @@ const AnswerModel = props => {
                 <ChatTextArea
                     avatar={avatar}
                     maxLength={255}
+                    minLength={1}
                     onConfirm={answer => setIncident({
                         ...incident,
                         perguntas: [
@@ -171,6 +172,7 @@ export function Chat() {
                 list={incidentTypes}
                 avatar={attendant?.urlAvatar}
                 onConfirm={types => setIncident({ ...incident, tipos: types })}
+                minQty={1}
             />
         ]);
     }, [incident?.assunto]);
