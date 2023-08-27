@@ -1,16 +1,54 @@
 import { useTranslation } from "react-i18next";
 
-export const periodTypesEnum = new Map()
-  .set("MATUTINO", "Matutino")
-  .set("VESPERTINO", "Vespertino")
-  .set("NOTURNO", "Noturno");
+export const PERIOD_TYPES = () => {
+  const { t } = useTranslation();
 
+  return [
+    {
+      value: "MATUTINO",
+      label: t("morning")
+    },
+    {
+      value: "VESPERTINO",
+      label: t("afternoon")
+    },
+    {
+      value: "NOTURNO",
+      label: t("night")
+    },
+    {
+      value: "INTEGRAL",
+      label: t("fullTime")
+    }
+  ];
+}
 
-export const courseTypesEnum = new Map()
-  .set("TECNICO_INTEGRADO", "Técnico Integrado")
-  .set("TECNICO_CONCOMITANTE_SUBSEQUENTE", "Técnico Concomitante ou Subsequente")
-  .set("GRADUACAO", "Graduação").set("POS_GRADUACAO", "Pós Graduação")
-  .set("EXTENSAO", "Extensão");
+export const COURSE_TYPES = () => {
+  const { t } = useTranslation();
+
+  return [
+    {
+      value: "TECNICO_INTEGRADO",
+      label: t("courseTypes.integrated")
+    },
+    {
+      value: "TECNICO_CONCOMITANTE_SUBSEQUENTE",
+      label: t("courseTypes.concurrentSubsequent")
+    },
+    {
+      value: "GRADUACAO",
+      label: t("courseTypes.undergraduate")
+    },
+    {
+      value: "POS_GRADUACAO",
+      label: t("courseTypes.postgraduate")
+    },
+    {
+      value: "EXTENSAO",
+      label: t("courseTypes.extension")
+    }
+  ];
+}
 
 export const EMOTIONS = () => {
   const { t } = useTranslation();
@@ -45,6 +83,29 @@ export const EMOTIONS = () => {
       desc: t("tranquil"),
       color: "GREEN",
       img: "https://media.discordapp.net/attachments/1077345452694970438/1099816858116444281/Component_26_1_1.png"
+    }
+  ];
+}
+
+export const INCIDENT_STATUS = () => {
+  const { t } = useTranslation();
+
+  return [
+    {
+      label: t("incidentTypes.FIN"),
+      value: "FIN"
+    },
+    {
+      label: t("incidentTypes.EPR"),
+      value: "EPR"
+    },
+    {
+      label: t("incidentTypes.CAN"),
+      value: "CAN"
+    },
+    {
+      label: t("incidentTypes.PEN"),
+      value: "PEN"
     }
   ];
 }

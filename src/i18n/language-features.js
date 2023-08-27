@@ -108,9 +108,11 @@ export const resources = {
             "class": "Class",
             "period": "Period",
             "course": "Course",
+            "courseType": "Course type",
             "morning": "Morning",
             "afternoon": "Afternoon",
             "night": "Night",
+            "fullTime": "Full-time",
             "subscribe": "Subscribe",
             "next": "Next",
             "back": "Back",
@@ -164,6 +166,13 @@ export const resources = {
                 "add": "Add it now!"
             }
         },
+        "courseTypes": {
+            "integrated": "Integrated Technical Program",
+            "concurrentSubsequent": "Concurrent or Subsequent Technical Program",
+            "undergraduate": "Undergraduate",
+            "postgraduate": "Postgraduate",
+            "extension": "Extension"
+        }
     },
     pt: {
         translation: {
@@ -274,9 +283,11 @@ export const resources = {
             "class": "Turma",
             "period": "Período",
             "course": "Curso",
+            "courseType": "Tipo de curso",
             "morning": "Matutino",
-            "afternoon": "Verpertino",
+            "afternoon": "Vespertino",
             "night": "Noturno",
+            "fullTime": "Integral",
             "subscribe": "Cadastrar",
             "next": "Próximo",
             "back": "Voltar",
@@ -328,6 +339,13 @@ export const resources = {
             "emotionReminder": {
                 "notYet": "* Ainda não registrou sua emoção hoje?",
                 "add": "Adicione ela agora!"
+            },
+            "courseTypes": {
+                "integrated": "Técnico Integrado",
+                "concurrentSubsequent": "Técnico Concomitante ou Subsequente",
+                "undergraduate": "Graduação",
+                "postgraduate": "Pós-graduação",
+                "extension": "Extensão"
             }
         }
     },

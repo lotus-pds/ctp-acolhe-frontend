@@ -3,7 +3,7 @@ import { Card, CardHeader, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
-import { courseTypesEnum, periodTypesEnum } from "../common/constants";
+import { COURSE_TYPES, PERIOD_TYPES } from "../common/constants";
 import { concatStrings, convertDateBars, phoneNumberMask } from "../common/general";
 import { HeaderTae } from "../components/HeaderTae";
 import { GnButton } from "../components/common/button/GnButton";
@@ -52,6 +52,9 @@ export function AdmIncidentDetails(props) {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
+    const periodTypes = PERIOD_TYPES();
+    const courseTypes = COURSE_TYPES();
+
     return (
         <div className="flex flex-col items-center ">
             <HeaderTae />
@@ -96,7 +99,7 @@ export function AdmIncidentDetails(props) {
 
                             <span className="col-span-6">
                                 <Typography variant="h6">Curso</Typography>
-                                <Typography>{concatStrings([incident?.usuarioCopia?.nomeCurso, courseTypesEnum.get(incident?.usuarioCopia?.tipoCurso)]) || "Não informado."}</Typography>
+                                <Typography>{concatStrings([incident?.usuarioCopia?.nomeCurso, courseTypes.find(t => t.value == incident?.usuarioCopia?.tipoCurso)?.label]) || "Não informado."}</Typography>
                             </span>
 
                             <span className="col-span-3">
@@ -106,7 +109,7 @@ export function AdmIncidentDetails(props) {
 
                             <span className="col-span-2">
                                 <Typography variant="h6">Período</Typography>
-                                <Typography>{periodTypesEnum.get(incident?.usuarioCopia?.periodo) || "Não informado."}</Typography>
+                                <Typography>{periodTypes.find(t => t.value == incident?.usuarioCopia?.periodo)?.label || "Não informado."}</Typography>
                             </span>
                         </span>
                     </div>
