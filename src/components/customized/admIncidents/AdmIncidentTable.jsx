@@ -133,7 +133,7 @@ export function AdmIncidentTable(props) {
                         <div className="flex justify-around flex-row w-full gap-2 mt-2" >
                             <Select
                                 placeholder={t("period")}
-                                className="w-[50%]"
+                                className="w-[40%]"
                                 size="large"
                                 mode="multiple"
                                 onChange={(value, option) => setFilters({ ...filters, periodo: (value.length > 0 ? value : undefined) })}
@@ -143,7 +143,7 @@ export function AdmIncidentTable(props) {
                             />
                             <Select
                                 placeholder={t("courseType")}
-                                className="w-[25%]"
+                                className="w-[35%]"
                                 size="large"
                                 onChange={(value, option) => setFilters({ ...filters, tipoCurso: value })}
                                 options={courseTypes}
