@@ -327,7 +327,7 @@ export const resources = {
                 "createPost": "Criar Postagens",
                 "listIncident": "Lista de incidentes",
                 "scheduleRoom": "Agendar sala",
-                "manageStudent": "Gestão de estudantes",
+                "manageStudent": "Gerenciamento de usuários",
             },
             "incidentTypes": {
                 "CAN": "Cancelado",
