@@ -18,7 +18,7 @@ export function Emotions(props) {
 
     const sendEmotion = async (emotion) => {
         await postEmotion({ idSentimento: emotion });
-        navigate('/posts');
+        navigate('/calendario');
     }
 
     const hasEmotion = async () => {
@@ -40,7 +40,7 @@ export function Emotions(props) {
 
     useEffect(() => {
         if (emotion.length > 0) {
-            navigate('/posts');
+            navigate('/calendario');
         }
     }, [emotion]);
 
@@ -75,7 +75,7 @@ export function Emotions(props) {
             <GnButton
                 color='GRAY'
                 className='hover:-translate-y-1 hover:scale-110 transition'
-                onClick={() => navigate('/posts')}
+                onClick={() => navigate('/calendario')}
             >
                 {t("leaveForLater")}
             </GnButton>
