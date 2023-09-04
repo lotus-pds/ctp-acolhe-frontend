@@ -336,8 +336,8 @@ export const resources = {
             "tooltipTae": {
                 "createPost": "Criar Postagens",
                 "listIncident": "Lista de incidentes",
-                "scheduleRoom": "Agendar sala",
-                "manageStudent": "Gestão de estudantes",
+                "scheduleRoom": "Agendar Sala",
+                "manageStudent": "Gestão de Estudantes",
             },
             "incidentTypes": {
                 "CAN": "Cancelado",

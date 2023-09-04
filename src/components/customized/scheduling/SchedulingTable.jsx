@@ -25,15 +25,15 @@ export const SchedulingTable = (props) => {
           <div className="w-full flex flex-row items-center justify-between">
             <div className="flex gap-5 mb-4">
               <ChevronLeftIcon
-                className="h-10 w-8 inline cursor-pointer" onClick={() => navigate('/adm/agendamento')}
+                className="h-10 w-8 inline cursor-pointer dark:text-gray-200 font-normal" onClick={() => navigate('/adm/agendamento')}
               />
-              <Typography variant="h2" color="blue-gray" className="font-mouse sm:text-4xl text-2xl">
+              <Typography variant="h2" color="blue-gray" className="font-normal font-mouse sm:text-4xl text-2xl dark:text-gray-200">
                 Lista de agendamentos para o dia {dateScheduling}
               </Typography>
             </div>
             <GnButton
               color="GREEN"
-              className="p-2 m-3 mb-10"
+              className="p-2 m-3 mb-6"
               onClick={() => {
                 setPopup({ open: true, operation: "CREATE" });
               }}
@@ -43,26 +43,26 @@ export const SchedulingTable = (props) => {
           </div>
           <hr />
           <div className="mt-4">
-            <Typography color="gray" className="mt-2 mb-2 dark:text-gray-200 font-normal sm:text-md text-md">
+            <Typography color="gray" className="mt-2 mb-2 ml-14 dark:text-gray-200 font-normal sm:text-md text-md">
               Estes são os agendamentos de sala para atendimento dos alunos.
             </Typography>
           </div>
         </CardBody>
       </Card>
       <Card className="h-full w-[90%] mt-6 mb-6 dark:bg-gray-800">
-        <CardBody className="overflow-scroll px-0">
-          <table className="mt-4 w-full min-w-max table-auto text-left">
+        <CardBody className="overflow-x-scroll px-0">
+          <table className="mt-2 w-full min-w-max table-auto text-left">
             <thead>
               <tr>
                 {TABLE_HEAD.map((head) => (
                   <th
                     key={head}
-                    className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
+                    className="border-y border-blue-gray-100 bg-gray-900 p-4"
                   >
                     <Typography
                       variant="small"
                       color="blue-gray"
-                      className="font-normal leading-none opacity-70"
+                      className="font-normal leading-none opacity-70 dark:text-gray-200"
                     >
                       {head}
                     </Typography>
@@ -72,7 +72,7 @@ export const SchedulingTable = (props) => {
             </thead>
             <tbody>
               {schedulings.map(scheduling => {
-                const classes = "p-4 border-b border-blue-gray-50";
+                const classes = "px-4 border-b border-blue-gray-50";
 
                 return (
                   <tr key={scheduling?.idAgendamento}>
@@ -81,7 +81,7 @@ export const SchedulingTable = (props) => {
                         <Typography
                           variant="small"
                           color="blue-gray"
-                          className="font-normal"
+                          className="font-normal dark:text-gray-200"
                         >
                           {scheduling?.nomeTecnico}
                         </Typography>
@@ -92,7 +92,7 @@ export const SchedulingTable = (props) => {
                         <Typography
                           variant="small"
                           color="blue-gray"
-                          className="font-normal"
+                          className="font-normal dark:text-gray-200"
                         >
                           {scheduling?.nomeAlunos}
                         </Typography>
@@ -105,14 +105,14 @@ export const SchedulingTable = (props) => {
                           <Typography
                             variant="small"
                             color="blue-gray"
-                            className="font-normal"
+                            className="font-normal dark:text-gray-200"
                           >
                             {scheduling?.criadoPor?.nome}
                           </Typography>
                           <Typography
                             variant="small"
                             color="blue-gray"
-                            className="font-normal opacity-70"
+                            className="font-normal opacity-70 dark:text-gray-200"
                           >
                             {scheduling?.criadoPor?.email}
                           </Typography>
@@ -123,7 +123,7 @@ export const SchedulingTable = (props) => {
                       <Typography
                         variant="small"
                         color="blue-gray"
-                        className="font-normal"
+                        className="font-normal dark:text-gray-200"
                       >
                         {getTimeH(new Date(scheduling?.dataAtendimentoInicial)) + "-" + getTimeH(new Date(scheduling?.dataAtendimentoFinal))}
                       </Typography>
