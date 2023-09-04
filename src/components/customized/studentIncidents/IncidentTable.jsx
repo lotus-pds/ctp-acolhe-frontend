@@ -9,17 +9,6 @@ import { useTranslation } from "react-i18next";
 import { CardIncident } from "../../common/cardIncident/CardIncident";
 import dayjs from "dayjs";
 
-const getIncidentTypes = incidentTypes => {
-    let types = incidentTypes.map(t => t.tipo);
-    if (types.join(", ").length > 50) {
-        types = types.join(", ").slice(0, 50) + "...";
-    } else {
-        types = types.join(", ");
-    }
-
-    return types;
-}
-
 export function IncidentTable(props) {
     const { incidents = [], totalAmount, toggleDetailsOpen, detailIncident, ChipStatus, search, incidentTypes, filters, setFilters } = props;
 
@@ -50,10 +39,10 @@ export function IncidentTable(props) {
                 <CardBody floated={false} >
                     <div className="mb-4">
                         <Typography variant="h2" color="blue-gray" className="dark:text-gray-200 font-normal font-mouse sm:text-4xl text-2xl">
-                            Meus incidentes
+                            {t("tooltipHeader.myIncident")}
                         </Typography>
                         <Typography color="gray" className="mt-2 mb-8 dark:text-gray-200 font-normal sm:text-md text-md">
-                            Estes são seus incidentes criados.
+                            {t("incidentDescription")}
                         </Typography>
                         <div className="flex justify-center flex-row w-full gap-2 mt-2" >
                             <Input
@@ -116,7 +105,7 @@ export function IncidentTable(props) {
             <Card className="h-full w-[90%] mb-8 dark:bg-gray-800">
                 <CardBody className="px-0">
                     <Typography variant="h4" color="blue-gray" className="ml-5 dark:text-gray-200 mb-5">
-                        {totalAmount} incidente(s) encontrado(s)
+                        {totalAmount} {t("incidentsFound")}
                     </Typography>
                     {incidents.map(
                         (incident) => (

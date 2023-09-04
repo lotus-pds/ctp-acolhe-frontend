@@ -121,7 +121,7 @@ export const resources = {
                 "posts": "Post Wall",
                 "myCalendar": "My Calendar",
                 "createIncident": "Create a new Incident",
-                "myIncident": "My Incident",
+                "myIncident": "My Incidents",
                 "profile": "My Profile"
             },
             "loadingContent": "Content available soon !!!",
@@ -165,14 +165,24 @@ export const resources = {
             "emotionReminder": {
                 "notYet": "* Haven't you recorded your emotion today yet?",
                 "add": "Add it now!"
-            }
-        },
-        "courseTypes": {
-            "integrated": "Integrated Technical Program",
-            "concurrentSubsequent": "Concurrent or Subsequent Technical Program",
-            "undergraduate": "Undergraduate",
-            "postgraduate": "Postgraduate",
-            "extension": "Extension"
+            },
+            "courseTypes": {
+                "integrated": "Integrated Technical Program",
+                "concurrentSubsequent": "Concurrent or Subsequent Technical Program",
+                "undergraduate": "Undergraduate",
+                "postgraduate": "Postgraduate",
+                "extension": "Extension"
+            },
+            "incidentDescription": "These are your created incidents.",
+            "incidentDescriptionTae": "This are the students incidents.",
+            "topicsCovered": "Topics Covered",
+            "incidentsFound": "Incidents Found",
+            "incidentDetails": "Incident Details",
+            "studentTnformation": "Student Information",
+            "incidentInformation": "Incident Information",
+            "screening": "Screening",
+            "creationDate": "Creation Date",
+            "notInformed": "Not informed.",
         }
     },
     pt: {
@@ -212,7 +222,7 @@ export const resources = {
             "signInDesc": "Entre com suas credenciais para seguir adiante!",
             "modifyScheduling": "Alterar Agendamento",
             "name": "Nome",
-            "email": "Email Institucional",
+            "email": "E-mail Institucional",
             "password": "Senha",
             "confirmPassword": "Confirmar a senha",
             "phone": "Telefone",
@@ -297,7 +307,7 @@ export const resources = {
                 "posts": " Mural de Postagens",
                 "myCalendar": "Meu Calendário",
                 "createIncident": "Criar um novo Incidente",
-                "myIncident": "Meus incidentes",
+                "myIncident": "Meus Incidentes",
                 "profile": "Meu Perfil"
             },
             "loadingContent": "Conteúdo disponível em breve !!!",
@@ -348,7 +358,17 @@ export const resources = {
                 "undergraduate": "Graduação",
                 "postgraduate": "Pós-graduação",
                 "extension": "Extensão"
-            }
+            },
+            "incidentDescription": "Estes são seus incidentes criados.",
+            "incidentDescriptionTae": "Estes são os incidentes dos alunos.",
+            "topicsCovered": "Temas",
+            "incidentsFound": "Incidente(s) Encontrado(s)",
+            "incidentDetails": "Detalhes do Incidente",
+            "studentInformation": "Informações do Aluno(a)",
+            "incidentInformation": "Informações do Incidente",
+            "screening": "Triagem",
+            "creationDate": "Data de Criação",
+            "notInformed": "Não informado."
         }
-    },
+    }
 }

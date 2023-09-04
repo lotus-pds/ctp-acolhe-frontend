@@ -9,6 +9,7 @@ import {
 import { Tooltip } from "antd";
 import { convertDateBars } from "../../../common/general";
 import { ChipIncidentStatus } from "../../customized/gnIncidents/ChipIncidentStatus";
+import { useTranslation } from "react-i18next";
 
 export function CardIncident(props) {
   const {
@@ -21,6 +22,9 @@ export function CardIncident(props) {
     className,
     children
   } = props;
+
+  const { t } = useTranslation();
+  const language = localStorage.getItem("i18nextLng");
 
   const { assunto, dataIncidente, status = {}, tipos = [], usuarioCopia = {} } = incident;
   const { nome, email, prontuario, nomeCurso, turma, urlAvatar } = usuarioCopia || {};
@@ -50,23 +54,25 @@ export function CardIncident(props) {
       <CardBody className="p-0">
         <hr />
         <span className="grid grid-cols-5 gap-y-2 my-4">
-          <span className="col-span-1">
-            <Typography variant="h6" className="dark:text-gray-100">Prontuário</Typography>
+          <span className={language == "pt" ? "col-span-1" : "col-span-2"}>
+            <Typography variant="h6" className="dark:text-gray-100">{t("registration")}</Typography>
             <Typography className="dark:text-gray-300">{prontuario}</Typography>
           </span>
 
-          <span className="col-span-4">
-            <Typography variant="h6" className="dark:text-gray-100">Curso</Typography>
-            <Typography className="dark:text-gray-300">{nomeCurso}</Typography>
+          <span className={language == "pt" ? "col-span-4" : "col-span-3"}>
+            <Tooltip title={nomeCurso} mouseEnterDelay={0.2} >
+              <Typography variant="h6" className="dark:text-gray-100">{t("course")}</Typography>
+              <Typography className="dark:text-gray-300 text-ellipsis overflow-hidden whitespace-nowrap">{nomeCurso}</Typography>
+            </Tooltip>
           </span>
 
           <span className="col-span-1">
-            <Typography variant="h6" className="dark:text-gray-100">Turma</Typography>
+            <Typography variant="h6" className="dark:text-gray-100">{t("class")}</Typography>
             <Typography className="dark:text-gray-300">{turma}</Typography>
           </span>
 
           <span className="col-span-4">
-            <Typography variant="h6" className="dark:text-gray-100" >Temas</Typography>
+            <Typography variant="h6" className="dark:text-gray-100" >{t("topicsCovered")}</Typography>
             <Tooltip title={temas} mouseEnterDelay={0.2} >
               <Typography className="-ml-2 dark:text-gray-300 text-ellipsis overflow-hidden whitespace-nowrap">
                 {tipos.map((t) => (
