@@ -83,7 +83,11 @@ export function ManageUsersTable(props) {
                                     <Select
                                         className="w-full"
                                         mode="multiple"
-                                        onChange={e => setEditUser({ ...editUser, roles: e })}
+                                        onChange={e => {
+                                            if(!e.includes("CTP")) {
+                                                setEditUser({ ...editUser, roles: e });
+                                            }
+                                        }}
                                         options={roles}
                                         value={user.id != editUser.id ? user.roles : editUser.roles}
                                         allowClear={true}
