@@ -14,7 +14,6 @@ import { getUser, putUser, patchUserPassword, patchUserAvatar } from "../service
 import { deleteSession } from "../services/subscribe-signin";
 import { validateClass, validateEmail, validateName, validatePassword, validatePhoneNumber, validateRegistration } from "../common/validations";
 import { useNavigate } from "react-router-dom";
-import { getCourses } from "../services/course";
 import { removeAuthData } from "../common/general";
 import { PicturePopup } from "../components/PicturePopup";
 

@@ -151,7 +151,7 @@ export const resources = {
                 "createPost": "Create Post",
                 "listIncident": "List of Incident",
                 "scheduleRoom": "Schedule Room",
-                "manageStudent": "Manage Students",
+                "manageUsers": "Manage Users",
             },
             "incidentTypes": {
                 "CAN": "Canceled",
@@ -173,7 +173,8 @@ export const resources = {
             "undergraduate": "Undergraduate",
             "postgraduate": "Postgraduate",
             "extension": "Extension"
-        }
+        },
+        "manage": "Subscribe",
     },
     pt: {
         translation: {
@@ -327,7 +328,7 @@ export const resources = {
                 "createPost": "Criar Postagens",
                 "listIncident": "Lista de incidentes",
                 "scheduleRoom": "Agendar sala",
-                "manageStudent": "Gerenciamento de usuários",
+                "manageUsers": "Gerenciamento de usuários",
             },
             "incidentTypes": {
                 "CAN": "Cancelado",
