@@ -57,7 +57,7 @@ export const SchedulingTable = (props) => {
                 {TABLE_HEAD.map((head) => (
                   <th
                     key={head}
-                    className="border-y border-blue-gray-100 bg-gray-900 p-4"
+                    className="border-y border-blue-gray-100  bg-blue-gray-50/50 dark:bg-gray-900 p-4"
                   >
                     <Typography
                       variant="small"
