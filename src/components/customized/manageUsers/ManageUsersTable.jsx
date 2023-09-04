@@ -7,10 +7,9 @@ import { PencilIcon } from "@heroicons/react/24/solid";
 import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { patchUserRole } from "../../../services/user";
 import { getStorage } from "../../../services/config";
+import { useTranslation } from "react-i18next";
 
 const roles = ROLES();
-
-const TABLE_HEAD = ["Nome", "Email", "Prontuário", "Perfis", ""];
 
 export function ManageUsersTable(props) {
     const { users, localGetUsers } = props;
@@ -21,6 +20,10 @@ export function ManageUsersTable(props) {
         await patchUserRole(editUser.id, editUser.roles.map(role => ({ idPerfil: role })));
         localGetUsers();
     }
+
+    const { t } = useTranslation()
+
+    const TABLE_HEAD = [t("name"), t("email"), t("registration"), t("roles"), ""];
 
     return (
         <Card className="h-full w-[90%] mb-6 dark:bg-gray-800 rounded-lg">
