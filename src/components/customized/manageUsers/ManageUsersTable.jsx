@@ -100,7 +100,7 @@ export function ManageUsersTable(props) {
                                             ? <GnButton
                                                 color="BLUE"
                                                 className="w-1 h-12 rounded-full text-center grid items-center justify-center"
-                                                disabled={(Object.keys(editUser).length > 0) || getStorage("rolesCtpAcolhe").includes("CTP") ? false : true}
+                                                disabled={(Object.keys(editUser).length > 0) || (getStorage("rolesCtpAcolhe").includes("CTP") ? false : true)}
                                                 onClick={() => {
                                                     setEditUser({ ...user });
                                                 }}
