@@ -90,7 +90,7 @@ export function NavbarTae(){
                                 color="white"
                                 className="font-normal opacity-80"
                             >
-                                {t("tooltipTae.manageStudent")}<br />
+                                {t("tooltipTae.manageUsers")}<br />
                             </Typography>
                         </div>
                     }>

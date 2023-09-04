@@ -3,7 +3,7 @@ import { serializeObjectToParam } from './utils.js';
 
 export const getUsers = filters => getResource('/usuario' + serializeObjectToParam(filters));
 
-export const patchUserRole = id => getResource(`/usuario/${id}/perfil`);
+export const patchUserRole = (id, body) => patchResource(`/usuario/${id}/perfil`, body);
 
 /* AUTENTICADO */
 
