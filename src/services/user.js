@@ -1,4 +1,11 @@
 import { getResource, putResource, patchResource } from './config.js';
+import { serializeObjectToParam } from './utils.js';
+
+export const getUsers = filters => getResource('/usuario' + serializeObjectToParam(filters));
+
+export const patchUserRole = (id, body) => patchResource(`/usuario/${id}/perfil`, body);
+
+/* AUTENTICADO */
 
 export const getUser = () => getResource('/usuario/autenticado');
 

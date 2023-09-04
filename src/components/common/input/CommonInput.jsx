@@ -8,8 +8,6 @@ export function CommonInput(props) {
     const {theme} = useTheme()
 
     const { label, color, value, onChange, success, error, disabled, size, required, type, icon, className } = props;
-
-    
    
     return (
         <Input

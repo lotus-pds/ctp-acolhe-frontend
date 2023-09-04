@@ -23,6 +23,21 @@ export const PERIOD_TYPES = () => {
   ];
 }
 
+export const ROLES = () => ([
+  {
+    value: "ALU",
+    label: "Aluno"
+  },
+  {
+    value: "ADM",
+    label: "Admin"
+  },
+  {
+    value: "CTP",
+    label: "CTP"
+  }
+]);
+
 export const COURSE_TYPES = () => {
   const { t } = useTranslation();
 

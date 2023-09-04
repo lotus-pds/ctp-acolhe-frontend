@@ -151,7 +151,7 @@ export const resources = {
                 "createPost": "Create Post",
                 "listIncident": "List of Incident",
                 "scheduleRoom": "Schedule Room",
-                "manageStudent": "Manage Students",
+                "manageUsers": "User management",
             },
             "incidentTypes": {
                 "CAN": "Canceled",
@@ -183,6 +183,8 @@ export const resources = {
             "screening": "Screening",
             "creationDate": "Creation Date",
             "notInformed": "Not informed.",
+            "manageUsers": "These are the user registrations and roles.",
+            "roles": "Roles"
         }
     },
     pt: {
@@ -337,7 +339,7 @@ export const resources = {
                 "createPost": "Criar Postagens",
                 "listIncident": "Lista de incidentes",
                 "scheduleRoom": "Agendar Sala",
-                "manageStudent": "Gestão de Estudantes",
+                "manageUsers": "Gerenciamento de usuários",
             },
             "incidentTypes": {
                 "CAN": "Cancelado",
@@ -368,7 +370,9 @@ export const resources = {
             "incidentInformation": "Informações do Incidente",
             "screening": "Triagem",
             "creationDate": "Data de Criação",
-            "notInformed": "Não informado."
+            "notInformed": "Não informado.",
+            "manageUsers": "Estes são os cadastros e perfis dos usuários.",
+            "roles": "Perfis"
         }
     }
 }

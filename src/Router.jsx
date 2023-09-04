@@ -23,7 +23,7 @@ import { AdmIncidentDetails } from "./pages/AdmIncidentDetails";
 import { CreatePosts } from "./pages/CreatePosts";
 import { ScheduleRoom } from "./pages/ScheduleRoom";
 import { ScheduleRoomDay } from "./pages/ScheduleRoomDay";
-import { ManageStudents } from "./pages/ManageStudents";
+import { ManageUsers } from "./pages/ManageUsers";
 import { PostTae } from "./pages/PostTae";
 import { ProfileTae } from "./pages/ProfileTae";
 import { NotFound } from "./pages/NotFound";
@@ -58,7 +58,7 @@ export function Router(props) {
             <Route path="/adm/post/criacao" element={<PrivateRoute user={['Admin']}><CreatePosts /></PrivateRoute>} />
             <Route path="/adm/agendamento" element={<PrivateRoute user={['Admin']}><ScheduleRoom /></PrivateRoute>} />
             <Route path="/adm/agendamento/:date" element={<PrivateRoute user={['Admin']}><ScheduleRoomDay /></PrivateRoute>} />
-            <Route path="/adm/cadastro/gerenciamento" element={<PrivateRoute user={['Admin']}><ManageStudents /></PrivateRoute>} />
+            <Route path="/adm/cadastro/gerenciamento" element={<PrivateRoute user={['Admin']}><ManageUsers /></PrivateRoute>} />
             <Route path="/adm/post" element={<PrivateRoute user={['Admin']}><PostTae /></PrivateRoute>} />
             {/**
             <Route path="/create-incident" element={<PrivateRoute user={['Aluno', 'Admin']}><CreateIncident /></PrivateRoute>} />
