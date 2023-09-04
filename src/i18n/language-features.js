@@ -151,7 +151,7 @@ export const resources = {
                 "createPost": "Create Post",
                 "listIncident": "List of Incident",
                 "scheduleRoom": "Schedule Room",
-                "manageUsers": "Manage Users",
+                "manageUsers": "User management",
             },
             "incidentTypes": {
                 "CAN": "Canceled",
@@ -165,16 +165,17 @@ export const resources = {
             "emotionReminder": {
                 "notYet": "* Haven't you recorded your emotion today yet?",
                 "add": "Add it now!"
-            }
-        },
-        "courseTypes": {
-            "integrated": "Integrated Technical Program",
-            "concurrentSubsequent": "Concurrent or Subsequent Technical Program",
-            "undergraduate": "Undergraduate",
-            "postgraduate": "Postgraduate",
-            "extension": "Extension"
-        },
-        "manage": "Subscribe",
+            },
+            "courseTypes": {
+                "integrated": "Integrated Technical Program",
+                "concurrentSubsequent": "Concurrent or Subsequent Technical Program",
+                "undergraduate": "Undergraduate",
+                "postgraduate": "Postgraduate",
+                "extension": "Extension"
+            },
+            "manageUsers": "These are the user registrations and roles.",
+            "roles": "Roles"
+        }
     },
     pt: {
         translation: {
@@ -349,7 +350,9 @@ export const resources = {
                 "undergraduate": "Graduação",
                 "postgraduate": "Pós-graduação",
                 "extension": "Extensão"
-            }
+            },
+            "manageUsers": "Estes são os cadastros e perfis dos usuários.",
+            "roles": "Perfis"
         }
     },
 }
