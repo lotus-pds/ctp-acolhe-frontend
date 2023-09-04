@@ -42,7 +42,7 @@ export function IncidentDetails(props) {
             >
                 <DialogHeader className="flex justify-between pl-7">
                     <Typography variant="h2" color="blue-gray" className="font-mouse sm:text-4xl text-2xl dark:text-gray-200 font-normal">
-                        Detalhes do incidente
+                        {t("incidentDetails")}
                     </Typography>
                     <IconButton
                         color="blue-gray"
@@ -71,16 +71,16 @@ export function IncidentDetails(props) {
                     <div className="my-3 mx-2">
                         <Typography variant="h4" color="blue-gray" className="flex gap-4 py-2 pr-2 dark:text-gray-200 font-normal">
                             <ClipboardDocumentListIcon className="sm:w-6 w-5 inline" />
-                            Informações do Incidente
+                            {t("incidentInformation")}
                         </Typography>
 
                         <span className="grid grid-cols-6 gap-y-4 my-4 ml-10">
                             <span className="col-span-4">
-                                <Typography variant="h6">Assunto</Typography>
+                                <Typography variant="h6">{t("subject")}</Typography>
                                 <Typography>{incident?.assunto}</Typography>
                             </span>
                             <span className="col-span-1">
-                                <Typography variant="h6">Data de criação</Typography>
+                                <Typography variant="h6">{t("creationDate")}</Typography>
                                 <Typography>{convertDateBars(new Date(incident?.dataIncidente))}</Typography>
                             </span>
 
@@ -90,7 +90,7 @@ export function IncidentDetails(props) {
                             </span>
 
                             <span className="col-span-6">
-                                <Typography variant="h6">Temas</Typography>
+                                <Typography variant="h6">{t("topicsCovered")}</Typography>
                                 <Typography className="-ml-2 text-ellipsis overflow-hidden">
                                     {incident?.tipos?.map((t) => (
                                         <><StarIcon className="h-6 w-6 inline mr-1 ml-2 mb-1"></StarIcon>
@@ -104,7 +104,7 @@ export function IncidentDetails(props) {
                     <div className="my-3 mx-2 mb-5">
                         <Typography variant="h4" color="blue-gray" className="flex gap-4 py-2 pr-2 dark:text-gray-200 font-normal">
                             <ChatBubbleLeftRightIcon className="sm:w-6 w-5 inline" />
-                            Triagem
+                            {t("screening")}
                         </Typography>
 
                         {getQuestionsAndAnswers(incident?.perguntas)}

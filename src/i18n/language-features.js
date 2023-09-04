@@ -121,7 +121,7 @@ export const resources = {
                 "posts": "Post Wall",
                 "myCalendar": "My Calendar",
                 "createIncident": "Create a new Incident",
-                "myIncident": "My Incident",
+                "myIncident": "My Incidents",
                 "profile": "My Profile"
             },
             "loadingContent": "Content available soon !!!",
@@ -173,6 +173,16 @@ export const resources = {
                 "postgraduate": "Postgraduate",
                 "extension": "Extension"
             },
+            "incidentDescription": "These are your created incidents.",
+            "incidentDescriptionTae": "This are the students incidents.",
+            "topicsCovered": "Topics Covered",
+            "incidentsFound": "Incidents Found",
+            "incidentDetails": "Incident Details",
+            "studentTnformation": "Student Information",
+            "incidentInformation": "Incident Information",
+            "screening": "Screening",
+            "creationDate": "Creation Date",
+            "notInformed": "Not informed.",
             "manageUsers": "These are the user registrations and roles.",
             "roles": "Roles"
         }
@@ -214,7 +224,7 @@ export const resources = {
             "signInDesc": "Entre com suas credenciais para seguir adiante!",
             "modifyScheduling": "Alterar Agendamento",
             "name": "Nome",
-            "email": "Email Institucional",
+            "email": "E-mail Institucional",
             "password": "Senha",
             "confirmPassword": "Confirmar a senha",
             "phone": "Telefone",
@@ -299,7 +309,7 @@ export const resources = {
                 "posts": " Mural de Postagens",
                 "myCalendar": "Meu Calendário",
                 "createIncident": "Criar um novo Incidente",
-                "myIncident": "Meus incidentes",
+                "myIncident": "Meus Incidentes",
                 "profile": "Meu Perfil"
             },
             "loadingContent": "Conteúdo disponível em breve !!!",
@@ -328,7 +338,7 @@ export const resources = {
             "tooltipTae": {
                 "createPost": "Criar Postagens",
                 "listIncident": "Lista de incidentes",
-                "scheduleRoom": "Agendar sala",
+                "scheduleRoom": "Agendar Sala",
                 "manageUsers": "Gerenciamento de usuários",
             },
             "incidentTypes": {
@@ -351,8 +361,18 @@ export const resources = {
                 "postgraduate": "Pós-graduação",
                 "extension": "Extensão"
             },
+            "incidentDescription": "Estes são seus incidentes criados.",
+            "incidentDescriptionTae": "Estes são os incidentes dos alunos.",
+            "topicsCovered": "Temas",
+            "incidentsFound": "Incidente(s) Encontrado(s)",
+            "incidentDetails": "Detalhes do Incidente",
+            "studentInformation": "Informações do Aluno(a)",
+            "incidentInformation": "Informações do Incidente",
+            "screening": "Triagem",
+            "creationDate": "Data de Criação",
+            "notInformed": "Não informado.",
             "manageUsers": "Estes são os cadastros e perfis dos usuários.",
             "roles": "Perfis"
         }
-    },
+    }
 }

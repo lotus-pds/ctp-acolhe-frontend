@@ -50,6 +50,7 @@ export function AdmIncidentDetails(props) {
     }, []);
 
     const { t } = useTranslation();
+    const language = localStorage.getItem("i18nextLng");
     const navigate = useNavigate();
 
     const periodTypes = PERIOD_TYPES();
@@ -66,50 +67,50 @@ export function AdmIncidentDetails(props) {
                             className="h-10 w-8 inline cursor-pointer" onClick={() => navigate('/adm/incidente')}
                         />
                         <Typography variant="h2" color="blue-gray" className="dark:text-gray-200 font-normal font-mouse sm:text-4xl text-2xl">
-                            Detalhes do incidente
+                            {t("incidentDetails")}
                         </Typography>
                     </div>
                     <hr />
                     <div className="my-3 mx-14">
                         <Typography variant="h4" color="blue-gray" className="dark:text-gray-200 font-normal flex gap-4 py-2 pr-2">
                             <UserIcon className="sm:w-6 w-5 inline" />
-                            Informações do Aluno(a)
+                            {t("studentTnformation")}
                         </Typography>
 
                         <span className="grid grid-cols-12 gap-y-5 my-4 ml-10">
                             <span className="col-span-4">
-                                <Typography variant="h6">Nome</Typography>
+                                <Typography variant="h6">{t("name")}</Typography>
                                 <Typography>{incident?.usuarioCopia?.nome}</Typography>
                             </span>
 
-                            <span className="col-span-2">
-                                <Typography variant="h6">Prontuário</Typography>
-                                <Typography>{incident?.usuarioCopia?.prontuario}</Typography>
-                            </span>
-
-                            <span className="col-span-3">
-                                <Typography variant="h6">E-mail</Typography>
+                            <span className="col-span-4">
+                                <Typography variant="h6">{t("email")}</Typography>
                                 <Typography>{incident?.usuarioCopia?.email}</Typography>
                             </span>
 
-                            <span className="col-span-2">
-                                <Typography variant="h6">Telefone</Typography>
-                                <Typography>{phoneNumberMask(incident?.usuarioCopia?.telefone) || "Não informado."}</Typography>
-                            </span>
-
-                            <span className="col-span-6">
-                                <Typography variant="h6">Curso</Typography>
-                                <Typography>{concatStrings([incident?.usuarioCopia?.nomeCurso, courseTypes.find(t => t.value == incident?.usuarioCopia?.tipoCurso)?.label]) || "Não informado."}</Typography>
-                            </span>
-
                             <span className="col-span-3">
-                                <Typography variant="h6">Turma</Typography>
-                                <Typography>{incident?.usuarioCopia?.turma || "Não informado."}</Typography>
+                                <Typography variant="h6">{t("registration")}</Typography>
+                                <Typography>{incident?.usuarioCopia?.prontuario}</Typography>
                             </span>
 
-                            <span className="col-span-2">
-                                <Typography variant="h6">Período</Typography>
-                                <Typography>{periodTypes.find(t => t.value == incident?.usuarioCopia?.periodo)?.label || "Não informado."}</Typography>
+                            <span className={incident?.usuarioCopia?.nomeCurso ? "col-span-8" : "col-span-4"}>
+                                <Typography variant="h6">{t("course")}</Typography>
+                                <Typography>{concatStrings([incident?.usuarioCopia?.nomeCurso, courseTypes.find(t => t.value == incident?.usuarioCopia?.tipoCurso)?.label]) || t("notInformed")}</Typography>
+                            </span>
+
+                            <span className={incident?.usuarioCopia?.turma ? "col-span-1" : "col-span-4"}>
+                                <Typography variant="h6">{t("class")}</Typography>
+                                <Typography>{incident?.usuarioCopia?.turma || t("notInformed")}</Typography>
+                            </span>
+
+                            <span className={incident?.usuarioCopia?.periodo ? "col-span-1" : "col-span-2"}>
+                                <Typography variant="h6">{t("period")}</Typography>
+                                <Typography>{periodTypes.find(t => t.value == incident?.usuarioCopia?.periodo)?.label || t("notInformed")}</Typography>
+                            </span>
+
+                            <span className={incident?.usuarioCopia?.telefone ? "col-span-2" : "col-span-2"}>
+                                <Typography variant="h6">{t("phone")}</Typography>
+                                <Typography>{phoneNumberMask(incident?.usuarioCopia?.telefone) || t("notInformed")}</Typography>
                             </span>
                         </span>
                     </div>
@@ -117,17 +118,17 @@ export function AdmIncidentDetails(props) {
                     <div className="my-3 mx-14">
                         <Typography variant="h4" color="blue-gray" className="dark:text-gray-200 font-normal flex gap-4 py-2 pr-2">
                             <ClipboardDocumentListIcon className="sm:w-6 w-5 inline" />
-                            Informações do Incidente
+                            {t("incidentInformation")}
                         </Typography>
 
                         <span className="grid grid-cols-12 gap-y-5 my-4 ml-10">
                             <span className="col-span-6">
-                                <Typography variant="h6">Assunto</Typography>
+                                <Typography variant="h6">{t("subject")}</Typography>
                                 <Typography>{incident?.assunto}</Typography>
                             </span>
 
                             <span className="col-span-3">
-                                <Typography variant="h6">Data de criação</Typography>
+                                <Typography variant="h6">{t("creationDate")}</Typography>
                                 <Typography>{convertDateBars(new Date(incident?.dataIncidente))}</Typography>
                             </span>
 
@@ -137,7 +138,7 @@ export function AdmIncidentDetails(props) {
                             </span>
 
                             <span className="col-span-12">
-                                <Typography variant="h6">Temas</Typography>
+                                <Typography variant="h6">{t("topicsCovered")}</Typography>
                                 <Typography className="-ml-2 text-ellipsis overflow-hidden">
                                     {incident?.tipos?.map((t) => (
                                         <><StarIcon className="h-6 w-6 inline mr-1 ml-2 mb-1"></StarIcon>
@@ -151,7 +152,7 @@ export function AdmIncidentDetails(props) {
                     <div className="my-3 mx-14">
                         <Typography variant="h4" color="blue-gray" className="dark:text-gray-200 font-normal flex gap-4 py-2 pr-2">
                             <ChatBubbleLeftRightIcon className="sm:w-6 w-5 inline" />
-                            Triagem
+                            {t("screening")}
                         </Typography>
 
                         {getQuestionsAndAnswers(incident?.perguntas)}

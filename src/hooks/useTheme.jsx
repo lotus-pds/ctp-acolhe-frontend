@@ -19,7 +19,7 @@ export default function ThemeContextProvider({ children }) {
 
     const tokenAntd = () => {
         return theme === "dark" ? {
-            colorTextPlaceholder: "#ECECEC",
+            colorTextPlaceholder: '#A4A4A4',
             colorBgContainer: '#282828',
         } : {};
     };
