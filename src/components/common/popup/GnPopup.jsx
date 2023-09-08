@@ -2,8 +2,7 @@ import {
     Dialog,
     DialogHeader,
     DialogBody,
-    DialogFooter,
-    Spinner
+    DialogFooter
 } from "@material-tailwind/react";
 import { useTranslation } from "react-i18next";
 
@@ -31,7 +30,7 @@ const getTitle = type => {
 }
 
 export const GnPopup = (props) => {
-    const { open, size = 'sm', text = undefined, btn = undefined, type, className = '' } = props;
+    const { open, size = 'sm', text = undefined, btn = undefined, type, className = ''} = props;
 
     return (
         <Dialog

@@ -6,12 +6,13 @@ import { GnButton } from "../components/common/button/GnButton";
 import { GnPopup } from "../components/common/popup/GnPopup";
 import { Link } from "react-router-dom";
 import { SecondHeader } from "../components/SecondHeader";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { postSubscribe, postResendVerification } from "../services/subscribe-signin";
 import { validateEmail, validateName, validatePassword, validateRegistration, validatePhoneNumber, validateClass } from "../common/validations";
 import { useTranslation } from "react-i18next";
 import { FormAccount } from "../components/FormAccount";
 import { FormDetails } from "../components/FormDetails";
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 export function Subscribe(props) {
     const { courses } = props;
@@ -21,6 +22,7 @@ export function Subscribe(props) {
     const [step, setStep] = useState(1);
 
     const enableResendEmail = () => {
+        setTimer(true);
         setTimeout(() => {
             setIsResendEmailEnabled(true);
         }, 60000);
@@ -89,6 +91,8 @@ export function Subscribe(props) {
     const [success, setSuccess] = useState(false);
 
     const [isResendEmailEnabled, setIsResendEmailEnabled] = useState(false);
+
+    const [timer, setTimer] = useState(false);
 
     const subscribe = async () => {
         let newSubscription = { ...subscription };
@@ -210,7 +214,26 @@ export function Subscribe(props) {
                             enableResendEmail();
                         }}
                     >
-                        {t('resendEmail')}
+                        <div className="flex flex-row justify-center items-center gap-5">
+                            <span className="h-[1rem]">{t('resendEmail')}</span>
+                            {
+                                timer
+                                    ? <CountdownCircleTimer
+                                        isPlaying
+                                        duration={60}
+                                        colors={['#FFFFFF']}
+                                        size={30}
+                                        strokeWidth={3}
+                                        onComplete={() => {
+                                            setTimer(false);
+                                        }}
+                                    >
+                                        {({ remainingTime }) => remainingTime}
+                                    </CountdownCircleTimer>
+                                    : <></>
+                            }
+
+                        </div>
                     </GnButton>
                 }
             />

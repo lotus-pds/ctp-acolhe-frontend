@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { postForgotPassword, postResendForgotPassword } from "../services/subscribe-signin";
 import { validateEmail } from "../common/validations";
 import { useTranslation } from "react-i18next";
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 export function ForgotPassword(props) {
 
@@ -23,7 +24,10 @@ export function ForgotPassword(props) {
 
     const [isResendEmailEnabled, setIsResendEmailEnabled] = useState(false);
 
+    const [timer, setTimer] = useState(false);
+
     const enableResendEmail = () => {
+        setTimer(true);
         setTimeout(() => {
             setIsResendEmailEnabled(true);
         }, 60000);
@@ -111,7 +115,26 @@ export function ForgotPassword(props) {
                         }}
                         disabled={!isResendEmailEnabled}
                     >
-                        {t('resendEmail')}
+                        <div className="flex flex-row justify-center items-center gap-5">
+                            <span className="h-[1rem]">{t('resendEmail')}</span>
+                            {
+                                timer
+                                    ? <CountdownCircleTimer
+                                        isPlaying
+                                        duration={60}
+                                        colors={['#FFFFFF']}
+                                        size={30}
+                                        strokeWidth={3}
+                                        onComplete={() => {
+                                            setTimer(false);
+                                        }}
+                                    >
+                                        {({ remainingTime }) => remainingTime}
+                                    </CountdownCircleTimer>
+                                    : <></>
+                            }
+
+                        </div>
                     </GnButton>
                 }
             />
