@@ -91,6 +91,8 @@ export function Chat() {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
+    const ref = useRef(null);
+
     const [incident, setIncident] = useState({
         assunto: "",
         tipos: [],
@@ -117,7 +119,7 @@ export function Chat() {
     }
 
     const localPostMyIncident = async () => {
-        await postMyIncident({...incident});
+        await postMyIncident({ ...incident });
     }
 
     useEffect(() => {
@@ -125,6 +127,13 @@ export function Chat() {
         localGetIncidentTypes();
         localGetUser();
     }, []);
+
+    useEffect(() => {
+        ref.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "end"
+        });
+    }, [messages])
 
     useEffect(() => {
         setMessages([
@@ -291,6 +300,7 @@ export function Chat() {
     return (
         <div className="flex flex-col p-6 gap-7 justify-center mt-8 items-center w-full max-h-[550px] m-auto overflow-y-scroll">
             {...messages}
+            <div ref={ref} />
         </div>
     )
 }
