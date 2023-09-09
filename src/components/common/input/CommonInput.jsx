@@ -7,7 +7,7 @@ export function CommonInput(props) {
     
     const {theme} = useTheme()
 
-    const { label, color, value, onChange, success, error, disabled, size, required, type, icon, className } = props;
+    const { label, color, value, onChange, success, error, disabled, size, required, type, icon, className, onKeyDown } = props;
    
     return (
         <Input
@@ -23,6 +23,7 @@ export function CommonInput(props) {
             required={required}
             type={type}
             icon={icon}
+            onKeyDown={onKeyDown}
         />
     )
 }

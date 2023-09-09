@@ -59,6 +59,13 @@ export function Subscribe(props) {
         }
     ];
 
+    const onKeyDown = e => {
+        if(e.key === 'Enter') {
+            e.preventDefault();
+            document.getElementById("nextStep").click();
+        }
+    }
+
     const getCompStep = () => {
         switch (step) {
             case 1:
@@ -67,6 +74,7 @@ export function Subscribe(props) {
                         subscription={subscription}
                         setSubscription={setSubscription}
                         isFieldValid={isFieldValid[0]}
+                        onKeyDown={onKeyDown}
                     />
                 );
             case 2:
@@ -76,6 +84,7 @@ export function Subscribe(props) {
                         setSubscription={setSubscription}
                         isFieldValid={isFieldValid[1]}
                         courses={courses}
+                        onKeyDown={onKeyDown}
                     />
                 );
             default:
@@ -83,6 +92,7 @@ export function Subscribe(props) {
                     <FormAccount
                         subscription={subscription}
                         setSubscription={setSubscription}
+                        onKeyDown={onKeyDown}
                     />
                 );
         }
@@ -165,6 +175,7 @@ export function Subscribe(props) {
                                     : <></>
                                 }
                                 <GnButton
+                                    id="nextStep"
                                     className="mt-0"
                                     color="GREEN"
                                     variant="gradient"

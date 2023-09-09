@@ -43,10 +43,11 @@ const getClassName = color => {
 }
 
 export function GnButton(props) {
-    const { color, size, variant, disabled, onClick, className, children } = props;
+    const { id, color, size, variant, disabled, onClick, className, children } = props;
 
     return (
         <Button
+            id={id}
             color={getColor(color)}
             size={size}
             variant={variant}

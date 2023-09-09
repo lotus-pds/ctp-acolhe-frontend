@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 export function FormAccount(props) {
 
-    const { subscription, setSubscription, isFieldValid } = props;
+    const { subscription, setSubscription, isFieldValid, onKeyDown } = props;
 
     const { t } = useTranslation();
 
@@ -28,6 +28,7 @@ export function FormAccount(props) {
                     setSubscription({ ...subscription, nome: e.target.value });
                 }}
                 info={{ title: t("tooltipName.attribute"), text: [t("tooltipName.description")] }}
+                onKeyDown={onKeyDown}
             />
 
             <InfoInput
@@ -45,6 +46,7 @@ export function FormAccount(props) {
                     title: t("tooltipEmail.attribute"),
                     text: [t("tooltipEmail.description")]
                 }}
+                onKeyDown={onKeyDown}
             />
 
             <InfoInput
@@ -61,6 +63,7 @@ export function FormAccount(props) {
                     title: t("tooltipRegistrationNumber.attribute"),
                     text: [t("tooltipRegistrationNumber.description"), t("tooltipRegistrationNumber.descriptionTwo")]
                 }}
+                onKeyDown={onKeyDown}
             />
 
             <InfoInput
@@ -84,6 +87,7 @@ export function FormAccount(props) {
                         t("tooltipPassword.descriptionFive")
                     ]
                 }}
+                onKeyDown={onKeyDown}
             />
 
             <CommonInput
@@ -97,6 +101,7 @@ export function FormAccount(props) {
                 onChange={(e) => {
                     setSubscription({ ...subscription, confirmacao: e.target.value });
                 }}
+                onKeyDown={onKeyDown}
             />
 
             <Checkbox

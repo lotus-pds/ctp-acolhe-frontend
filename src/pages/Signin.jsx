@@ -44,6 +44,13 @@ export function Signin(props) {
         }
     }
 
+    const onKeyDown = e => {
+        if(e.key === 'Enter') {
+            e.preventDefault();
+            document.getElementById("signIn").click();
+        }
+    }
+
     return (
         <div>
             <SecondHeader />
@@ -87,6 +94,7 @@ export function Signin(props) {
                                     onChange={(e) => {
                                         setSigninData({ ...signinData, email: e.target.value });
                                     }}
+                                    onKeyDown={onKeyDown}
                                 />
                                 <EyeInput
                                     size="lg"
@@ -98,6 +106,7 @@ export function Signin(props) {
                                     onChange={(e) => {
                                         setSigninData({ ...signinData, senha: e.target.value });
                                     }}
+                                    onKeyDown={onKeyDown}
                                 />
 
                                 <div className="w-full flex justify-end">
@@ -111,6 +120,7 @@ export function Signin(props) {
                             </div>
 
                             <GnButton
+                                id="signIn"
                                 className="mt-4"
                                 color="PURPLE"
                                 variant="gradient"

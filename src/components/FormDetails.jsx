@@ -7,7 +7,7 @@ import { PicturePopup } from "./PicturePopup";
 import { GnButton } from "./common/button/GnButton";
 
 export function FormDetails(props) {
-    const { subscription, setSubscription, isFieldValid, courses } = props;
+    const { subscription, setSubscription, isFieldValid, courses, onKeyDown } = props;
 
     const { t } = useTranslation();
 
@@ -66,6 +66,7 @@ export function FormDetails(props) {
                     title: t("tooltipPhone.attribute"),
                     text: [t("tooltipPhone.description"), t("tooltipPhone.descriptionTwo")]
                 }}
+                onKeyDown={onKeyDown}
             />
 
             <InfoInput
@@ -83,6 +84,7 @@ export function FormDetails(props) {
                     title: t("tooltipClass.attribute"),
                     text: [t("tooltipClass.description")]
                 }}
+                onKeyDown={onKeyDown}
             />
 
             <SelectOptions
