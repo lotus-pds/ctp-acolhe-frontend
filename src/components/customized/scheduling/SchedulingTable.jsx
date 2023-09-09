@@ -57,7 +57,7 @@ export const SchedulingTable = (props) => {
                 {TABLE_HEAD.map((head) => (
                   <th
                     key={head}
-                    className="border-y border-blue-gray-100  bg-blue-gray-50/50 dark:bg-gray-900 p-4"
+                    className="border-y border-blue-gray-100 bg-blue-gray-50/50 dark:bg-gray-900 p-4"
                   >
                     <Typography
                       variant="small"
@@ -75,7 +75,7 @@ export const SchedulingTable = (props) => {
                 const classes = "px-4 border-b border-blue-gray-50";
 
                 return (
-                  <tr key={scheduling?.idAgendamento}>
+                  <tr key={scheduling?.idAgendamento} className="hover:bg-gray-150 dark:hover:bg-gray-850">
                     <td className={classes}>
                       <div className="flex flex-col">
                         <Typography
