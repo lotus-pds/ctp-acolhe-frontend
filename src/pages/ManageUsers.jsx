@@ -74,7 +74,7 @@ export function ManageUsers() {
                     </div>
                 </CardBody>
             </Card>
-            <Card className="h-full w-[90%] mt-6 mb-6 dark:bg-gray-800">
+            <Card className="h-full w-[90%] mb-8 dark:bg-gray-800">
                 <CardBody className="overflow-x-scroll px-0">
                     <ManageUsersTable
                         users={users.map(user => ({
@@ -82,6 +82,7 @@ export function ManageUsers() {
                             name: user.nome,
                             email: user.email,
                             registration: user.prontuario,
+                            registrationDateSystem: user.dataCadastro,
                             roles: user.perfis.map(p => p.idPerfil)
                         }))}
                         localGetUsers={localGetUsers}

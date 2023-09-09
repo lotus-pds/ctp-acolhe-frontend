@@ -4,6 +4,7 @@ import { Select, Typography } from "antd";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ROLES } from "../../../common/constants";
+import { convertDateBars, getTime } from "../../../common/general";
 import { getStorage } from "../../../services/config";
 import { patchUserRole } from "../../../services/user";
 import { GnButton } from "../../common/button/GnButton";
@@ -22,7 +23,7 @@ export function ManageUsersTable(props) {
 
     const { t } = useTranslation()
 
-    const TABLE_HEAD = [t("name"), t("email"), t("registration"), t("roles"), ""];
+    const TABLE_HEAD = [t("name"), t("email"), t("registration"), "Data de Cadastro", t("roles"), ""];
 
     return (
         <table className=" mt-2 w-full min-w-max table-auto text-left">
@@ -75,6 +76,15 @@ export function ManageUsersTable(props) {
                                     className="font-normal"
                                 >
                                     {user.registration}
+                                </Typography>
+                            </td>
+                            <td className={classes}>
+                                <Typography
+                                    variant="small"
+                                    color="blue-gray"
+                                    className="font-normal"
+                                >
+                                    {convertDateBars(new Date(user.registrationDateSystem))} {getTime(new Date(user.registrationDateSystem))}
                                 </Typography>
                             </td>
                             <td className={classes}>
