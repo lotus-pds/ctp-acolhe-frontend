@@ -1,16 +1,16 @@
 import {
     Typography
 } from "@material-tailwind/react";
-import { Modal, DatePicker, Input } from "antd";
-import { useTranslation } from "react-i18next";
-import { GnButton } from "../../common/button/GnButton";
-import { useEffect, useState } from "react";
-import dayjs from "dayjs";
-import 'dayjs/locale/pt-br';
-import 'dayjs/locale/en';
-import localePt from 'antd/es/date-picker/locale/pt_BR';
+import { DatePicker, Input, Modal } from "antd";
 import localeEn from 'antd/es/date-picker/locale/en_US';
+import localePt from 'antd/es/date-picker/locale/pt_BR';
+import dayjs from "dayjs";
+import 'dayjs/locale/en';
+import 'dayjs/locale/pt-br';
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { validateNames } from "../../../common/validations";
+import { GnButton } from "../../common/button/GnButton";
 
 export function SchedulingPopup(props) {
     const { date, open, operation = "", scheduling = {}, handleOpen, localPostSchedulings, localPutSchedulings } = props;
@@ -42,7 +42,7 @@ export function SchedulingPopup(props) {
 
     switch (operation) {
         case "CREATE":
-            title = "Criar agendamento";
+            title = t("createSchedule");
             color = "GREEN";
             order = t("create");
             fn = () => {
@@ -79,7 +79,7 @@ export function SchedulingPopup(props) {
                 <div className="flex flex-col gap-2 w-full">
                     <div className="flex flex-row gap-2 w-full">
                         <Input
-                            placeholder="Nome Técnico"
+                            placeholder={t("scheduleCreateModal.techniciansName")}
                             className={operation == "UPDATE" ? "w-[50%]" : ""}
                             allowClear={true}
                             size="large"
@@ -90,7 +90,7 @@ export function SchedulingPopup(props) {
 
                         {operation == "UPDATE"
                             ? <DatePicker
-                                placeholder="Data"
+                                placeholder={t("scheduleCreateModal.date")}
                                 className="w-[50%]"
                                 format="DD/MM/YYYY"
                                 value={dayjs(localScheduling?.dataAtendimentoInicial)}
@@ -108,7 +108,7 @@ export function SchedulingPopup(props) {
                     </div>
                     <div className="flex flex-row gap-2 w-full">
                         <Input
-                            placeholder="Alunos"
+                            placeholder={t("scheduleCreateModal.namesStudents")}
                             size="large"
                             status={!isFieldValid.studentName ? "error" : undefined}
                             value={localScheduling?.nomeAlunos}
@@ -118,7 +118,7 @@ export function SchedulingPopup(props) {
                     </div>
                     <div className="flex flex-row gap-2 w-full">
                         <DatePicker
-                            placeholder="Horário Início"
+                            placeholder={t("scheduleCreateModal.startTime")}
                             className="w-[50%]"
                             picker="time"
                             format="HH:mm"
@@ -132,7 +132,7 @@ export function SchedulingPopup(props) {
                             })}
                         />
                         <DatePicker
-                            placeholder="Horário Fim"
+                            placeholder={t("scheduleCreateModal.endTime")}
                             className="w-[50%]"
                             picker="time"
                             format="HH:mm"
