@@ -144,14 +144,20 @@ export const resources = {
                 "cancel": "Cancel",
             },
             "chatTitle": "What is incident creation?",
-            "chatDesc": "The system specializes in creating incidents and captures details of requests, categorizing their severity and priority, and monitors the entire resolution process, including assignment of specialized technicians and transparent communication with users to the Technical Pedagogical Coordination sector of the Instituto Federal Campus São Paulo (CTP) It is a tool that allows users to create incidents related to problems such as: student organization, educational conflicts and psychological problems that directly affect the study - such as anxiety due to activities, deadlines, etc. Do it a request for support related to these processes and wait until it is resolved. This solution aims to speed up the resolution of problems, guaranteeing the operational efficiency of the organization.",
-            "calendarTitle": "Keep track of your emotions log!",
-            "calendarDesc": "The Emotions Calendar is a tool that combines a traditional calendar with a daily record of the emotions you feel. Each day has a space to describe your emotions, allowing you to identify patterns over time. This helps with self-reflection, self-care, and understanding your emotional health. It's a practical way to monitor and process your emotions throughout the month.",
+            "chatDesc": {
+                "one": "The chat records incidents, collecting academic information and requesting details about the problem faced. After recording the incident, a specialized technician from the Technical Pedagogical Coordination (CTP) of the Federal Institute Campus São Paulo will get in touch, communicating transparently throughout the process, resolution, and finalization of the issue.",
+                "two": "The issues addressed may be related to student organization, conflicts with teachers or peers, and psychological problems directly affecting studies and academic life.",
+                "three": "You can submit a request to receive support related to these issues and await contact from a CTP technician via email. This solution aims to expedite problem resolution and ensure organizational operational efficiency."
+            },
+            "calendarDesc": {
+                "one": "Meet the Emotion Calendar: a tool that combines a traditional calendar with daily recording of the emotions you feel! By marking your emotions every day, you can identify patterns over time, better monitor and process your emotions and emotional health throughout the month.",
+                "two": "In general, this practice of recording emotions and keeping an emotional diary has been associated with benefits for mental health, such as the development of self-reflection and emotional self-awareness skills."
+            },
             "tooltipTae": {
                 "createPost": "Create Post",
                 "listIncident": "List of Incident",
                 "scheduleRoom": "Schedule Room",
-                "manageUsers": "User management",
+                "manageUsers": "User Management",
             },
             "incidentTypes": {
                 "CAN": "Canceled",
@@ -178,7 +184,7 @@ export const resources = {
             "topicsCovered": "Topics Covered",
             "incidentsFound": "Incidents Found",
             "incidentDetails": "Incident Details",
-            "studentTnformation": "Student Information",
+            "studentInformation": "Student Information",
             "incidentInformation": "Incident Information",
             "screening": "Screening",
             "creationDate": "Creation Date",
@@ -186,7 +192,24 @@ export const resources = {
             "manageUsers": "These are the user registrations and roles.",
             "roles": "Roles",
             "initIncident":"Start incident creation",
-            "begin":"Begin"
+            "begin":"Begin",
+            "registrationDate": "Registration Date",
+            "scheduleDetailsTitle": "List of appointments for the day",
+            "scheduleDetailsDescription": "These are the room schedules for student attendance.",
+            "scheduleTable": {
+                "technician": "Technician",
+                "students": "Students",
+                "createdBy": "Created By",
+                "serviceHours": "Service Hours"
+            },
+            "scheduleCreateModal": {
+                "techniciansName": "Technician's Name",
+                "namesStudents": "Names of Students",
+                "date": "Date",
+                "startTime": "Start Time",
+                "endTime": "End Time"
+            },
+            "createSchedule": "Create Schedule"
         }
     },
     pt: {
@@ -334,14 +357,21 @@ export const resources = {
                 "cancel": "Cancelar",
             },
             "chatTitle": "O que é a criação de incidentes?",
-            "chatDesc": "O sistema é especializado em criar incidentes e captura detalhes das solicitações, categorizando sua gravidade e prioridade, e acompanha todo o processo de resolução, incluindo atribuição de técnicos especializados e comunicação transparente com os usuários para o setor da Coordenadoria Técnico Pedagógica do Instituto Federal Campus São Paulo (CTP). Ele é uma ferramenta que permite aos usuários criar incidentes relacionados à problemas como: organização estudantil, conflitos educacionais e problemas psicológicos que afetem diretamente o estudo - como ansiedade por conta das atividades, do prazo de entrega,  etc. Faça uma solicitação para ter um suporte relacionado a estes processos e aguarde até a sua resolução. Essa solução visa agilizar a resolução de problemas, garantindo a eficiência operacional da organização.",
+            "chatDesc": {
+                "one": "O chat registra incidentes, coletando informações acadêmicas e solicitando detalhes do problema enfrentado. Após registrar o incidente, um técnico especializado da Coordenadoria Técnico Pedagógica (CTP) do Instituto Federal Campus São Paulo entrará em contato, se comunicando de forma transparente durante o processo, resolução e finalização do problema.",
+                "two": "Os problemas abordados podem ser relacionados à organização estudantil, conflitos com professores ou colegas e problemas psicológicos que afetem diretamente os estudos e a vida acadêmica.",
+                "three": "Você pode fazer uma solicitação para receber suporte relacionado a esses problemas e aguardar o contato de um técnico da CTP via e-mail. Essa solução visa acelerar a resolução de problemas e garantir a eficiência operacional da organização."
+            },
             "calendarTitle": "Acompanhe seu registro de emoções!",
-            "calendarDesc": "O Calendário de Emoções é uma ferramenta que combina um calendário tradicional com o registro diário das emoções que você sente. Cada dia tem um espaço para descrever suas emoções, permitindo a identificação de padrões ao longo do tempo. Isso auxilia na autorreflexão, no autocuidado e na compreensão da sua saúde emocional. É uma maneira prática de monitorar e processar suas emoções ao longo do mês.",
+            "calendarDesc": {
+                "one": "Conheça o Calendário de Emoções: ferramenta que combina um calendário tradicional com o registro diário das emoções que você sente! Marcando suas emoções a cada dia, é possível identificar padrões ao longo do tempo, monitorar e processar melhor suas emoções e saúde emocional ao longo do mês.",
+                "two": "Em geral, essa prática de registrar emoções e manter um diário emocional tem sido associada a benefícios para a saúde mental, como o desenvolvimento de habilidades de autorreflexão e autoconsciência emocional."
+            },
             "tooltipTae": {
                 "createPost": "Criar Postagens",
                 "listIncident": "Lista de incidentes",
                 "scheduleRoom": "Agendar Sala",
-                "manageUsers": "Gerenciamento de usuários",
+                "manageUsers": "Gerenciamento de Usuários",
             },
             "incidentTypes": {
                 "CAN": "Cancelado",
@@ -376,7 +406,24 @@ export const resources = {
             "manageUsers": "Estes são os cadastros e perfis dos usuários.",
             "roles": "Perfis",
             "initIncident":"Iniciar criação de incidente",
-            "begin":"Começar"
+            "begin":"Começar",
+            "registrationDate": "Data de Cadastro",
+            "scheduleDetailsTitle": "Lista de Agendamentos para o dia",
+            "scheduleDetailsDescription": "Estes são os agendamentos de sala para atendimento dos alunos.",
+            "scheduleTable": {
+                "technician": "Técnico",
+                "students": "Aluno(s)",
+                "createdBy": "Criado Por",
+                "serviceHours": "Horário de Atendimento"
+            },
+            "scheduleCreateModal": {
+                "techniciansName": "Nome do Técnico",
+                "namesStudents": "Nomes dos Aluno(s)",
+                "date": "Data",
+                "startTime": "Horário Início",
+                "endTime": "Horário Fim"
+            },
+            "createSchedule": "Criar Agendamento"
         }
     }
 }

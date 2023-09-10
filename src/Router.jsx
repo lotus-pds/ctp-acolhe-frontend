@@ -42,7 +42,6 @@ export function Router(props) {
 
     return (
         <Routes>
-            
             <Route exact path="/" element={<OpenRoute><Home /></OpenRoute>} />
             <Route path="/acesso" element={<OpenRoute><Signin /></OpenRoute>} />
             <Route path="/cadastro" element={<OpenRoute><Subscribe courses={courses}/></OpenRoute>} />

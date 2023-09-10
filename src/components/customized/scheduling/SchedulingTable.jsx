@@ -7,17 +7,19 @@ import {
   Tooltip,
   Typography
 } from "@material-tailwind/react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { getTimeH } from "../../../common/general";
 import { GnButton } from "../../common/button/GnButton";
 
-const TABLE_HEAD = ["Técnico", "Aluno(s)", "Criado Por", "Horário do Atendimento", ""];
-
 export const SchedulingTable = (props) => {
   const { dateScheduling, schedulings, setScheduling, setWarningOpen, setPopup } = props;
-
+  
+  const { t } = useTranslation()
   const navigate = useNavigate();
-
+  
+  const TABLE_HEAD = [t("scheduleTable.technician"), t("scheduleTable.students"), t("scheduleTable.createdBy"), t("scheduleTable.serviceHours"), ""];
+  
   return (
     <div className="flex flex-col items-center">
       <Card className="h-full w-[90%] mt-8 dark:bg-gray-800">
@@ -28,7 +30,7 @@ export const SchedulingTable = (props) => {
                 className="h-10 w-8 inline cursor-pointer dark:text-gray-200 font-normal" onClick={() => navigate('/adm/agendamento')}
               />
               <Typography variant="h2" color="blue-gray" className="font-normal font-mouse sm:text-4xl text-2xl dark:text-gray-200">
-                Lista de agendamentos para o dia {dateScheduling}
+                {t("scheduleDetailsTitle")} {dateScheduling}
               </Typography>
             </div>
             <GnButton
@@ -44,7 +46,7 @@ export const SchedulingTable = (props) => {
           <hr />
           <div className="mt-4">
             <Typography color="gray" className="mt-2 mb-2 ml-14 dark:text-gray-200 font-normal sm:text-md text-md">
-              Estes são os agendamentos de sala para atendimento dos alunos.
+              {t("scheduleDetailsDescription")}
             </Typography>
           </div>
         </CardBody>

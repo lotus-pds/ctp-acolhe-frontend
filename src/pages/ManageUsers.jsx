@@ -87,7 +87,6 @@ export function ManageUsers() {
                         }))}
                         localGetUsers={localGetUsers}
                     />
-
                 </CardBody>
             </Card>
         </div>
