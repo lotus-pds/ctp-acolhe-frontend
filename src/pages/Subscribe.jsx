@@ -132,7 +132,7 @@ export function Subscribe(props) {
             <SecondHeader />
 
             <div
-                className="w-full h-full bg-none grid sm:grid-cols-2 grid-cols-1 items-center justify-center mb-12"
+                className="w-full h-full bg-none grid lg:grid-cols-2 grid-cols-1 items-center justify-center mb-12 mt-8 md:mt-0"
             >
 
                 <div
@@ -206,7 +206,7 @@ export function Subscribe(props) {
                     className="flex items-center justify-center"
                 >
                     <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572563443531856/subscribe-img.png?width=480&height=480" alt=""
-                        className="sm:w-[530px] w-[360px] sm:mr-[100px] sm:mt-0 mt-[120px]"
+                        className="sm:w-[530px] w-[360px] sm:mr-[100px] sm:mt-0 mt-[120px] hidden lg:inline-block"
                     />
                 </div>
             </div>

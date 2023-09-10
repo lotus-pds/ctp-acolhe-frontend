@@ -55,13 +55,13 @@ export function Signin(props) {
         <div>
             <SecondHeader />
             <div
-                className="w-full h-full bg-none grid sm:grid-cols-2 grid-cols-1 items-center justify-center"
+                className="w-full h-full bg-none grid lg:grid-cols-2 grid-cols-1 items-center justify-center mt-20 lg:mt-0"
             >
                 <div
                     className="flex items-center justify-center"
                 >
                     <img src="https://media.discordapp.net/attachments/1077345452694970438/1099732041794326698/Component_26.png?width=480&height=480" alt=""
-                        className="sm:w-[480px] w-[350px] sm:ml-[100px]"
+                        className="sm:w-[480px] w-[350px] sm:ml-[100px] hidden lg:inline-block"
                     />
                 </div>
                 <div
@@ -69,7 +69,7 @@ export function Signin(props) {
                 >
                     <Card color="transparent" shadow={false}
                         className="w-[351px] h-full bg-gray-100 dark:bg-gray-800
-                            flex - items-center justify-evenly p-6 shadow-lg sm:mr-[100px] sm:ml-0 mr-8 ml-8 sm:mb-0 mb-12
+                            flex - items-center justify-evenly p-6 shadow-lg sm:mr-[100px] lg:ml-0 mr-8 ml-8 lg:mb-0 mb-12
                             dark:shadow-xl
                         "
                     >
