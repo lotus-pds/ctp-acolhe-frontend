@@ -62,7 +62,7 @@ export function CreateIncident() {
             <div className="sm:mt-[-50px] mb-[-60px] z-20">
                 <a href="#chat" className="flex items-center justify-center">
                     <img className="w-[180px] sm:w-[300px]" src="https://media.discordapp.net/attachments/1077345452694970438/1138256400267628544/Component_63.png" alt="" />
-                    <Typography className="absolute font-mouse text-3xl dark:text-grey-900">
+                    <Typography className="absolute font-mouse text-3xl dark:text-gray-900">
                         {t("begin")}
                     </Typography>
                 </a>
