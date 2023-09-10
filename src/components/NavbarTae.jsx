@@ -9,7 +9,7 @@ export function NavbarTae(){
     return(
         <div>
             <Navbar className="bg-gray-100 dark:bg-gray-800 border-none sm:w-[350px] w-[255px] h-[45px] sm:h-[50px] flex items-center justify-between sm:relative fixed
-            bottom-0 left-7 right-7 sm:m-0 mb-3 ml-2 mr-2">
+            bottom-0 left-5 right-5 sm:m-0 mb-3 ml-2 mr-2">
                     <Tooltip 
                         content={
                             <div className="w-70">

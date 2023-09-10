@@ -298,9 +298,9 @@ export function Chat() {
     }, [incident?.perguntas]);
 
     return (
-        <div className="flex flex-col p-6 gap-7 justify-center items-center w-full max-h-full m-auto overflow-y-scroll overflow-x-hidden sm:mt-0 mt-8">
+        <div className="flex flex-col p-6 gap-7 justify-center mt-8 items-center w-full max-h-[550px] m-auto overflow-y-scroll">
             {...messages}
-            <div ref={ref} className="overflow-x-hidden" />
+            <div ref={ref} />
         </div>
     )
 }

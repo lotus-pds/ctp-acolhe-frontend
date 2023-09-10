@@ -48,8 +48,8 @@ export function PicturePopup(props) {
                 />
 
                 <Profile
-                    src='https://cdn.discordapp.com/attachments/1077345452694970438/1150516052439093370/Mask_group_21.png'
-                    onClick={() => setSelected('https://cdn.discordapp.com/attachments/1077345452694970438/1150516052439093370/Mask_group_21.png')}
+                    src='https://media.discordapp.net/attachments/1077345452694970438/1107082558170202232/Mask_group_7.png'
+                    onClick={() => setSelected('https://media.discordapp.net/attachments/1077345452694970438/1107082558170202232/Mask_group_7.png')}
                     alt='Avatar2'
                     selected={selected}
                 />

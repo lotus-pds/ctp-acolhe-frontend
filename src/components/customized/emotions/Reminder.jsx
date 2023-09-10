@@ -24,7 +24,7 @@ export function Reminder(props) {
                 </div>
 
                 <div className="bg-pink-200 h-[240px] w-[240px] p-5 flex flex-col items-center gap-5 justify-center absolute">
-                    <Typography variant="h4" className="font-mouse font-normal text-gray-900">
+                    <Typography variant="h4" className="font-mouse font-normal">
                         {t("emotionReminder.notYet")}
                     </Typography>
 

@@ -17,9 +17,8 @@ export function ChatTextArea(props) {
                 <div className="flex flex-col gap-2 relative ">
                     <div className="bg-gray shadow-xl max-w-[340px] mr-2 rounded-t-[2.5rem] rounded-bl-[2.5rem] flex flex-col items-center justify-center pl-4 pt-3 pb-3 pr-5 relative m-auto">
                         <Textarea
-                            color="blue"
                             label={t("message")}
-                            className="w-[290px] h-[150px] dark:text-gray-200"
+                            className="w-[290px] h-[150px]"
                             value={content}
                             onChange={e => {
                                 if (e.target.value.length <= maxLength) {

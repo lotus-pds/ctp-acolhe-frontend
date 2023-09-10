@@ -18,7 +18,7 @@ export function CommonInput(props) {
             success={success}
             error={error}
             disabled={disabled}
-            className={"text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400 flex items-center m-auto" + (className || '')}
+            className={"text-gray-900 dark:text-gray-200 disabled:dark:bg-gray-900 disabled:dark:text-gray-400 flex items-center " + (className || '')}
             size={size}
             required={required}
             type={type}

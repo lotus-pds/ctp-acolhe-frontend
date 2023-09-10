@@ -20,15 +20,14 @@ export function IncidentTypeCheckbox(props) {
 
                 <div className="flex flex-col gap-2 relative justify-center">
                     <div className="bg-white dark:bg-gray-900 shadow-lg max-w-[340px] ml-2 rounded-t-[2.5rem] rounded-br-[2.5rem] flex flex-col items-center justify-start pl-5 pt-3 pb-3 pr-4 relative m-auto">
-                        <Card className="shadow-none dark:bg-gray-900">
+                        <Card className="shadow-none">
                             {list.map(element => {
                                 return (
-                                    <div className="flex flex-row items-start gap-2 dark:bg-gray-900">
+                                    <div className="flex flex-row items-start gap-2">
                                         <Checkbox
                                             id={element?.id}
-                                            color="blue"
                                             ripple={false}
-                                            className="hover:before:opacity-0 "
+                                            className="hover:before:opacity-0"
                                             containerProps={{
                                                 className: "p-0",
                                             }}
@@ -41,7 +40,7 @@ export function IncidentTypeCheckbox(props) {
                                                 }
                                             }}
                                         />
-                                        <Typography color="blue-gray" className="font-medium dark:text-gray-200">
+                                        <Typography color="blue-gray" className="font-medium">
                                             {element?.tipo}
                                         </Typography>
                                     </div>

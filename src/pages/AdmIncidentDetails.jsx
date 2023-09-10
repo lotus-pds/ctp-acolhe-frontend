@@ -62,22 +62,22 @@ export function AdmIncidentDetails(props) {
 
             <Card className="h-full w-[90%] mt-8 mb-6 dark:bg-gray-800">
                 <CardHeader floated={false} shadow={false} className="my-5 mx-10 dark:bg-gray-800 dark:text-gray-200 font-normal" >
-                    <div className="flex items-center gap-5 mb-4">
+                    <div className="flex gap-5 mb-4">
                         <ChevronLeftIcon
-                            className="sm:h-10 sm:w-8 h-6 inline cursor-pointer" onClick={() => navigate('/adm/incidente')}
+                            className="h-10 w-8 inline cursor-pointer" onClick={() => navigate('/adm/incidente')}
                         />
                         <Typography variant="h2" color="blue-gray" className="dark:text-gray-200 font-normal font-mouse sm:text-4xl text-2xl">
                             {t("incidentDetails")}
                         </Typography>
                     </div>
                     <hr />
-                    <div className="my-3 sm:mx-14">
-                        <Typography variant="h4" color="blue-gray" className="dark:text-gray-200 font-normal sm:text-xl text-lg flex gap-4 py-2 pr-2">
+                    <div className="my-3 mx-14">
+                        <Typography variant="h4" color="blue-gray" className="dark:text-gray-200 font-normal flex gap-4 py-2 pr-2">
                             <UserIcon className="sm:w-6 w-5 inline" />
                             {t("studentInformation")}
                         </Typography>
 
-                        <span className="sm:grid sm:grid-cols-12 flex flex-col gap-y-5 my-4 sm:ml-10">
+                        <span className="grid grid-cols-12 gap-y-5 my-4 ml-10">
                             <span className="col-span-4">
                                 <Typography variant="h6">{t("name")}</Typography>
                                 <Typography>{incident?.usuarioCopia?.nome}</Typography>
@@ -115,13 +115,13 @@ export function AdmIncidentDetails(props) {
                         </span>
                     </div>
                     <hr />
-                    <div className="my-3 sm:mx-14">
-                        <Typography variant="h4" color="blue-gray" className="dark:text-gray-200 font-normal sm:text-2xl text-xl flex gap-4 py-2 pr-2">
+                    <div className="my-3 mx-14">
+                        <Typography variant="h4" color="blue-gray" className="dark:text-gray-200 font-normal flex gap-4 py-2 pr-2">
                             <ClipboardDocumentListIcon className="sm:w-6 w-5 inline" />
                             {t("incidentInformation")}
                         </Typography>
 
-                        <span className="sm:grid sm:grid-cols-12 flex flex-col gap-y-5 my-4 sm:ml-10">
+                        <span className="grid grid-cols-12 gap-y-5 my-4 ml-10">
                             <span className="col-span-6">
                                 <Typography variant="h6">{t("subject")}</Typography>
                                 <Typography>{incident?.assunto}</Typography>
@@ -149,16 +149,15 @@ export function AdmIncidentDetails(props) {
                         </span>
                     </div>
                     <hr />
-                    <div className="my-3 sm:mx-14">
-                        <Typography variant="h4" color="blue-gray" className="dark:text-gray-200 font-normal sm:text-2xl text-xl flex gap-4 py-2 pr-2">
+                    <div className="my-3 mx-14">
+                        <Typography variant="h4" color="blue-gray" className="dark:text-gray-200 font-normal flex gap-4 py-2 pr-2">
                             <ChatBubbleLeftRightIcon className="sm:w-6 w-5 inline" />
                             {t("screening")}
                         </Typography>
-                        <Typography variant="small" className="sm:ml-0 -ml-8">
-                            {getQuestionsAndAnswers(incident?.perguntas)}
-                        </Typography>
+
+                        {getQuestionsAndAnswers(incident?.perguntas)}
                     </div>
-                    <div className="flex sm:justify-end justify-start mb-6 sm:mr-5">
+                    <div className="flex justify-end mb-6 mr-5">
                         {(incident?.status?.idStatus == "PEN")
                             ? <GnButton
                                 color="BLUE"

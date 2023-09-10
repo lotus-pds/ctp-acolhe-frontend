@@ -93,7 +93,7 @@ export function IncidentTable(props) {
                             />
                             <GnButton
                                 color="BLUE"
-                                className="w-[25%] flex items-center justify-center"
+                                className="w-[25%]"
                                 onClick={() => search()}
                             >
                                 {t("search")}
@@ -102,7 +102,7 @@ export function IncidentTable(props) {
                     </div>
                 </CardBody>
             </Card>
-            <Card className="h-full w-[90%] mb-8 dark:bg-gray-800 ">
+            <Card className="h-full w-[90%] mb-8 dark:bg-gray-800">
                 <CardBody className="px-0">
                     <Typography variant="h4" color="blue-gray" className="ml-5 dark:text-gray-200 mb-5">
                         {totalAmount} {t("incidentsFound")}

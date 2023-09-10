@@ -19,7 +19,7 @@ export function CreateIncident() {
                         color="BLUE"
                         onClick={() => setStep(step + 1)}
                     >
-                        {t("initIncident")}
+                        Iniciar criação de incidente
                     </GnButton>
                 );
             case 2:
@@ -32,7 +32,7 @@ export function CreateIncident() {
                         color="BLUE"
                         onClick={() => setStep(step + 1)}
                     >
-                        {t("initIncident")}
+                        Iniciar criação de incidente
                     </GnButton>
                 );
         }
@@ -61,13 +61,10 @@ export function CreateIncident() {
             </div>
             <div className="sm:mt-[-50px] mb-[-60px] z-20">
                 <a href="#chat" className="flex items-center justify-center">
-                    <img className="w-[180px] sm:w-[300px]" src="https://media.discordapp.net/attachments/1077345452694970438/1138256400267628544/Component_63.png" alt="" />
-                    <Typography className="absolute font-mouse text-3xl">
-                        {t("begin")}
-                    </Typography>
+                    <img className="w-[180px] sm:w-[300px]" src="https://media.discordapp.net/attachments/1077345452694970438/1138258126919958528/Component_64.png" alt="" />
                 </a>
             </div>
-            <div id="chat" className="flex flex-col sm:p-6 gap-7 justify-center mt-8 items-center w-[90%] sm:h-[550px] h-[620px] bg-gray-100 dark:bg-gray-800 rounded drop-shadow-md mb-9 border border-solid border-black dark:border-white overflow-x-hidden">
+            <div id="chat" className="flex flex-col p-6 gap-7 justify-center mt-8 items-center w-[90%] h-[500px] bg-gray-100 dark:bg-gray-800 rounded drop-shadow-md mb-9 border border-solid border-black dark:border-white">
                 {getCompStep()}
             </div>
         </div>

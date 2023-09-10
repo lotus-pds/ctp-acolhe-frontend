@@ -10,7 +10,7 @@ export function Header () {
     
     
     return (
-        <header className="w-[100%] sm:py-3 p-1 sm:mt-2 mt-3 grid grid-cols-3 items-center z-50 relative">
+        <header className="w-[100%] sm:py-3 grid grid-cols-3 items-center z-50 relative">
             <div 
                 className="flex items-center justify-start sm:ml-12 ml-[2px] p-1" 
             >

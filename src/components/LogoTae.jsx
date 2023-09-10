@@ -20,7 +20,7 @@ export function LogoTae()
     }
     return (
         <Link
-            to={'/adm/post'}
+            to={'/post-tae'}
         >
             <img 
                 src="https://media.discordapp.net/attachments/1077345452694970438/1099690236637892628/Logo.png?width=1020&height=397"

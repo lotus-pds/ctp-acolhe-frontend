@@ -31,12 +31,12 @@ export function CardIncident(props) {
   const temas = tipos.flatMap((t) => [t.tipo]).join(', ');
 
   return (
-    <Card color="transparent" className="w-full sm:max-w-[47%] max-w-[90%] inline-block dark:bg-gray-900 dark:border-gray-600 dark:shadow dark:hover:bg-gray-700 transition-colors border-2 hover:bg-gray-50 cursor-pointer m-auto sm:px-8 sm:pt-2 sm:pb-3 p-5 ml-4 mb-4" onClick={onClick}>
+    <Card color="transparent" className="w-full max-w-[47%] inline-block dark:bg-gray-900 dark:border-gray-600 dark:shadow dark:hover:bg-gray-700 transition-colors border-2 hover:bg-gray-50 cursor-pointer px-8 pt-2 pb-3 ml-4 mb-4" onClick={onClick}>
       <CardHeader
         color="transparent"
         floated={false}
         shadow={false}
-        className="mx-0 flex items-center sm:flex-row flex-col gap-4 pt-0 mb-4"
+        className="mx-0 flex items-center gap-4 pt-0 mb-4"
       >
         <Avatar
           size="lg"
@@ -48,12 +48,12 @@ export function CardIncident(props) {
           <div className="flex items-center justify-between">
             <Typography variant="h5" color="blue-gray" className="dark:text-gray-200">{assunto}</Typography>
           </div>
-          <Typography color="blue-gray" className="dark:text-gray-200 ">{nome} <EnvelopeIcon className="h-8 w-6 inline ml-3 mr-1 mb-1" /> {email}</Typography>
+          <Typography color="blue-gray" className="dark:text-gray-200">{nome} <EnvelopeIcon className="h-8 w-6 inline ml-3 mr-1 mb-1" /> {email}</Typography>
         </div>
       </CardHeader>
       <CardBody className="p-0">
         <hr />
-        <span className="grid sm:grid-cols-5 grid-cols-1 gap-y-2 my-4">
+        <span className="grid grid-cols-5 gap-y-2 my-4">
           <span className={language == "pt" ? "col-span-1" : "col-span-2"}>
             <Typography variant="h6" className="dark:text-gray-100">{t("registration")}</Typography>
             <Typography className="dark:text-gray-300">{prontuario}</Typography>
