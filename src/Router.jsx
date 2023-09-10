@@ -75,6 +75,7 @@ export function Router(props) {
              */}
             <Route path="/cadastro/verificacao/:token" element={<EmailConfirmation />} />
             <Route path="/adm/incidente" element={<PrivateRoute user={['Admin']}><Incidents /></PrivateRoute>} />
+            <Route path="/adm/posts" element={<PrivateRoute user={['Admin']}><PostTae/></PrivateRoute>} />
             <Route path="/adm/incidente/:id" element={<PrivateRoute user={['Admin']}><AdmIncidentDetails /></PrivateRoute>} />
             <Route path="/404" element={<NotFound/>}/>
         </Routes>

@@ -43,7 +43,7 @@ export const GnPopup = (props) => {
             </DialogHeader>
 
             {text != undefined
-                ? <DialogBody className='text-center'>
+                ? <DialogBody className='text-center dark:text-gray-200'>
                     {text}
                 </DialogBody>
                 : undefined

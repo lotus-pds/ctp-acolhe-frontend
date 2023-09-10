@@ -54,6 +54,7 @@ export function Home() {
                                     <GnButton
                                         color="RED"
                                         onClick={() => navigate('/cadastro')}
+                                        className="z-40"
                                     >
                                         {t("signUp")}
                                     </GnButton>

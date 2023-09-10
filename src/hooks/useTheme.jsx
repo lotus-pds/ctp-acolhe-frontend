@@ -19,18 +19,22 @@ export default function ThemeContextProvider({ children }) {
 
     const tokenAntd = () => {
         return theme === "dark" ? {
-            colorTextPlaceholder: '#A4A4A4',
-            colorBgContainer: '#282828',
-        } : {};
+            colorTextPlaceholder: '#85959E',
+            colorBgContainer: '#111B21',
+        } : {
+           
+        };
     };
 
     const componentsAntd = () => {
         return theme === "dark" ? {
             Calendar: {
-                colorBgContainer: "#424242",
-                colorSplit: "#A4A4A4"
+                colorBgContainer: "#374045",
+                colorSplit: "#85959E"
             }
-        } : {};
+        } : {
+            
+        };
     };
 
     return (

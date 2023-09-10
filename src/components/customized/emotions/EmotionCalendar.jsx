@@ -6,6 +6,8 @@ import 'dayjs/locale/pt-br';
 import 'dayjs/locale/en';
 import localePt from 'antd/es/date-picker/locale/pt_BR';
 import localeEn from 'antd/es/date-picker/locale/en_US';
+import { GnButton } from '../../common/button/GnButton';
+import { Tooltip, Typography } from '@material-tailwind/react';
 
 export const EmotionCalendar = (props) => {
     const { emotions, localGetEmotion } = props;
@@ -20,13 +22,34 @@ export const EmotionCalendar = (props) => {
 
         if (emotionData != undefined) {
             return (
-                <div className="flex flex-row items-center justify-center">
-                    <img className="h-[70px] mr-[10px]" src={emotionData?.img} />
+                <div className="flex flex-row items-center justify-center overflow-hidden">
+                    <img className="h-[70px] mr-[10px] sm:block hidden" src={emotionData?.img} />
                     <GnChip
                         value={emotionData?.desc}
                         color={emotionData?.color}
-                        className="text-[0.7em]"
+                        className="text-[0.7em] sm:block hidden"
                     />
+                    <Tooltip
+                        content={
+                            <div className="w-70">
+                                <Typography
+                                    variant="small"
+                                    color="white"
+                                    className="font-normal opacity-80"
+                                >
+                                    {emotionData?.desc}<br />
+                                </Typography>
+                            </div>
+                        }
+                    >
+                        <GnButton
+                            fullWidth={true}
+                            size="sm"
+                            color={emotionData?.color}
+                            className="h-8 block sm:hidden scale-50 rounded-full"
+                        />
+                    </Tooltip>
+                    
                 </div>
             );
 

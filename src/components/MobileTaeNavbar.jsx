@@ -2,14 +2,14 @@ import { Navbar, Tooltip, Typography } from "@material-tailwind/react";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-export function NavbarTae(){
+export function MobileTaeNavbar(){
 
     const {t} = useTranslation()
 
     return(
-        <div>
-            <Navbar className="bg-gray-100 dark:bg-gray-800 border-none sm:w-[350px] w-[255px] h-[45px] sm:h-[50px] flex items-center justify-between sm:relative fixed
-            bottom-0 left-7 right-7 sm:m-0 mb-3 ml-2 mr-2">
+        <div className="w-full flex items-center justify-center">
+            <Navbar className="bg-gray-100 dark:bg-gray-800 border-none sm:w-[350px] w-[255px] h-[45px] sm:h-[50px] flex items-center justify-between sm:relative fixed z-50
+            bottom-4">
                     <Tooltip 
                         content={
                             <div className="w-70">

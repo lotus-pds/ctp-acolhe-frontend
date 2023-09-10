@@ -14,7 +14,7 @@ export function Footer(){
             <footer
                 className="
                     w-full
-                    absolute
+                    fixed
                     bottom-0 left-0
                     flex sm:flex-row flex-col items-center justify-around
                     bg-gradient-to-r from-red-100  to-red-300
