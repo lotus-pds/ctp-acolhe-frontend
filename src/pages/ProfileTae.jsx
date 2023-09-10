@@ -117,10 +117,13 @@ export function ProfileTae(props) {
                     </div>
 
                     <div className="w-full flex flex-col items-center sm:p-0 p-2 justify-evenly h-full">
-                        <div className="w-[95%] bg-gray-200 dark:bg-gray-900 h-7"></div>
-                        <div className="w-[75%] ml-9 bg-gray-200 dark:bg-gray-900 h-7"></div>
-                        <div className="w-[75%] ml-9 bg-gray-200 dark:bg-gray-900 h-7"></div>
-                        <div className="w-[95%] bg-gray-200 dark:bg-gray-900 h-7"></div>
+                        <div className="hidden">
+                            <div className="w-[95%] bg-gray-200 dark:bg-gray-900 h-7"></div>
+                            <div className="w-[75%] ml-9 bg-gray-200 dark:bg-gray-900 h-7"></div>
+                            <div className="w-[75%] ml-9 bg-gray-200 dark:bg-gray-900 h-7"></div>
+                            <div className="w-[95%] bg-gray-200 dark:bg-gray-900 h-7"></div>
+                        </div>
+                        
 
                         <GnButton
                             onClick={async () => {

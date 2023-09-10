@@ -184,7 +184,9 @@ export const resources = {
             "creationDate": "Creation Date",
             "notInformed": "Not informed.",
             "manageUsers": "These are the user registrations and roles.",
-            "roles": "Roles"
+            "roles": "Roles",
+            "initIncident":"Start incident creation",
+            "begin":"Begin"
         }
     },
     pt: {
@@ -372,7 +374,9 @@ export const resources = {
             "creationDate": "Data de Criação",
             "notInformed": "Não informado.",
             "manageUsers": "Estes são os cadastros e perfis dos usuários.",
-            "roles": "Perfis"
+            "roles": "Perfis",
+            "initIncident":"Iniciar criação de incidente",
+            "begin":"Começar"
         }
     }
 }

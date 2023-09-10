@@ -2,14 +2,13 @@ import { Navbar, Tooltip, Typography } from "@material-tailwind/react";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-export function NavbarTae(){
+export function MobileUserNavbar(){
 
     const {t} = useTranslation()
 
     return(
-        <div>
-            <Navbar className="bg-gray-100 dark:bg-gray-800 border-none sm:w-[350px] w-[255px] h-[45px] sm:h-[50px] flex items-center justify-between sm:relative fixed
-            bottom-0 left-7 right-7 sm:m-0 mb-3 ml-2 mr-2">
+        <div className="w-full flex items-center justify-center">
+            <Navbar className="bg-gray-100 dark:bg-gray-800 border-none sm:w-[350px] w-[255px] h-[45px] sm:h-[50px] flex items-center justify-between sm:relative fixed z-50 bottom-4">
                     <Tooltip 
                         content={
                             <div className="w-70">
@@ -24,7 +23,7 @@ export function NavbarTae(){
                         }
                     >
                         <NavLink  
-                        to={"/adm/post"}>
+                        to={"/posts"}>
                             <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930264821485649/Component_58.png" alt="" 
                             className="sm:w-7 w-6"
                             />
@@ -38,15 +37,15 @@ export function NavbarTae(){
                                 color="white"
                                 className="font-normal opacity-80"
                             >
-                                {t("tooltipTae.createPost")}<br />
+                                {t("tooltipHeader.myCalendar")}<br />
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/adm/post/criacao"}
+                        <NavLink to={"/calendario"}
                              
                             
                         >   
-                           <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930336569241770/Component_59.png" alt="" 
+                           <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930264565612575/Component_10.png" alt="" 
                            className="sm:w-8 w-7"
                            /> 
                             
@@ -58,12 +57,12 @@ export function NavbarTae(){
                                 color="white"
                                 className="font-normal opacity-80"
                             >
-                                {t("tooltipTae.listIncident")}<br />
+                                {t("tooltipHeader.createIncident")}<br />
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/adm/incidente"} >
-                            <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930335579389993/Component_62.png" alt="" className="sm:w-10 w-8"/>
+                        <NavLink to={"/incidente/criacao"} >
+                            <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930264129425530/Component_11_1.png" alt="" className="sm:w-10 w-8"/>
                         </NavLink>
                     </Tooltip><Tooltip content={
                         <div className="w-70">
@@ -72,34 +71,16 @@ export function NavbarTae(){
                                 color="white"
                                 className="font-normal opacity-80"
                             >
-                                {t("tooltipTae.scheduleRoom")}<br />
+                                {t("tooltipHeader.myIncident")}<br />
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/adm/agendamento"} >
-                            <img src="https://cdn.discordapp.com/attachments/1077345452694970438/1135645138429935777/Component_37.png" 
+                        <NavLink to={"/incidente"} >
+                            <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930264322359406/Component_9.png" 
                             className="sm:w-7 w-6"
                             alt="" />
                         </NavLink>
-                    </Tooltip>
-                    
-                    <Tooltip content={
-                        <div className="w-70">
-                            <Typography
-                                variant="small"
-                                color="white"
-                                className="font-normal opacity-80"
-                            >
-                                {t("tooltipTae.manageUsers")}<br />
-                            </Typography>
-                        </div>
-                    }>
-                        <NavLink to={"/adm/cadastro/gerenciamento"} >
-                            <img src="https://media.discordapp.net/attachments/1077345452694970438/1135645221955309678/Component_40.png" alt="" className="sm:w-7 w-6" />
-                        </NavLink>
-                    </Tooltip>
-
-                    <Tooltip content={
+                    </Tooltip><Tooltip content={
                         <div className="w-70">
                             <Typography
                                 variant="small"
@@ -110,7 +91,7 @@ export function NavbarTae(){
                             </Typography>
                         </div>
                     }>
-                        <NavLink to={"/adm/perfil"} >
+                        <NavLink to={"/perfil"} >
                             <img src="https://media.discordapp.net/attachments/1077345452694970438/1114930263869358222/Component_12_1.png" alt="" className="sm:w-7 w-6" />
                         </NavLink>
                     </Tooltip>
