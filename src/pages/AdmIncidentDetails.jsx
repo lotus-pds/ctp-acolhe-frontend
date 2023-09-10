@@ -74,7 +74,7 @@ export function AdmIncidentDetails(props) {
                     <div className="my-3 mx-14">
                         <Typography variant="h4" color="blue-gray" className="dark:text-gray-200 font-normal flex gap-4 py-2 pr-2">
                             <UserIcon className="sm:w-6 w-5 inline" />
-                            {t("studentTnformation")}
+                            {t("studentInformation")}
                         </Typography>
 
                         <span className="grid grid-cols-12 gap-y-5 my-4 ml-10">

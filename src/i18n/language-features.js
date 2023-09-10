@@ -151,7 +151,7 @@ export const resources = {
                 "createPost": "Create Post",
                 "listIncident": "List of Incident",
                 "scheduleRoom": "Schedule Room",
-                "manageUsers": "User management",
+                "manageUsers": "User Management",
             },
             "incidentTypes": {
                 "CAN": "Canceled",
@@ -178,13 +178,30 @@ export const resources = {
             "topicsCovered": "Topics Covered",
             "incidentsFound": "Incidents Found",
             "incidentDetails": "Incident Details",
-            "studentTnformation": "Student Information",
+            "studentInformation": "Student Information",
             "incidentInformation": "Incident Information",
             "screening": "Screening",
             "creationDate": "Creation Date",
             "notInformed": "Not informed.",
             "manageUsers": "These are the user registrations and roles.",
-            "roles": "Roles"
+            "roles": "Roles",
+            "registrationDate": "Registration Date",
+            "scheduleDetailsTitle": "List of appointments for the day",
+            "scheduleDetailsDescription": "These are the room schedules for student attendance.",
+            "scheduleTable": {
+                "technician": "Technician",
+                "students": "Students",
+                "createdBy": "Created By",
+                "serviceHours": "Service Hours"
+            },
+            "scheduleCreateModal": {
+                "techniciansName": "Technician's Name",
+                "namesStudents": "Names of Students",
+                "date": "Date",
+                "startTime": "Start Time",
+                "endTime": "End Time"
+            },
+            "createSchedule": "Create Schedule"
         }
     },
     pt: {
@@ -339,7 +356,7 @@ export const resources = {
                 "createPost": "Criar Postagens",
                 "listIncident": "Lista de incidentes",
                 "scheduleRoom": "Agendar Sala",
-                "manageUsers": "Gerenciamento de usuários",
+                "manageUsers": "Gerenciamento de Usuários",
             },
             "incidentTypes": {
                 "CAN": "Cancelado",
@@ -372,7 +389,24 @@ export const resources = {
             "creationDate": "Data de Criação",
             "notInformed": "Não informado.",
             "manageUsers": "Estes são os cadastros e perfis dos usuários.",
-            "roles": "Perfis"
+            "roles": "Perfis",
+            "registrationDate": "Data de Cadastro",
+            "scheduleDetailsTitle": "Lista de Agendamentos para o dia",
+            "scheduleDetailsDescription": "Estes são os agendamentos de sala para atendimento dos alunos.",
+            "scheduleTable": {
+                "technician": "Técnico",
+                "students": "Aluno(s)",
+                "createdBy": "Criado Por",
+                "serviceHours": "Horário de Atendimento"
+            },
+            "scheduleCreateModal": {
+                "techniciansName": "Nome do Técnico",
+                "namesStudents": "Nomes dos Aluno(s)",
+                "date": "Data",
+                "startTime": "Horário Início",
+                "endTime": "Horário Fim"
+            },
+            "createSchedule": "Criar Agendamento"
         }
     }
 }

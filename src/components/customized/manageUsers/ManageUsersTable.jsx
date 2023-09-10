@@ -21,9 +21,9 @@ export function ManageUsersTable(props) {
         localGetUsers();
     }
 
-    const { t } = useTranslation()
+    const { t } = useTranslation();
 
-    const TABLE_HEAD = [t("name"), t("email"), t("registration"), "Data de Cadastro", t("roles"), ""];
+    const TABLE_HEAD = [t("name"), t("email"), t("registration"), t("registrationDate"), t("roles"), ""];
 
     return (
         <table className=" mt-2 w-full min-w-max table-auto text-left">
