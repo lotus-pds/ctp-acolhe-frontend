@@ -41,8 +41,8 @@ export function CreateIncident() {
         <div className="flex flex-col items-center">
             <HeaderUser/>
             <div className="grid grid-cols-1 sm:grid-cols-12 justify-center align-center sm:m-7">
-                <div className="flex justify-center align-center col-span-4 sm:ml-40">
-                    <img className="w-[250px] sm:w-[400px]" src="https://media.discordapp.net/attachments/1077345452694970438/1138249185024557157/3780782_77881.png?width=480&height=480" alt="" />
+                <div className="flex justify-center align-center col-span-5 sm:ml-40">
+                    <img className="w-[250px] sm:w-[400px] object-contain" src="https://media.discordapp.net/attachments/1077345452694970438/1138249185024557157/3780782_77881.png?width=480&height=480" alt="" />
                 </div>
                 <div className="flex flex-col align-end justify-center gap-4 col-span-7 p-12">
                     <Typography variant="h2" className="font-mouse font-normal sm:text-4xl text-2xl mb-4" >
