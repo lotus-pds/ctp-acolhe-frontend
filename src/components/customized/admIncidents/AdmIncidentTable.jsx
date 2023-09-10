@@ -152,7 +152,7 @@ export function AdmIncidentTable(props) {
                             />
                             <GnButton
                                 color="BLUE"
-                                className="w-[25%]"
+                                className="w-[25%] flex items-center justify-center"
                                 onClick={() => search()}
                             >
                                 {t("search")}

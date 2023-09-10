@@ -31,11 +31,11 @@ export function EmotionPopup(props) {
                 open={open}
                 size="xl"
                 handler={() => { }}
-                className="max-h-[90vh] w-[80vw] overflow-auto"
+                className="max-h-[90vh] w-[80vw] overflow-auto dark:bg-gray-800"
             >
                 <DialogBody>
                     <div className="w-full h-full flex items-center justify-center flex-col p-10 gap-16 sm:gap-10">
-                        <Typography variant="h3">
+                        <Typography variant="h3" className="dark:text-gray-200">
                             {t("emotion")}
                         </Typography>
 

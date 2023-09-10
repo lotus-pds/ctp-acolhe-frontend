@@ -105,7 +105,7 @@ export function Profile(props) {
             >
                 {t("tooltipHeader.profile")}
             </Typography>
-            <div className="w-[90%] grid sm:grid-cols-[20%,78%] grid-cols-1 gap-8 mt-2">
+            <div className="w-[90%] grid sm:grid-cols-[20%,78%] grid-cols-1 gap-8 mt-">
                 <div className="bg-gray-100 dark:bg-gray-800 w-full sm:h-[35%] gap-6 float flex flex-col items-center p-6 rounded-xl drop-shadow-md ">
                     <div style={{ backgroundImage: `url(${user.urlAvatar})` }} className={"h-24 w-24 bg-gray-200 dark:bg-gray-900 rounded-full bg-center bg-cover"}>
                         <Tooltip content={
@@ -119,7 +119,7 @@ export function Profile(props) {
                                 </Typography>
                             </div>
                         }>
-                            <GnButton color="BLUE" onClick={handleOpenPicturePopup} className="w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12">
+                            <GnButton color="BLUE" onClick={handleOpenPicturePopup} className="w-1 h-12  rounded-full text-center grid items-center justify-center mt-12 ml-12">
                                 <PencilIcon className="w-5"></PencilIcon>
                             </GnButton>
                         </Tooltip>
@@ -138,10 +138,15 @@ export function Profile(props) {
                     </div>
 
                     <div className="w-full flex flex-col items-center sm:p-0 p-2 justify-evenly h-full">
-                        <div className="w-[95%] bg-gray-200 dark:bg-gray-900 h-7"></div>
-                        <div className="w-[75%] ml-9 bg-gray-200 dark:bg-gray-900 h-7"></div>
-                        <div className="w-[75%] ml-9 bg-gray-200 dark:bg-gray-900 h-7"></div>
-                        <div className="w-[95%] bg-gray-200 dark:bg-gray-900 h-7"></div>
+                        
+                        <div className="hidden">
+                            <div className="w-[95%] bg-gray-200 dark:bg-gray-900 h-7"></div>
+                            <div className="w-[75%] ml-9 bg-gray-200 dark:bg-gray-900 h-7"></div>
+                            <div className="w-[75%] ml-9 bg-gray-200 dark:bg-gray-900 h-7"></div>
+                            <div className="w-[95%] bg-gray-200 dark:bg-gray-900 h-7"></div>
+                        </div>
+
+                        
 
                         <GnButton
                             onClick={async () => {
@@ -159,9 +164,9 @@ export function Profile(props) {
                 </div>
 
                 <div className="bg-gray-100 dark:bg-gray-800 w-full max-h-[3000px] rounded-xl mb-8 drop-shadow-md">
-                    <div className=" w-full  flex flex-col items-start justify-center p-12 gap-8">
+                    <div className=" w-full flex flex-col items-start justify-center sm:p-12 p-6 gap-8">
                         <Typography
-                            variant="h3"
+                            variant="h4"
                             className="font-normal sm:text-3xl text-lg flex justify-center items-center gap-4"
                         >
                             <UserIcon className="w-8"></UserIcon>
@@ -182,7 +187,7 @@ export function Profile(props) {
 
                         <div className="w-full">
                             <div className="flex items-center justify-between">
-                                <Typography variant="h4" className="sm:text-2xl text-xl">
+                                <Typography variant="h4" className="sm:text-2xl text-lg font-normal">
                                     {t("tooltipEditProfile.myProfile")}
                                 </Typography>
                                 <div className="flex justify-center items-center">
@@ -200,7 +205,7 @@ export function Profile(props) {
                                         {sections.personalInfo === false
                                             ? <GnButton
                                                 color="BLUE"
-                                                className="w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                                className="w-1 h-12 scale-75 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                                 disabled={!Object.values(sections).every(value => value === false)}
                                                 onClick={() => { setSections({ ...sections, personalInfo: !sections.personalInfo }) }}
                                             >
@@ -208,7 +213,7 @@ export function Profile(props) {
                                             </GnButton>
                                             : <GnButton
                                                 color="BLUE"
-                                                className=" w-1 h-12 rounded-full text-center grid items-center justify-center mt-12 ml-12"
+                                                className=" w-1 h-12 scale-75 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                                 disabled={!Object.values(isFieldValid).every(value => value === true)}
                                                 onClick={async () => {
                                                     await updateUser();
@@ -232,7 +237,7 @@ export function Profile(props) {
                                         }>
                                             <GnButton
                                                 color="RED"
-                                                className=" w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                                className=" w-1 h-12 scale-75 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                                 onClick={() => {
                                                     setSections({ ...sections, personalInfo: false });
                                                     localGetUser();
@@ -248,7 +253,7 @@ export function Profile(props) {
                             </div>
 
                             <div className="flex flex-col sm:p-6 sm:gap-6 p-2 gap-2">
-                                <Typography variant="h4" className='font-normal sm:text-2xl text-xl flex gap-4 p-2'>
+                                <Typography variant="h4" className='font-normal sm:text-2xl text-lg flex gap-4 p-2'>
                                     <UserIcon className="sm:w-6 w-5" />
                                     {t("tooltipEditProfile.somethingInformations")}
                                 </Typography>
@@ -274,8 +279,8 @@ export function Profile(props) {
                                 </div>
                             </div>
 
-                            <div className="flex flex-col sm:p-6 sm:gap-6 p-2 gap-2">
-                                <Typography variant="h4" className='font-normal sm:text-2xl text-xl flex gap-4'>
+                            <div className="flex flex-col sm:p-6 sm:gap-6 p-2 gap-2 mt-4">
+                                <Typography variant="h4" className='font-normal sm:text-2xl text-lg flex flex-row w-full gap-3'>
                                     <AcademicCapIcon className="w-6" />
                                     {t("tooltipEditProfile.institutionalInformations")}
                                 </Typography>
@@ -349,7 +354,7 @@ export function Profile(props) {
                                         {sections.security === false
                                             ? <GnButton
                                                 color="BLUE"
-                                                className=" w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                                className=" w-1 h-12 scale-75 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                                 onClick={() => { setSections({ ...sections, security: !sections.security }) }}
                                                 disabled={!Object.values(sections).every(value => value === false)}
                                             >
@@ -357,7 +362,7 @@ export function Profile(props) {
                                             </GnButton>
                                             : <GnButton
                                                 color="BLUE"
-                                                className=" w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                                className=" w-1 h-12 scale-75 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                                 onClick={async () => {
                                                     await updatePassword();
                                                     setSections({ ...sections, security: !sections.security });
@@ -381,7 +386,7 @@ export function Profile(props) {
                                         }>
                                             <GnButton
                                                 color="RED"
-                                                className="w-1 h-12 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
+                                                className="w-1 h-12 scale-75 rounded-full text-center grid items-center justify-center sm:mt-12 sm:ml-12"
                                                 onClick={() => {
                                                     setSections({ ...sections, security: !sections.security });
                                                     setPassword({

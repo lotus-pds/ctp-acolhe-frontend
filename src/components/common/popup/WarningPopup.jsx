@@ -23,7 +23,7 @@ export function WarningPopup(props) {
                     {t("warning")}
                 </h4>
             </DialogHeader>
-            <DialogBody className='text-center'>
+            <DialogBody className='text-center dark:text-gray-200'>
                 {t("warningAction")}
             </DialogBody>
             <DialogFooter>

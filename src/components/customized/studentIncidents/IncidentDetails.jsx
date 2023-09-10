@@ -68,13 +68,13 @@ export function IncidentDetails(props) {
                 </DialogHeader>
                 <hr />
                 <DialogBody className="py-0 px-10 dark:text-gray-200 font-normal">
-                    <div className="my-3 mx-2">
-                        <Typography variant="h4" color="blue-gray" className="flex gap-4 py-2 pr-2 dark:text-gray-200 font-normal">
+                    <div className="my-3 sm:mx-2">
+                        <Typography variant="h4" color="blue-gray" className="flex gap-4 py-2 pr-2 dark:text-gray-200 font-normal sm:text-2xl text-xl">
                             <ClipboardDocumentListIcon className="sm:w-6 w-5 inline" />
                             {t("incidentInformation")}
                         </Typography>
 
-                        <span className="grid grid-cols-6 gap-y-4 my-4 ml-10">
+                        <span className="sm:grid sm:grid-cols-6 flex flex-col gap-y-4 my-4 sm:ml-10">
                             <span className="col-span-4">
                                 <Typography variant="h6">{t("subject")}</Typography>
                                 <Typography>{incident?.assunto}</Typography>
@@ -101,13 +101,14 @@ export function IncidentDetails(props) {
                         </span>
                     </div>
                     <hr />
-                    <div className="my-3 mx-2 mb-5">
-                        <Typography variant="h4" color="blue-gray" className="flex gap-4 py-2 pr-2 dark:text-gray-200 font-normal">
+                    <div className="my-3 mx-2 mb-5 ml-0">
+                        <Typography variant="h4" color="blue-gray" className="flex gap-4 py-2 pr-2 dark:text-gray-200 font-normal sm:text-2xl text-xl">
                             <ChatBubbleLeftRightIcon className="sm:w-6 w-5 inline" />
                             {t("screening")}
                         </Typography>
-
-                        {getQuestionsAndAnswers(incident?.perguntas)}
+                        <Typography variant="small" className="sm:ml-0 -ml-8">
+                            {getQuestionsAndAnswers(incident?.perguntas)}
+                        </Typography>
                     </div>
                 </DialogBody>
                 <div className="flex justify-end mr-3 -mt-6 mb-3">
