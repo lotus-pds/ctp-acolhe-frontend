@@ -8,7 +8,9 @@ import { CommonInput } from "../components/common/input/CommonInput";
 import { ManageUsersTable } from "../components/customized/manageUsers/ManageUsersTable";
 import { getUsers } from "../services/user";
 
-export function ManageUsers() {
+export function ManageUsers(props) {
+    const { path } = props;
+
     const [users, setUsers] = useState([]);
     const [filters, setFilters] = useState({});
 
@@ -25,7 +27,7 @@ export function ManageUsers() {
 
     return (
         <div className="flex flex-col items-center">
-            <HeaderTae />
+            <HeaderTae path={path}/>
             <Card className="h-full w-[90%] mt-8 mb-6 dark:bg-gray-800">
                 <CardBody floated={false} >
                     <div className="mb-4">

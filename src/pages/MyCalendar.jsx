@@ -9,6 +9,8 @@ import { Reminder } from "../components/customized/emotions/Reminder";
 import { EmotionPopup } from "../components/customized/emotions/EmotionPopup";
 
 export function MyCalendar(props) {
+    const { path } = props;
+
     const [emotions, setEmotions] = useState([]);
     const [popupOpen, setPopupOpen] = useState(false);
     const [todayEmotion, setTodayEmotion] = useState([]);
@@ -47,7 +49,7 @@ export function MyCalendar(props) {
 
     return (
         <div className="flex flex-col items-center">
-            <HeaderUser />
+            <HeaderUser path={path}/>
 
             <div className="grid grid-cols-1 sm:grid-cols-12 justify-center align-center sm:m-7">
                 <div className="flex justify-center align-center col-span-5 sm:ml-40">

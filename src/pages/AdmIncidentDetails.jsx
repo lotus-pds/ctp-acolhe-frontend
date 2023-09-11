@@ -26,6 +26,7 @@ const getQuestionsAndAnswers = (questions = []) => {
 }
 
 export function AdmIncidentDetails(props) {
+    const { path } = props;
     const { id } = useParams();
 
     const [incident, setIncident] = useState({});
@@ -58,7 +59,7 @@ export function AdmIncidentDetails(props) {
 
     return (
         <div className="flex flex-col items-center ">
-            <HeaderTae />
+            <HeaderTae path={path} />
 
             <Card className="h-full w-[90%] mt-8 mb-6 dark:bg-gray-800">
                 <CardHeader floated={false} shadow={false} className="my-5 mx-10 dark:bg-gray-800 dark:text-gray-200 font-normal" >

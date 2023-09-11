@@ -3,14 +3,16 @@ import { AdmIncidentTable } from "../components/customized/admIncidents/AdmIncid
 import { useEffect, useState } from "react";
 import { getIncidents, getIncidentTypes } from "../services/incident";
 
-export function Incidents() {
+export function Incidents(props) {
+    const { path } = props;
+
     const [incidents, setIncidents] = useState([]);
     const [incidentTypes, setIncidentTypes] = useState([]);
     const [filters, setFilters] = useState({});
     const [totalAmount, setTotalAmount] = useState("0");
 
     const localGetIncidents = async () => {
-        let response = await getIncidents({...filters});
+        let response = await getIncidents({ ...filters });
         setIncidents(response.data);
         setTotalAmount(response.headers['quantidade-total']);
     }
@@ -27,7 +29,7 @@ export function Incidents() {
 
     return (
         <div className="flex flex-col items-center">
-            <HeaderTae />
+            <HeaderTae path={path} />
 
             <AdmIncidentTable
                 incidents={incidents}

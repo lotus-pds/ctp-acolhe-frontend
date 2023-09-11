@@ -5,9 +5,10 @@ import { Chat } from "../components/customized/chat/Chat";
 import { Typography } from "@material-tailwind/react";
 import { useTranslation } from "react-i18next";
 
-export function CreateIncident() {
+export function CreateIncident(props) {
+    const { path } = props;
 
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
     const [step, setStep] = useState(1);
 
@@ -39,7 +40,7 @@ export function CreateIncident() {
     }
     return (
         <div className="flex flex-col items-center">
-            <HeaderUser/>
+            <HeaderUser path={path} />
             <div className="grid grid-cols-1 sm:grid-cols-12 justify-center align-center sm:m-7">
                 <div className="flex justify-center align-center col-span-5 sm:ml-40">
                     <img className="w-[250px] sm:w-[400px] object-contain" src="https://media.discordapp.net/attachments/1077345452694970438/1138249185024557157/3780782_77881.png?width=480&height=480" alt="" />

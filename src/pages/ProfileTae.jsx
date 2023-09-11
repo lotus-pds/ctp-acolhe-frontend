@@ -17,6 +17,7 @@ import { PicturePopup } from "../components/PicturePopup";
 import { HeaderTae } from "../components/HeaderTae";
 
 export function ProfileTae(props) {
+    const { path } = props;
 
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -77,7 +78,7 @@ export function ProfileTae(props) {
 
     return (
         <div className="flex flex-col items-center">
-            <HeaderTae />
+            <HeaderTae path={path} />
             <Typography
                 variant="h2"
                 className="p-6 font-mouse font-normal"
@@ -123,7 +124,7 @@ export function ProfileTae(props) {
                             <div className="w-[75%] ml-9 bg-gray-200 dark:bg-gray-900 h-7"></div>
                             <div className="w-[95%] bg-gray-200 dark:bg-gray-900 h-7"></div>
                         </div>
-                        
+
 
                         <GnButton
                             onClick={async () => {

@@ -5,7 +5,8 @@ import { LogoAuthorized } from "./LogoAuthorized";
 import { MobileUserNavbar } from "./MobileUserNavbar";
 
 
-export function HeaderUser (){
+export function HeaderUser (props){
+    const { path } = props;
 
     return (
         <>
@@ -17,7 +18,7 @@ export function HeaderUser (){
                 </div>
             
                 <div className="sm:block hidden">
-                    <NavbarUser/>
+                    <NavbarUser path={path}/>
                 </div>
 
                 <div

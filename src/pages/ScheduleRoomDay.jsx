@@ -8,6 +8,8 @@ import { SchedulingTable } from "../components/customized/scheduling/SchedulingT
 import { deleteScheduling, getSchedulings, postScheduling, putScheduling } from "../services/scheduling";
 
 export function ScheduleRoomDay(props) {
+    const { path } = props;
+
     const { date } = useParams();
     const localDate = new Date(date.replace(/-/g, '\/'));
 
@@ -46,7 +48,7 @@ export function ScheduleRoomDay(props) {
 
     return (
         <>
-            <HeaderTae />
+            <HeaderTae path={path} />
 
             <SchedulingTable
                 dateScheduling={convertDateBars(localDate)}

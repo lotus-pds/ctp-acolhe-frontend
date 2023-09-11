@@ -5,7 +5,9 @@ import { useEffect, useState } from "react";
 import { getMyIncidents, getIncidentTypes, cancelIncident } from "../services/incident";
 import { WarningPopup } from "../components/common/popup/WarningPopup";
 
-export function MyIncident() {
+export function MyIncident(props) {
+    const { path } = props;
+
     const [detailsOpen, setDetailsOpen] = useState(false);
     const [incidents, setIncidents] = useState([]);
     const [incident, setIncident] = useState({});
@@ -17,7 +19,7 @@ export function MyIncident() {
     const detailIncident = incident => setIncident({ ...incident });
 
     const localGetMyIncidents = async () => {
-        let response = await getMyIncidents({...filters});
+        let response = await getMyIncidents({ ...filters });
         setIncidents(response.data);
         setTotalAmount(response.headers['quantidade-total']);
     }
@@ -33,14 +35,14 @@ export function MyIncident() {
     }, []);
 
     useEffect(() => {
-        if( incident != {}) {
+        if (incident != {}) {
             let newIncident = incidents.filter(i => i?.idIncidente == incident?.idIncidente)[0];
             setIncident(newIncident);
         }
     }, [incidents]);
 
     const toggleDetailsOpen = () => {
-        if( detailsOpen == true) {
+        if (detailsOpen == true) {
             setIncident({});
         }
 
@@ -49,7 +51,7 @@ export function MyIncident() {
 
     return (
         <div className="flex flex-col items-center">
-            <HeaderUser />
+            <HeaderUser path={path} />
 
             <IncidentDetails
                 open={detailsOpen}

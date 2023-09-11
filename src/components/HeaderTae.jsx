@@ -4,26 +4,27 @@ import { NavbarTae } from "./NavbarTae";
 import { LogoTae } from "./LogoTae";
 import { MobileTaeNavbar } from "./MobileTaeNavbar";
 
-export function HeaderTae (){
+export function HeaderTae(props) {
+    const { path } = props;
 
     return (
         <>
             <header className="w-full px-6 sm:py-3 p-1 sm:mt-2 mt-4 flex items-center justify-between z-50 relative">
-                <div 
+                <div
                     className="flex items-center sm:h-[57px] h-[40px] ml-[2px] justify-start sm:mt-0 mt-[2px] sm:ml-12 p-1 "
                 >
-                    <LogoTae/>
+                    <LogoTae />
                 </div>
-            
+
                 <div className="sm:block hidden">
-                    <NavbarTae/>
+                    <NavbarTae path={path} />
                 </div>
 
                 <div
                     className="flex items-center ml-12 justify-center sm:gap-[120px] gap-10"
                 >
-                    <LanguageButton/>
-                    <ThemeButton/>
+                    <LanguageButton />
+                    <ThemeButton />
                 </div>
             </header>
             <div className="sm:hidden block">

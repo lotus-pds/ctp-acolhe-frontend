@@ -18,7 +18,7 @@ import { removeAuthData } from "../common/general";
 import { PicturePopup } from "../components/PicturePopup";
 
 export function Profile(props) {
-    const { courses } = props;
+    const { courses, path } = props;
 
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -98,7 +98,7 @@ export function Profile(props) {
 
     return (
         <div className="flex flex-col items-center">
-            <HeaderUser />
+            <HeaderUser path={path} />
             <Typography
                 variant="h2"
                 className="p-6 font-mouse font-normal"
@@ -138,7 +138,7 @@ export function Profile(props) {
                     </div>
 
                     <div className="w-full flex flex-col items-center sm:p-0 p-2 justify-evenly h-full">
-                        
+
                         <div className="hidden">
                             <div className="w-[95%] bg-gray-200 dark:bg-gray-900 h-7"></div>
                             <div className="w-[75%] ml-9 bg-gray-200 dark:bg-gray-900 h-7"></div>
@@ -146,7 +146,7 @@ export function Profile(props) {
                             <div className="w-[95%] bg-gray-200 dark:bg-gray-900 h-7"></div>
                         </div>
 
-                        
+
 
                         <GnButton
                             onClick={async () => {

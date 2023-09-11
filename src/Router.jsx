@@ -29,7 +29,7 @@ import { ProfileTae } from "./pages/ProfileTae";
 import { NotFound } from "./pages/NotFound";
 
 export function Router(props) {
-    const[courses, setCourses] = useState([]);
+    const [courses, setCourses] = useState([]);
 
     const localGetCourses = async () => {
         let response = await getCourses();
@@ -44,21 +44,21 @@ export function Router(props) {
         <Routes>
             <Route exact path="/" element={<OpenRoute><Home /></OpenRoute>} />
             <Route path="/acesso" element={<OpenRoute><Signin /></OpenRoute>} />
-            <Route path="/cadastro" element={<OpenRoute><Subscribe courses={courses}/></OpenRoute>} />
+            <Route path="/cadastro" element={<OpenRoute><Subscribe courses={courses} /></OpenRoute>} />
             <Route path="/emocao" element={<PrivateRoute user={['Aluno']}><Emotions /></PrivateRoute>} />
             <Route path="/redefinir_senha" element={<OpenRoute><ForgotPassword /></OpenRoute>} />
             <Route path="/termos" element={<Terms />} />
             <Route path="/redefinir_senha/:token" element={<OpenRoute><ResetPassword /></OpenRoute>} />
             <Route path="/redefinir_senha/sucesso" element={<OpenRoute><ResetSuccessfull /></OpenRoute>} />
             <Route path="/cadastro/sucesso" element={<OpenRoute><AccessConfirmation /></OpenRoute>} />
-            <Route path="/posts" element={<PrivateRoute user={['Aluno']}><Posts /></PrivateRoute>} />
-            <Route path="/calendario" element={<PrivateRoute user={['Aluno']}><MyCalendar /></PrivateRoute>} />
-            <Route path="/incidente/criacao" element={<PrivateRoute user={['Aluno']}><CreateIncident /></PrivateRoute>} />
-            <Route path="/adm/post/criacao" element={<PrivateRoute user={['Admin']}><CreatePosts /></PrivateRoute>} />
-            <Route path="/adm/agendamento" element={<PrivateRoute user={['Admin']}><ScheduleRoom /></PrivateRoute>} />
-            <Route path="/adm/agendamento/:date" element={<PrivateRoute user={['Admin']}><ScheduleRoomDay /></PrivateRoute>} />
-            <Route path="/adm/cadastro/gerenciamento" element={<PrivateRoute user={['Admin']}><ManageUsers /></PrivateRoute>} />
-            <Route path="/adm/post" element={<PrivateRoute user={['Admin']}><PostTae /></PrivateRoute>} />
+            <Route path="/posts" element={<PrivateRoute user={['Aluno']}><Posts path="/posts" /></PrivateRoute>} />
+            <Route path="/calendario" element={<PrivateRoute user={['Aluno']}><MyCalendar path="/calendario" /></PrivateRoute>} />
+            <Route path="/incidente/criacao" element={<PrivateRoute user={['Aluno']}><CreateIncident path="/incidente/criacao" /></PrivateRoute>} />
+            <Route path="/adm/post/criacao" element={<PrivateRoute user={['Admin']}><CreatePosts path="/adm/post/criacao" /></PrivateRoute>} />
+            <Route path="/adm/agendamento" element={<PrivateRoute user={['Admin']}><ScheduleRoom path="/adm/agendamento" /></PrivateRoute>} />
+            <Route path="/adm/agendamento/:date" element={<PrivateRoute user={['Admin']}><ScheduleRoomDay path="/adm/agendamento/:date" /></PrivateRoute>} />
+            <Route path="/adm/cadastro/gerenciamento" element={<PrivateRoute user={['Admin']}><ManageUsers path="/adm/cadastro/gerenciamento" /></PrivateRoute>} />
+            <Route path="/adm/post" element={<PrivateRoute user={['Admin']}><PostTae path="/adm/post" /></PrivateRoute>} />
             {/**
             <Route path="/create-incident" element={<PrivateRoute user={['Aluno', 'Admin']}><CreateIncident /></PrivateRoute>} />
             <Route path="/posts" element={<PrivateRoute user={['Aluno', 'Admin']}><Posts /></PrivateRoute>} />
@@ -66,18 +66,18 @@ export function Router(props) {
             <Route path="/posts" element={<Posts />} />
             <Route path="/create-incident" element={<CreateIncident />} />
             */}
-            <Route path="/perfil" element={<PrivateRoute user={['Aluno']}><Profile courses={courses}/></PrivateRoute>} />
-            <Route path="/adm/perfil" element={<PrivateRoute user={['Admin']}><ProfileTae/></PrivateRoute>} />
-            <Route path="/incidente" element={<PrivateRoute user={['Aluno']}><MyIncident /></PrivateRoute>} />
+            <Route path="/perfil" element={<PrivateRoute user={['Aluno']}><Profile courses={courses} path="/perfil" /></PrivateRoute>} />
+            <Route path="/adm/perfil" element={<PrivateRoute user={['Admin']}><ProfileTae path="/adm/perfil" /></PrivateRoute>} />
+            <Route path="/incidente" element={<PrivateRoute user={['Aluno']}><MyIncident path="/incidente" /></PrivateRoute>} />
             {/**
             <Route path="/my-incident" element={<MyIncident />} />
             <Route path="/profile" element={<Profile />} />
              */}
             <Route path="/cadastro/verificacao/:token" element={<EmailConfirmation />} />
-            <Route path="/adm/incidente" element={<PrivateRoute user={['Admin']}><Incidents /></PrivateRoute>} />
-            <Route path="/adm/posts" element={<PrivateRoute user={['Admin']}><PostTae/></PrivateRoute>} />
-            <Route path="/adm/incidente/:id" element={<PrivateRoute user={['Admin']}><AdmIncidentDetails /></PrivateRoute>} />
-            <Route path="/404" element={<NotFound/>}/>
+            <Route path="/adm/incidente" element={<PrivateRoute user={['Admin']}><Incidents path="/adm/incidente"/></PrivateRoute>} />
+            <Route path="/adm/posts" element={<PrivateRoute user={['Admin']}><PostTae path="/adm/posts" /></PrivateRoute>} />
+            <Route path="/adm/incidente/:id" element={<PrivateRoute user={['Admin']}><AdmIncidentDetails path="/adm/incidente/:id" /></PrivateRoute>} />
+            <Route path="/404" element={<NotFound />} />
         </Routes>
     );
 }

@@ -4,7 +4,9 @@ import { SchedulingCalendar } from "../components/customized/scheduling/Scheduli
 import { getSchedulings } from "../services/scheduling";
 import { convertDateHyphen } from "../common/general";
 
-export function ScheduleRoom() {
+export function ScheduleRoom(props) {
+    const { path } = props;
+
     const [schedulings, setSchedulings] = useState([]);
     const [time, setTime] = useState({});
 
@@ -27,7 +29,7 @@ export function ScheduleRoom() {
 
     return (
         <div className="flex flex-col items-center">
-            <HeaderTae />
+            <HeaderTae path={path} />
             <SchedulingCalendar
                 schedulings={schedulings}
                 localGetSchedulings={localGetSchedulings}
