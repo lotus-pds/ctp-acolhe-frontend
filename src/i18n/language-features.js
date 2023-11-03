@@ -209,7 +209,9 @@ export const resources = {
                 "startTime": "Start Time",
                 "endTime": "End Time"
             },
-            "createSchedule": "Create Schedule"
+            "createSchedule": "Create Schedule",
+            "feelingRightNow": "If you want, write anything here about how you are feeling right now",
+            "registerEmotion": "Register Emotion"
         }
     },
     pt: {
@@ -423,7 +425,9 @@ export const resources = {
                 "startTime": "Horário Início",
                 "endTime": "Horário Fim"
             },
-            "createSchedule": "Criar Agendamento"
+            "createSchedule": "Criar Agendamento",
+            "feelingRightNow": "Se quiser, escreva aqui qualquer coisa sobre como está se sentindo agora",
+            "registerEmotion": "Registrar Emoção"
         }
     }
 }

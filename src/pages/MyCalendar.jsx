@@ -45,8 +45,6 @@ export function MyCalendar(props) {
         getTodayEmotion();
     }, []);
 
-    const handlePopupOpen = () => setPopupOpen(!popupOpen);
-
     return (
         <div className="flex flex-col items-center">
             <HeaderUser path={path}/>
@@ -70,14 +68,17 @@ export function MyCalendar(props) {
 
             <Reminder
                 show={todayEmotion.length == 0}
-                onClick={handlePopupOpen}
+                onClick={() => setPopupOpen(!popupOpen)}
             />
 
-            <EmotionCalendar emotions={emotions} localGetEmotion={localGetEmotion} />
+            <EmotionCalendar
+                emotions={emotions}
+                localGetEmotion={localGetEmotion}
+            />
 
             <EmotionPopup
                 open={popupOpen}
-                handleOpen={handlePopupOpen}
+                setPopupOpen={setPopupOpen}
                 localGetEmotion={localGetEmotion}
                 time={time}
                 getTodayEmotion={getTodayEmotion}
