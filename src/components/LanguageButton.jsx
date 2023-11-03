@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 import { GnButton } from './common/button/GnButton';
 import { useEffect, useState } from 'react';
 
-const getFlag = (innerLng) => {
-  switch (innerLng) {
+const getFlag = (lng) => {
+  switch (lng) {
     case 'pt': return (
       <img
         src="https://media.discordapp.net/attachments/1077345452694970438/1097572128636801034/brazil-colorfull.png"
@@ -40,7 +40,7 @@ export function LanguageButton() {
   return (
     <GnButton
       onClick={() => changeLanguage()}
-      className='p-1 hover:bg-gray-400'
+      className='p-1 hover:bg-gray-400 w-[60px] h-[50px] flex justify-center items-center'
       color='NONE'
     >
       {getFlag(lng)}

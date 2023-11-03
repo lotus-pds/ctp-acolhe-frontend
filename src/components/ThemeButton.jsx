@@ -1,58 +1,50 @@
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { useTheme } from '../hooks/useTheme'
 import { GnButton } from './common/button/GnButton'
 
+const getFlag = (theme) => {
+  switch (theme) {
+    case 'light': return (
+      <img
+        src="https://media.discordapp.net/attachments/1077345452694970438/1097572131325366343/light-theme-icon.png?width=480&height=480"
+        className='sm:h-[45px] h-[30px]' />
+    );
+
+    case 'dark': return (
+      <img
+        src="https://media.discordapp.net/attachments/1077345452694970438/1099694692653879366/Component_24.png"
+        className='sm:h-[35px] h-[25px]'
+      />
+
+    );
+  }
+}
+
 
 export function ThemeButton() {
+  const { setTheme } = useTheme();
 
-  const { setTheme } = useTheme()
+  const [theme, innerSetTheme] = useState();
+
+  useEffect(() => {
+    innerSetTheme(localStorage.getItem('theme'));
+  }, [])
+
+  const changeTheme = () => {
+    let newTheme = theme == 'light' ? 'dark' : 'light';
+
+    setTheme(newTheme);
+    innerSetTheme(newTheme);
+  }
 
   return (
-    <Popover className="relative">
-      <Popover.Button className="inline-flex items-center gap-x-1 outline-none">
-        <img src="https://media.discordapp.net/attachments/1077345452694970438/1099694692410605698/Component_25.png"
-          className='sm:h-[40px] h-[25px]'
-        />
-      </Popover.Button>
-
-      <Transition
-        as={Fragment}
-        enter="transition ease-out duration-200"
-        enterFrom="opacity-0 translate-y-1"
-        enterTo="opacity-100 translate-y-0"
-        leave="transition ease-in duration-150"
-        leaveFrom="opacity-100 translate-y-0"
-        leaveTo="opacity-0 translate-y-1"
-      >
-        <Popover.Panel className="absolute left-1/2 z-10 mt-2 flex w-screen max-w-max -translate-x-1/2 px-4 outline-0">
-          <div className="sm:w-[60px] w-[40px] max-w-md  flex flex-center justify-center overflow-hidden rounded bg-white dark:bg-gray-800 text-sm leading-6 shadow-lg
-            dark:shadow-xl
-          ">
-            <div className="flex flex-col items-center">
-              <GnButton
-                className='p-1'
-                onClick={() => setTheme("dark")}
-                color='NONE'
-              >
-                <img src="https://media.discordapp.net/attachments/1077345452694970438/1099694692653879366/Component_24.png"
-                  className='sm:h-[35px] h-[25px]'
-                />
-
-              </GnButton>
-
-              <GnButton
-                className='p-1'
-                onClick={() => setTheme("light")}
-                color='NONE'
-              >
-                <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572131325366343/light-theme-icon.png?width=480&height=480"
-                  className='sm:h-[45px] h-[30px]' />
-              </GnButton>
-            </div>
-          </div>
-        </Popover.Panel>
-      </Transition>
-    </Popover>
-  )
+    <GnButton
+      onClick={() => changeTheme()}
+      className='p-1 hover:bg-gray-400 w-[60px] h-[50px] flex justify-center items-center'
+      color='NONE'
+    >
+      {getFlag(theme)}
+    </GnButton>
+  );
 }
