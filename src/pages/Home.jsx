@@ -24,7 +24,7 @@ export function Home() {
             className="h-full"
         >
             <Header />
-            <img src="https://cdn.discordapp.com/attachments/1077345452694970438/1107315225662849134/Vector_337.png" alt=""
+            <img src="https://github.com/lotus-pds/ctp-acolhe-assets/blob/main/img/red_form.png?raw=true" alt=""
                 className="absolute  top-0 right-0 z-10 sm:w-[35%] w-[42%]"
             />
             <main className="
@@ -67,7 +67,7 @@ export function Home() {
 
                             </div>
                             <div className="sm:mt-0 mt-[-50px] flex items-center justify-center">
-                                <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572130138378250/studies.png?width=648&height=480" alt=""
+                                <img src="https://github.com/lotus-pds/ctp-acolhe-assets/blob/main/img/studies.png?raw=true" alt=""
                                     className="sm:w-[600px] w-[300px]"
                                 />
                             </div>
@@ -98,7 +98,7 @@ export function Home() {
 
                             </div>
                             <div className="sm:mt-0 mt-[-30px] flex items-center justify-center">
-                                <img src="https://media.discordapp.net/attachments/1077345452694970438/1097572129647632436/organization.png?width=624&height=480" alt=""
+                                <img src="https://github.com/lotus-pds/ctp-acolhe-assets/blob/main/img/organization.png?raw=true" alt=""
                                     className="sm:w-[600px] w-[330px]"
                                 />
                             </div>
@@ -129,7 +129,7 @@ export function Home() {
 
                             </div>
                             <div className="sm:mt-0 mt-[-30px] flex items-center justify-center">
-                                <img src="https://media.discordapp.net/attachments/1077345452694970438/1099732054565990410/Component_17_1.png?width=480&height=480" alt=""
+                                <img src="https://github.com/lotus-pds/ctp-acolhe-assets/blob/main/img/psycho.png?raw=true" alt=""
                                     className="sm:w-[480px] w-[300px]"
                                 />
                             </div>

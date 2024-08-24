@@ -6,14 +6,14 @@ const getFlag = (lng) => {
   switch (lng) {
     case 'pt': return (
       <img
-        src="https://media.discordapp.net/attachments/1077345452694970438/1097572128636801034/brazil-colorfull.png"
+        src="https://github.com/lotus-pds/ctp-acolhe-assets/blob/main/img/brazil-flag.png?raw=true"
         className='sm:h-[45px] h-[25px]'
       />
     );
 
     case 'en': return (
       <img
-        src="https://media.discordapp.net/attachments/1077345452694970438/1107078468014977034/estados-unidos.png?width=480&height=480"
+        src="https://github.com/lotus-pds/ctp-acolhe-assets/blob/main/img/usa-flag.png?raw=true"
         className='sm:h-[45px] h-[25px]'
       />
     );

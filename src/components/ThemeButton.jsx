@@ -7,13 +7,13 @@ const getFlag = (theme) => {
   switch (theme) {
     case 'light': return (
       <img
-        src="https://media.discordapp.net/attachments/1077345452694970438/1097572131325366343/light-theme-icon.png?width=480&height=480"
+        src="https://github.com/lotus-pds/ctp-acolhe-assets/blob/main/img/light-theme-icon.png?raw=true"
         className='sm:h-[45px] h-[30px]' />
     );
 
     case 'dark': return (
       <img
-        src="https://media.discordapp.net/attachments/1077345452694970438/1099694692653879366/Component_24.png"
+        src="https://github.com/lotus-pds/ctp-acolhe-assets/blob/main/img/dark-theme-icon.png?raw=true"
         className='sm:h-[35px] h-[25px]'
       />
 
